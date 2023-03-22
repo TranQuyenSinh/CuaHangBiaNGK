@@ -19,7 +19,7 @@ namespace DataLayer
         {
             this.tb_CHITIET_PHIEUBANHANG = new HashSet<tb_CHITIET_PHIEUBANHANG>();
             this.tb_CHITIET_PHIEUNHAPHANG = new HashSet<tb_CHITIET_PHIEUNHAPHANG>();
-            this.tb_DONVITINH = new HashSet<tb_DONVITINH>();
+            this.tb_GIA = new HashSet<tb_GIA>();
         }
     
         public string IDHH { get; set; }
@@ -35,7 +35,7 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_CHITIET_PHIEUNHAPHANG> tb_CHITIET_PHIEUNHAPHANG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_DONVITINH> tb_DONVITINH { get; set; }
+        public virtual ICollection<tb_GIA> tb_GIA { get; set; }
         public virtual tb_LOAIHANGHOA tb_LOAIHANGHOA { get; set; }
     }
 }

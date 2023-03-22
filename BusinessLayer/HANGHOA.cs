@@ -15,22 +15,22 @@ namespace BusinessLayer
             return db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == idHH);
         }
 
-        public List<tb_DONVITINH> getListDonViTinh(string idHH)
+        public List<tb_GIA> getListDonViTinh(string idHH)
         {
-            return db.tb_DONVITINH.Where(x => x.IDHH == idHH).OrderBy(x => x.QUYDOI).ToList();
+            return db.tb_GIA.Where(x => x.IDHH == idHH).OrderBy(x => x.QUYDOI).ToList();
         }
-        public tb_DONVITINH getItemDonViTinh(int iddvt)
+        public tb_GIA getItemDonViTinh(int IDGIA)
         {
-            return db.tb_DONVITINH.FirstOrDefault(x => x.IDDVT == iddvt);
+            return db.tb_GIA.FirstOrDefault(x => x.IDGIA == IDGIA);
         }
-        public List<tb_DONVITINH> getListDonViTinh()
+        public List<tb_GIA> getListDonViTinh()
         {
-            return db.tb_DONVITINH.OrderBy(x => x.QUYDOI).ToList();
+            return db.tb_GIA.OrderBy(x => x.QUYDOI).ToList();
         }
         public HANGHOA_DTO GetItemHangHoaDTO(string id)
         {
             HANGHOA_DTO dto = null;
-            var dvtGoc = db.tb_DONVITINH.FirstOrDefault(x => x.QUYDOI == 1 && x.IDHH == id);
+            var dvtGoc = db.tb_GIA.FirstOrDefault(x => x.QUYDOI == 1 && x.IDHH == id);
             var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == dvtGoc.IDHH);
             if (hanghoa == null)
                 return null;
@@ -45,7 +45,7 @@ namespace BusinessLayer
                 dto.TENLOAI = loai.TENLOAI;
                 dto.DINHMUCTON = hanghoa.DINHMUCTON;
                 dto.TONKHO = hanghoa.TONKHO;
-                dto.IDDVT = dvtGoc.IDDVT;
+                dto.IDGIA = dvtGoc.IDGIA;
                 dto.DONVITINH = dvtGoc.DONVITINH;
                 dto.QUYDOI = dvtGoc.QUYDOI;
                 dto.GIANHAP = dvtGoc.GIANHAP;
@@ -63,7 +63,7 @@ namespace BusinessLayer
                 hh.TONKHO = rd.Next(1, 100);
             }
             db.SaveChanges();*/
-            List<tb_DONVITINH> list = db.tb_DONVITINH.Where(x => x.QUYDOI == 1).ToList();
+            List<tb_GIA> list = db.tb_GIA.Where(x => x.QUYDOI == 1).ToList();
             List<HANGHOA_DTO> listDTO = new List<HANGHOA_DTO>();
 
             foreach (var item in list)
@@ -91,11 +91,11 @@ namespace BusinessLayer
                 throw ex;
             }
         }
-        public void AddDonViTinh(tb_DONVITINH dvt)
+        public void AddDonViTinh(tb_GIA dvt)
         {
             try
             {
-                db.tb_DONVITINH.Add(dvt);
+                db.tb_GIA.Add(dvt);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -125,11 +125,11 @@ namespace BusinessLayer
             }
         }
 
-        public void UpdateDonViTinh(tb_DONVITINH dt)
+        public void UpdateDonViTinh(tb_GIA dt)
         {
             try
             {
-                var dvt = db.tb_DONVITINH.FirstOrDefault(x => x.IDDVT == dt.IDDVT);
+                var dvt = db.tb_GIA.FirstOrDefault(x => x.IDGIA == dt.IDGIA);
 
                 dvt.DONVITINH = dt.DONVITINH;
                 dvt.QUYDOI = dt.QUYDOI;

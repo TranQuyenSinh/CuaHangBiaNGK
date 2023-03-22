@@ -24,7 +24,7 @@ namespace QL_BIA_NGK
         List<CheckBox> listChk;
         List<System.Windows.Forms.ComboBox> listcbo;
         tb_HANGHOA _currentHangHoa;
-        List<tb_DONVITINH> _listDVT;
+        List<tb_GIA> _listDVT;
 
         string _id;
         bool _isAdd;
@@ -33,7 +33,7 @@ namespace QL_BIA_NGK
             InitializeComponent();
 
             _currentHangHoa = new tb_HANGHOA();
-            _listDVT = new List<tb_DONVITINH>();
+            _listDVT = new List<tb_GIA>();
             _isAdd = true;
         }
         public frmChiTietHangHoa(string idhh) // update
@@ -118,16 +118,16 @@ namespace QL_BIA_NGK
         void SaveDonViTinh()
         {
             int dem = 0;
-            List<tb_DONVITINH> listdvt = new List<tb_DONVITINH>();
+            List<tb_GIA> listdvt = new List<tb_GIA>();
             for (int i = 0; i < 4; i++)
             {
                 if (listChk[i].Checked == true)
                 {
                     dem++;
-                    tb_DONVITINH dvt = new tb_DONVITINH();
+                    tb_GIA dvt = new tb_GIA();
                     if (i < _listDVT.Count) //  add new DVT
                     {
-                        dvt.IDDVT = _listDVT[i].IDDVT;
+                        dvt.IDGIA = _listDVT[i].IDGIA;
                     }
                     dvt.IDHH = txtIDHH.Text;
                     dvt.DONVITINH = listcbo[i].Text;

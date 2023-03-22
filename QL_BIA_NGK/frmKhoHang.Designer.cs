@@ -52,7 +52,7 @@
             this.IDLOAI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DINHMUCTON = new DevExpress.XtraGrid.Columns.GridColumn();
             this.QUYDOI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.IDDVT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.IDGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.slkDVT = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
@@ -236,7 +236,7 @@
             this.IDLOAI,
             this.DINHMUCTON,
             this.QUYDOI,
-            this.IDDVT});
+            this.IDGIA});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.GroupCount = 1;
             this.gvDanhSach.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -342,21 +342,21 @@
             this.QUYDOI.VisibleIndex = 3;
             this.QUYDOI.Width = 100;
             // 
-            // IDDVT
+            // IDGIA
             // 
-            this.IDDVT.AppearanceCell.Options.UseTextOptions = true;
-            this.IDDVT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.IDDVT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.IDDVT.AppearanceHeader.Options.UseFont = true;
-            this.IDDVT.Caption = "Đơn vị tính";
-            this.IDDVT.FieldName = "IDDVT";
-            this.IDDVT.MaxWidth = 100;
-            this.IDDVT.MinWidth = 100;
-            this.IDDVT.Name = "IDDVT";
-            this.IDDVT.OptionsFilter.AllowFilter = false;
-            this.IDDVT.Visible = true;
-            this.IDDVT.VisibleIndex = 2;
-            this.IDDVT.Width = 100;
+            this.IDGIA.AppearanceCell.Options.UseTextOptions = true;
+            this.IDGIA.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.IDGIA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.IDGIA.AppearanceHeader.Options.UseFont = true;
+            this.IDGIA.Caption = "Đơn vị tính";
+            this.IDGIA.FieldName = "IDGIA";
+            this.IDGIA.MaxWidth = 100;
+            this.IDGIA.MinWidth = 100;
+            this.IDGIA.Name = "IDGIA";
+            this.IDGIA.OptionsFilter.AllowFilter = false;
+            this.IDGIA.Visible = true;
+            this.IDGIA.VisibleIndex = 2;
+            this.IDGIA.Width = 100;
             // 
             // slkDVT
             // 
@@ -417,7 +417,7 @@
         private DevExpress.XtraBars.BarButtonItem lblTong;
         private DevExpress.XtraGrid.Columns.GridColumn DINHMUCTON;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit slkDVT;
-        private DevExpress.XtraGrid.Columns.GridColumn IDDVT;
+        private DevExpress.XtraGrid.Columns.GridColumn IDGIA;
         private DevExpress.XtraGrid.Columns.GridColumn QUYDOI;
     }
 }

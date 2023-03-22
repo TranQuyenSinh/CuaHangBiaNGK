@@ -15,7 +15,7 @@ namespace BusinessLayer.DTO
         public string TENLOAI { get; set; }
         public Nullable<double> DINHMUCTON { get; set; }
         public Nullable<double> TONKHO { get; set; }
-        public int IDDVT { get; set; }
+        public int IDGIA { get; set; }
         public string DONVITINH { get; set; }
         public Nullable<double> QUYDOI { get; set; }
         public Nullable<double> GIANHAP { get; set; }

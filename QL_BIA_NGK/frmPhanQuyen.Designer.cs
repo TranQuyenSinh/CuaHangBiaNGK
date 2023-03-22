@@ -47,9 +47,9 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmNhómToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.lblCurrentNhom = new System.Windows.Forms.Label();
             this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
@@ -273,19 +273,11 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(144, 82);
             // 
-            // xóaToolStripMenuItem
-            // 
-            this.xóaToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.close;
-            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.xóaToolStripMenuItem.Text = "Xóa";
-            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
-            // 
             // thêmUserToolStripMenuItem
             // 
             this.thêmUserToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.man_user;
             this.thêmUserToolStripMenuItem.Name = "thêmUserToolStripMenuItem";
-            this.thêmUserToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.thêmUserToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.thêmUserToolStripMenuItem.Text = "Thêm user";
             this.thêmUserToolStripMenuItem.Click += new System.EventHandler(this.thêmUserToolStripMenuItem_Click);
             // 
@@ -293,9 +285,17 @@
             // 
             this.thêmNhómToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.multiple_users_silhouette;
             this.thêmNhómToolStripMenuItem.Name = "thêmNhómToolStripMenuItem";
-            this.thêmNhómToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.thêmNhómToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.thêmNhómToolStripMenuItem.Text = "Thêm nhóm";
             this.thêmNhómToolStripMenuItem.Click += new System.EventHandler(this.thêmNhómToolStripMenuItem_Click);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.close;
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // splitContainer2
             // 

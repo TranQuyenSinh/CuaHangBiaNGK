@@ -78,7 +78,7 @@
     <Compile Include="tb_CHUCNANG.cs">
       <DependentUpon>QL_BIA_NGK.tt</DependentUpon>
     </Compile>
-    <Compile Include="tb_DONVITINH.cs">
+    <Compile Include="tb_GIA.cs">
       <DependentUpon>QL_BIA_NGK.tt</DependentUpon>
     </Compile>
     <Compile Include="tb_HANGHOA.cs">

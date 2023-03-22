@@ -28,7 +28,7 @@ namespace DataLayer
         public virtual DbSet<tb_CHITIET_PHIEUBANHANG> tb_CHITIET_PHIEUBANHANG { get; set; }
         public virtual DbSet<tb_CHITIET_PHIEUNHAPHANG> tb_CHITIET_PHIEUNHAPHANG { get; set; }
         public virtual DbSet<tb_CHUCNANG> tb_CHUCNANG { get; set; }
-        public virtual DbSet<tb_DONVITINH> tb_DONVITINH { get; set; }
+        public virtual DbSet<tb_GIA> tb_GIA { get; set; }
         public virtual DbSet<tb_HANGHOA> tb_HANGHOA { get; set; }
         public virtual DbSet<tb_KHACHHANG> tb_KHACHHANG { get; set; }
         public virtual DbSet<tb_LOAIHANGHOA> tb_LOAIHANGHOA { get; set; }

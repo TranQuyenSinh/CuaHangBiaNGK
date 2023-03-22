@@ -79,7 +79,7 @@ namespace QL_BIA_NGK
         private void gvDanhSach_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
         {
             GridView view = sender as GridView;
-            if (e.Column == view.Columns["IDDVT"])
+            if (e.Column == view.Columns["IDGIA"])
             {
                 var currentIDHH = view.GetRowCellValue(e.RowHandle, "IDHH");
                 if (currentIDHH == null)
@@ -96,10 +96,10 @@ namespace QL_BIA_NGK
             riMaterial.Columns.Add(new LookUpColumnInfo("DONVITINH", "Đơn vị tính"));
             riMaterial.Columns.Add(new LookUpColumnInfo("QUYDOI", "Quy đổi"));
 
-            List<tb_DONVITINH> list = _hh.getListDonViTinh(idHH);
+            List<tb_GIA> list = _hh.getListDonViTinh(idHH);
             riMaterial.DataSource = list;
             riMaterial.DisplayMember = "DONVITINH";
-            riMaterial.ValueMember = "IDDVT";
+            riMaterial.ValueMember = "IDGIA";
 
             riMaterial.AutoSearchColumnIndex = 1;
             riMaterial.BestFitMode = BestFitMode.BestFitResizePopup;
@@ -111,12 +111,12 @@ namespace QL_BIA_NGK
         private void gvDanhSach_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             GridView view = sender as GridView;
-            if (e.Column == view.Columns["IDDVT"] && e.Value != null)
+            if (e.Column == view.Columns["IDGIA"] && e.Value != null)
             {
                 string idhh = view.GetRowCellValue(e.RowHandle, "IDHH").ToString();
 
-                int iddvt = int.Parse(e.Value.ToString());
-                tb_DONVITINH dvt = _hh.getItemDonViTinh(iddvt);
+                int IDGIA = int.Parse(e.Value.ToString());
+                tb_GIA dvt = _hh.getItemDonViTinh(IDGIA);
                 tb_HANGHOA hh = _hh.getItemHangHoa(idhh);
 
                 double tonkho = double.Parse(hh.TONKHO.ToString());
@@ -124,10 +124,8 @@ namespace QL_BIA_NGK
                 double tonkhoNew = tonkho / quydoi;
                 view.SetRowCellValue(e.RowHandle, "QUYDOI", dvt.QUYDOI);
                 view.SetRowCellValue(e.RowHandle, "TONKHO", tonkhoNew.ToString("###,###,##0.##"));
-
-                // nên chỉnh tồn kho, quy doi thanh double trong db       
+   
             }
         }
-
     }
 }
