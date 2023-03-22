@@ -1,0 +1,15 @@
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\BusinessLayer.dll.config
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\DataLayer.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\EntityFramework.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\DataLayer.pdb
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\DataLayer.dll.config
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\EntityFramework.xml
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.csproj.AssemblyReference.cache
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.pdb

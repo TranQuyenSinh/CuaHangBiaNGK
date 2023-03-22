@@ -1,0 +1,12 @@
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\bin\Debug\DataLayer.dll.config
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\bin\Debug\DataLayer.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\bin\Debug\DataLayer.pdb
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\bin\Debug\EntityFramework.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\bin\Debug\EntityFramework.xml
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\obj\Debug\DataLayer.csproj.AssemblyReference.cache
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\obj\Debug\DataLayer.dll
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\DataLayer\obj\Debug\DataLayer.pdb

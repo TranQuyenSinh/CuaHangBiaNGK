@@ -1,0 +1,24 @@
+﻿<XtraSerializer version="1.0" application="Appearances">
+  <property name="FocusedCell" iskey="true" value="FocusedCell">
+    <property name="Options" isnull="true" iskey="true">
+      <property name="UseForeColor">true</property>
+      <property name="UseBackColor">true</property>
+      <property name="UseFont">true</property>
+    </property>
+    <property name="ForeColor">Red</property>
+    <property name="BackColor">Gold</property>
+    <property name="BackColor2">Yellow</property>
+    <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+  </property>
+  <property name="FocusedRow" iskey="true" value="FocusedRow">
+    <property name="Options" isnull="true" iskey="true">
+      <property name="UseForeColor">true</property>
+      <property name="UseBackColor">true</property>
+      <property name="UseFont">true</property>
+    </property>
+    <property name="ForeColor">MidnightBlue</property>
+    <property name="BackColor">Chartreuse</property>
+    <property name="BackColor2">GreenYellow</property>
+    <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+  </property>
+</XtraSerializer>

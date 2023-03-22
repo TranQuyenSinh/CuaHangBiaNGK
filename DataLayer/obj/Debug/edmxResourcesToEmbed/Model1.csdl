@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_BIA_NGK" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tb_CHITIET_PHIEUBANHANG">
+    <Key>
+      <PropertyRef Name="IDCTPB" />
+    </Key>
+    <Property Name="IDCTPB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDPB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDHH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IDDVT" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_DONVITINH" Relationship="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH" FromRole="tb_CHITIET_PHIEUBANHANG" ToRole="tb_DONVITINH" />
+    <NavigationProperty Name="tb_HANGHOA" Relationship="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA" FromRole="tb_CHITIET_PHIEUBANHANG" ToRole="tb_HANGHOA" />
+    <NavigationProperty Name="tb_PHIEUBANHANG" Relationship="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_PHIEUBANHANG" FromRole="tb_CHITIET_PHIEUBANHANG" ToRole="tb_PHIEUBANHANG" />
+  </EntityType>
+  <EntityType Name="tb_CHITIET_PHIEUNHAPHANG">
+    <Key>
+      <PropertyRef Name="IDCTPN" />
+    </Key>
+    <Property Name="IDCTPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDPN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDHH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_HANGHOA" Relationship="Self.FK_tb_CHITIET_PHIEUNHAPHANG_tb_HANGHOA" FromRole="tb_CHITIET_PHIEUNHAPHANG" ToRole="tb_HANGHOA" />
+    <NavigationProperty Name="tb_PHIEUNHAPHANG" Relationship="Self.FK_tb_CHITIET_PHIEUNHAPHANG_tb_PHIEUNHAPHANG" FromRole="tb_CHITIET_PHIEUNHAPHANG" ToRole="tb_PHIEUNHAPHANG" />
+  </EntityType>
+  <EntityType Name="tb_CHUCNANG">
+    <Key>
+      <PropertyRef Name="FUNC_CODE" />
+    </Key>
+    <Property Name="FUNC_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENCHUCNANG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_PHANQUYEN" Relationship="Self.FK_tb_NHOM_CHUCNANG_tb_CHUCNANG1" FromRole="tb_CHUCNANG" ToRole="tb_PHANQUYEN" />
+  </EntityType>
+  <EntityType Name="tb_DONVITINH">
+    <Key>
+      <PropertyRef Name="IDDVT" />
+    </Key>
+    <Property Name="IDDVT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DONVITINH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="QUYDOI" Type="Int32" />
+    <Property Name="GIANHAP" Type="Double" />
+    <Property Name="GIABANLE" Type="Double" />
+    <Property Name="GIABANSI" Type="Double" />
+    <Property Name="IDHH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_CHITIET_PHIEUBANHANG" Relationship="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH" FromRole="tb_DONVITINH" ToRole="tb_CHITIET_PHIEUBANHANG" />
+    <NavigationProperty Name="tb_HANGHOA" Relationship="Self.FK_tb_GIA_tb_HANGHOA" FromRole="tb_DONVITINH" ToRole="tb_HANGHOA" />
+  </EntityType>
+  <EntityType Name="tb_HANGHOA">
+    <Key>
+      <PropertyRef Name="IDHH" />
+    </Key>
+    <Property Name="IDHH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENHH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MOTA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IDLOAI" Type="Int32" />
+    <Property Name="DINHMUCTON" Type="Int32" />
+    <Property Name="TONKHO" Type="Int32" />
+    <Property Name="DELETED" Type="Boolean" />
+    <NavigationProperty Name="tb_CHITIET_PHIEUBANHANG" Relationship="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA" FromRole="tb_HANGHOA" ToRole="tb_CHITIET_PHIEUBANHANG" />
+    <NavigationProperty Name="tb_CHITIET_PHIEUNHAPHANG" Relationship="Self.FK_tb_CHITIET_PHIEUNHAPHANG_tb_HANGHOA" FromRole="tb_HANGHOA" ToRole="tb_CHITIET_PHIEUNHAPHANG" />
+    <NavigationProperty Name="tb_DONVITINH" Relationship="Self.FK_tb_GIA_tb_HANGHOA" FromRole="tb_HANGHOA" ToRole="tb_DONVITINH" />
+    <NavigationProperty Name="tb_LOAIHANGHOA" Relationship="Self.FK_tb_HANGHOA_tb_LOAIHANGHOA" FromRole="tb_HANGHOA" ToRole="tb_LOAIHANGHOA" />
+  </EntityType>
+  <EntityType Name="tb_KHACHHANG">
+    <Key>
+      <PropertyRef Name="IDKH" />
+    </Key>
+    <Property Name="IDKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GIOITINH" Type="Boolean" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SODIENTHOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DELETED" Type="Boolean" />
+    <NavigationProperty Name="tb_PHIEUBANHANG" Relationship="Self.FK_tb_PHIEUBANHANG_tb_KHACHHANG" FromRole="tb_KHACHHANG" ToRole="tb_PHIEUBANHANG" />
+  </EntityType>
+  <EntityType Name="tb_LOAIHANGHOA">
+    <Key>
+      <PropertyRef Name="IDLOAI" />
+    </Key>
+    <Property Name="IDLOAI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENLOAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_HANGHOA" Relationship="Self.FK_tb_HANGHOA_tb_LOAIHANGHOA" FromRole="tb_LOAIHANGHOA" ToRole="tb_HANGHOA" />
+  </EntityType>
+  <EntityType Name="tb_LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDUSER" Type="Int32" />
+    <Property Name="TIME" Type="DateTime" Precision="3" />
+    <Property Name="MESSAGE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tb_NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="IDNCC" />
+    </Key>
+    <Property Name="IDNCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SODIENTHOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DELETED" Type="Boolean" />
+    <NavigationProperty Name="tb_PHIEUNHAPHANG" Relationship="Self.FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP" FromRole="tb_NHACUNGCAP" ToRole="tb_PHIEUNHAPHANG" />
+  </EntityType>
+  <EntityType Name="tb_NHANVIEN">
+    <Key>
+      <PropertyRef Name="IDNV" />
+    </Key>
+    <Property Name="IDNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GIOITINH" Type="Boolean" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SODIENTHOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DELETED" Type="Boolean" />
+    <NavigationProperty Name="tb_PHIEUBANHANG" Relationship="Self.FK_tb_PHIEUBANHANG_tb_NHANVIEN" FromRole="tb_NHANVIEN" ToRole="tb_PHIEUBANHANG" />
+  </EntityType>
+  <EntityType Name="tb_NHOM">
+    <Key>
+      <PropertyRef Name="IDNHOM" />
+    </Key>
+    <Property Name="IDNHOM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENNHOM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_PHANQUYEN" Relationship="Self.FK_tb_NHOM_CHUCNANG_tb_NHOM" FromRole="tb_NHOM" ToRole="tb_PHANQUYEN" />
+    <NavigationProperty Name="tb_USER" Relationship="Self.FK_tb_USER_tb_NHOM" FromRole="tb_NHOM" ToRole="tb_USER" />
+  </EntityType>
+  <EntityType Name="tb_PHANQUYEN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDNHOM" Type="Int32" />
+    <Property Name="FUNC_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SHOW" Type="Boolean" />
+    <Property Name="ADD" Type="Boolean" />
+    <Property Name="UPDATE" Type="Boolean" />
+    <Property Name="DELETE" Type="Boolean" />
+    <Property Name="PRINT" Type="Boolean" />
+    <NavigationProperty Name="tb_CHUCNANG" Relationship="Self.FK_tb_NHOM_CHUCNANG_tb_CHUCNANG1" FromRole="tb_PHANQUYEN" ToRole="tb_CHUCNANG" />
+    <NavigationProperty Name="tb_NHOM" Relationship="Self.FK_tb_NHOM_CHUCNANG_tb_NHOM" FromRole="tb_PHANQUYEN" ToRole="tb_NHOM" />
+  </EntityType>
+  <EntityType Name="tb_PHIEUBANHANG">
+    <Key>
+      <PropertyRef Name="IDPB" />
+    </Key>
+    <Property Name="IDPB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAY" Type="DateTime" Precision="3" />
+    <Property Name="PHIVANCHUYEN" Type="Double" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IDKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IDNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TONGTIEN" Type="Double" />
+    <Property Name="GIASI" Type="Boolean" />
+    <NavigationProperty Name="tb_CHITIET_PHIEUBANHANG" Relationship="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_PHIEUBANHANG" FromRole="tb_PHIEUBANHANG" ToRole="tb_CHITIET_PHIEUBANHANG" />
+    <NavigationProperty Name="tb_KHACHHANG" Relationship="Self.FK_tb_PHIEUBANHANG_tb_KHACHHANG" FromRole="tb_PHIEUBANHANG" ToRole="tb_KHACHHANG" />
+    <NavigationProperty Name="tb_NHANVIEN" Relationship="Self.FK_tb_PHIEUBANHANG_tb_NHANVIEN" FromRole="tb_PHIEUBANHANG" ToRole="tb_NHANVIEN" />
+  </EntityType>
+  <EntityType Name="tb_PHIEUNHAPHANG">
+    <Key>
+      <PropertyRef Name="IDPN" />
+    </Key>
+    <Property Name="IDPN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAY" Type="DateTime" Precision="3" />
+    <Property Name="PHIVANCHUYEN" Type="Double" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IDNCC" Type="Int32" />
+    <Property Name="TONGTIEN" Type="Double" />
+    <NavigationProperty Name="tb_CHITIET_PHIEUNHAPHANG" Relationship="Self.FK_tb_CHITIET_PHIEUNHAPHANG_tb_PHIEUNHAPHANG" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_CHITIET_PHIEUNHAPHANG" />
+    <NavigationProperty Name="tb_NHACUNGCAP" Relationship="Self.FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_NHACUNGCAP" />
+  </EntityType>
+  <EntityType Name="tb_USER">
+    <Key>
+      <PropertyRef Name="IDUSER" />
+    </Key>
+    <Property Name="IDUSER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENDAYDU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDNHOM" Type="Int32" />
+    <Property Name="DELETED" Type="Boolean" />
+    <NavigationProperty Name="tb_NHOM" Relationship="Self.FK_tb_USER_tb_NHOM" FromRole="tb_USER" ToRole="tb_NHOM" />
+  </EntityType>
+  <Association Name="FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH">
+    <End Role="tb_DONVITINH" Type="Self.tb_DONVITINH" Multiplicity="0..1" />
+    <End Role="tb_CHITIET_PHIEUBANHANG" Type="Self.tb_CHITIET_PHIEUBANHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DONVITINH">
+        <PropertyRef Name="IDDVT" />
+      </Principal>
+      <Dependent Role="tb_CHITIET_PHIEUBANHANG">
+        <PropertyRef Name="IDDVT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA">
+    <End Role="tb_HANGHOA" Type="Self.tb_HANGHOA" Multiplicity="0..1" />
+    <End Role="tb_CHITIET_PHIEUBANHANG" Type="Self.tb_CHITIET_PHIEUBANHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_HANGHOA">
+        <PropertyRef Name="IDHH" />
+      </Principal>
+      <Dependent Role="tb_CHITIET_PHIEUBANHANG">
+        <PropertyRef Name="IDHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CHITIET_PHIEUBANHANG_tb_PHIEUBANHANG">
+    <End Role="tb_PHIEUBANHANG" Type="Self.tb_PHIEUBANHANG" Multiplicity="0..1" />
+    <End Role="tb_CHITIET_PHIEUBANHANG" Type="Self.tb_CHITIET_PHIEUBANHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PHIEUBANHANG">
+        <PropertyRef Name="IDPB" />
+      </Principal>
+      <Dependent Role="tb_CHITIET_PHIEUBANHANG">
+        <PropertyRef Name="IDPB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CHITIET_PHIEUNHAPHANG_tb_HANGHOA">
+    <End Role="tb_HANGHOA" Type="Self.tb_HANGHOA" Multiplicity="0..1" />
+    <End Role="tb_CHITIET_PHIEUNHAPHANG" Type="Self.tb_CHITIET_PHIEUNHAPHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_HANGHOA">
+        <PropertyRef Name="IDHH" />
+      </Principal>
+      <Dependent Role="tb_CHITIET_PHIEUNHAPHANG">
+        <PropertyRef Name="IDHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CHITIET_PHIEUNHAPHANG_tb_PHIEUNHAPHANG">
+    <End Role="tb_PHIEUNHAPHANG" Type="Self.tb_PHIEUNHAPHANG" Multiplicity="0..1" />
+    <End Role="tb_CHITIET_PHIEUNHAPHANG" Type="Self.tb_CHITIET_PHIEUNHAPHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PHIEUNHAPHANG">
+        <PropertyRef Name="IDPN" />
+      </Principal>
+      <Dependent Role="tb_CHITIET_PHIEUNHAPHANG">
+        <PropertyRef Name="IDPN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_NHOM_CHUCNANG_tb_CHUCNANG1">
+    <End Role="tb_CHUCNANG" Type="Self.tb_CHUCNANG" Multiplicity="0..1" />
+    <End Role="tb_PHANQUYEN" Type="Self.tb_PHANQUYEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CHUCNANG">
+        <PropertyRef Name="FUNC_CODE" />
+      </Principal>
+      <Dependent Role="tb_PHANQUYEN">
+        <PropertyRef Name="FUNC_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_GIA_tb_HANGHOA">
+    <End Role="tb_HANGHOA" Type="Self.tb_HANGHOA" Multiplicity="0..1" />
+    <End Role="tb_DONVITINH" Type="Self.tb_DONVITINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_HANGHOA">
+        <PropertyRef Name="IDHH" />
+      </Principal>
+      <Dependent Role="tb_DONVITINH">
+        <PropertyRef Name="IDHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HANGHOA_tb_LOAIHANGHOA">
+    <End Role="tb_LOAIHANGHOA" Type="Self.tb_LOAIHANGHOA" Multiplicity="0..1" />
+    <End Role="tb_HANGHOA" Type="Self.tb_HANGHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_LOAIHANGHOA">
+        <PropertyRef Name="IDLOAI" />
+      </Principal>
+      <Dependent Role="tb_HANGHOA">
+        <PropertyRef Name="IDLOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PHIEUBANHANG_tb_KHACHHANG">
+    <End Role="tb_KHACHHANG" Type="Self.tb_KHACHHANG" Multiplicity="0..1" />
+    <End Role="tb_PHIEUBANHANG" Type="Self.tb_PHIEUBANHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_KHACHHANG">
+        <PropertyRef Name="IDKH" />
+      </Principal>
+      <Dependent Role="tb_PHIEUBANHANG">
+        <PropertyRef Name="IDKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP">
+    <End Role="tb_NHACUNGCAP" Type="Self.tb_NHACUNGCAP" Multiplicity="0..1" />
+    <End Role="tb_PHIEUNHAPHANG" Type="Self.tb_PHIEUNHAPHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_NHACUNGCAP">
+        <PropertyRef Name="IDNCC" />
+      </Principal>
+      <Dependent Role="tb_PHIEUNHAPHANG">
+        <PropertyRef Name="IDNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PHIEUBANHANG_tb_NHANVIEN">
+    <End Role="tb_NHANVIEN" Type="Self.tb_NHANVIEN" Multiplicity="0..1" />
+    <End Role="tb_PHIEUBANHANG" Type="Self.tb_PHIEUBANHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_NHANVIEN">
+        <PropertyRef Name="IDNV" />
+      </Principal>
+      <Dependent Role="tb_PHIEUBANHANG">
+        <PropertyRef Name="IDNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_NHOM_CHUCNANG_tb_NHOM">
+    <End Role="tb_NHOM" Type="Self.tb_NHOM" Multiplicity="0..1" />
+    <End Role="tb_PHANQUYEN" Type="Self.tb_PHANQUYEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_NHOM">
+        <PropertyRef Name="IDNHOM" />
+      </Principal>
+      <Dependent Role="tb_PHANQUYEN">
+        <PropertyRef Name="IDNHOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_USER_tb_NHOM">
+    <End Role="tb_NHOM" Type="Self.tb_NHOM" Multiplicity="0..1" />
+    <End Role="tb_USER" Type="Self.tb_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_NHOM">
+        <PropertyRef Name="IDNHOM" />
+      </Principal>
+      <Dependent Role="tb_USER">
+        <PropertyRef Name="IDNHOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_CHITIET_PHIEUBANHANG" EntityType="Self.tb_CHITIET_PHIEUBANHANG" />
+    <EntitySet Name="tb_CHITIET_PHIEUNHAPHANG" EntityType="Self.tb_CHITIET_PHIEUNHAPHANG" />
+    <EntitySet Name="tb_CHUCNANG" EntityType="Self.tb_CHUCNANG" />
+    <EntitySet Name="tb_DONVITINH" EntityType="Self.tb_DONVITINH" />
+    <EntitySet Name="tb_HANGHOA" EntityType="Self.tb_HANGHOA" />
+    <EntitySet Name="tb_KHACHHANG" EntityType="Self.tb_KHACHHANG" />
+    <EntitySet Name="tb_LOAIHANGHOA" EntityType="Self.tb_LOAIHANGHOA" />
+    <EntitySet Name="tb_LOG" EntityType="Self.tb_LOG" />
+    <EntitySet Name="tb_NHACUNGCAP" EntityType="Self.tb_NHACUNGCAP" />
+    <EntitySet Name="tb_NHANVIEN" EntityType="Self.tb_NHANVIEN" />
+    <EntitySet Name="tb_NHOM" EntityType="Self.tb_NHOM" />
+    <EntitySet Name="tb_PHANQUYEN" EntityType="Self.tb_PHANQUYEN" />
+    <EntitySet Name="tb_PHIEUBANHANG" EntityType="Self.tb_PHIEUBANHANG" />
+    <EntitySet Name="tb_PHIEUNHAPHANG" EntityType="Self.tb_PHIEUNHAPHANG" />
+    <EntitySet Name="tb_USER" EntityType="Self.tb_USER" />
+    <AssociationSet Name="FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH" Association="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH">
+      <End Role="tb_DONVITINH" EntitySet="tb_DONVITINH" />
+      <End Role="tb_CHITIET_PHIEUBANHANG" EntitySet="tb_CHITIET_PHIEUBANHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA" Association="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA">
+      <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
+      <End Role="tb_CHITIET_PHIEUBANHANG" EntitySet="tb_CHITIET_PHIEUBANHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CHITIET_PHIEUBANHANG_tb_PHIEUBANHANG" Association="Self.FK_tb_CHITIET_PHIEUBANHANG_tb_PHIEUBANHANG">
+      <End Role="tb_PHIEUBANHANG" EntitySet="tb_PHIEUBANHANG" />
+      <End Role="tb_CHITIET_PHIEUBANHANG" EntitySet="tb_CHITIET_PHIEUBANHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CHITIET_PHIEUNHAPHANG_tb_HANGHOA" Association="Self.FK_tb_CHITIET_PHIEUNHAPHANG_tb_HANGHOA">
+      <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
+      <End Role="tb_CHITIET_PHIEUNHAPHANG" EntitySet="tb_CHITIET_PHIEUNHAPHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CHITIET_PHIEUNHAPHANG_tb_PHIEUNHAPHANG" Association="Self.FK_tb_CHITIET_PHIEUNHAPHANG_tb_PHIEUNHAPHANG">
+      <End Role="tb_PHIEUNHAPHANG" EntitySet="tb_PHIEUNHAPHANG" />
+      <End Role="tb_CHITIET_PHIEUNHAPHANG" EntitySet="tb_CHITIET_PHIEUNHAPHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_NHOM_CHUCNANG_tb_CHUCNANG1" Association="Self.FK_tb_NHOM_CHUCNANG_tb_CHUCNANG1">
+      <End Role="tb_CHUCNANG" EntitySet="tb_CHUCNANG" />
+      <End Role="tb_PHANQUYEN" EntitySet="tb_PHANQUYEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_GIA_tb_HANGHOA" Association="Self.FK_tb_GIA_tb_HANGHOA">
+      <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
+      <End Role="tb_DONVITINH" EntitySet="tb_DONVITINH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HANGHOA_tb_LOAIHANGHOA" Association="Self.FK_tb_HANGHOA_tb_LOAIHANGHOA">
+      <End Role="tb_LOAIHANGHOA" EntitySet="tb_LOAIHANGHOA" />
+      <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PHIEUBANHANG_tb_KHACHHANG" Association="Self.FK_tb_PHIEUBANHANG_tb_KHACHHANG">
+      <End Role="tb_KHACHHANG" EntitySet="tb_KHACHHANG" />
+      <End Role="tb_PHIEUBANHANG" EntitySet="tb_PHIEUBANHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP" Association="Self.FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP">
+      <End Role="tb_NHACUNGCAP" EntitySet="tb_NHACUNGCAP" />
+      <End Role="tb_PHIEUNHAPHANG" EntitySet="tb_PHIEUNHAPHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PHIEUBANHANG_tb_NHANVIEN" Association="Self.FK_tb_PHIEUBANHANG_tb_NHANVIEN">
+      <End Role="tb_NHANVIEN" EntitySet="tb_NHANVIEN" />
+      <End Role="tb_PHIEUBANHANG" EntitySet="tb_PHIEUBANHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_NHOM_CHUCNANG_tb_NHOM" Association="Self.FK_tb_NHOM_CHUCNANG_tb_NHOM">
+      <End Role="tb_NHOM" EntitySet="tb_NHOM" />
+      <End Role="tb_PHANQUYEN" EntitySet="tb_PHANQUYEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_USER_tb_NHOM" Association="Self.FK_tb_USER_tb_NHOM">
+      <End Role="tb_NHOM" EntitySet="tb_NHOM" />
+      <End Role="tb_USER" EntitySet="tb_USER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
