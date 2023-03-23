@@ -47,7 +47,7 @@ namespace QL_BIA_NGK
             // ngăn việc bôi đen content trong cell, không thể kích hoạt event double click
             gvDanhSach.OptionsBehavior.EditorShowMode = EditorShowMode.Click;
         }
-        void Update()
+        void UpdateData()
         {
             if (Func.checkPermission("KHO", "UPDATE"))
             {
@@ -87,7 +87,19 @@ namespace QL_BIA_NGK
 
         private void frmKhoHang_KeyDown(object sender, KeyEventArgs e)
         {
-
+             if (e.KeyCode == Keys.F5)
+            {
+                // F5: Refresh
+                LoadData();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                UpdateData();
+            }
+            else if (e.Control && e.KeyCode == Keys.W)
+            {
+                this.Close();
+            }
         }
 
         private void gvDanhSach_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
@@ -140,7 +152,7 @@ namespace QL_BIA_NGK
 
         private void gvDanhSach_DoubleClick(object sender, EventArgs e)
         {
-            Update();
+            UpdateData();
         }
 
         private void gvDanhSach_RowCellClick(object sender, RowCellClickEventArgs e)

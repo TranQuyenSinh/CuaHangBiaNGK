@@ -200,6 +200,7 @@
             // 
             // frmChiTietTonKho
             // 
+            this.AcceptButton = this.btnThem;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 212);
@@ -216,10 +217,12 @@
             this.Controls.Add(this.txtTonKho);
             this.Controls.Add(this.cboDonViTinh);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "frmChiTietTonKho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thay đổi tồn kho";
             this.Load += new System.EventHandler(this.frmChiTietTonKho_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmChiTietTonKho_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.txtThayDoi.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

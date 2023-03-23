@@ -46,6 +46,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDHH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TENHH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,12 +58,10 @@
             this.GIABANLE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GIABANSI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TONKHO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -235,6 +235,21 @@
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.close;
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
             // gvDanhSach
             // 
             this.gvDanhSach.Appearance.FocusedCell.BackColor = System.Drawing.Color.Gold;
@@ -393,6 +408,8 @@
             this.TONKHO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TONKHO.AppearanceHeader.Options.UseFont = true;
             this.TONKHO.Caption = "Tồn kho";
+            this.TONKHO.DisplayFormat.FormatString = "###,###,##0.##";
+            this.TONKHO.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.TONKHO.FieldName = "TONKHO";
             this.TONKHO.MaxWidth = 75;
             this.TONKHO.MinWidth = 75;
@@ -400,21 +417,6 @@
             this.TONKHO.OptionsFilter.AllowFilter = false;
             this.TONKHO.Visible = true;
             this.TONKHO.VisibleIndex = 8;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
-            // 
-            // xóaToolStripMenuItem
-            // 
-            this.xóaToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.close;
-            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.xóaToolStripMenuItem.Text = "Xóa";
-            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // frmHangHoa
             // 
@@ -433,8 +435,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmHangHoa_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -30,8 +30,8 @@ namespace BusinessLayer
         public HANGHOA_DTO GetItemHangHoaDTO(string idhh)
         {
             HANGHOA_DTO dto = null;
-            var dvtGoc = db.tb_GIA.FirstOrDefault(x => x.QUYDOI == 1 && x.IDHH == idhh);
-            var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == dvtGoc.IDHH);
+            var dvtGoc = db.tb_GIA.Where(x=>x.IDHH == idhh).OrderByDescending(x=>x.QUYDOI).FirstOrDefault();
+            var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == idhh);
             if (hanghoa == null)
                 return null;
             var loai = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == hanghoa.IDLOAI);
@@ -44,7 +44,7 @@ namespace BusinessLayer
                 dto.IDLOAI = hanghoa.IDLOAI;
                 dto.TENLOAI = loai.TENLOAI;
                 dto.DINHMUCTON = hanghoa.DINHMUCTON;
-                dto.TONKHO = hanghoa.TONKHO;
+                dto.TONKHO = hanghoa.TONKHO/dvtGoc.QUYDOI;
                 dto.IDGIA = dvtGoc.IDGIA;
                 dto.DONVITINH = dvtGoc.DONVITINH;
                 dto.QUYDOI = dvtGoc.QUYDOI;
@@ -63,7 +63,7 @@ namespace BusinessLayer
                 hh.TONKHO = rd.Next(1, 100);
             }
             db.SaveChanges();*/
-            List<tb_GIA> list = db.tb_GIA.Where(x=>x.QUYDOI == 1).ToList();
+            List<tb_HANGHOA> list = db.tb_HANGHOA.ToList();
             List<HANGHOA_DTO> listDTO = new List<HANGHOA_DTO>();
 
             foreach (var item in list)
