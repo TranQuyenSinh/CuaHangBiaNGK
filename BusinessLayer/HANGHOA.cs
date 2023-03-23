@@ -15,15 +15,15 @@ namespace BusinessLayer
             return db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == idHH);
         }
 
-        public List<tb_GIA> getListDonViTinh(string idHH)
+        public List<tb_GIA> getListGia(string idHH)
         {
             return db.tb_GIA.Where(x => x.IDHH == idHH).OrderBy(x => x.QUYDOI).ToList();
         }
-        public tb_GIA getItemDonViTinh(int IDGIA)
+        public tb_GIA getItemGia(int IDGIA)
         {
             return db.tb_GIA.FirstOrDefault(x => x.IDGIA == IDGIA);
         }
-        public List<tb_GIA> getListDonViTinh()
+        public List<tb_GIA> getListGia()
         {
             return db.tb_GIA.OrderBy(x => x.QUYDOI).ToList();
         }
@@ -63,7 +63,7 @@ namespace BusinessLayer
                 hh.TONKHO = rd.Next(1, 100);
             }
             db.SaveChanges();*/
-            List<tb_GIA> list = db.tb_GIA.Where(x => x.QUYDOI == 1).ToList();
+            List<tb_GIA> list = db.tb_GIA.Where(x=>x.QUYDOI == 1).ToList();
             List<HANGHOA_DTO> listDTO = new List<HANGHOA_DTO>();
 
             foreach (var item in list)
@@ -91,7 +91,7 @@ namespace BusinessLayer
                 throw ex;
             }
         }
-        public void AddDonViTinh(tb_GIA dvt)
+        public void AddGia(tb_GIA dvt)
         {
             try
             {
@@ -124,8 +124,23 @@ namespace BusinessLayer
                 throw ex;
             }
         }
+        public void UpdateTonKho(string idHH, double tonkhoMoi)
+        {
+            try
+            {
+                var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == idHH);
+                string oldValue = $"ID:{hanghoa.IDHH}, Name:{hanghoa.TENHH}, Tồn kho: {hanghoa.TONKHO}";
+                hanghoa.TONKHO = tonkhoMoi;
+                db.SaveChanges();
+                Func.Log("UPDATE", "Tồn kho", $"Tồn kho mới: {tonkhoMoi.ToString("###,###,##0.##")}", oldValue);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-        public void UpdateDonViTinh(tb_GIA dt)
+        public void UpdateGia(tb_GIA dt)
         {
             try
             {

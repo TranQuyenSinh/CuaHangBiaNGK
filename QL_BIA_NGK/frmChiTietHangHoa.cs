@@ -41,7 +41,7 @@ namespace QL_BIA_NGK
             InitializeComponent();
 
             _currentHangHoa = _hh.getItemHangHoa(idhh);
-            _listDVT = _hh.getListDonViTinh(idhh);
+            _listDVT = _hh.getListGia(idhh);
             _id = idhh;
             _isAdd = false;
         }
@@ -61,6 +61,7 @@ namespace QL_BIA_NGK
                 slkLoaiHH.EditValue = _currentHangHoa.IDLOAI;
                 txtIDHH.Text = _currentHangHoa.IDHH;
                 txtIDHH.Enabled = false;
+                txtTonKho.Enabled = false;
                 txtTenHH.Text = _currentHangHoa.TENHH;
                 txtMoTa.Text = _currentHangHoa.MOTA;
                 txtDinhMucTon.Text = _currentHangHoa.DINHMUCTON.ToString();
@@ -141,20 +142,20 @@ namespace QL_BIA_NGK
             if (_isAdd)
             {
                 foreach (var dvt in listdvt)
-                    _hh.AddDonViTinh(dvt);
+                    _hh.AddGia(dvt);
             }
             else
             {
                 for (int i = 0; i < _listDVT.Count; i++)
                 {
-                    _hh.UpdateDonViTinh(listdvt[i]);
+                    _hh.UpdateGia(listdvt[i]);
                 }
                 int newRowCount = dem - _listDVT.Count;
                 if (newRowCount > 0)
                 {
                     for (int i = _listDVT.Count; i < dem; i++)
                     {
-                        _hh.AddDonViTinh(listdvt[i]);
+                        _hh.AddGia(listdvt[i]);
                     }                                          
                 }
             }

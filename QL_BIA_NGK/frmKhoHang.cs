@@ -110,14 +110,11 @@ namespace QL_BIA_NGK
             lookUpEditItem.Columns.Add(new LookUpColumnInfo("DONVITINH", "Đơn vị tính"));
             lookUpEditItem.Columns.Add(new LookUpColumnInfo("QUYDOI", "Quy đổi"));
 
-            List<tb_GIA> list = _hh.getListDonViTinh(idHH);
+            List<tb_GIA> list = _hh.getListGia(idHH);
             lookUpEditItem.DataSource = list;
             lookUpEditItem.DisplayMember = "DONVITINH";
             lookUpEditItem.ValueMember = "IDGIA";
-
-            lookUpEditItem.AutoSearchColumnIndex = 1;
             lookUpEditItem.BestFitMode = BestFitMode.BestFitResizePopup;
-
             lookUpEditItem.NullText = "";
             return lookUpEditItem;
         }
@@ -130,7 +127,7 @@ namespace QL_BIA_NGK
                 string idhh = view.GetRowCellValue(e.RowHandle, "IDHH").ToString();
 
                 int IDGIA = int.Parse(e.Value.ToString());
-                tb_GIA dvt = _hh.getItemDonViTinh(IDGIA);
+                tb_GIA dvt = _hh.getItemGia(IDGIA);
                 tb_HANGHOA hh = _hh.getItemHangHoa(idhh);
 
                 double tonkho = double.Parse(hh.TONKHO.ToString());

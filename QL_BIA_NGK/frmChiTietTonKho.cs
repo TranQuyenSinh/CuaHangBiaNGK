@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
+using DataLayer;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace QL_BIA_NGK
 {
@@ -29,13 +31,64 @@ namespace QL_BIA_NGK
             _hh = new HANGHOA();
 
             hh_dto = _hh.GetItemHangHoaDTO(_idhh);
-            var list_dvt = _hh.getListDonViTinh(_idhh);
+            var list_dvt = _hh.getListGia(_idhh);
             cboDonViTinh.DataSource = list_dvt;
             cboDonViTinh.DisplayMember = "DONVITINH";
             cboDonViTinh.ValueMember = "IDGIA";
             txtQuyDoi.Text = list_dvt[0].QUYDOI.ToString();
             txtTonKho.Text = hh_dto.TONKHO.ToString();
-            txtTen.Text = hh_dto.IDHH + " - " + hh_dto.TENHH;
+            txtTen.Text = $"Mặt hàng: {hh_dto.IDHH} - {hh_dto.TENHH}";
+        }
+
+        private void cboDonViTinh_SelectedValueChanged(object sender, EventArgs e)
+        {
+            List<tb_GIA> list_gia = (List<tb_GIA>)cboDonViTinh.DataSource;
+            var quydoi = double.Parse(((tb_GIA)cboDonViTinh.SelectedItem).QUYDOI.ToString());
+
+            double tonkho = double.Parse(hh_dto.TONKHO.ToString());
+            double tonkhoNew = tonkho / quydoi;
+            txtTonKho.Text = tonkhoNew.ToString("###,###,##0.##");
+            txtQuyDoi.Text = quydoi.ToString();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            int thaydoi = txtThayDoi.EditValue == null ? 0 : int.Parse(txtThayDoi.EditValue.ToString());
+            string donvitinh = cboDonViTinh.Text.ToUpper();
+            var quydoi = double.Parse(((tb_GIA)cboDonViTinh.SelectedItem).QUYDOI.ToString());
+
+            // tonkhoMoi này là tồn kho theo đơn vị tính hiện tại, vd: 3 thùng,
+            // khi thêm vào db phải quy đổi về mặc định: tonkhoMoi * quydoi
+            double tonKhoMoi = double.Parse(hh_dto.TONKHO.ToString()) / quydoi + thaydoi;
+            string messageXacNhan = $"Bạn có chắc muốn thêm {txtThayDoi.Text} {donvitinh}? \n Tồn kho hiện tại: {txtTonKho.Text} {donvitinh} \n Tồn kho sau khi thêm: {(tonKhoMoi).ToString("###,###,##0.##")} {donvitinh}";
+            if (Func.ShowMessage(messageXacNhan, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                _hh.UpdateTonKho(_idhh, tonKhoMoi * quydoi);
+                Func.ShowMessage("Thêm thành công");
+                this.Close();
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            double tonKhoMoi = txtThayDoi.EditValue == null ? 0 : double.Parse(txtThayDoi.EditValue.ToString());
+            string donvitinh = cboDonViTinh.Text.ToUpper();
+            var quydoi = double.Parse(((tb_GIA)cboDonViTinh.SelectedItem).QUYDOI.ToString());
+
+            // tonkhoMoi này là tồn kho theo đơn vị tính hiện tại, vd: 3 thùng,
+            // khi thêm vào db phải quy đổi về mặc định: tonkhoMoi * quydoi
+            string messageXacNhan = $"Bạn có chắc muốn thay đổi tồn kho thành {txtThayDoi.Text} {donvitinh}? \n Tồn kho hiện tại: {txtTonKho.Text} {donvitinh} \n Tồn kho sau khi sửa: {tonKhoMoi.ToString("###,###,##0.##")} {donvitinh}";
+            if (Func.ShowMessage(messageXacNhan, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                _hh.UpdateTonKho(_idhh, tonKhoMoi * quydoi);
+                Func.ShowMessage("Thay đổi thành công");
+                this.Close();
+            }
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
