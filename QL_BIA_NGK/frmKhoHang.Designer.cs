@@ -298,6 +298,10 @@
             // 
             // TONKHO
             // 
+            this.TONKHO.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.TONKHO.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.TONKHO.AppearanceCell.Options.UseFont = true;
+            this.TONKHO.AppearanceCell.Options.UseForeColor = true;
             this.TONKHO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TONKHO.AppearanceHeader.Options.UseFont = true;
             this.TONKHO.Caption = "Tồn kho";
