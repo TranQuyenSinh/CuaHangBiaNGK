@@ -78,6 +78,7 @@ namespace QL_BIA_NGK
             {
                 Func.Log("LOGIN");
                 ShowAllowAcceptButton();
+                txtCurrentUserInfo.Caption = "Xin chào " + Func.FULLNAMEUSER;
             }
         }
         void Logout()
@@ -89,6 +90,8 @@ namespace QL_BIA_NGK
             }
             Func.LISTQUYENCUANHOM.Clear();
             Func.IDUSER = -1;
+            Func.FULLNAMEUSER = "";
+            txtCurrentUserInfo.Caption = "";
             HideAllButton();
         }
         private void btnDangNhap_ItemClick(object sender, ItemClickEventArgs e)

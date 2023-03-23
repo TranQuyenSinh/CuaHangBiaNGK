@@ -248,6 +248,7 @@
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TENLOAI, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gvDanhSach.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gvDanhSach_CustomRowCellEdit);
             this.gvDanhSach.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvDanhSach_CellValueChanging);
+            this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
             this.gvDanhSach.RowCountChanged += new System.EventHandler(this.gvDanhSach_RowCountChanged);
             // 
             // IDHH
@@ -259,6 +260,7 @@
             this.IDHH.MaxWidth = 150;
             this.IDHH.MinWidth = 150;
             this.IDHH.Name = "IDHH";
+            this.IDHH.OptionsColumn.ReadOnly = true;
             this.IDHH.OptionsFilter.AllowFilter = false;
             this.IDHH.Visible = true;
             this.IDHH.VisibleIndex = 0;
@@ -273,6 +275,7 @@
             this.TENHH.MaxWidth = 250;
             this.TENHH.MinWidth = 250;
             this.TENHH.Name = "TENHH";
+            this.TENHH.OptionsColumn.ReadOnly = true;
             this.TENHH.OptionsFilter.AllowFilter = false;
             this.TENHH.Visible = true;
             this.TENHH.VisibleIndex = 1;
@@ -287,6 +290,7 @@
             this.TENLOAI.MaxWidth = 100;
             this.TENLOAI.MinWidth = 100;
             this.TENLOAI.Name = "TENLOAI";
+            this.TENLOAI.OptionsColumn.ReadOnly = true;
             this.TENLOAI.OptionsFilter.AllowFilter = false;
             this.TENLOAI.Visible = true;
             this.TENLOAI.VisibleIndex = 1;
@@ -303,6 +307,7 @@
             this.TONKHO.MaxWidth = 100;
             this.TONKHO.MinWidth = 100;
             this.TONKHO.Name = "TONKHO";
+            this.TONKHO.OptionsColumn.ReadOnly = true;
             this.TONKHO.OptionsFilter.AllowFilter = false;
             this.TONKHO.UnboundDataType = typeof(string);
             this.TONKHO.Visible = true;
@@ -323,6 +328,7 @@
             this.DINHMUCTON.MaxWidth = 100;
             this.DINHMUCTON.MinWidth = 100;
             this.DINHMUCTON.Name = "DINHMUCTON";
+            this.DINHMUCTON.OptionsColumn.ReadOnly = true;
             this.DINHMUCTON.OptionsFilter.AllowFilter = false;
             this.DINHMUCTON.Visible = true;
             this.DINHMUCTON.VisibleIndex = 5;

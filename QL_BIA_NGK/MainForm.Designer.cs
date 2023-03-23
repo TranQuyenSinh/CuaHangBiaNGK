@@ -46,6 +46,7 @@
             this.btnBaoCaoLoiNhuan = new DevExpress.XtraBars.BarButtonItem();
             this.btnHangTon = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhanQuyen = new DevExpress.XtraBars.BarButtonItem();
+            this.btnNhatKy = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -64,7 +65,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnNhatKy = new DevExpress.XtraBars.BarButtonItem();
+            this.txtCurrentUserInfo = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -72,6 +73,7 @@
             // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.txtCurrentUserInfo);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 721);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -97,9 +99,10 @@
             this.btnBaoCaoLoiNhuan,
             this.btnHangTon,
             this.btnPhanQuyen,
-            this.btnNhatKy});
+            this.btnNhatKy,
+            this.txtCurrentUserInfo});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 20;
+            this.ribbon.MaxItemId = 21;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -247,6 +250,16 @@
             this.btnPhanQuyen.Name = "btnPhanQuyen";
             this.btnPhanQuyen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhanQuyen_ItemClick);
             // 
+            // btnNhatKy
+            // 
+            this.btnNhatKy.Caption = "Nhật ký sử dụng";
+            this.btnNhatKy.Enabled = false;
+            this.btnNhatKy.Id = 19;
+            this.btnNhatKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNhatKy.ImageOptions.Image")));
+            this.btnNhatKy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnNhatKy.ImageOptions.LargeImage")));
+            this.btnNhatKy.Name = "btnNhatKy";
+            this.btnNhatKy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNhatKy_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -368,15 +381,11 @@
             this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
             this.barButtonItem4.Name = "barButtonItem4";
             // 
-            // btnNhatKy
+            // txtCurrentUserInfo
             // 
-            this.btnNhatKy.Caption = "Nhật ký sử dụng";
-            this.btnNhatKy.Enabled = false;
-            this.btnNhatKy.Id = 19;
-            this.btnNhatKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.btnNhatKy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
-            this.btnNhatKy.Name = "btnNhatKy";
-            this.btnNhatKy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNhatKy_ItemClick);
+            this.txtCurrentUserInfo.Caption = "barStaticItem1";
+            this.txtCurrentUserInfo.Id = 20;
+            this.txtCurrentUserInfo.Name = "txtCurrentUserInfo";
             // 
             // MainForm
             // 
@@ -438,5 +447,6 @@
         private DevExpress.XtraBars.BarButtonItem btnHangTon;
         private DevExpress.XtraBars.BarButtonItem btnPhanQuyen;
         private DevExpress.XtraBars.BarButtonItem btnNhatKy;
+        private DevExpress.XtraBars.BarStaticItem txtCurrentUserInfo;
     }
 }

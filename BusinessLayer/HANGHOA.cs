@@ -27,10 +27,10 @@ namespace BusinessLayer
         {
             return db.tb_GIA.OrderBy(x => x.QUYDOI).ToList();
         }
-        public HANGHOA_DTO GetItemHangHoaDTO(string id)
+        public HANGHOA_DTO GetItemHangHoaDTO(string idhh)
         {
             HANGHOA_DTO dto = null;
-            var dvtGoc = db.tb_GIA.FirstOrDefault(x => x.QUYDOI == 1 && x.IDHH == id);
+            var dvtGoc = db.tb_GIA.FirstOrDefault(x => x.QUYDOI == 1 && x.IDHH == idhh);
             var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == dvtGoc.IDHH);
             if (hanghoa == null)
                 return null;

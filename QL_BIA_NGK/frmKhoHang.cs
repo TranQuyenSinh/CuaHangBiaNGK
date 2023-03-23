@@ -44,8 +44,22 @@ namespace QL_BIA_NGK
         {
             _hh = new HANGHOA();
             gcDanhSach.DataSource = _hh.getListHangHoaDTO();
+            // ngăn việc bôi đen content trong cell, không thể kích hoạt event double click
+            gvDanhSach.OptionsBehavior.EditorShowMode = EditorShowMode.Click;
         }
-
+        void Update()
+        {
+            if (Func.checkPermission("KHO", "UPDATE"))
+            {
+                var id = gvDanhSach.GetFocusedRowCellValue("IDHH");
+                if (id!=null)
+                {
+                    frmChiTietTonKho frm = new frmChiTietTonKho(id.ToString());
+                    frm.ShowDialog();
+                    LoadData();
+                }
+            }
+        }
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
@@ -91,21 +105,21 @@ namespace QL_BIA_NGK
         }
         public RepositoryItemLookUpEdit InitItemLookUpEdit(string idHH)
         {
-            RepositoryItemLookUpEdit riMaterial = new RepositoryItemLookUpEdit();
+            RepositoryItemLookUpEdit lookUpEditItem = new RepositoryItemLookUpEdit();
 
-            riMaterial.Columns.Add(new LookUpColumnInfo("DONVITINH", "Đơn vị tính"));
-            riMaterial.Columns.Add(new LookUpColumnInfo("QUYDOI", "Quy đổi"));
+            lookUpEditItem.Columns.Add(new LookUpColumnInfo("DONVITINH", "Đơn vị tính"));
+            lookUpEditItem.Columns.Add(new LookUpColumnInfo("QUYDOI", "Quy đổi"));
 
             List<tb_GIA> list = _hh.getListDonViTinh(idHH);
-            riMaterial.DataSource = list;
-            riMaterial.DisplayMember = "DONVITINH";
-            riMaterial.ValueMember = "IDGIA";
+            lookUpEditItem.DataSource = list;
+            lookUpEditItem.DisplayMember = "DONVITINH";
+            lookUpEditItem.ValueMember = "IDGIA";
 
-            riMaterial.AutoSearchColumnIndex = 1;
-            riMaterial.BestFitMode = BestFitMode.BestFitResizePopup;
+            lookUpEditItem.AutoSearchColumnIndex = 1;
+            lookUpEditItem.BestFitMode = BestFitMode.BestFitResizePopup;
 
-            riMaterial.NullText = "";
-            return riMaterial;
+            lookUpEditItem.NullText = "";
+            return lookUpEditItem;
         }
 
         private void gvDanhSach_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -124,8 +138,19 @@ namespace QL_BIA_NGK
                 double tonkhoNew = tonkho / quydoi;
                 view.SetRowCellValue(e.RowHandle, "QUYDOI", dvt.QUYDOI);
                 view.SetRowCellValue(e.RowHandle, "TONKHO", tonkhoNew.ToString("###,###,##0.##"));
-   
             }
+        }
+
+        private void gvDanhSach_DoubleClick(object sender, EventArgs e)
+        {
+            Update();
+        }
+
+        private void gvDanhSach_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            
+                e.Handled = true;
+            
         }
     }
 }

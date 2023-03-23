@@ -23,6 +23,7 @@ namespace QL_BIA_NGK
         {
             _user = new USER();
             Func.IDUSER = -1;
+            Func.FULLNAMEUSER = "";
             Func.LISTQUYENCUANHOM = new List<tb_PHANQUYEN>();
         }
         private void btnThoat_Click(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace QL_BIA_NGK
             if (iduser != -1)
             {
                 Func.IDUSER = iduser;
+                Func.FULLNAMEUSER = _user.getFullNameUser(iduser);
                 Func.LISTQUYENCUANHOM = _user.GetListPermission(iduser);
                 this.Hide();
             }

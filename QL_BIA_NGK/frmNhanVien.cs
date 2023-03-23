@@ -83,6 +83,7 @@ namespace QL_BIA_NGK
             {
                 var idnv = gvDanhSach.GetFocusedRowCellValue("IDNV");
                 var hoten = gvDanhSach.GetFocusedRowCellValue("HOTEN");
+                // đang error
 
                 if (idnv != null)
                 {
@@ -101,7 +102,7 @@ namespace QL_BIA_NGK
                 }
             }
             else
-                Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error); 
         }
         void UpdateData()
         {

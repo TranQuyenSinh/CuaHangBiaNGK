@@ -14,6 +14,7 @@ namespace BusinessLayer
     {
         // user info
         public static int IDUSER;
+        public static string FULLNAMEUSER;
         public static List<tb_PHANQUYEN> LISTQUYENCUANHOM;
         public static bool checkPermission(string func_code, string action)
         {

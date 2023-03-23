@@ -17,7 +17,7 @@ namespace BusinessLayer
         // failed  => return -1
         public int LoginUser(string username, string password)
         {
-            var user = db.tb_USER.Where(x =>x.DELETED == false && x.USERNAME == username && x.PASSWORD == password).FirstOrDefault();
+            var user = db.tb_USER.Where(x => x.DELETED == false && x.USERNAME == username && x.PASSWORD == password).FirstOrDefault();
 
             if (user != null)
                 return user.IDUSER;
@@ -38,11 +38,15 @@ namespace BusinessLayer
             var user = db.tb_USER.Where(x => x.USERNAME == username).FirstOrDefault();
             return user == null;
         }
+        public string getFullNameUser(int iduser)
+        {
+            return db.tb_USER.FirstOrDefault(x => x.IDUSER == iduser).TENDAYDU;
+        }
         public List<tb_PHANQUYEN> GetListPermission(int iduser)
         {
             var idnhom = db.tb_USER.FirstOrDefault(x => x.IDUSER == iduser).IDNHOM;
             var listQuyenCuaNhom = db.tb_PHANQUYEN.Where(x => x.IDNHOM == idnhom).ToList();
-           
+
             return listQuyenCuaNhom;
         }
         public bool ChangePassword(string oldPassword, string newPassword)
@@ -63,7 +67,7 @@ namespace BusinessLayer
         {
             return db.tb_USER.FirstOrDefault(x => x.IDUSER == iduser);
         }
-        public void Add(tb_USER dt)  
+        public void Add(tb_USER dt)
         {
             try
             {
