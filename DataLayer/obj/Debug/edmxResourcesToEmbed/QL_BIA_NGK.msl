@@ -17,7 +17,11 @@
       <EntityTypeMapping TypeName="QL_BIA_NGK.tb_CHITIET_PHIEUNHAPHANG">
         <MappingFragment StoreEntitySet="tb_CHITIET_PHIEUNHAPHANG">
           <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+          <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
           <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+          <ScalarProperty Name="QUYDOI" ColumnName="QUYDOI" />
+          <ScalarProperty Name="DONVITINH" ColumnName="DONVITINH" />
           <ScalarProperty Name="IDHH" ColumnName="IDHH" />
           <ScalarProperty Name="IDPN" ColumnName="IDPN" />
           <ScalarProperty Name="IDCTPN" ColumnName="IDCTPN" />
@@ -159,6 +163,7 @@
           <ScalarProperty Name="IDNCC" ColumnName="IDNCC" />
           <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
           <ScalarProperty Name="PHIVANCHUYEN" ColumnName="PHIVANCHUYEN" />
+          <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
           <ScalarProperty Name="NGAY" ColumnName="NGAY" />
           <ScalarProperty Name="IDPN" ColumnName="IDPN" />
         </MappingFragment>

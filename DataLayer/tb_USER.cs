@@ -14,6 +14,12 @@ namespace DataLayer
     
     public partial class tb_USER
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tb_USER()
+        {
+            this.tb_PHIEUNHAPHANG = new HashSet<tb_PHIEUNHAPHANG>();
+        }
+    
         public int IDUSER { get; set; }
         public string TENDAYDU { get; set; }
         public string USERNAME { get; set; }
@@ -22,5 +28,7 @@ namespace DataLayer
         public Nullable<bool> DELETED { get; set; }
     
         public virtual tb_NHOM tb_NHOM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_PHIEUNHAPHANG> tb_PHIEUNHAPHANG { get; set; }
     }
 }

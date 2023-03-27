@@ -22,6 +22,7 @@ namespace DataLayer
     
         public string IDPN { get; set; }
         public Nullable<System.DateTime> NGAY { get; set; }
+        public Nullable<int> IDUSER { get; set; }
         public Nullable<double> PHIVANCHUYEN { get; set; }
         public string GHICHU { get; set; }
         public Nullable<int> IDNCC { get; set; }
@@ -30,5 +31,6 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_CHITIET_PHIEUNHAPHANG> tb_CHITIET_PHIEUNHAPHANG { get; set; }
         public virtual tb_NHACUNGCAP tb_NHACUNGCAP { get; set; }
+        public virtual tb_USER tb_USER { get; set; }
     }
 }

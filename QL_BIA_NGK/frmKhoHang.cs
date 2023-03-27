@@ -10,6 +10,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections;
@@ -43,7 +44,12 @@ namespace QL_BIA_NGK
         void LoadData()
         {
             _hh = new HANGHOA();
-            gcDanhSach.DataSource = _hh.getListHangHoaDTO();
+            var listHangHoa = _hh.getListHangHoaDTO(false);
+            foreach (var item in listHangHoa)
+            {
+                item.TONKHO = item.TONKHO / item.QUYDOI;
+            }
+            gcDanhSach.DataSource = listHangHoa;
             // ngăn việc bôi đen content trong cell, không thể kích hoạt event double click
             gvDanhSach.OptionsBehavior.EditorShowMode = EditorShowMode.Click;
         }
@@ -52,17 +58,13 @@ namespace QL_BIA_NGK
             if (Func.checkPermission("KHO", "UPDATE"))
             {
                 var id = gvDanhSach.GetFocusedRowCellValue("IDHH");
-                if (id!=null)
+                if (id != null)
                 {
                     frmChiTietTonKho frm = new frmChiTietTonKho(id.ToString());
                     frm.ShowDialog();
                     LoadData();
                 }
             }
-        }
-        private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -87,7 +89,7 @@ namespace QL_BIA_NGK
 
         private void frmKhoHang_KeyDown(object sender, KeyEventArgs e)
         {
-             if (e.KeyCode == Keys.F5)
+            if (e.KeyCode == Keys.F5)
             {
                 // F5: Refresh
                 LoadData();
@@ -134,7 +136,8 @@ namespace QL_BIA_NGK
         private void gvDanhSach_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             GridView view = sender as GridView;
-            if (e.Column == view.Columns["IDGIA"] && e.Value != null)
+            // tránh trường hợp cell value change là cell fillter
+            if (e.Column == view.Columns["IDGIA"] && e.Value != null && view.GetRowCellValue(e.RowHandle, "IDHH") != null)
             {
                 string idhh = view.GetRowCellValue(e.RowHandle, "IDHH").ToString();
 
@@ -157,9 +160,38 @@ namespace QL_BIA_NGK
 
         private void gvDanhSach_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            
-                e.Handled = true;
-            
+
+            e.Handled = true;
+
+        }
+
+        private void gvDanhSach_CustomRowFilter(object sender, DevExpress.XtraGrid.Views.Base.RowFilterEventArgs e)
+        {
+            ColumnView view = sender as ColumnView;
+
+            foreach (GridColumn column in view.Columns)
+            {
+                string value = Func.RemoveDiacritics(view.GetListSourceRowCellValue(e.ListSourceRow, column).ToString()).ToLower();
+                string filterStr = Func.RemoveDiacritics(view.EditingValue == null ? "" : view.EditingValue.ToString()).ToLower();
+
+                if (column == gvDanhSach.FocusedColumn)
+                {
+                    List<char> valueChars = value.ToList();
+                    List<char> filterTextChars = filterStr.ToList();
+
+                    foreach (char c in valueChars)
+                        if (filterTextChars.Count != 0 && c == filterTextChars.First())
+                        {
+                            filterTextChars.RemoveAt(0);
+
+                        }
+                    if (filterTextChars.Count == 0)
+                    {
+                        e.Visible = true;
+                        e.Handled = true;
+                    }
+                }
+            }
         }
     }
 }

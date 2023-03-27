@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.DTO
 {
-    public class HANGHOA_DTO
+    public class HANGHOAFULL_DTO
     {
         public string IDHH { get; set; }
         public string TENHH { get; set; }
@@ -16,11 +16,6 @@ namespace BusinessLayer.DTO
         public string TENLOAI { get; set; }
         public Nullable<double> DINHMUCTON { get; set; }
         public Nullable<double> TONKHO { get; set; }
-        public int IDGIA { get; set; }
-        public string DONVITINH { get; set; }
-        public Nullable<double> QUYDOI { get; set; }
-        public Nullable<double> GIANHAP { get; set; }
-        public Nullable<double> GIABANLE { get; set; }
-        public Nullable<double> GIABANSI { get; set; }
+        public List<tb_GIA> LISTGIA { get; set; }
     }
 }

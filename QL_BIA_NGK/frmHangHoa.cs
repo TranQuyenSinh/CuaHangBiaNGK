@@ -43,8 +43,13 @@ namespace QL_BIA_NGK
         void LoadData()
         {
             _hh = new HANGHOA();
+            var listHangHoa = _hh.getListHangHoaDTO(false);
+            foreach (var item in listHangHoa)
+            {
+                item.TONKHO = item.TONKHO / item.QUYDOI;
+            }
+            gcDanhSach.DataSource = listHangHoa;
             gvDanhSach.OptionsBehavior.Editable = false;
-            gcDanhSach.DataSource = _hh.getListHangHoaDTO();
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

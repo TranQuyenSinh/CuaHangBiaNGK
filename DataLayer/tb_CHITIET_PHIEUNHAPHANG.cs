@@ -17,7 +17,11 @@ namespace DataLayer
         public int IDCTPN { get; set; }
         public string IDPN { get; set; }
         public string IDHH { get; set; }
+        public string DONVITINH { get; set; }
+        public Nullable<double> QUYDOI { get; set; }
+        public Nullable<double> DONGIA { get; set; }
         public Nullable<int> SOLUONG { get; set; }
+        public Nullable<double> THANHTIEN { get; set; }
         public string GHICHU { get; set; }
     
         public virtual tb_HANGHOA tb_HANGHOA { get; set; }

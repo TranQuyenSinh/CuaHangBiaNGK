@@ -14,6 +14,10 @@ namespace BusinessLayer
         {
             return db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == idHH);
         }
+        public List<tb_HANGHOA> getListHangHoa()
+        {
+            return db.tb_HANGHOA.Where(x => x.DELETED == false).ToList();
+        }
 
         public List<tb_GIA> getListGia(string idHH)
         {
@@ -27,55 +31,95 @@ namespace BusinessLayer
         {
             return db.tb_GIA.OrderBy(x => x.QUYDOI).ToList();
         }
-        public HANGHOA_DTO GetItemHangHoaDTO(string idhh)
+        public HANGHOAFULL_DTO GetItemHangHoaFullDTO(string idhh)
         {
-            HANGHOA_DTO dto = null;
-            var dvtGoc = db.tb_GIA.Where(x=>x.IDHH == idhh).OrderByDescending(x=>x.QUYDOI).FirstOrDefault();
+            HANGHOAFULL_DTO dto = null;
+            List<tb_GIA> listGia = db.tb_GIA.Where(x => x.IDHH == idhh).OrderBy(x => x.QUYDOI).ToList();
             var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == idhh);
             if (hanghoa == null)
                 return null;
             var loai = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == hanghoa.IDLOAI);
-            if (dvtGoc != null)
+            if (listGia != null)
             {
-                dto = new HANGHOA_DTO();
-                dto.IDHH = dvtGoc.IDHH;
+                dto = new HANGHOAFULL_DTO();
+                dto.IDHH = idhh;
                 dto.TENHH = hanghoa.TENHH;
                 dto.MOTA = hanghoa.MOTA;
                 dto.IDLOAI = hanghoa.IDLOAI;
                 dto.TENLOAI = loai.TENLOAI;
                 dto.DINHMUCTON = hanghoa.DINHMUCTON;
-                dto.TONKHO = hanghoa.TONKHO/dvtGoc.QUYDOI;
-                dto.IDGIA = dvtGoc.IDGIA;
-                dto.DONVITINH = dvtGoc.DONVITINH;
-                dto.QUYDOI = dvtGoc.QUYDOI;
-                dto.GIANHAP = dvtGoc.GIANHAP;
-                dto.GIABANLE = dvtGoc.GIABANLE;
-                dto.GIABANSI = dvtGoc.GIABANSI;
+                dto.TONKHO = hanghoa.TONKHO;
+                dto.LISTGIA = listGia;
             }
             return dto;
         }
-
-        public List<HANGHOA_DTO> getListHangHoaDTO()
+        public List<HANGHOA_DTO> getListHangHoaDTO(bool isMinQuyDoi)
         {
-           /* Random rd = new Random();
-            foreach (var hh in db.tb_HANGHOA.ToList())
-            {
-                hh.TONKHO = rd.Next(1, 100);
-            }
-            db.SaveChanges();*/
-            List<tb_HANGHOA> list = db.tb_HANGHOA.ToList();
+            List<tb_HANGHOA> list = this.getListHangHoa();
             List<HANGHOA_DTO> listDTO = new List<HANGHOA_DTO>();
 
             foreach (var item in list)
             {
-                var dto = GetItemHangHoaDTO(item.IDHH);
-                if (dto != null)
+                HANGHOA_DTO dto;
+                tb_GIA gia;
+                // nếu isMinQuyDoi = true thì lấy giá có quy đổi nhỏ nhất
+                if (isMinQuyDoi)
+                    gia = db.tb_GIA.Where(x => x.IDHH == item.IDHH).OrderBy(x => x.QUYDOI).FirstOrDefault();
+                else
+                    gia = db.tb_GIA.Where(x => x.IDHH == item.IDHH).OrderByDescending(x => x.QUYDOI).FirstOrDefault();
+                var loai = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == item.IDLOAI);
+                if (gia != null)
+                {
+                    dto = new HANGHOA_DTO();
+                    dto.IDHH = item.IDHH;
+                    dto.TENHH = item.TENHH;
+                    dto.MOTA = item.MOTA;
+                    dto.IDLOAI = item.IDLOAI;
+                    dto.TENLOAI = loai.TENLOAI;
+                    dto.DINHMUCTON = item.DINHMUCTON;
+                    dto.TONKHO = item.TONKHO;
+                    dto.IDGIA = gia.IDGIA;
+                    dto.DONVITINH = gia.DONVITINH;
+                    dto.GIANHAP = gia.GIANHAP;
+                    dto.GIABANLE = gia.GIABANLE;
+                    dto.GIABANSI = gia.GIABANSI;
+                    dto.QUYDOI = gia.QUYDOI;
+
                     listDTO.Add(dto);
+                }
+            }
+            return listDTO;
+
+        }
+        public List<HANGHOAFULL_DTO> getListHangHoaFullDTO()
+        {
+            List<tb_HANGHOA> list = this.getListHangHoa();
+            List<HANGHOAFULL_DTO> listDTO = new List<HANGHOAFULL_DTO>();
+
+            foreach (var item in list)
+            {
+                HANGHOAFULL_DTO dto;
+                List<tb_GIA> listGia = db.tb_GIA.Where(x => x.IDHH == item.IDHH).OrderBy(x => x.QUYDOI).ToList();
+                var loai = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == item.IDLOAI);
+                if (listGia != null)
+                {
+                    dto = new HANGHOAFULL_DTO();
+                    dto.IDHH = item.IDHH;
+                    dto.TENHH = item.TENHH;
+                    dto.MOTA = item.MOTA;
+                    dto.IDLOAI = item.IDLOAI;
+                    dto.TENLOAI = loai.TENLOAI;
+                    dto.DINHMUCTON = item.DINHMUCTON;
+                    dto.TONKHO = item.TONKHO;
+                    dto.LISTGIA = listGia;
+
+                    listDTO.Add(dto);
+                }
             }
             return listDTO;
         }
 
-        
+
         public void AddHangHoa(tb_HANGHOA hanghoa)
         {
             try

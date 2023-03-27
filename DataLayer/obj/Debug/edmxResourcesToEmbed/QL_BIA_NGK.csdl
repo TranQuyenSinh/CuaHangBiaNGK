@@ -16,7 +16,7 @@
     <EntitySet Name="tb_PHIEUBANHANG" EntityType="QL_BIA_NGK.tb_PHIEUBANHANG" />
     <EntitySet Name="tb_PHIEUNHAPHANG" EntityType="QL_BIA_NGK.tb_PHIEUNHAPHANG" />
     <EntitySet Name="tb_USER" EntityType="QL_BIA_NGK.tb_USER" />
-    <AssociationSet Name="FK_tb_CHITIET_PHIEUBANHANG_tb_GIA" Association="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_GIA">
+    <AssociationSet Name="FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH" Association="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH">
       <End Role="tb_GIA" EntitySet="tb_GIA" />
       <End Role="tb_CHITIET_PHIEUBANHANG" EntitySet="tb_CHITIET_PHIEUBANHANG" />
     </AssociationSet>
@@ -68,6 +68,10 @@
       <End Role="tb_NHOM" EntitySet="tb_NHOM" />
       <End Role="tb_USER" EntitySet="tb_USER" />
     </AssociationSet>
+    <AssociationSet Name="FK_tb_PHIEUNHAPHANG_tb_USER" Association="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_USER">
+      <End Role="tb_USER" EntitySet="tb_USER" />
+      <End Role="tb_PHIEUNHAPHANG" EntitySet="tb_PHIEUNHAPHANG" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="tb_CHITIET_PHIEUBANHANG">
     <Key>
@@ -79,7 +83,7 @@
     <Property Name="IDGIA" Type="Int32" />
     <Property Name="SOLUONG" Type="Int32" />
     <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tb_GIA" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_GIA" FromRole="tb_CHITIET_PHIEUBANHANG" ToRole="tb_GIA" />
+    <NavigationProperty Name="tb_GIA" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH" FromRole="tb_CHITIET_PHIEUBANHANG" ToRole="tb_GIA" />
     <NavigationProperty Name="tb_HANGHOA" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA" FromRole="tb_CHITIET_PHIEUBANHANG" ToRole="tb_HANGHOA" />
     <NavigationProperty Name="tb_PHIEUBANHANG" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_PHIEUBANHANG" FromRole="tb_CHITIET_PHIEUBANHANG" ToRole="tb_PHIEUBANHANG" />
   </EntityType>
@@ -90,7 +94,11 @@
     <Property Name="IDCTPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDPN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="IDHH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DONVITINH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="QUYDOI" Type="Double" />
+    <Property Name="DONGIA" Type="Double" />
     <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="THANHTIEN" Type="Double" />
     <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tb_HANGHOA" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUNHAPHANG_tb_HANGHOA" FromRole="tb_CHITIET_PHIEUNHAPHANG" ToRole="tb_HANGHOA" />
     <NavigationProperty Name="tb_PHIEUNHAPHANG" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUNHAPHANG_tb_PHIEUNHAPHANG" FromRole="tb_CHITIET_PHIEUNHAPHANG" ToRole="tb_PHIEUNHAPHANG" />
@@ -114,7 +122,7 @@
     <Property Name="GIABANLE" Type="Double" />
     <Property Name="GIABANSI" Type="Double" />
     <Property Name="IDHH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tb_CHITIET_PHIEUBANHANG" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_GIA" FromRole="tb_GIA" ToRole="tb_CHITIET_PHIEUBANHANG" />
+    <NavigationProperty Name="tb_CHITIET_PHIEUBANHANG" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH" FromRole="tb_GIA" ToRole="tb_CHITIET_PHIEUBANHANG" />
     <NavigationProperty Name="tb_HANGHOA" Relationship="QL_BIA_NGK.FK_tb_GIA_tb_HANGHOA" FromRole="tb_GIA" ToRole="tb_HANGHOA" />
   </EntityType>
   <EntityType Name="tb_HANGHOA">
@@ -236,12 +244,14 @@
     </Key>
     <Property Name="IDPN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="NGAY" Type="DateTime" Precision="3" />
+    <Property Name="IDUSER" Type="Int32" />
     <Property Name="PHIVANCHUYEN" Type="Double" />
     <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IDNCC" Type="Int32" />
     <Property Name="TONGTIEN" Type="Double" />
     <NavigationProperty Name="tb_CHITIET_PHIEUNHAPHANG" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUNHAPHANG_tb_PHIEUNHAPHANG" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_CHITIET_PHIEUNHAPHANG" />
     <NavigationProperty Name="tb_NHACUNGCAP" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_NHACUNGCAP" />
+    <NavigationProperty Name="tb_USER" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_USER" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_USER" />
   </EntityType>
   <EntityType Name="tb_USER">
     <Key>
@@ -254,8 +264,9 @@
     <Property Name="IDNHOM" Type="Int32" />
     <Property Name="DELETED" Type="Boolean" />
     <NavigationProperty Name="tb_NHOM" Relationship="QL_BIA_NGK.FK_tb_USER_tb_NHOM" FromRole="tb_USER" ToRole="tb_NHOM" />
+    <NavigationProperty Name="tb_PHIEUNHAPHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_USER" FromRole="tb_USER" ToRole="tb_PHIEUNHAPHANG" />
   </EntityType>
-  <Association Name="FK_tb_CHITIET_PHIEUBANHANG_tb_GIA">
+  <Association Name="FK_tb_CHITIET_PHIEUBANHANG_tb_DONVITINH">
     <End Type="QL_BIA_NGK.tb_GIA" Role="tb_GIA" Multiplicity="0..1" />
     <End Type="QL_BIA_NGK.tb_CHITIET_PHIEUBANHANG" Role="tb_CHITIET_PHIEUBANHANG" Multiplicity="*" />
     <ReferentialConstraint>
@@ -408,6 +419,18 @@
       </Principal>
       <Dependent Role="tb_USER">
         <PropertyRef Name="IDNHOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PHIEUNHAPHANG_tb_USER">
+    <End Type="QL_BIA_NGK.tb_USER" Role="tb_USER" Multiplicity="0..1" />
+    <End Type="QL_BIA_NGK.tb_PHIEUNHAPHANG" Role="tb_PHIEUNHAPHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_USER">
+        <PropertyRef Name="IDUSER" />
+      </Principal>
+      <Dependent Role="tb_PHIEUNHAPHANG">
+        <PropertyRef Name="IDUSER" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -110,6 +110,12 @@
     <Compile Include="frmChiTietNhom.Designer.cs">
       <DependentUpon>frmChiTietNhom.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChiTietPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTietPhieuNhap.Designer.cs">
+      <DependentUpon>frmChiTietPhieuNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmChiTietTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     <EmbeddedResource Include="frmChiTietNhom.resx">
       <DependentUpon>frmChiTietNhom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmChiTietPhieuNhap.resx">
+      <DependentUpon>frmChiTietPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmChiTietTaiKhoan.resx">
       <DependentUpon>frmChiTietTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,6 +356,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\circular.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

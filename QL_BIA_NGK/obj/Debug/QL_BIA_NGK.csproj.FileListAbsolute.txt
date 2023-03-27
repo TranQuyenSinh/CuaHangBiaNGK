@@ -185,3 +185,4 @@ D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.frmChi
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.frmNhatKy.resources
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.frmKetNoiDB.resources
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.frmChiTietTonKho.resources
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.frmChiTietPhieuNhap.resources
