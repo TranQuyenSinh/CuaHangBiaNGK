@@ -12,6 +12,7 @@ namespace BusinessLayer.DTO
         public string IDPN { get; set; }
         public int IDUSER { get; set; }
         public Nullable<int> IDNCC { get; set; }
+        public string HOTEN { get; set; }
         public Nullable<System.DateTime> NGAY { get; set; }
         public Nullable<double> PHIVANCHUYEN { get; set; }
         public string GHICHU { get; set; }

@@ -50,9 +50,9 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcDanhSachPhieu = new DevExpress.XtraGrid.GridControl();
             this.gvDanhSachPhieu = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.IDPN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HOTENNCC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NGAY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnTim = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dtDenNgay = new DevExpress.XtraEditors.DateEdit();
@@ -100,6 +100,7 @@
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLuuPN = new System.Windows.Forms.Button();
             this.txtTongTienSauPhi = new DevExpress.XtraEditors.TextEdit();
             this.txtPhiVanChuyen = new DevExpress.XtraEditors.TextEdit();
             this.txtTongCong = new DevExpress.XtraEditors.TextEdit();
@@ -175,7 +176,7 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnThem),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLuu),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnIn),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDong)});
             this.bar1.OptionsBar.MultiLine = true;
@@ -194,7 +195,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Caption = "Lưu";
+            this.btnLuu.Caption = "Lưu (Ctrl+S)";
             this.btnLuu.Id = 8;
             this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
             this.btnLuu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.LargeImage")));
@@ -204,7 +205,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Caption = "Refresh";
+            this.btnRefresh.Caption = "Refresh (F5)";
             this.btnRefresh.Id = 4;
             this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
             this.btnRefresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.LargeImage")));
@@ -250,7 +251,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1529, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1823, 24);
             // 
             // barDockControlBottom
             // 
@@ -258,7 +259,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 706);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1529, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1823, 20);
             // 
             // barDockControlLeft
             // 
@@ -272,7 +273,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1529, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1823, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 682);
             // 
@@ -307,8 +308,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1529, 682);
-            this.splitContainer1.SplitterDistance = 366;
+            this.splitContainer1.Size = new System.Drawing.Size(1823, 682);
+            this.splitContainer1.SplitterDistance = 482;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -323,8 +324,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.slkNCC1.Properties.PopupView = this.gridView3;
             this.slkNCC1.Properties.SelectFirstRowOnEnterKey = DevExpress.Utils.DefaultBoolean.True;
-            this.slkNCC1.Size = new System.Drawing.Size(346, 22);
-            this.slkNCC1.TabIndex = 90;
+            this.slkNCC1.Size = new System.Drawing.Size(458, 22);
+            this.slkNCC1.TabIndex = 2;
             // 
             // gridView3
             // 
@@ -362,48 +363,59 @@
             this.gcDanhSachPhieu.MainView = this.gvDanhSachPhieu;
             this.gcDanhSachPhieu.MenuManager = this.barManager1;
             this.gcDanhSachPhieu.Name = "gcDanhSachPhieu";
-            this.gcDanhSachPhieu.Size = new System.Drawing.Size(366, 503);
-            this.gcDanhSachPhieu.TabIndex = 8;
+            this.gcDanhSachPhieu.Size = new System.Drawing.Size(482, 503);
+            this.gcDanhSachPhieu.TabIndex = 4;
             this.gcDanhSachPhieu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSachPhieu});
             // 
             // gvDanhSachPhieu
             // 
             this.gvDanhSachPhieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3});
+            this.IDPN,
+            this.HOTENNCC,
+            this.NGAY});
             this.gvDanhSachPhieu.GridControl = this.gcDanhSachPhieu;
             this.gvDanhSachPhieu.Name = "gvDanhSachPhieu";
+            this.gvDanhSachPhieu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvDanhSachPhieu_KeyDown);
+            this.gvDanhSachPhieu.DoubleClick += new System.EventHandler(this.gvDanhSachPhieu_DoubleClick);
             // 
-            // gridColumn1
+            // IDPN
             // 
-            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn1.Caption = "Mã phiếu";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.IDPN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.IDPN.AppearanceHeader.Options.UseFont = true;
+            this.IDPN.Caption = "Mã phiếu";
+            this.IDPN.FieldName = "IDPN";
+            this.IDPN.MaxWidth = 100;
+            this.IDPN.MinWidth = 100;
+            this.IDPN.Name = "IDPN";
+            this.IDPN.Visible = true;
+            this.IDPN.VisibleIndex = 1;
+            this.IDPN.Width = 100;
             // 
-            // gridColumn2
+            // HOTENNCC
             // 
-            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.Caption = "Nhà cung cấp";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 113;
+            this.HOTENNCC.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.HOTENNCC.AppearanceHeader.Options.UseFont = true;
+            this.HOTENNCC.Caption = "Nhà cung cấp";
+            this.HOTENNCC.FieldName = "HOTEN";
+            this.HOTENNCC.MinWidth = 10;
+            this.HOTENNCC.Name = "HOTENNCC";
+            this.HOTENNCC.Visible = true;
+            this.HOTENNCC.VisibleIndex = 0;
+            this.HOTENNCC.Width = 100;
             // 
-            // gridColumn3
+            // NGAY
             // 
-            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn3.Caption = "Ngày lập";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 124;
+            this.NGAY.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.NGAY.AppearanceHeader.Options.UseFont = true;
+            this.NGAY.Caption = "Ngày lập";
+            this.NGAY.FieldName = "NGAY";
+            this.NGAY.MaxWidth = 100;
+            this.NGAY.MinWidth = 100;
+            this.NGAY.Name = "NGAY";
+            this.NGAY.Visible = true;
+            this.NGAY.VisibleIndex = 2;
+            this.NGAY.Width = 100;
             // 
             // btnTim
             // 
@@ -411,13 +423,14 @@
             this.btnTim.ForeColor = System.Drawing.Color.Blue;
             this.btnTim.Image = global::QL_BIA_NGK.Properties.Resources.search;
             this.btnTim.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTim.Location = new System.Drawing.Point(260, 143);
+            this.btnTim.Location = new System.Drawing.Point(372, 143);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(96, 30);
-            this.btnTim.TabIndex = 7;
+            this.btnTim.TabIndex = 3;
             this.btnTim.Text = "Tìm kiếm";
             this.btnTim.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // label4
             // 
@@ -432,7 +445,7 @@
             // dtDenNgay
             // 
             this.dtDenNgay.EditValue = null;
-            this.dtDenNgay.Location = new System.Drawing.Point(191, 59);
+            this.dtDenNgay.Location = new System.Drawing.Point(260, 59);
             this.dtDenNgay.MenuManager = this.barManager1;
             this.dtDenNgay.Name = "dtDenNgay";
             this.dtDenNgay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -441,8 +454,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtDenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtDenNgay.Size = new System.Drawing.Size(165, 22);
-            this.dtDenNgay.TabIndex = 4;
+            this.dtDenNgay.Size = new System.Drawing.Size(208, 22);
+            this.dtDenNgay.TabIndex = 1;
             // 
             // dtTuNgay
             // 
@@ -456,14 +469,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtTuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtTuNgay.Size = new System.Drawing.Size(165, 22);
-            this.dtTuNgay.TabIndex = 3;
+            this.dtTuNgay.Size = new System.Drawing.Size(208, 22);
+            this.dtTuNgay.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label3.Location = new System.Drawing.Point(188, 38);
+            this.label3.Location = new System.Drawing.Point(257, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 2;
@@ -485,9 +498,9 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(4, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 17);
+            this.label1.Size = new System.Drawing.Size(259, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Danh sách phiếu nhập hàng";
+            this.label1.Text = "Danh sách phiếu nhập hàng (Ctrl+F)";
             // 
             // splitContainer2
             // 
@@ -520,9 +533,9 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1161, 629);
+            this.splitContainer2.Size = new System.Drawing.Size(1339, 629);
             this.splitContainer2.SplitterDistance = 147;
-            this.splitContainer2.TabIndex = 1;
+            this.splitContainer2.TabIndex = 0;
             // 
             // txtNguoiLap
             // 
@@ -554,6 +567,7 @@
             this.btnThemNCC.Name = "btnThemNCC";
             this.btnThemNCC.Size = new System.Drawing.Size(76, 26);
             this.btnThemNCC.TabIndex = 86;
+            this.btnThemNCC.TabStop = false;
             this.btnThemNCC.Text = "Thêm";
             this.btnThemNCC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemNCC.UseVisualStyleBackColor = true;
@@ -674,6 +688,7 @@
             // dtNgayLap
             // 
             this.dtNgayLap.EditValue = null;
+            this.dtNgayLap.Enabled = false;
             this.dtNgayLap.Location = new System.Drawing.Point(132, 14);
             this.dtNgayLap.MenuManager = this.barManager1;
             this.dtNgayLap.Name = "dtNgayLap";
@@ -683,6 +698,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtNgayLap.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtNgayLap.Properties.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss";
+            this.dtNgayLap.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dtNgayLap.Properties.ReadOnly = true;
             this.dtNgayLap.Size = new System.Drawing.Size(196, 22);
             this.dtNgayLap.TabIndex = 0;
             // 
@@ -753,7 +771,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.gcDanhSach);
-            this.splitContainer3.Size = new System.Drawing.Size(1161, 478);
+            this.splitContainer3.Size = new System.Drawing.Size(1339, 478);
             this.splitContainer3.SplitterDistance = 65;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -814,8 +832,8 @@
             this.repositoryItemLookUpEdit1,
             this.repositoryItemComboBox1,
             this.repositoryItemLookUpEdit2});
-            this.gcDanhSach.Size = new System.Drawing.Size(1161, 409);
-            this.gcDanhSach.TabIndex = 1;
+            this.gcDanhSach.Size = new System.Drawing.Size(1339, 409);
+            this.gcDanhSach.TabIndex = 0;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
             // 
@@ -846,6 +864,7 @@
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.OptionsView.ShowAutoFilterRow = true;
+            this.gvDanhSach.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvDanhSach_KeyDown);
             this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick_1);
             this.gvDanhSach.DataSourceChanged += new System.EventHandler(this.gvDanhSach_DataSourceChanged);
             // 
@@ -934,6 +953,8 @@
             this.DONGIA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.DONGIA.AppearanceHeader.Options.UseFont = true;
             this.DONGIA.Caption = "Đơn giá";
+            this.DONGIA.DisplayFormat.FormatString = "n0";
+            this.DONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.DONGIA.FieldName = "DONGIA";
             this.DONGIA.MaxWidth = 150;
             this.DONGIA.MinWidth = 150;
@@ -952,6 +973,8 @@
             this.THANHTIEN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.THANHTIEN.AppearanceHeader.Options.UseFont = true;
             this.THANHTIEN.Caption = "Thành tiền";
+            this.THANHTIEN.DisplayFormat.FormatString = "n0";
+            this.THANHTIEN.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.THANHTIEN.FieldName = "THANHTIEN";
             this.THANHTIEN.MaxWidth = 150;
             this.THANHTIEN.MinWidth = 150;
@@ -1006,6 +1029,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnLuuPN);
             this.panel1.Controls.Add(this.txtTongTienSauPhi);
             this.panel1.Controls.Add(this.txtPhiVanChuyen);
             this.panel1.Controls.Add(this.txtTongCong);
@@ -1015,8 +1039,23 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 629);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1161, 53);
+            this.panel1.Size = new System.Drawing.Size(1339, 53);
             this.panel1.TabIndex = 0;
+            // 
+            // btnLuuPN
+            // 
+            this.btnLuuPN.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLuuPN.ForeColor = System.Drawing.Color.Blue;
+            this.btnLuuPN.Image = global::QL_BIA_NGK.Properties.Resources.diskette;
+            this.btnLuuPN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuuPN.Location = new System.Drawing.Point(1183, 8);
+            this.btnLuuPN.Name = "btnLuuPN";
+            this.btnLuuPN.Size = new System.Drawing.Size(118, 39);
+            this.btnLuuPN.TabIndex = 1;
+            this.btnLuuPN.Text = "Lưu";
+            this.btnLuuPN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuuPN.UseVisualStyleBackColor = true;
+            this.btnLuuPN.Click += new System.EventHandler(this.btnLuuPN_Click);
             // 
             // txtTongTienSauPhi
             // 
@@ -1131,15 +1170,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1529, 726);
+            this.ClientSize = new System.Drawing.Size(1823, 726);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.KeyPreview = true;
             this.Name = "frmNhapHang";
             this.Text = "PHIẾU NHẬP HÀNG";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmNhapHang_FormClosing);
             this.Load += new System.EventHandler(this.frmNhapHang_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmNhapHang_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -1202,9 +1244,9 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private DevExpress.XtraGrid.GridControl gcDanhSachPhieu;
         private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSachPhieu;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn IDPN;
+        private DevExpress.XtraGrid.Columns.GridColumn HOTENNCC;
+        private DevExpress.XtraGrid.Columns.GridColumn NGAY;
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.Label label4;
         private DevExpress.XtraEditors.DateEdit dtDenNgay;
@@ -1263,5 +1305,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
+        private System.Windows.Forms.Button btnLuuPN;
     }
 }

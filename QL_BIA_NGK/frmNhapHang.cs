@@ -26,38 +26,222 @@ namespace QL_BIA_NGK
         {
             InitializeComponent();
         }
+        #region KhaiBaoBien
         NHACUNGCAP _ncc;
         PHIEUNHAP _pn;
         HANGHOA _hh;
+        USER _user;
         public static List<CHITIETPHIEUNHAP_DTO> _listSP;
+        public static bool _isSaved;
         bool _isAdd;
+        #endregion
+
+        #region Sự kiện click
+        // click button
         private void frmNhapHang_Load(object sender, EventArgs e)
         {
             _ncc = new NHACUNGCAP();
             _pn = new PHIEUNHAP();
             _hh = new HANGHOA();
+            _user = new USER();
             _isAdd = true;
+            _isSaved = true;
             _listSP = new List<CHITIETPHIEUNHAP_DTO>();
+
+            dtTuNgay.EditValue = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dtDenNgay.EditValue = DateTime.Now.AddHours(1);
 
             ShowHideButton();
             ResetForm();
             LoadCboNCC();
             LoadData();
-
-            dtTuNgay.EditValue = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            dtDenNgay.EditValue = DateTime.Now.AddHours(1);
+            LoadListPN();
+        }
+        private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ResetForm();
+            LoadData();
+            slkNCC2.Focus();
+        }
+        private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SaveData();
+        }
+        private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LoadData();
+            LoadCboNCC();
+            LoadListPN();
+        }
+        private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
 
         }
+        private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+        private void btnThemSP_Click(object sender, EventArgs e)
+        {
+            AddData();
+        }
+        private void btnSuaSP_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+        private void btnXoaSP_Click(object sender, EventArgs e)
+        {
+            DeleteData();
+        }
+        private void btnThemNCC_Click(object sender, EventArgs e)
+        {
+            if (Func.checkPermission("NHACUNGCAP", "ADD"))
+            {
+                frmChiTietNhaCungCap frm = new frmChiTietNhaCungCap();
+                frm.ShowDialog();
+                LoadData();
+            }
+            else
+                Func.ShowMessage("Bạn không có quyền thêm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            LoadListPN();
+        }
+        private void btnLuuPN_Click(object sender, EventArgs e)
+        {
+            SaveData();
+        }
+        // double click gridview
+        private void gvDanhSach_DoubleClick_1(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+        private void gvDanhSachPhieu_DoubleClick(object sender, EventArgs e)
+        {
+            ShowPhieuNhap();
+        }
+        // value changed
+        private void txtTongCong_TextChanged(object sender, EventArgs e)
+        {
+            double tongTien = txtTongCong.Text == "" ? 0 : double.Parse(txtTongCong.Text);
+            if (tongTien != 0)
+            {
+                txtTongTienSauPhi.EditValue = (double.Parse(txtTongCong.Text) + double.Parse(txtPhiVanChuyen.Text)).ToString();
+            }
+            else
+            {
+                txtTongTienSauPhi.EditValue = txtPhiVanChuyen.EditValue;
+            }
+        }
+        private void txtPhiVanChuyen_TextChanged(object sender, EventArgs e)
+        {
+            double phiVanChuyen = txtPhiVanChuyen.Text == "" ? 0 : double.Parse(txtPhiVanChuyen.Text);
+            if (phiVanChuyen != 0)
+            {
+                txtTongTienSauPhi.EditValue = (double.Parse(txtTongCong.Text) + double.Parse(txtPhiVanChuyen.Text)).ToString();
+            }
+            else
+            {
+                txtTongTienSauPhi.EditValue = txtTongCong.EditValue;
+            }
+        }
+        private void gvDanhSach_DataSourceChanged(object sender, EventArgs e)
+        {
+            double tongTien = 0;
+            foreach (var item in _listSP)
+            {
+                tongTien += double.Parse(item.THANHTIEN.ToString());
+            }
+            txtTongCong.Text = tongTien.ToString();
+        }
+        private void searchLookUpEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            if (slkNCC2.EditValue.ToString() == "") return;
+            int id = int.Parse(slkNCC2.EditValue.ToString());
+            tb_NHACUNGCAP ncc = _ncc.GetItem(id);
+            txtHoTen.Text = ncc.HOTEN;
+            txtDiaChi.Text = ncc.DIACHI;
+            txtDienThoai.Text = ncc.SODIENTHOAI;
+        }
+        // shortcut
+        private void frmNhapHang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                btnThem_ItemClick(null, null);
+            }
+            else if (e.Control && e.KeyCode == Keys.S)
+            {
+                btnLuu_ItemClick(null, null);
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                btnRefresh_ItemClick(null, null);
+            }
+            else if (e.Control && e.KeyCode == Keys.W)
+            {
+                this.Close();
+            }
+            else if (e.Control && e.KeyCode == Keys.T)
+            {
+                btnThemSP_Click(null, null);
+            }
+            else if (e.Control && e.KeyCode == Keys.F)
+            {
+                dtTuNgay.Focus();
+            }
+        }
+        private void gvDanhSach_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSuaSP_Click(null, null);
+            }
+            else if (e.KeyCode == Keys.Delete)
+            {
+                btnXoaSP_Click(null, null);
+            }
+        }
+        private void gvDanhSachPhieu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ShowPhieuNhap();
+            }
+        }
+        // form closing
+        private void frmNhapHang_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_isSaved == false)
+            {
+                if (Func.ShowMessage("Phiếu nhập chưa lưu vào database, bạn có muốn lưu không?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    btnLuu_ItemClick(null, null);
+                }
+            }
+        }
+        #endregion
+
+        #region xử lý dữ liệu
+        // xử lý quyền
         void ShowHideButton()
         {
             // permission
-            btnThem.Enabled = Func.checkPermission("NHAPHANG", "ADD");
-            btnThemSP.Enabled = Func.checkPermission("NHAPHANG", "ADD");
-            btnSuaSP.Enabled = Func.checkPermission("NHAPHANG", "UPDATE");
-            btnXoaSP.Enabled = Func.checkPermission("NHAPHANG", "DELETE");
-            btnLuu.Enabled = Func.checkPermission("NHAPHANG", "ADD") && Func.checkPermission("NHAPHANG", "UPDATE");
-            btnIn.Enabled = Func.checkPermission("NHAPHANG", "PRINT");
+            bool addPer = Func.checkPermission("NHAPHANG", "ADD");
+            bool updatePer = Func.checkPermission("NHAPHANG", "UPDATE");
+            bool deletePer = Func.checkPermission("NHAPHANG", "DELETE");
+            bool printPer = Func.checkPermission("NHAPHANG", "PRINT");
+
+            btnThem.Enabled = addPer;
+            btnThemSP.Enabled = addPer;
+            btnSuaSP.Enabled = updatePer;
+            btnXoaSP.Enabled = deletePer;
+            btnLuu.Enabled = addPer && updatePer;
+            btnLuuPN.Enabled = addPer && updatePer;
+            btnIn.Enabled = printPer;
         }
+        // load data
         void LoadData()
         {
             gvDanhSach.OptionsBehavior.Editable = false;
@@ -66,16 +250,6 @@ namespace QL_BIA_NGK
             List<CHITIETPHIEUNHAP_DTO> newList = new List<CHITIETPHIEUNHAP_DTO>();
             newList.AddRange(_listSP);
             gcDanhSach.DataSource = newList;
-        }
-        void ResetForm()
-        {
-            _isAdd = true;
-            slkNCC2.SelectedText = "";
-            dtNgayLap.EditValue = DateTime.Now;
-            txtNguoiLap.Text = Func.FULLNAMEUSER;
-            txtMaPhieu.Text = _pn.GetMaxID();
-            txtPhiVanChuyen.Text = "0";
-            _listSP.Clear();
         }
         void LoadCboNCC()
         {
@@ -88,70 +262,122 @@ namespace QL_BIA_NGK
             slkNCC1.Properties.ValueMember = "IDNCC";
             slkNCC2.Properties.ValueMember = "IDNCC";
         }
-
-        private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        void LoadListPN()
         {
-            ResetForm();
-            LoadData();
+            var tuNgay = DateTime.Parse(dtTuNgay.EditValue.ToString());
+            // đến cuối ngày (23:59:59) của ngày đó
+            var denNgay = DateTime.Parse(dtDenNgay.EditValue.ToString()).Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+            var idncc = slkNCC1.EditValue != null ? int.Parse(slkNCC1.EditValue.ToString()) : -1;
+            gvDanhSachPhieu.OptionsBehavior.Editable = false;
+            gcDanhSachPhieu.DataSource = _pn.GetListPN_DTO(tuNgay, denNgay, idncc);
         }
-
-        private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        void ShowPhieuNhap()
         {
+            if (_isSaved == false)
+            {
+                if (Func.ShowMessage("Phiếu nhập chưa lưu vào database, bạn có muốn lưu không?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    btnLuu_ItemClick(null, null);
+                }
+            }
+
+            var index = gvDanhSachPhieu.GetFocusedDataSourceRowIndex();
+            if (index >= 0)
+            {
+                _isAdd = false;
+                _isSaved = true;
+
+                PHIEUNHAP_DTO pn_selected = ((List<PHIEUNHAP_DTO>)gvDanhSachPhieu.DataSource)[index];
+                dtNgayLap.Text = pn_selected.NGAY.ToString();
+                txtMaPhieu.Text = pn_selected.IDPN;
+                txtNguoiLap.Text = _user.getFullNameUser(pn_selected.IDUSER);
+                slkNCC2.EditValue = pn_selected.IDNCC;
+                txtGhiChu.Text = pn_selected.GHICHU;
+                var coppyList = new List<CHITIETPHIEUNHAP_DTO>();
+                coppyList.AddRange(pn_selected.listCTPN_DTO);
+                _listSP = coppyList;
+                txtPhiVanChuyen.Text = pn_selected.PHIVANCHUYEN.ToString();
+
+                LoadData();
+            }
+            else
+            {
+                Func.ShowMessage("Bạn chưa chọn phiếu nào", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        // reset
+        void ResetForm()
+        {
+            _isAdd = true;
+            slkNCC2.Text = "";
+            dtNgayLap.EditValue = DateTime.Now;
+            txtNguoiLap.Text = Func.FULLNAMEUSER;
+            txtMaPhieu.Text = _pn.GetMaxID();
+            txtHoTen.Text = "";
+            txtDiaChi.Text = "";
+            txtDienThoai.Text = "";
+            txtPhiVanChuyen.Text = "0";
+            txtGhiChu.Text = "";
+            _listSP.Clear();
+        }
+        // xử lý data
+        bool ValidateForm()
+        {
+            // kiểm tra quyền, rỗng
+            if (!Func.checkPermission("NHAPHANG", "ADD") || !Func.checkPermission("NHAPHANG", "UPDATE"))
+            {
+                Func.ShowMessage("Bạn không có quyền sửa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (_listSP.Count <= 0)
             {
                 Func.ShowMessage("Bạn chưa thêm hàng hóa nào, không thể lưu!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
-            if (slkNCC2.EditValue == null)
+            if (_listSP.Any(x => x.TENHH == ""))
+            {
+                Func.ShowMessage("Có hàng hóa bị trống, vui lòng thêm chi tiết hàng hóa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (slkNCC2.EditValue.ToString() == "")
             {
                 Func.ShowMessage("Bạn chưa thêm nhà cung cấp, không thể lưu!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
-            if (_isAdd) 
+            return true;
+        }
+        void SaveData()
+        {
+            // kiểm tra thông tin trước khi lưu
+            if (ValidateForm() == false) return;
+
+            // bắt đầu xử lý thêm hoặc sửa
+            // lấy thông tin trên form
+            PHIEUNHAP_DTO pn_dto = new PHIEUNHAP_DTO();
+            pn_dto.IDPN = txtMaPhieu.Text;
+            pn_dto.IDNCC = int.Parse(slkNCC2.EditValue.ToString());
+            pn_dto.IDUSER = Func.IDUSER;
+            pn_dto.NGAY = DateTime.Parse(dtNgayLap.EditValue.ToString());
+            pn_dto.PHIVANCHUYEN = double.Parse(txtPhiVanChuyen.Text);
+            pn_dto.GHICHU = txtGhiChu.Text;
+            pn_dto.TONGTIEN = double.Parse(txtTongTienSauPhi.Text);
+            pn_dto.listCTPN_DTO = _listSP;
+
+            // xử lý db
+            if (_isAdd)
             {
-                PHIEUNHAP_DTO pn_dto = new PHIEUNHAP_DTO();
-                pn_dto.IDPN = txtMaPhieu.Text;
-                pn_dto.IDNCC = int.Parse(slkNCC2.EditValue.ToString());
-                pn_dto.IDUSER = Func.IDUSER;
-                pn_dto.NGAY = DateTime.Parse(dtNgayLap.EditValue.ToString());
-                pn_dto.PHIVANCHUYEN = double.Parse(txtPhiVanChuyen.Text);
-                pn_dto.GHICHU = txtGhiChu.Text;
-                pn_dto.TONGTIEN = double.Parse(txtTongTienSauPhi.Text);
-                pn_dto.listCTPN_DTO = _listSP;
                 _pn.Add(pn_dto);
                 Func.ShowMessage("Thêm phiếu nhập hàng thành công!");
                 _isAdd = false;
             }
             else
             {
-
+                _pn.Update(pn_dto);
+                Func.ShowMessage("Chỉnh sửa phiếu nhập hàng thành công!");
             }
+            _isSaved = true;
+            LoadListPN();
         }
-
-        private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            LoadData();
-        }
-
-        private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
-        private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void searchLookUpEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-            int id = int.Parse(slkNCC2.EditValue.ToString());
-            tb_NHACUNGCAP ncc = _ncc.GetItem(id);
-            txtHoTen.Text = ncc.HOTEN;
-            txtDiaChi.Text = ncc.DIACHI;
-            txtDienThoai.Text = ncc.SODIENTHOAI;
-        }
-        
         void AddData()
         {
             if (Func.checkPermission("NHAPHANG", "ADD"))
@@ -182,7 +408,7 @@ namespace QL_BIA_NGK
                 }
             }
             else
-                Func.ShowMessage("Bạn không có quyền thêm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Func.ShowMessage("Bạn không có quyền sửa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         void DeleteData()
         {
@@ -193,73 +419,13 @@ namespace QL_BIA_NGK
                 {
                     _listSP.Remove(row);
                 }
+                _isSaved = false;
                 LoadData();
             }
             else
-                Func.ShowMessage("Bạn không có quyền thêm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        private void btnThemNCC_Click(object sender, EventArgs e)
-        {
-            frmChiTietNhaCungCap frm = new frmChiTietNhaCungCap();
-            frm.ShowDialog();
-            LoadData();
-        }
-
-        private void btnThemSP_Click(object sender, EventArgs e)
-        {
-            AddData();
-        }
-
-        private void btnSuaSP_Click(object sender, EventArgs e)
-        {
-            UpdateData();
-        }
-
-        private void btnXoaSP_Click(object sender, EventArgs e)
-        {
-            DeleteData();
-        }
-
-        private void gvDanhSach_DoubleClick_1(object sender, EventArgs e)
-        {
-            UpdateData();
-        }
-
-        private void txtTongCong_TextChanged(object sender, EventArgs e)
-        {
-            double tongTien = txtTongCong.Text == "" ? 0 : double.Parse(txtTongCong.Text);
-            if (tongTien != 0)
-            {
-                txtTongTienSauPhi.Text = (double.Parse(txtTongCong.Text) + double.Parse(txtPhiVanChuyen.Text)).ToString();
-            }
-            else
-            {
-                txtTongTienSauPhi.Text = txtPhiVanChuyen.Text;
-            }
-        }
-
-        private void txtPhiVanChuyen_TextChanged(object sender, EventArgs e)
-        {
-            double phiVanChuyen = txtPhiVanChuyen.Text == "" ? 0 : double.Parse(txtPhiVanChuyen.Text);
-            if (phiVanChuyen != 0)
-            {
-                txtTongTienSauPhi.Text = (double.Parse(txtTongCong.Text) + double.Parse(txtPhiVanChuyen.Text)).ToString();
-            }
-            else
-            {
-                txtTongTienSauPhi.Text = txtTongCong.Text;
-            }
-        }
-
-        private void gvDanhSach_DataSourceChanged(object sender, EventArgs e)
-        {
-            double tongTien = 0;
-            foreach (var item in _listSP)
-            {
-                tongTien += double.Parse(item.THANHTIEN.ToString());
-            }
-            txtTongCong.Text = tongTien.ToString();
-        }
+        #endregion
+        
     }
 }

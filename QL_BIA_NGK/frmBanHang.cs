@@ -19,7 +19,8 @@ namespace QL_BIA_NGK
             
         }
 
-        private void btnTim_Click(object sender, EventArgs e)
+
+        private void frmBanHang_Load(object sender, EventArgs e)
         {
 
         }

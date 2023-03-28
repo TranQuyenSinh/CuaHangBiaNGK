@@ -13,7 +13,7 @@ namespace BusinessLayer
 
         public tb_NHACUNGCAP GetItem(int id)
         {
-            return db.tb_NHACUNGCAP.Where(x => x.DELETED == false).FirstOrDefault(x => x.IDNCC == id);
+            return db.tb_NHACUNGCAP.FirstOrDefault(x => x.IDNCC == id);
         }
 
         public List<tb_NHACUNGCAP> getList()

@@ -32,13 +32,9 @@ namespace QL_BIA_NGK
         {
             var listHangHoa = _hh.getListHangHoa();
             listChiTietPN = frmNhapHang._listSP;
-            var hanghoa = listHangHoa.Find(x => x.IDHH == _ctpn.IDHH);
-            // Ko hiển thị những hàng hóa nào đã có rồi trong frmNhapHang
-            listHangHoa.RemoveAll(item => listChiTietPN.Any(x => x.IDHH == item.IDHH));
-            if (hanghoa != null)
-            {
-                listHangHoa.Add(hanghoa);
-            }
+            // Ko hiển thị những hàng hóa nào đã có rồi trong frmNhapHang trừ chính hàng hóa đang chỉnh sửa này (_ctpn)
+            listHangHoa.RemoveAll(item => listChiTietPN.Any(x => x.IDHH == item.IDHH && x.IDHH != _ctpn.IDHH));
+           
             slkLoaiHH.Properties.DataSource = listHangHoa;
             slkLoaiHH.Properties.DisplayMember = "IDHH";
             slkLoaiHH.Properties.ValueMember = "IDHH";
@@ -52,6 +48,7 @@ namespace QL_BIA_NGK
                 slkLoaiHH.Text = _ctpn.IDHH;
                 txtGhiChu.Text = _ctpn.GHICHU;
                 cboDVT.Text = _ctpn.DONVITINH;
+                txtGiaNhap.Text = _ctpn.DONGIA.ToString();
                 txtSoLuong.Text = _ctpn.SOLUONG.ToString();
                 txtThanhTien.Text = _ctpn.THANHTIEN.ToString();
             }
@@ -72,6 +69,7 @@ namespace QL_BIA_NGK
             if (!listChiTietPN.Contains(_ctpn))
                 listChiTietPN.Add(_ctpn);
 
+            frmNhapHang._isSaved = false;
             this.Close();
         }
 
