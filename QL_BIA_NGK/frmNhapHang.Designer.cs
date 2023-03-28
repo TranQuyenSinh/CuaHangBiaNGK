@@ -764,6 +764,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.btnLuuPN);
             this.splitContainer3.Panel1.Controls.Add(this.btnThemSP);
             this.splitContainer3.Panel1.Controls.Add(this.btnSuaSP);
             this.splitContainer3.Panel1.Controls.Add(this.btnXoaSP);
@@ -796,7 +797,7 @@
             this.btnSuaSP.ForeColor = System.Drawing.Color.Blue;
             this.btnSuaSP.Image = global::QL_BIA_NGK.Properties.Resources.pencil;
             this.btnSuaSP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSuaSP.Location = new System.Drawing.Point(254, 14);
+            this.btnSuaSP.Location = new System.Drawing.Point(262, 14);
             this.btnSuaSP.Name = "btnSuaSP";
             this.btnSuaSP.Size = new System.Drawing.Size(138, 39);
             this.btnSuaSP.TabIndex = 1;
@@ -811,7 +812,7 @@
             this.btnXoaSP.ForeColor = System.Drawing.Color.Blue;
             this.btnXoaSP.Image = global::QL_BIA_NGK.Properties.Resources.clear;
             this.btnXoaSP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaSP.Location = new System.Drawing.Point(428, 14);
+            this.btnXoaSP.Location = new System.Drawing.Point(435, 14);
             this.btnXoaSP.Name = "btnXoaSP";
             this.btnXoaSP.Size = new System.Drawing.Size(207, 39);
             this.btnXoaSP.TabIndex = 2;
@@ -1029,7 +1030,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnLuuPN);
             this.panel1.Controls.Add(this.txtTongTienSauPhi);
             this.panel1.Controls.Add(this.txtPhiVanChuyen);
             this.panel1.Controls.Add(this.txtTongCong);
@@ -1048,11 +1048,11 @@
             this.btnLuuPN.ForeColor = System.Drawing.Color.Blue;
             this.btnLuuPN.Image = global::QL_BIA_NGK.Properties.Resources.diskette;
             this.btnLuuPN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuuPN.Location = new System.Drawing.Point(1183, 8);
+            this.btnLuuPN.Location = new System.Drawing.Point(677, 14);
             this.btnLuuPN.Name = "btnLuuPN";
-            this.btnLuuPN.Size = new System.Drawing.Size(118, 39);
+            this.btnLuuPN.Size = new System.Drawing.Size(126, 39);
             this.btnLuuPN.TabIndex = 1;
-            this.btnLuuPN.Text = "Lưu";
+            this.btnLuuPN.Text = "Lưu phiếu";
             this.btnLuuPN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuuPN.UseVisualStyleBackColor = true;
             this.btnLuuPN.Click += new System.EventHandler(this.btnLuuPN_Click);

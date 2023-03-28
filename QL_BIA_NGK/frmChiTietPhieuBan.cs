@@ -1,9 +1,6 @@
-﻿using BusinessLayer;
-using BusinessLayer.DTO;
+﻿using BusinessLayer.DTO;
+using BusinessLayer;
 using DataLayer;
-using DevExpress.DirectX.Common.DirectWrite;
-using DevExpress.ExpressApp;
-using DevExpress.Utils.DirectXPaint;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -17,47 +14,49 @@ using System.Windows.Forms;
 
 namespace QL_BIA_NGK
 {
-    public partial class frmChiTietPhieuNhap : DevExpress.XtraEditors.XtraForm
+    public partial class frmChiTietPhieuBan : DevExpress.XtraEditors.XtraForm
     {
-        CHITIETPHIEUNHAP_DTO _ctpn;
+        CHITIETPHIEUBAN_DTO _ctpb;
         HANGHOA _hh;
-        List<CHITIETPHIEUNHAP_DTO> listChiTietPN;
+        List<CHITIETPHIEUBAN_DTO> listChiTietPB;
         HANGHOAFULL_DTO _hh_dto;
-        public frmChiTietPhieuNhap(CHITIETPHIEUNHAP_DTO ctpn)
+        bool _isGiaSi;
+        public frmChiTietPhieuBan(CHITIETPHIEUBAN_DTO ctpb, bool isGiaSi)
         {
             InitializeComponent();
-            _ctpn = ctpn;
+            _ctpb = ctpb;
+            _isGiaSi = isGiaSi;
         }
-        private void frmChiTietPhieuNhap_Load(object sender, EventArgs e)
+        private void frmChiTietPhieuBan_Load(object sender, EventArgs e)
         {
             _hh = new HANGHOA();
             LoadData();
-            if (_ctpn.IDHH != null)
+            if (_ctpb.IDHH != null)
             {
-                slkLoaiHH.Text = _ctpn.IDHH;
-                txtGhiChu.Text = _ctpn.GHICHU;
-                cboDVT.Text = _ctpn.DONVITINH;
-                txtGiaNhap.Text = _ctpn.DONGIA.ToString();
-                txtSoLuong.Text = _ctpn.SOLUONG.ToString();
-                txtThanhTien.Text = _ctpn.THANHTIEN.ToString();
+                slkLoaiHH.Text = _ctpb.IDHH;
+                txtGhiChu.Text = _ctpb.GHICHU;
+                cboDVT.Text = _ctpb.DONVITINH;
+                txtGiaBan.Text = _ctpb.DONGIA.ToString();
+                txtSoLuong.Text = _ctpb.SOLUONG.ToString();
+                txtThanhTien.Text = _ctpb.THANHTIEN.ToString();
             }
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            _ctpn.IDHH = slkLoaiHH.EditValue.ToString();
-            _ctpn.TENHH = txtTenHH.Text;
-            _ctpn.GHICHU = txtGhiChu.Text;
-            _ctpn.DONVITINH = cboDVT.Text;
-            _ctpn.QUYDOI = double.Parse(txtQuyDoi.Text);
-            _ctpn.DONGIA = double.Parse(txtGiaNhap.Text);
-            _ctpn.SOLUONG = int.Parse(txtSoLuong.Text);
-            _ctpn.THANHTIEN = double.Parse(txtThanhTien.Text);
+            _ctpb.IDHH = slkLoaiHH.EditValue.ToString();
+            _ctpb.TENHH = txtTenHH.Text;
+            _ctpb.GHICHU = txtGhiChu.Text;
+            _ctpb.DONVITINH = cboDVT.Text;
+            _ctpb.QUYDOI = double.Parse(txtQuyDoi.Text);
+            _ctpb.DONGIA = double.Parse(txtGiaBan.Text);
+            _ctpb.SOLUONG = int.Parse(txtSoLuong.Text);
+            _ctpb.THANHTIEN = double.Parse(txtThanhTien.Text);
 
             // thêm vào list chi tiết
-            if (!listChiTietPN.Contains(_ctpn))
-                listChiTietPN.Add(_ctpn);
+            if (!listChiTietPB.Contains(_ctpb))
+                listChiTietPB.Add(_ctpb);
 
-            frmNhapHang._isSaved = false;
+            frmBanHang._isSaved = false;
             this.Close();
         }
         private void btnDong_Click(object sender, EventArgs e)
@@ -80,7 +79,7 @@ namespace QL_BIA_NGK
             double soluong = txtSoLuong.Text == "" ? 0 : double.Parse(txtSoLuong.Text);
             if (soluong != 0)
             {
-                txtThanhTien.Text = (double.Parse(txtSoLuong.Text) * double.Parse(txtGiaNhap.Text)).ToString();
+                txtThanhTien.Text = (double.Parse(txtSoLuong.Text) * double.Parse(txtGiaBan.Text)).ToString();
             }
             else
             {
@@ -90,14 +89,14 @@ namespace QL_BIA_NGK
         }
         private void txtGiaNhap_EditValueChanged(object sender, EventArgs e)
         {
-            double dongia = txtGiaNhap.Text == "" ? 0 : double.Parse(txtGiaNhap.Text);
+            double dongia = txtGiaBan.Text == "" ? 0 : double.Parse(txtGiaBan.Text);
             if (dongia != 0)
             {
-                txtThanhTien.Text = (double.Parse(txtSoLuong.Text) * double.Parse(txtGiaNhap.Text)).ToString();
+                txtThanhTien.Text = (double.Parse(txtSoLuong.Text) * double.Parse(txtGiaBan.Text)).ToString();
             }
             else
             {
-                txtGiaNhap.Text = "0";
+                txtGiaBan.Text = "0";
                 txtThanhTien.Text = "0";
             }
         }
@@ -112,10 +111,10 @@ namespace QL_BIA_NGK
 
                 txtQuyDoi.Text = gia.QUYDOI.ToString();
                 txtHienTon.Text = tonkhoNew.ToString();
-                txtGiaNhap.Text = gia.GIANHAP.ToString();
+                txtGiaBan.Text = _isGiaSi == true ? gia.GIABANSI.ToString() : gia.GIABANLE.ToString();
             }
         }
-        private void frmChiTietPhieuNhap_KeyDown(object sender, KeyEventArgs e)
+        private void frmChiTietPhieuBan_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
@@ -123,10 +122,10 @@ namespace QL_BIA_NGK
         void LoadData()
         {
             var listHangHoa = _hh.getListHangHoa();
-            listChiTietPN = frmNhapHang._listSP;
-            // Ko hiển thị những hàng hóa nào đã có rồi trong frmNhapHang trừ chính hàng hóa đang chỉnh sửa này (_ctpn)
-            listHangHoa.RemoveAll(item => listChiTietPN.Any(x => x.IDHH == item.IDHH && x.IDHH != _ctpn.IDHH));
-           
+            listChiTietPB = frmBanHang._listSP;
+            // Ko hiển thị những hàng hóa nào đã có rồi trong frmBanHang trừ chính hàng hóa đang chỉnh sửa này (_ctpb)
+            listHangHoa.RemoveAll(item => listChiTietPB.Any(x => x.IDHH == item.IDHH && x.IDHH != _ctpb.IDHH));
+
             slkLoaiHH.Properties.DataSource = listHangHoa;
             slkLoaiHH.Properties.DisplayMember = "IDHH";
             slkLoaiHH.Properties.ValueMember = "IDHH";

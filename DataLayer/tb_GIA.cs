@@ -14,12 +14,6 @@ namespace DataLayer
     
     public partial class tb_GIA
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tb_GIA()
-        {
-            this.tb_CHITIET_PHIEUBANHANG = new HashSet<tb_CHITIET_PHIEUBANHANG>();
-        }
-    
         public int IDGIA { get; set; }
         public string DONVITINH { get; set; }
         public Nullable<double> QUYDOI { get; set; }
@@ -28,8 +22,6 @@ namespace DataLayer
         public Nullable<double> GIABANSI { get; set; }
         public string IDHH { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_CHITIET_PHIEUBANHANG> tb_CHITIET_PHIEUBANHANG { get; set; }
         public virtual tb_HANGHOA tb_HANGHOA { get; set; }
     }
 }

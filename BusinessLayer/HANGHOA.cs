@@ -31,11 +31,12 @@ namespace BusinessLayer
         {
             return db.tb_GIA.OrderBy(x => x.QUYDOI).ToList();
         }
+        // lưu ý: hàm này lấy luôn những hàng hóa đã bị xóa (DELETED = true)
         public HANGHOAFULL_DTO GetItemHangHoaFullDTO(string idhh)
         {
             HANGHOAFULL_DTO dto = null;
             List<tb_GIA> listGia = db.tb_GIA.Where(x => x.IDHH == idhh).OrderBy(x => x.QUYDOI).ToList();
-            var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == idhh);
+            var hanghoa = db.tb_HANGHOA.FirstOrDefault(x=>x.IDHH == idhh);
             if (hanghoa == null)
                 return null;
             var loai = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == hanghoa.IDLOAI);

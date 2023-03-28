@@ -49,10 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\CHITIETPHIEUBAN_DTO.cs" />
     <Compile Include="DTO\CHITIETPHIEUNHAP_DTO.cs" />
     <Compile Include="DTO\HANGHOAFULL_DTO.cs" />
     <Compile Include="DTO\HANGHOA_DTO.cs" />
     <Compile Include="DTO\LOG_DTO.cs" />
+    <Compile Include="DTO\PHIEUBAN_DTO.cs" />
     <Compile Include="DTO\PHIEUNHAP_DTO.cs" />
     <Compile Include="DTO\QUYEN_DTO.cs" />
     <Compile Include="DTO\TONKHO_DTO.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="NHACUNGCAP.cs" />
     <Compile Include="NHANVIEN.cs" />
     <Compile Include="NHOM.cs" />
+    <Compile Include="PHIEUBAN.cs" />
     <Compile Include="PHIEUNHAP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QUYEN.cs" />
