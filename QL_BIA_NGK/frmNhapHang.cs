@@ -26,11 +26,17 @@ namespace QL_BIA_NGK
         {
             InitializeComponent();
         }
+        public frmNhapHang(List<string> listIDHH)
+        {
+            InitializeComponent();
+            _listIDHH = listIDHH;
+        }
         #region KhaiBaoBien
         NHACUNGCAP _ncc;
         PHIEUNHAP _pn;
         HANGHOA _hh;
         USER _user;
+        List<string> _listIDHH;
         public static List<CHITIETPHIEUNHAP_DTO> _listSP;
         public static bool _isSaved;
         bool _isAdd;
@@ -56,6 +62,10 @@ namespace QL_BIA_NGK
             LoadCboNCC();
             LoadData();
             LoadListPN();
+            if (_listIDHH != null)
+            {
+                InitPNFromListIDHH();
+            }
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -191,6 +201,10 @@ namespace QL_BIA_NGK
             {
                 dtTuNgay.Focus();
             }
+            else if (e.Control && e.KeyCode == Keys.P)
+            {
+                btnIn_ItemClick(null, null);
+            }
         }
         private void gvDanhSach_KeyDown(object sender, KeyEventArgs e)
         {
@@ -270,6 +284,29 @@ namespace QL_BIA_NGK
             var idncc = slkNCC1.EditValue != null ? int.Parse(slkNCC1.EditValue.ToString()) : -1;
             gvDanhSachPhieu.OptionsBehavior.Editable = false;
             gcDanhSachPhieu.DataSource = _pn.GetListPN_DTO(tuNgay, denNgay, idncc);
+        }
+        void InitPNFromListIDHH()
+        {
+            foreach (string idhh in _listIDHH)
+            {
+                HANGHOAFULL_DTO hanghoa_dto = _hh.GetItemHangHoaFullDTO(idhh);
+                var gia = hanghoa_dto.LISTGIA[0];
+                CHITIETPHIEUNHAP_DTO ctpn = new CHITIETPHIEUNHAP_DTO();
+                ctpn.IDPN = txtMaPhieu.Text;
+                ctpn.IDHH = idhh;
+                ctpn.TENHH = hanghoa_dto.TENHH;
+                ctpn.GHICHU = "";
+                ctpn.DONVITINH = gia.DONVITINH;
+                ctpn.QUYDOI = double.Parse(gia.QUYDOI.ToString());
+                ctpn.DONGIA = double.Parse(gia.GIANHAP.ToString());
+                ctpn.SOLUONG = int.Parse(hanghoa_dto.DINHMUCTON.ToString());
+                ctpn.THANHTIEN = ctpn.DONGIA*ctpn.SOLUONG;
+
+                // thêm vào list chi tiết
+                _listSP.Add(ctpn);
+                _isSaved = false;
+                LoadData();
+            }
         }
         void ShowPhieuNhap()
         {
@@ -366,9 +403,19 @@ namespace QL_BIA_NGK
             // xử lý db
             if (_isAdd)
             {
-                _pn.Add(pn_dto);
-                Func.ShowMessage("Thêm phiếu nhập hàng thành công!");
-                _isAdd = false;
+                try
+                {
+                    _pn.Add(pn_dto);
+                    Func.ShowMessage("Thêm phiếu nhập hàng thành công!");
+                    _isAdd = false;
+                }
+                catch (Exception)
+                {
+                    pn_dto.IDPN = _pn.GetMaxID();
+                    _pn.Add(pn_dto);
+                    Func.ShowMessage("Mã phiếu bị trùng do có người đã thêm, đã tự động tăng mã phiếu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
             else
             {
@@ -426,6 +473,6 @@ namespace QL_BIA_NGK
                 Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         #endregion
-        
+
     }
 }

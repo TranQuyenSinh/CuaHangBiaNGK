@@ -146,6 +146,10 @@ namespace QL_BIA_NGK
             {
                 this.Close();
             }
+            else if (e.Control && e.KeyCode == Keys.P)
+            {
+                btnIn_ItemClick(null, null);
+            }
         }
         // double click row to update it
         private void gvDanhSach_DoubleClick(object sender, EventArgs e)

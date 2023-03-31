@@ -347,7 +347,7 @@
             this.txtPhiVanChuyen.Properties.NullText = "0";
             this.txtPhiVanChuyen.Properties.UseMaskAsDisplayFormat = true;
             this.txtPhiVanChuyen.Size = new System.Drawing.Size(257, 22);
-            this.txtPhiVanChuyen.TabIndex = 101;
+            this.txtPhiVanChuyen.TabIndex = 0;
             this.txtPhiVanChuyen.TextChanged += new System.EventHandler(this.txtPhiVanChuyen_TextChanged);
             // 
             // txtTongCong
@@ -411,7 +411,7 @@
             this.btnLuuPN.Location = new System.Drawing.Point(677, 14);
             this.btnLuuPN.Name = "btnLuuPN";
             this.btnLuuPN.Size = new System.Drawing.Size(127, 39);
-            this.btnLuuPN.TabIndex = 102;
+            this.btnLuuPN.TabIndex = 3;
             this.btnLuuPN.Text = "Lưu phiếu";
             this.btnLuuPN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuuPN.UseVisualStyleBackColor = true;
@@ -514,7 +514,7 @@
             this.slkKH2.Properties.PopupView = this.gridView2;
             this.slkKH2.Properties.SelectFirstRowOnEnterKey = DevExpress.Utils.DefaultBoolean.True;
             this.slkKH2.Size = new System.Drawing.Size(556, 22);
-            this.slkKH2.TabIndex = 92;
+            this.slkKH2.TabIndex = 0;
             this.slkKH2.EditValueChanged += new System.EventHandler(this.slkKH2_EditValueChanged);
             // 
             // gridView2
@@ -712,7 +712,7 @@
             this.btnThemSP.Location = new System.Drawing.Point(17, 14);
             this.btnThemSP.Name = "btnThemSP";
             this.btnThemSP.Size = new System.Drawing.Size(207, 39);
-            this.btnThemSP.TabIndex = 3;
+            this.btnThemSP.TabIndex = 0;
             this.btnThemSP.Text = "Thêm sản phẩm (Ctrt+T)";
             this.btnThemSP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemSP.UseVisualStyleBackColor = true;
@@ -727,7 +727,7 @@
             this.btnSuaSP.Location = new System.Drawing.Point(260, 14);
             this.btnSuaSP.Name = "btnSuaSP";
             this.btnSuaSP.Size = new System.Drawing.Size(138, 39);
-            this.btnSuaSP.TabIndex = 4;
+            this.btnSuaSP.TabIndex = 1;
             this.btnSuaSP.Text = "Sửa sản phẩm";
             this.btnSuaSP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSuaSP.UseVisualStyleBackColor = true;
@@ -742,7 +742,7 @@
             this.btnXoaSP.Location = new System.Drawing.Point(434, 14);
             this.btnXoaSP.Name = "btnXoaSP";
             this.btnXoaSP.Size = new System.Drawing.Size(207, 39);
-            this.btnXoaSP.TabIndex = 5;
+            this.btnXoaSP.TabIndex = 2;
             this.btnXoaSP.Text = "Xóa sản phẩm (Delete)";
             this.btnXoaSP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoaSP.UseVisualStyleBackColor = true;
@@ -798,6 +798,8 @@
             // 
             // IDHH
             // 
+            this.IDHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDHH.AppearanceCell.Options.UseFont = true;
             this.IDHH.AppearanceCell.Options.UseTextOptions = true;
             this.IDHH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.IDHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -813,6 +815,8 @@
             // 
             // TENHH
             // 
+            this.TENHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TENHH.AppearanceCell.Options.UseFont = true;
             this.TENHH.AppearanceCell.Options.UseTextOptions = true;
             this.TENHH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.TENHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -828,6 +832,8 @@
             // 
             // DONVITNH
             // 
+            this.DONVITNH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DONVITNH.AppearanceCell.Options.UseFont = true;
             this.DONVITNH.AppearanceCell.Options.UseTextOptions = true;
             this.DONVITNH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.DONVITNH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -843,6 +849,8 @@
             // 
             // GHICHU
             // 
+            this.GHICHU.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.GHICHU.AppearanceCell.Options.UseFont = true;
             this.GHICHU.AppearanceCell.Options.UseTextOptions = true;
             this.GHICHU.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.GHICHU.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -858,7 +866,9 @@
             // 
             // SOLUONG
             // 
+            this.SOLUONG.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
             this.SOLUONG.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.SOLUONG.AppearanceCell.Options.UseFont = true;
             this.SOLUONG.AppearanceCell.Options.UseForeColor = true;
             this.SOLUONG.AppearanceCell.Options.UseTextOptions = true;
             this.SOLUONG.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
@@ -874,7 +884,9 @@
             // 
             // DONGIA
             // 
+            this.DONGIA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
             this.DONGIA.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.DONGIA.AppearanceCell.Options.UseFont = true;
             this.DONGIA.AppearanceCell.Options.UseForeColor = true;
             this.DONGIA.AppearanceCell.Options.UseTextOptions = true;
             this.DONGIA.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
@@ -894,7 +906,9 @@
             // 
             // THANHTIEN
             // 
+            this.THANHTIEN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
             this.THANHTIEN.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.THANHTIEN.AppearanceCell.Options.UseFont = true;
             this.THANHTIEN.AppearanceCell.Options.UseForeColor = true;
             this.THANHTIEN.AppearanceCell.Options.UseTextOptions = true;
             this.THANHTIEN.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
@@ -996,7 +1010,7 @@
             this.slkKH1.Properties.PopupView = this.gridView4;
             this.slkKH1.Properties.SelectFirstRowOnEnterKey = DevExpress.Utils.DefaultBoolean.True;
             this.slkKH1.Size = new System.Drawing.Size(458, 22);
-            this.slkKH1.TabIndex = 12;
+            this.slkKH1.TabIndex = 2;
             // 
             // gridView4
             // 
@@ -1036,7 +1050,7 @@
             this.btnTim.Location = new System.Drawing.Point(380, 144);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(96, 30);
-            this.btnTim.TabIndex = 14;
+            this.btnTim.TabIndex = 3;
             this.btnTim.Text = "Tìm kiếm";
             this.btnTim.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTim.UseVisualStyleBackColor = true;
@@ -1065,7 +1079,7 @@
             this.dtDenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtDenNgay.Size = new System.Drawing.Size(208, 22);
-            this.dtDenNgay.TabIndex = 10;
+            this.dtDenNgay.TabIndex = 1;
             // 
             // dtTuNgay
             // 
@@ -1080,7 +1094,7 @@
             this.dtTuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtTuNgay.Size = new System.Drawing.Size(208, 22);
-            this.dtTuNgay.TabIndex = 9;
+            this.dtTuNgay.TabIndex = 0;
             // 
             // label3
             // 
@@ -1110,7 +1124,7 @@
             this.gcDanhSachPhieu.MenuManager = this.barManager1;
             this.gcDanhSachPhieu.Name = "gcDanhSachPhieu";
             this.gcDanhSachPhieu.Size = new System.Drawing.Size(489, 457);
-            this.gcDanhSachPhieu.TabIndex = 8;
+            this.gcDanhSachPhieu.TabIndex = 4;
             this.gcDanhSachPhieu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSachPhieu});
             // 
@@ -1127,6 +1141,8 @@
             // 
             // IDPB
             // 
+            this.IDPB.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDPB.AppearanceCell.Options.UseFont = true;
             this.IDPB.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.IDPB.AppearanceHeader.Options.UseFont = true;
             this.IDPB.Caption = "Mã phiếu";
@@ -1140,6 +1156,8 @@
             // 
             // HOTENKH
             // 
+            this.HOTENKH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.HOTENKH.AppearanceCell.Options.UseFont = true;
             this.HOTENKH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.HOTENKH.AppearanceHeader.Options.UseFont = true;
             this.HOTENKH.Caption = "Khách hàng";
@@ -1152,6 +1170,8 @@
             // 
             // NGAY
             // 
+            this.NGAY.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.NGAY.AppearanceCell.Options.UseFont = true;
             this.NGAY.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.NGAY.AppearanceHeader.Options.UseFont = true;
             this.NGAY.Caption = "Ngày lập";

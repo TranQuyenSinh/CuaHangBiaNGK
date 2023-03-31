@@ -48,10 +48,6 @@ namespace QL_BIA_NGK
             LoadData();
         }
 
-        private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
 
         private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

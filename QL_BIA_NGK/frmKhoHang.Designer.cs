@@ -241,6 +241,8 @@
             // 
             // IDHH
             // 
+            this.IDHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDHH.AppearanceCell.Options.UseFont = true;
             this.IDHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.IDHH.AppearanceHeader.Options.UseFont = true;
             this.IDHH.Caption = "Mã hàng hóa";
@@ -256,6 +258,8 @@
             // 
             // TENHH
             // 
+            this.TENHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TENHH.AppearanceCell.Options.UseFont = true;
             this.TENHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TENHH.AppearanceHeader.Options.UseFont = true;
             this.TENHH.Caption = "Tên hàng hóa";
@@ -271,6 +275,8 @@
             // 
             // TENLOAI
             // 
+            this.TENLOAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TENLOAI.AppearanceCell.Options.UseFont = true;
             this.TENLOAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TENLOAI.AppearanceHeader.Options.UseFont = true;
             this.TENLOAI.Caption = "Loại hàng hóa";
@@ -286,7 +292,7 @@
             // 
             // TONKHO
             // 
-            this.TONKHO.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.TONKHO.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.TONKHO.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
             this.TONKHO.AppearanceCell.Options.UseFont = true;
             this.TONKHO.AppearanceCell.Options.UseForeColor = true;
@@ -308,12 +314,16 @@
             // 
             // IDLOAI
             // 
+            this.IDLOAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDLOAI.AppearanceCell.Options.UseFont = true;
             this.IDLOAI.Caption = "IDLOAI";
             this.IDLOAI.FieldName = "IDLOAI";
             this.IDLOAI.Name = "IDLOAI";
             // 
             // DINHMUCTON
             // 
+            this.DINHMUCTON.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DINHMUCTON.AppearanceCell.Options.UseFont = true;
             this.DINHMUCTON.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.DINHMUCTON.AppearanceHeader.Options.UseFont = true;
             this.DINHMUCTON.Caption = "Định mức tồn";
@@ -329,6 +339,8 @@
             // 
             // QUYDOI
             // 
+            this.QUYDOI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.QUYDOI.AppearanceCell.Options.UseFont = true;
             this.QUYDOI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.QUYDOI.AppearanceHeader.Options.UseFont = true;
             this.QUYDOI.Caption = "Quy đổi";
@@ -343,6 +355,8 @@
             // 
             // IDGIA
             // 
+            this.IDGIA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDGIA.AppearanceCell.Options.UseFont = true;
             this.IDGIA.AppearanceCell.Options.UseTextOptions = true;
             this.IDGIA.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.IDGIA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);

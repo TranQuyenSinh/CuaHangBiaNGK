@@ -53,11 +53,12 @@
             this.TENHH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MOTA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TENLOAI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DONVITINH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.IDGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GIANHAP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GIABANLE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GIABANSI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TONKHO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.QUYDOI = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -266,28 +267,40 @@
             this.gvDanhSach.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gvDanhSach.Appearance.FocusedRow.Options.UseFont = true;
             this.gvDanhSach.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gvDanhSach.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gvDanhSach.Appearance.GroupRow.ForeColor = System.Drawing.Color.Red;
+            this.gvDanhSach.Appearance.GroupRow.Options.UseFont = true;
+            this.gvDanhSach.Appearance.GroupRow.Options.UseForeColor = true;
             this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.IDHH,
             this.TENHH,
             this.MOTA,
             this.TENLOAI,
-            this.DONVITINH,
+            this.IDGIA,
             this.GIANHAP,
             this.GIABANLE,
             this.GIABANSI,
-            this.TONKHO});
+            this.TONKHO,
+            this.QUYDOI});
             this.gvDanhSach.GridControl = this.gcDanhSach;
+            this.gvDanhSach.GroupCount = 1;
             this.gvDanhSach.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.TENHH, "Có {0} sản phẩm")});
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.OptionsView.ShowAutoFilterRow = true;
             this.gvDanhSach.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gvDanhSach.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TENLOAI, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gvDanhSach.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gvDanhSach_CustomRowCellEdit);
+            this.gvDanhSach.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvDanhSach_CellValueChanging);
             this.gvDanhSach.CustomRowFilter += new DevExpress.XtraGrid.Views.Base.RowFilterEventHandler(this.gvDanhSach_CustomRowFilter);
             this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
             this.gvDanhSach.RowCountChanged += new System.EventHandler(this.gvDanhSach_RowCountChanged);
             // 
             // IDHH
             // 
+            this.IDHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDHH.AppearanceCell.Options.UseFont = true;
             this.IDHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.IDHH.AppearanceHeader.Options.UseFont = true;
             this.IDHH.Caption = "Mã hàng hóa";
@@ -302,6 +315,8 @@
             // 
             // TENHH
             // 
+            this.TENHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TENHH.AppearanceCell.Options.UseFont = true;
             this.TENHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TENHH.AppearanceHeader.Options.UseFont = true;
             this.TENHH.Caption = "Tên hàng hóa";
@@ -316,6 +331,8 @@
             // 
             // MOTA
             // 
+            this.MOTA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.MOTA.AppearanceCell.Options.UseFont = true;
             this.MOTA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.MOTA.AppearanceHeader.Options.UseFont = true;
             this.MOTA.Caption = "Mô tả";
@@ -325,11 +342,13 @@
             this.MOTA.Name = "MOTA";
             this.MOTA.OptionsFilter.AllowFilter = false;
             this.MOTA.Visible = true;
-            this.MOTA.VisibleIndex = 3;
+            this.MOTA.VisibleIndex = 2;
             this.MOTA.Width = 200;
             // 
             // TENLOAI
             // 
+            this.TENLOAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TENLOAI.AppearanceCell.Options.UseFont = true;
             this.TENLOAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TENLOAI.AppearanceHeader.Options.UseFont = true;
             this.TENLOAI.Caption = "Loại hàng hóa";
@@ -342,21 +361,25 @@
             this.TENLOAI.VisibleIndex = 2;
             this.TENLOAI.Width = 100;
             // 
-            // DONVITINH
+            // IDGIA
             // 
-            this.DONVITINH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.DONVITINH.AppearanceHeader.Options.UseFont = true;
-            this.DONVITINH.Caption = "Đơn vị tính";
-            this.DONVITINH.FieldName = "DONVITINH";
-            this.DONVITINH.MaxWidth = 75;
-            this.DONVITINH.MinWidth = 75;
-            this.DONVITINH.Name = "DONVITINH";
-            this.DONVITINH.OptionsFilter.AllowFilter = false;
-            this.DONVITINH.Visible = true;
-            this.DONVITINH.VisibleIndex = 4;
+            this.IDGIA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDGIA.AppearanceCell.Options.UseFont = true;
+            this.IDGIA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.IDGIA.AppearanceHeader.Options.UseFont = true;
+            this.IDGIA.Caption = "Đơn vị tính";
+            this.IDGIA.FieldName = "IDGIA";
+            this.IDGIA.MaxWidth = 75;
+            this.IDGIA.MinWidth = 75;
+            this.IDGIA.Name = "IDGIA";
+            this.IDGIA.OptionsFilter.AllowFilter = false;
+            this.IDGIA.Visible = true;
+            this.IDGIA.VisibleIndex = 3;
             // 
             // GIANHAP
             // 
+            this.GIANHAP.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.GIANHAP.AppearanceCell.Options.UseFont = true;
             this.GIANHAP.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.GIANHAP.AppearanceHeader.Options.UseFont = true;
             this.GIANHAP.Caption = "Giá nhập";
@@ -373,6 +396,8 @@
             // 
             // GIABANLE
             // 
+            this.GIABANLE.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.GIABANLE.AppearanceCell.Options.UseFont = true;
             this.GIABANLE.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.GIABANLE.AppearanceHeader.Options.UseFont = true;
             this.GIABANLE.Caption = "Giá bán lẻ";
@@ -389,6 +414,8 @@
             // 
             // GIABANSI
             // 
+            this.GIABANSI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.GIABANSI.AppearanceCell.Options.UseFont = true;
             this.GIABANSI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.GIABANSI.AppearanceHeader.Options.UseFont = true;
             this.GIABANSI.Caption = "Giá bán sỉ";
@@ -405,6 +432,8 @@
             // 
             // TONKHO
             // 
+            this.TONKHO.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TONKHO.AppearanceCell.Options.UseFont = true;
             this.TONKHO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TONKHO.AppearanceHeader.Options.UseFont = true;
             this.TONKHO.Caption = "Tồn kho";
@@ -417,6 +446,20 @@
             this.TONKHO.OptionsFilter.AllowFilter = false;
             this.TONKHO.Visible = true;
             this.TONKHO.VisibleIndex = 8;
+            // 
+            // QUYDOI
+            // 
+            this.QUYDOI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.QUYDOI.AppearanceCell.Options.UseFont = true;
+            this.QUYDOI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.QUYDOI.AppearanceHeader.Options.UseFont = true;
+            this.QUYDOI.Caption = "Quy đổi";
+            this.QUYDOI.FieldName = "QUYDOI";
+            this.QUYDOI.MaxWidth = 75;
+            this.QUYDOI.MinWidth = 75;
+            this.QUYDOI.Name = "QUYDOI";
+            this.QUYDOI.Visible = true;
+            this.QUYDOI.VisibleIndex = 4;
             // 
             // frmHangHoa
             // 
@@ -465,12 +508,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn TENHH;
         private DevExpress.XtraGrid.Columns.GridColumn MOTA;
         private DevExpress.XtraGrid.Columns.GridColumn TENLOAI;
-        private DevExpress.XtraGrid.Columns.GridColumn DONVITINH;
+        private DevExpress.XtraGrid.Columns.GridColumn IDGIA;
         private DevExpress.XtraGrid.Columns.GridColumn GIANHAP;
         private DevExpress.XtraGrid.Columns.GridColumn GIABANLE;
         private DevExpress.XtraGrid.Columns.GridColumn GIABANSI;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn TONKHO;
+        private DevExpress.XtraGrid.Columns.GridColumn QUYDOI;
     }
 }

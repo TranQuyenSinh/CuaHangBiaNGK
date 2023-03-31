@@ -185,6 +185,10 @@ namespace QL_BIA_NGK
             {
                 dtTuNgay.Focus();
             }
+            else if (e.Control && e.KeyCode == Keys.P)
+            {
+                btnIn_ItemClick(null, null);
+            }
         }
         private void gvDanhSach_KeyDown(object sender, KeyEventArgs e)
         {

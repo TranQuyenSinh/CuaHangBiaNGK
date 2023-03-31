@@ -18,7 +18,7 @@ namespace QL_BIA_NGK
         {
             InitializeComponent();
         }
-        void OpenForm(Type formType)
+        public void OpenForm(Type formType)
         {
             foreach (Form frm in MdiChildren)
             {

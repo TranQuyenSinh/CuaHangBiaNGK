@@ -46,18 +46,18 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDNCC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HOTEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SODIENTHOAI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.EMAIL = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -231,6 +231,21 @@
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.close;
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
             // gvDanhSach
             // 
             this.gvDanhSach.Appearance.FocusedCell.BackColor = System.Drawing.Color.Gold;
@@ -262,6 +277,8 @@
             // 
             // IDNCC
             // 
+            this.IDNCC.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDNCC.AppearanceCell.Options.UseFont = true;
             this.IDNCC.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.IDNCC.AppearanceHeader.Options.UseFont = true;
             this.IDNCC.Caption = "Mã NC";
@@ -275,6 +292,8 @@
             // 
             // HOTEN
             // 
+            this.HOTEN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.HOTEN.AppearanceCell.Options.UseFont = true;
             this.HOTEN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.HOTEN.AppearanceHeader.Options.UseFont = true;
             this.HOTEN.Caption = "Họ tên";
@@ -289,6 +308,8 @@
             // 
             // DIACHI
             // 
+            this.DIACHI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DIACHI.AppearanceCell.Options.UseFont = true;
             this.DIACHI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.DIACHI.AppearanceHeader.Options.UseFont = true;
             this.DIACHI.Caption = "Địa chỉ";
@@ -303,6 +324,8 @@
             // 
             // SODIENTHOAI
             // 
+            this.SODIENTHOAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.SODIENTHOAI.AppearanceCell.Options.UseFont = true;
             this.SODIENTHOAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.SODIENTHOAI.AppearanceHeader.Options.UseFont = true;
             this.SODIENTHOAI.Caption = "Điện thoại";
@@ -317,6 +340,8 @@
             // 
             // EMAIL
             // 
+            this.EMAIL.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.EMAIL.AppearanceCell.Options.UseFont = true;
             this.EMAIL.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.EMAIL.AppearanceHeader.Options.UseFont = true;
             this.EMAIL.Caption = "Email";
@@ -328,21 +353,6 @@
             this.EMAIL.Visible = true;
             this.EMAIL.VisibleIndex = 4;
             this.EMAIL.Width = 150;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
-            // 
-            // xóaToolStripMenuItem
-            // 
-            this.xóaToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.close;
-            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.xóaToolStripMenuItem.Text = "Xóa";
-            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // frmNhaCungCap
             // 
@@ -361,8 +371,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmNhaCungCap_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

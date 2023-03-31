@@ -17,5 +17,10 @@ namespace QL_BIA_NGK
         {
             InitializeComponent();
         }
+
+        private void frmLoiNhuan_Load(object sender, EventArgs e)
+        {
+            gvDanhSach.Columns["TENLOAI"].Group();
+        }
     }
 }

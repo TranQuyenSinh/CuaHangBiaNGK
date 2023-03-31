@@ -12,7 +12,7 @@ namespace BusinessLayer
         Entities db = Entities.CreateEntities();
         public tb_HANGHOA getItemHangHoa(string idHH)
         {
-            return db.tb_HANGHOA.FirstOrDefault(x => x.DELETED == false && x.IDHH == idHH);
+            return db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == idHH);
         }
         public List<tb_HANGHOA> getListHangHoa()
         {
@@ -36,7 +36,7 @@ namespace BusinessLayer
         {
             HANGHOAFULL_DTO dto = null;
             List<tb_GIA> listGia = db.tb_GIA.Where(x => x.IDHH == idhh).OrderBy(x => x.QUYDOI).ToList();
-            var hanghoa = db.tb_HANGHOA.FirstOrDefault(x=>x.IDHH == idhh);
+            var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == idhh);
             if (hanghoa == null)
                 return null;
             var loai = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == hanghoa.IDLOAI);
@@ -119,8 +119,37 @@ namespace BusinessLayer
             }
             return listDTO;
         }
-
-
+        public List<HANGHOA_DTO> GetListHangHoaDTOSapHet(bool isReverseQuyDoi)
+        {
+            var list_tb = db.tb_HANGHOA.Where(x => x.TONKHO <= x.DINHMUCTON && x.DELETED == false).ToList();
+            List<HANGHOA_DTO> list_dto = new List<HANGHOA_DTO>();
+            foreach (tb_HANGHOA hanghoa in list_tb)
+            {
+                tb_GIA gia;
+                if (isReverseQuyDoi)
+                {
+                    gia = db.tb_GIA.Where(x => x.IDHH == hanghoa.IDHH).OrderByDescending(x => x.QUYDOI).FirstOrDefault();
+                }
+                else
+                    gia = db.tb_GIA.Where(x => x.IDHH == hanghoa.IDHH).OrderBy(x => x.QUYDOI).FirstOrDefault();
+                HANGHOA_DTO dto = new HANGHOA_DTO();
+                dto.IDHH = hanghoa.IDHH;
+                dto.TENHH = hanghoa.TENHH;
+                dto.MOTA = hanghoa.MOTA;
+                dto.IDLOAI = hanghoa.IDLOAI;
+                dto.TENLOAI = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == hanghoa.IDLOAI).TENLOAI; ;
+                dto.DINHMUCTON = hanghoa.DINHMUCTON / gia.QUYDOI;
+                dto.TONKHO = hanghoa.TONKHO / gia.QUYDOI;
+                dto.IDGIA = gia.IDGIA;
+                dto.DONVITINH = gia.DONVITINH;
+                dto.QUYDOI = gia.QUYDOI;
+                dto.GIANHAP = gia.GIANHAP;
+                dto.GIABANLE = gia.GIABANLE;
+                dto.GIABANSI = gia.GIABANSI;
+                list_dto.Add(dto);
+            }
+            return list_dto;
+        }   
         public void AddHangHoa(tb_HANGHOA hanghoa)
         {
             try

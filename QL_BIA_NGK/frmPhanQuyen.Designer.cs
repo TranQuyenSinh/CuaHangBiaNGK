@@ -375,6 +375,8 @@
             // 
             // TENCHUCNANG
             // 
+            this.TENCHUCNANG.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TENCHUCNANG.AppearanceCell.Options.UseFont = true;
             this.TENCHUCNANG.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TENCHUCNANG.AppearanceHeader.Options.UseFont = true;
             this.TENCHUCNANG.Caption = "Quyền hạn";
@@ -390,6 +392,8 @@
             // SHOW
             // 
             this.SHOW.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.SHOW.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.SHOW.AppearanceCell.Options.UseFont = true;
             this.SHOW.AppearanceCell.Options.UseTextOptions = true;
             this.SHOW.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.SHOW.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -407,6 +411,8 @@
             // 
             // ADD
             // 
+            this.ADD.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ADD.AppearanceCell.Options.UseFont = true;
             this.ADD.AppearanceCell.Options.UseTextOptions = true;
             this.ADD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ADD.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -424,6 +430,8 @@
             // 
             // DELETE
             // 
+            this.DELETE.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DELETE.AppearanceCell.Options.UseFont = true;
             this.DELETE.AppearanceCell.Options.UseTextOptions = true;
             this.DELETE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.DELETE.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -441,6 +449,8 @@
             // 
             // UPDATE
             // 
+            this.UPDATE.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.UPDATE.AppearanceCell.Options.UseFont = true;
             this.UPDATE.AppearanceCell.Options.UseTextOptions = true;
             this.UPDATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.UPDATE.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -458,6 +468,8 @@
             // 
             // PRINT
             // 
+            this.PRINT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.PRINT.AppearanceCell.Options.UseFont = true;
             this.PRINT.AppearanceCell.Options.UseTextOptions = true;
             this.PRINT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.PRINT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -475,6 +487,8 @@
             // 
             // ID
             // 
+            this.ID.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ID.AppearanceCell.Options.UseFont = true;
             this.ID.Caption = "ID";
             this.ID.FieldName = "ID";
             this.ID.MinWidth = 19;
@@ -483,6 +497,8 @@
             // 
             // Full
             // 
+            this.Full.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.Full.AppearanceCell.Options.UseFont = true;
             this.Full.AppearanceCell.Options.UseTextOptions = true;
             this.Full.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Full.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);

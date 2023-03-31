@@ -34,7 +34,6 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
-            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.btnDong = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.lblTong = new DevExpress.XtraBars.BarStaticItem();
@@ -90,7 +89,6 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.btnRefresh,
-            this.btnIn,
             this.btnDong,
             this.lblTong});
             this.barManager1.MainMenu = this.bar1;
@@ -105,7 +103,6 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnIn),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDong)});
             this.bar1.OptionsBar.MultiLine = true;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -120,16 +117,6 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
-            // 
-            // btnIn
-            // 
-            this.btnIn.Caption = "In";
-            this.btnIn.Id = 5;
-            this.btnIn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIn.ImageOptions.Image")));
-            this.btnIn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnIn.ImageOptions.LargeImage")));
-            this.btnIn.Name = "btnIn";
-            this.btnIn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick);
             // 
             // btnDong
             // 
@@ -330,6 +317,8 @@
             // 
             // TIME
             // 
+            this.TIME.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TIME.AppearanceCell.Options.UseFont = true;
             this.TIME.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TIME.AppearanceHeader.Options.UseFont = true;
             this.TIME.Caption = "Thời gian";
@@ -346,6 +335,8 @@
             // 
             // HOTEN
             // 
+            this.HOTEN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.HOTEN.AppearanceCell.Options.UseFont = true;
             this.HOTEN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.HOTEN.AppearanceHeader.Options.UseFont = true;
             this.HOTEN.Caption = "Họ tên";
@@ -360,6 +351,8 @@
             // 
             // MESSAGE
             // 
+            this.MESSAGE.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.MESSAGE.AppearanceCell.Options.UseFont = true;
             this.MESSAGE.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.MESSAGE.AppearanceHeader.Options.UseFont = true;
             this.MESSAGE.Caption = "Hoạt động";
@@ -410,7 +403,6 @@
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem btnRefresh;
-        private DevExpress.XtraBars.BarButtonItem btnIn;
         private DevExpress.XtraBars.BarButtonItem btnDong;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarStaticItem lblTong;

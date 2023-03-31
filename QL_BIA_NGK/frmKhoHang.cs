@@ -102,6 +102,10 @@ namespace QL_BIA_NGK
             {
                 this.Close();
             }
+            else if (e.Control && e.KeyCode == Keys.P)
+            {
+                btnIn_ItemClick(null, null);
+            }
         }
 
         private void gvDanhSach_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)

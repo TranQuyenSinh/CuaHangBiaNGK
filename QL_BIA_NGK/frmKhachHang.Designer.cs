@@ -46,6 +46,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDKH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HOTEN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,12 +57,10 @@
             this.EMAIL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GIOITINH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CUSTOMGIOITINH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -234,6 +234,21 @@
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.close;
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
             // gvDanhSach
             // 
             this.gvDanhSach.Appearance.FocusedCell.BackColor = System.Drawing.Color.Gold;
@@ -268,6 +283,8 @@
             // 
             // IDKH
             // 
+            this.IDKH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDKH.AppearanceCell.Options.UseFont = true;
             this.IDKH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.IDKH.AppearanceHeader.Options.UseFont = true;
             this.IDKH.Caption = "Mã KH";
@@ -282,6 +299,8 @@
             // 
             // HOTEN
             // 
+            this.HOTEN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.HOTEN.AppearanceCell.Options.UseFont = true;
             this.HOTEN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.HOTEN.AppearanceHeader.Options.UseFont = true;
             this.HOTEN.Caption = "Họ tên";
@@ -296,6 +315,8 @@
             // 
             // DIACHI
             // 
+            this.DIACHI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DIACHI.AppearanceCell.Options.UseFont = true;
             this.DIACHI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.DIACHI.AppearanceHeader.Options.UseFont = true;
             this.DIACHI.Caption = "Địa chỉ";
@@ -310,6 +331,8 @@
             // 
             // SODIENTHOAI
             // 
+            this.SODIENTHOAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.SODIENTHOAI.AppearanceCell.Options.UseFont = true;
             this.SODIENTHOAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.SODIENTHOAI.AppearanceHeader.Options.UseFont = true;
             this.SODIENTHOAI.Caption = "Điện thoại";
@@ -324,6 +347,8 @@
             // 
             // NGAYSINH
             // 
+            this.NGAYSINH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.NGAYSINH.AppearanceCell.Options.UseFont = true;
             this.NGAYSINH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.NGAYSINH.AppearanceHeader.Options.UseFont = true;
             this.NGAYSINH.Caption = "Ngày sinh";
@@ -338,6 +363,8 @@
             // 
             // EMAIL
             // 
+            this.EMAIL.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.EMAIL.AppearanceCell.Options.UseFont = true;
             this.EMAIL.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.EMAIL.AppearanceHeader.Options.UseFont = true;
             this.EMAIL.Caption = "Email";
@@ -352,6 +379,8 @@
             // 
             // GIOITINH
             // 
+            this.GIOITINH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.GIOITINH.AppearanceCell.Options.UseFont = true;
             this.GIOITINH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.GIOITINH.AppearanceHeader.Options.UseFont = true;
             this.GIOITINH.Caption = "Giới tính";
@@ -365,6 +394,8 @@
             // 
             // CUSTOMGIOITINH
             // 
+            this.CUSTOMGIOITINH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.CUSTOMGIOITINH.AppearanceCell.Options.UseFont = true;
             this.CUSTOMGIOITINH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.CUSTOMGIOITINH.AppearanceHeader.Options.UseFont = true;
             this.CUSTOMGIOITINH.Caption = "Giới tính";
@@ -377,21 +408,6 @@
             this.CUSTOMGIOITINH.UnboundExpression = "Iif([GIOITINH] = True, \'Nam\', \'Nữ\')";
             this.CUSTOMGIOITINH.Visible = true;
             this.CUSTOMGIOITINH.VisibleIndex = 2;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
-            // 
-            // xóaToolStripMenuItem
-            // 
-            this.xóaToolStripMenuItem.Image = global::QL_BIA_NGK.Properties.Resources.close;
-            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.xóaToolStripMenuItem.Text = "Xóa";
-            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // frmKhachHang
             // 
@@ -410,8 +426,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmKhachHang_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

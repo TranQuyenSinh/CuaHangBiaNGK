@@ -82,6 +82,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btnLuuPN = new System.Windows.Forms.Button();
             this.btnThemSP = new System.Windows.Forms.Button();
             this.btnSuaSP = new System.Windows.Forms.Button();
             this.btnXoaSP = new System.Windows.Forms.Button();
@@ -100,7 +101,6 @@
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLuuPN = new System.Windows.Forms.Button();
             this.txtTongTienSauPhi = new DevExpress.XtraEditors.TextEdit();
             this.txtPhiVanChuyen = new DevExpress.XtraEditors.TextEdit();
             this.txtTongCong = new DevExpress.XtraEditors.TextEdit();
@@ -381,6 +381,8 @@
             // 
             // IDPN
             // 
+            this.IDPN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDPN.AppearanceCell.Options.UseFont = true;
             this.IDPN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.IDPN.AppearanceHeader.Options.UseFont = true;
             this.IDPN.Caption = "Mã phiếu";
@@ -394,6 +396,8 @@
             // 
             // HOTENNCC
             // 
+            this.HOTENNCC.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.HOTENNCC.AppearanceCell.Options.UseFont = true;
             this.HOTENNCC.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.HOTENNCC.AppearanceHeader.Options.UseFont = true;
             this.HOTENNCC.Caption = "Nhà cung cấp";
@@ -406,6 +410,8 @@
             // 
             // NGAY
             // 
+            this.NGAY.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.NGAY.AppearanceCell.Options.UseFont = true;
             this.NGAY.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.NGAY.AppearanceHeader.Options.UseFont = true;
             this.NGAY.Caption = "Ngày lập";
@@ -776,6 +782,21 @@
             this.splitContainer3.SplitterDistance = 65;
             this.splitContainer3.TabIndex = 0;
             // 
+            // btnLuuPN
+            // 
+            this.btnLuuPN.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLuuPN.ForeColor = System.Drawing.Color.Blue;
+            this.btnLuuPN.Image = global::QL_BIA_NGK.Properties.Resources.diskette;
+            this.btnLuuPN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuuPN.Location = new System.Drawing.Point(677, 14);
+            this.btnLuuPN.Name = "btnLuuPN";
+            this.btnLuuPN.Size = new System.Drawing.Size(126, 39);
+            this.btnLuuPN.TabIndex = 1;
+            this.btnLuuPN.Text = "Lưu phiếu";
+            this.btnLuuPN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuuPN.UseVisualStyleBackColor = true;
+            this.btnLuuPN.Click += new System.EventHandler(this.btnLuuPN_Click);
+            // 
             // btnThemSP
             // 
             this.btnThemSP.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -871,6 +892,8 @@
             // 
             // IDHH
             // 
+            this.IDHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDHH.AppearanceCell.Options.UseFont = true;
             this.IDHH.AppearanceCell.Options.UseTextOptions = true;
             this.IDHH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.IDHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -886,6 +909,8 @@
             // 
             // TENHH
             // 
+            this.TENHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TENHH.AppearanceCell.Options.UseFont = true;
             this.TENHH.AppearanceCell.Options.UseTextOptions = true;
             this.TENHH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.TENHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -901,6 +926,8 @@
             // 
             // DONVITNH
             // 
+            this.DONVITNH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DONVITNH.AppearanceCell.Options.UseFont = true;
             this.DONVITNH.AppearanceCell.Options.UseTextOptions = true;
             this.DONVITNH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.DONVITNH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -916,6 +943,8 @@
             // 
             // GHICHU
             // 
+            this.GHICHU.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.GHICHU.AppearanceCell.Options.UseFont = true;
             this.GHICHU.AppearanceCell.Options.UseTextOptions = true;
             this.GHICHU.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.GHICHU.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -931,7 +960,9 @@
             // 
             // SOLUONG
             // 
+            this.SOLUONG.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
             this.SOLUONG.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.SOLUONG.AppearanceCell.Options.UseFont = true;
             this.SOLUONG.AppearanceCell.Options.UseForeColor = true;
             this.SOLUONG.AppearanceCell.Options.UseTextOptions = true;
             this.SOLUONG.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
@@ -947,7 +978,9 @@
             // 
             // DONGIA
             // 
+            this.DONGIA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
             this.DONGIA.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.DONGIA.AppearanceCell.Options.UseFont = true;
             this.DONGIA.AppearanceCell.Options.UseForeColor = true;
             this.DONGIA.AppearanceCell.Options.UseTextOptions = true;
             this.DONGIA.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
@@ -967,7 +1000,9 @@
             // 
             // THANHTIEN
             // 
+            this.THANHTIEN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
             this.THANHTIEN.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.THANHTIEN.AppearanceCell.Options.UseFont = true;
             this.THANHTIEN.AppearanceCell.Options.UseForeColor = true;
             this.THANHTIEN.AppearanceCell.Options.UseTextOptions = true;
             this.THANHTIEN.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
@@ -1041,21 +1076,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1339, 53);
             this.panel1.TabIndex = 0;
-            // 
-            // btnLuuPN
-            // 
-            this.btnLuuPN.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLuuPN.ForeColor = System.Drawing.Color.Blue;
-            this.btnLuuPN.Image = global::QL_BIA_NGK.Properties.Resources.diskette;
-            this.btnLuuPN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuuPN.Location = new System.Drawing.Point(677, 14);
-            this.btnLuuPN.Name = "btnLuuPN";
-            this.btnLuuPN.Size = new System.Drawing.Size(126, 39);
-            this.btnLuuPN.TabIndex = 1;
-            this.btnLuuPN.Text = "Lưu phiếu";
-            this.btnLuuPN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuuPN.UseVisualStyleBackColor = true;
-            this.btnLuuPN.Click += new System.EventHandler(this.btnLuuPN_Click);
             // 
             // txtTongTienSauPhi
             // 

@@ -283,6 +283,8 @@
             // 
             // IDNV
             // 
+            this.IDNV.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IDNV.AppearanceCell.Options.UseFont = true;
             this.IDNV.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.IDNV.AppearanceHeader.Options.UseFont = true;
             this.IDNV.Caption = "Mã NV";
@@ -297,6 +299,8 @@
             // 
             // GIOITINH
             // 
+            this.GIOITINH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.GIOITINH.AppearanceCell.Options.UseFont = true;
             this.GIOITINH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.GIOITINH.AppearanceHeader.Options.UseFont = true;
             this.GIOITINH.Caption = "Giới tính";
@@ -307,6 +311,8 @@
             // 
             // HOTEN
             // 
+            this.HOTEN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.HOTEN.AppearanceCell.Options.UseFont = true;
             this.HOTEN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.HOTEN.AppearanceHeader.Options.UseFont = true;
             this.HOTEN.Caption = "Họ tên";
@@ -321,6 +327,8 @@
             // 
             // DIACHI
             // 
+            this.DIACHI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DIACHI.AppearanceCell.Options.UseFont = true;
             this.DIACHI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.DIACHI.AppearanceHeader.Options.UseFont = true;
             this.DIACHI.Caption = "Địa chỉ";
@@ -335,6 +343,8 @@
             // 
             // SODIENTHOAI
             // 
+            this.SODIENTHOAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.SODIENTHOAI.AppearanceCell.Options.UseFont = true;
             this.SODIENTHOAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.SODIENTHOAI.AppearanceHeader.Options.UseFont = true;
             this.SODIENTHOAI.Caption = "Điện thoại";
@@ -349,6 +359,8 @@
             // 
             // EMAIL
             // 
+            this.EMAIL.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.EMAIL.AppearanceCell.Options.UseFont = true;
             this.EMAIL.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.EMAIL.AppearanceHeader.Options.UseFont = true;
             this.EMAIL.Caption = "Email";
@@ -363,6 +375,8 @@
             // 
             // NGAYSINH
             // 
+            this.NGAYSINH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.NGAYSINH.AppearanceCell.Options.UseFont = true;
             this.NGAYSINH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.NGAYSINH.AppearanceHeader.Options.UseFont = true;
             this.NGAYSINH.Caption = "Ngày sinh";
@@ -377,6 +391,8 @@
             // 
             // GIOITINHSTR
             // 
+            this.GIOITINHSTR.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.GIOITINHSTR.AppearanceCell.Options.UseFont = true;
             this.GIOITINHSTR.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.GIOITINHSTR.AppearanceHeader.Options.UseFont = true;
             this.GIOITINHSTR.Caption = "Giới tính";
