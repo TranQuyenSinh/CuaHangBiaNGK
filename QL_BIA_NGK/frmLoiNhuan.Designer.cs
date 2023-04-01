@@ -50,6 +50,7 @@
             this.dtDenNgay = new DevExpress.XtraEditors.DateEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.dtTuNgay = new DevExpress.XtraEditors.DateEdit();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
             this.gvDanhSachKH = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -76,6 +77,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtDenNgay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachKH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachSP)).BeginInit();
@@ -222,7 +226,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.gcDanhSach);
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1135, 640);
             this.splitContainer1.SplitterDistance = 59;
             this.splitContainer1.TabIndex = 11;
@@ -316,6 +320,21 @@
             this.dtTuNgay.Size = new System.Drawing.Size(162, 22);
             this.dtTuNgay.TabIndex = 0;
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.gcDanhSach);
+            this.splitContainer2.Size = new System.Drawing.Size(1135, 577);
+            this.splitContainer2.SplitterDistance = 516;
+            this.splitContainer2.TabIndex = 0;
+            // 
             // gcDanhSach
             // 
             this.gcDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -323,8 +342,8 @@
             this.gcDanhSach.MainView = this.gvDanhSachKH;
             this.gcDanhSach.MenuManager = this.barManager1;
             this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(1135, 577);
-            this.gcDanhSach.TabIndex = 7;
+            this.gcDanhSach.Size = new System.Drawing.Size(1135, 516);
+            this.gcDanhSach.TabIndex = 8;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSachKH,
             this.gvDanhSachSP});
@@ -413,12 +432,13 @@
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Đơn vị tính";
             this.gridColumn5.FieldName = "DONVITINH";
-            this.gridColumn5.MaxWidth = 75;
-            this.gridColumn5.MinWidth = 75;
+            this.gridColumn5.MaxWidth = 100;
+            this.gridColumn5.MinWidth = 100;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 2;
+            this.gridColumn5.Width = 100;
             // 
             // gridColumn6
             // 
@@ -468,7 +488,7 @@
             this.TIENLAI.AppearanceCell.Options.UseForeColor = true;
             this.TIENLAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.TIENLAI.AppearanceHeader.Options.UseFont = true;
-            this.TIENLAI.Caption = "Tiền lời";
+            this.TIENLAI.Caption = "Lợi nhuận";
             this.TIENLAI.DisplayFormat.FormatString = "n0";
             this.TIENLAI.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TIENLAI.FieldName = "LOINHUAN";
@@ -536,7 +556,6 @@
             this.gvDanhSachSP.Name = "gvDanhSachSP";
             this.gvDanhSachSP.OptionsView.AllowCellMerge = true;
             this.gvDanhSachSP.OptionsView.ShowAutoFilterRow = true;
-            this.gvDanhSachSP.RowCountChanged += new System.EventHandler(this.gvDanhSach_RowCountChanged);
             // 
             // TENLOAI
             // 
@@ -595,8 +614,8 @@
             this.DONVITINH.AppearanceHeader.Options.UseFont = true;
             this.DONVITINH.Caption = "Đơn vị tính";
             this.DONVITINH.FieldName = "DONVITINH";
-            this.DONVITINH.MaxWidth = 75;
-            this.DONVITINH.MinWidth = 75;
+            this.DONVITINH.MaxWidth = 100;
+            this.DONVITINH.MinWidth = 100;
             this.DONVITINH.Name = "DONVITINH";
             this.DONVITINH.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.DONVITINH.Visible = true;
@@ -687,6 +706,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtDenNgay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachKH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachSP)).EndInit();
@@ -714,18 +736,11 @@
         private DevExpress.XtraEditors.DateEdit dtDenNgay;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.DateEdit dtTuNgay;
-        private DevExpress.XtraGrid.GridControl gcDanhSach;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSachSP;
-        private DevExpress.XtraGrid.Columns.GridColumn TENHH;
-        private DevExpress.XtraGrid.Columns.GridColumn SLBAN;
-        private DevExpress.XtraGrid.Columns.GridColumn TENLOAI;
-        private DevExpress.XtraGrid.Columns.GridColumn DONVITINH;
-        private DevExpress.XtraGrid.Columns.GridColumn GIANHAP;
-        private DevExpress.XtraGrid.Columns.GridColumn DONGIA;
-        private DevExpress.XtraGrid.Columns.GridColumn LOINHUAN;
         private System.Windows.Forms.RadioButton radSP;
         private System.Windows.Forms.RadioButton radKH;
         private DevExpress.XtraBars.BarButtonItem btnRefresh;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private DevExpress.XtraGrid.GridControl gcDanhSach;
         private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSachKH;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -734,5 +749,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn TIENLAI;
         private DevExpress.XtraGrid.Columns.GridColumn HOTEN;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSachSP;
+        private DevExpress.XtraGrid.Columns.GridColumn TENLOAI;
+        private DevExpress.XtraGrid.Columns.GridColumn TENHH;
+        private DevExpress.XtraGrid.Columns.GridColumn SLBAN;
+        private DevExpress.XtraGrid.Columns.GridColumn DONVITINH;
+        private DevExpress.XtraGrid.Columns.GridColumn GIANHAP;
+        private DevExpress.XtraGrid.Columns.GridColumn DONGIA;
+        private DevExpress.XtraGrid.Columns.GridColumn LOINHUAN;
     }
 }

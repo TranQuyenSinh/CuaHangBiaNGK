@@ -37,11 +37,9 @@ namespace QL_BIA_NGK
         }
         void ShowHideButton()
         {
-            /*// permission
-            btnThem.Enabled = Func.checkPermission("HANGHOA", "ADD");
-            btnSua.Enabled = Func.checkPermission("HANGHOA", "UPDATE");
-            btnXoa.Enabled = Func.checkPermission("HANGHOA", "DELETE");
-            btnIn.Enabled = Func.checkPermission("HANGHOA", "PRINT");*/
+            // permission
+            btnIn.Enabled = Func.checkPermission("HANGHOA", "PRINT");
+            btnTaoPN.Enabled = btnTaoPNAll.Enabled = Func.checkPermission("NHAPHANG", "ADD");
         }
         void LoadData()
         {
