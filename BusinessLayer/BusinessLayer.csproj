@@ -54,6 +54,8 @@
     <Compile Include="DTO\HANGHOAFULL_DTO.cs" />
     <Compile Include="DTO\HANGHOA_DTO.cs" />
     <Compile Include="DTO\LOG_DTO.cs" />
+    <Compile Include="DTO\LOINHUAN_KH_DTO.cs" />
+    <Compile Include="DTO\LOINHUAN_SP_DTO.cs" />
     <Compile Include="DTO\PHIEUBAN_DTO.cs" />
     <Compile Include="DTO\PHIEUNHAP_DTO.cs" />
     <Compile Include="DTO\QUYEN_DTO.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="KHACHHANG.cs" />
     <Compile Include="LOAIHANGHOA.cs" />
     <Compile Include="LOG.cs" />
+    <Compile Include="LOINHUAN.cs" />
     <Compile Include="NHACUNGCAP.cs" />
     <Compile Include="NHANVIEN.cs" />
     <Compile Include="NHOM.cs" />

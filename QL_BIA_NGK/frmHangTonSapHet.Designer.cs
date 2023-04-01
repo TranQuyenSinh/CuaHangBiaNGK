@@ -257,20 +257,30 @@
             // 
             // gvDanhSach
             // 
-            this.gvDanhSach.Appearance.FocusedCell.BackColor = System.Drawing.Color.Gold;
-            this.gvDanhSach.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.Yellow;
-            this.gvDanhSach.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gvDanhSach.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Red;
+            this.gvDanhSach.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gvDanhSach.Appearance.EvenRow.Options.UseBackColor = true;
+            this.gvDanhSach.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gvDanhSach.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gvDanhSach.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gvDanhSach.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Blue;
             this.gvDanhSach.Appearance.FocusedCell.Options.UseBackColor = true;
             this.gvDanhSach.Appearance.FocusedCell.Options.UseFont = true;
             this.gvDanhSach.Appearance.FocusedCell.Options.UseForeColor = true;
-            this.gvDanhSach.Appearance.FocusedRow.BackColor = System.Drawing.Color.Chartreuse;
-            this.gvDanhSach.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.GreenYellow;
-            this.gvDanhSach.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gvDanhSach.Appearance.FocusedRow.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.gvDanhSach.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gvDanhSach.Appearance.FocusedRow.Options.UseFont = true;
-            this.gvDanhSach.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gvDanhSach.Appearance.GroupFooter.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gvDanhSach.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Red;
+            this.gvDanhSach.Appearance.GroupFooter.Options.UseFont = true;
+            this.gvDanhSach.Appearance.GroupFooter.Options.UseForeColor = true;
+            this.gvDanhSach.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gvDanhSach.Appearance.GroupRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gvDanhSach.Appearance.GroupRow.BorderColor = System.Drawing.Color.RosyBrown;
+            this.gvDanhSach.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gvDanhSach.Appearance.GroupRow.ForeColor = System.Drawing.Color.DarkRed;
+            this.gvDanhSach.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gvDanhSach.Appearance.GroupRow.Options.UseBorderColor = true;
+            this.gvDanhSach.Appearance.GroupRow.Options.UseFont = true;
+            this.gvDanhSach.Appearance.GroupRow.Options.UseForeColor = true;
+            this.gvDanhSach.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gvDanhSach.Appearance.OddRow.Options.UseBackColor = true;
             this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.IDHH,
             this.TENHH,
@@ -289,6 +299,8 @@
             this.gvDanhSach.OptionsSelection.MultiSelect = true;
             this.gvDanhSach.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gvDanhSach.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
+            this.gvDanhSach.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvDanhSach.OptionsView.EnableAppearanceOddRow = true;
             this.gvDanhSach.OptionsView.ShowAutoFilterRow = true;
             this.gvDanhSach.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TENLOAI, DevExpress.Data.ColumnSortOrder.Ascending)});

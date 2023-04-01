@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLoiNhuan));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.btnDong = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -44,33 +45,40 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.radSP = new System.Windows.Forms.RadioButton();
             this.radKH = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnXem = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
+            this.dtDenNgay = new DevExpress.XtraEditors.DateEdit();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.dtTuNgay = new DevExpress.XtraEditors.DateEdit();
             this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
-            this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.IDHH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gvDanhSachKH = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TIENLAI = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HOTEN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gvDanhSachSP = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.TENLOAI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TENHH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SLBAN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TENLOAI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.IDGIA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DONVITINH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GIANHAP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.GIAXUAT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TIENLOI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.DONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LOINHUAN = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDenNgay.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDenNgay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachKH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachSP)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -107,6 +115,16 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Caption = "Refresh";
+            this.btnRefresh.Id = 8;
+            this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
+            this.btnRefresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.LargeImage")));
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
+            // 
             // btnIn
             // 
             this.btnIn.Caption = "In";
@@ -115,6 +133,7 @@
             this.btnIn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnIn.ImageOptions.LargeImage")));
             this.btnIn.Name = "btnIn";
             this.btnIn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick);
             // 
             // btnDong
             // 
@@ -124,6 +143,7 @@
             this.btnDong.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDong.ImageOptions.LargeImage")));
             this.btnDong.Name = "btnDong";
             this.btnDong.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnDong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDong_ItemClick);
             // 
             // bar3
             // 
@@ -194,11 +214,11 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.radSP);
             this.splitContainer1.Panel1.Controls.Add(this.radKH);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.btnXem);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.dateEdit2);
+            this.splitContainer1.Panel1.Controls.Add(this.dtDenNgay);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.dateEdit1);
+            this.splitContainer1.Panel1.Controls.Add(this.dtTuNgay);
             // 
             // splitContainer1.Panel2
             // 
@@ -231,19 +251,20 @@
             this.radKH.Text = "Theo khách hàng";
             this.radKH.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnXem
             // 
-            this.button1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.Blue;
-            this.button1.Image = global::QL_BIA_NGK.Properties.Resources.search;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(910, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 37);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Xem";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnXem.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnXem.ForeColor = System.Drawing.Color.Blue;
+            this.btnXem.Image = global::QL_BIA_NGK.Properties.Resources.search;
+            this.btnXem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXem.Location = new System.Drawing.Point(910, 14);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(70, 37);
+            this.btnXem.TabIndex = 4;
+            this.btnXem.Text = "Xem";
+            this.btnXem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // label2
             // 
@@ -255,20 +276,20 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Đến ngày";
             // 
-            // dateEdit2
+            // dtDenNgay
             // 
-            this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(389, 21);
-            this.dateEdit2.MenuManager = this.barManager1;
-            this.dateEdit2.Name = "dateEdit2";
-            this.dateEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.dateEdit2.Properties.Appearance.Options.UseFont = true;
-            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtDenNgay.EditValue = null;
+            this.dtDenNgay.Location = new System.Drawing.Point(389, 21);
+            this.dtDenNgay.MenuManager = this.barManager1;
+            this.dtDenNgay.Name = "dtDenNgay";
+            this.dtDenNgay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.dtDenNgay.Properties.Appearance.Options.UseFont = true;
+            this.dtDenNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtDenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Size = new System.Drawing.Size(162, 22);
-            this.dateEdit2.TabIndex = 1;
+            this.dtDenNgay.Size = new System.Drawing.Size(162, 22);
+            this.dtDenNgay.TabIndex = 1;
             // 
             // label1
             // 
@@ -280,78 +301,258 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Từ ngày";
             // 
-            // dateEdit1
+            // dtTuNgay
             // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(100, 21);
-            this.dateEdit1.MenuManager = this.barManager1;
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.dateEdit1.Properties.Appearance.Options.UseFont = true;
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtTuNgay.EditValue = null;
+            this.dtTuNgay.Location = new System.Drawing.Point(100, 21);
+            this.dtTuNgay.MenuManager = this.barManager1;
+            this.dtTuNgay.Name = "dtTuNgay";
+            this.dtTuNgay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.dtTuNgay.Properties.Appearance.Options.UseFont = true;
+            this.dtTuNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dtTuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(162, 22);
-            this.dateEdit1.TabIndex = 0;
+            this.dtTuNgay.Size = new System.Drawing.Size(162, 22);
+            this.dtTuNgay.TabIndex = 0;
             // 
             // gcDanhSach
             // 
             this.gcDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcDanhSach.Location = new System.Drawing.Point(0, 0);
-            this.gcDanhSach.MainView = this.gvDanhSach;
+            this.gcDanhSach.MainView = this.gvDanhSachKH;
             this.gcDanhSach.MenuManager = this.barManager1;
             this.gcDanhSach.Name = "gcDanhSach";
             this.gcDanhSach.Size = new System.Drawing.Size(1135, 577);
             this.gcDanhSach.TabIndex = 7;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvDanhSach});
+            this.gvDanhSachKH,
+            this.gvDanhSachSP});
             // 
-            // gvDanhSach
+            // gvDanhSachKH
             // 
-            this.gvDanhSach.Appearance.FocusedCell.BackColor = System.Drawing.Color.Gold;
-            this.gvDanhSach.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.Yellow;
-            this.gvDanhSach.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gvDanhSach.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Red;
-            this.gvDanhSach.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.gvDanhSach.Appearance.FocusedCell.Options.UseFont = true;
-            this.gvDanhSach.Appearance.FocusedCell.Options.UseForeColor = true;
-            this.gvDanhSach.Appearance.FocusedRow.BackColor = System.Drawing.Color.Chartreuse;
-            this.gvDanhSach.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.GreenYellow;
-            this.gvDanhSach.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gvDanhSach.Appearance.FocusedRow.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.gvDanhSach.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gvDanhSach.Appearance.FocusedRow.Options.UseFont = true;
-            this.gvDanhSach.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.IDHH,
+            this.gvDanhSachKH.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gvDanhSachKH.Appearance.EvenRow.Options.UseBackColor = true;
+            this.gvDanhSachKH.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gvDanhSachKH.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gvDanhSachKH.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gvDanhSachKH.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Blue;
+            this.gvDanhSachKH.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gvDanhSachKH.Appearance.FocusedCell.Options.UseFont = true;
+            this.gvDanhSachKH.Appearance.FocusedCell.Options.UseForeColor = true;
+            this.gvDanhSachKH.Appearance.GroupFooter.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gvDanhSachKH.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Red;
+            this.gvDanhSachKH.Appearance.GroupFooter.Options.UseFont = true;
+            this.gvDanhSachKH.Appearance.GroupFooter.Options.UseForeColor = true;
+            this.gvDanhSachKH.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gvDanhSachKH.Appearance.GroupRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gvDanhSachKH.Appearance.GroupRow.BorderColor = System.Drawing.Color.RosyBrown;
+            this.gvDanhSachKH.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gvDanhSachKH.Appearance.GroupRow.ForeColor = System.Drawing.Color.DarkRed;
+            this.gvDanhSachKH.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gvDanhSachKH.Appearance.GroupRow.Options.UseBorderColor = true;
+            this.gvDanhSachKH.Appearance.GroupRow.Options.UseFont = true;
+            this.gvDanhSachKH.Appearance.GroupRow.Options.UseForeColor = true;
+            this.gvDanhSachKH.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gvDanhSachKH.Appearance.OddRow.Options.UseBackColor = true;
+            this.gvDanhSachKH.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.TIENLAI,
+            this.HOTEN});
+            this.gvDanhSachKH.GridControl = this.gcDanhSach;
+            this.gvDanhSachKH.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LOINHUAN", this.TIENLAI, "Tổng: {0:n0} VNĐ")});
+            this.gvDanhSachKH.Name = "gvDanhSachKH";
+            this.gvDanhSachKH.OptionsView.AllowCellMerge = true;
+            this.gvDanhSachKH.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvDanhSachKH.OptionsView.EnableAppearanceOddRow = true;
+            this.gvDanhSachKH.OptionsView.ShowAutoFilterRow = true;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gridColumn2.AppearanceCell.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.Caption = "Tên hàng hóa";
+            this.gridColumn2.FieldName = "TENHH";
+            this.gridColumn2.MaxWidth = 200;
+            this.gridColumn2.MinWidth = 200;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 200;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gridColumn3.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.gridColumn3.AppearanceCell.Options.UseFont = true;
+            this.gridColumn3.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn3.Caption = "SL bán";
+            this.gridColumn3.FieldName = "SLBAN";
+            this.gridColumn3.MaxWidth = 75;
+            this.gridColumn3.MinWidth = 75;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gridColumn5.AppearanceCell.Options.UseFont = true;
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn5.Caption = "Đơn vị tính";
+            this.gridColumn5.FieldName = "DONVITINH";
+            this.gridColumn5.MaxWidth = 75;
+            this.gridColumn5.MinWidth = 75;
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 2;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gridColumn6.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.gridColumn6.AppearanceCell.Options.UseFont = true;
+            this.gridColumn6.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn6.Caption = "Giá nhập";
+            this.gridColumn6.DisplayFormat.FormatString = "n0";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn6.FieldName = "GIANHAP";
+            this.gridColumn6.MaxWidth = 100;
+            this.gridColumn6.MinWidth = 100;
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.Width = 100;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gridColumn7.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.gridColumn7.AppearanceCell.Options.UseFont = true;
+            this.gridColumn7.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn7.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn7.Caption = "Giá xuất";
+            this.gridColumn7.DisplayFormat.FormatString = "n0";
+            this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn7.FieldName = "DONGIA";
+            this.gridColumn7.MaxWidth = 100;
+            this.gridColumn7.MinWidth = 100;
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.Width = 100;
+            // 
+            // TIENLAI
+            // 
+            this.TIENLAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TIENLAI.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.TIENLAI.AppearanceCell.Options.UseFont = true;
+            this.TIENLAI.AppearanceCell.Options.UseForeColor = true;
+            this.TIENLAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.TIENLAI.AppearanceHeader.Options.UseFont = true;
+            this.TIENLAI.Caption = "Tiền lời";
+            this.TIENLAI.DisplayFormat.FormatString = "n0";
+            this.TIENLAI.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.TIENLAI.FieldName = "LOINHUAN";
+            this.TIENLAI.MaxWidth = 150;
+            this.TIENLAI.MinWidth = 150;
+            this.TIENLAI.Name = "TIENLAI";
+            this.TIENLAI.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.TIENLAI.Visible = true;
+            this.TIENLAI.VisibleIndex = 6;
+            this.TIENLAI.Width = 150;
+            // 
+            // HOTEN
+            // 
+            this.HOTEN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.HOTEN.AppearanceCell.Options.UseFont = true;
+            this.HOTEN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.HOTEN.AppearanceHeader.Options.UseFont = true;
+            this.HOTEN.Caption = "Tên khách hàng";
+            this.HOTEN.FieldName = "HOTEN";
+            this.HOTEN.MaxWidth = 150;
+            this.HOTEN.MinWidth = 150;
+            this.HOTEN.Name = "HOTEN";
+            this.HOTEN.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.HOTEN.Visible = true;
+            this.HOTEN.VisibleIndex = 0;
+            this.HOTEN.Width = 150;
+            // 
+            // gvDanhSachSP
+            // 
+            this.gvDanhSachSP.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gvDanhSachSP.Appearance.EvenRow.Options.UseBackColor = true;
+            this.gvDanhSachSP.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gvDanhSachSP.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gvDanhSachSP.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gvDanhSachSP.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Blue;
+            this.gvDanhSachSP.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gvDanhSachSP.Appearance.FocusedCell.Options.UseFont = true;
+            this.gvDanhSachSP.Appearance.FocusedCell.Options.UseForeColor = true;
+            this.gvDanhSachSP.Appearance.GroupFooter.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gvDanhSachSP.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Red;
+            this.gvDanhSachSP.Appearance.GroupFooter.Options.UseFont = true;
+            this.gvDanhSachSP.Appearance.GroupFooter.Options.UseForeColor = true;
+            this.gvDanhSachSP.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gvDanhSachSP.Appearance.GroupRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gvDanhSachSP.Appearance.GroupRow.BorderColor = System.Drawing.Color.RosyBrown;
+            this.gvDanhSachSP.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gvDanhSachSP.Appearance.GroupRow.ForeColor = System.Drawing.Color.DarkRed;
+            this.gvDanhSachSP.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gvDanhSachSP.Appearance.GroupRow.Options.UseBorderColor = true;
+            this.gvDanhSachSP.Appearance.GroupRow.Options.UseFont = true;
+            this.gvDanhSachSP.Appearance.GroupRow.Options.UseForeColor = true;
+            this.gvDanhSachSP.Appearance.OddRow.BackColor = System.Drawing.Color.White;
+            this.gvDanhSachSP.Appearance.OddRow.Options.UseBackColor = true;
+            this.gvDanhSachSP.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.TENLOAI,
             this.TENHH,
             this.SLBAN,
-            this.TENLOAI,
-            this.IDGIA,
+            this.DONVITINH,
             this.GIANHAP,
-            this.GIAXUAT,
-            this.TIENLOI});
-            this.gvDanhSach.GridControl = this.gcDanhSach;
-            this.gvDanhSach.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.TENHH, "Có {0} sản phẩm")});
-            this.gvDanhSach.Name = "gvDanhSach";
-            this.gvDanhSach.OptionsView.ShowAutoFilterRow = true;
+            this.DONGIA,
+            this.LOINHUAN});
+            this.gvDanhSachSP.GridControl = this.gcDanhSach;
+            this.gvDanhSachSP.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LOINHUAN", this.LOINHUAN, "Tổng: {0:n0} VNĐ")});
+            this.gvDanhSachSP.Name = "gvDanhSachSP";
+            this.gvDanhSachSP.OptionsView.AllowCellMerge = true;
+            this.gvDanhSachSP.OptionsView.ShowAutoFilterRow = true;
+            this.gvDanhSachSP.RowCountChanged += new System.EventHandler(this.gvDanhSach_RowCountChanged);
             // 
-            // IDHH
+            // TENLOAI
             // 
-            this.IDHH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.IDHH.AppearanceCell.Options.UseFont = true;
-            this.IDHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.IDHH.AppearanceHeader.Options.UseFont = true;
-            this.IDHH.Caption = "Mã hàng hóa";
-            this.IDHH.FieldName = "IDHH";
-            this.IDHH.MaxWidth = 100;
-            this.IDHH.MinWidth = 100;
-            this.IDHH.Name = "IDHH";
-            this.IDHH.Visible = true;
-            this.IDHH.VisibleIndex = 0;
-            this.IDHH.Width = 100;
+            this.TENLOAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TENLOAI.AppearanceCell.Options.UseFont = true;
+            this.TENLOAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.TENLOAI.AppearanceHeader.Options.UseFont = true;
+            this.TENLOAI.Caption = "Loại hàng hóa";
+            this.TENLOAI.FieldName = "TENLOAI";
+            this.TENLOAI.MaxWidth = 100;
+            this.TENLOAI.MinWidth = 100;
+            this.TENLOAI.Name = "TENLOAI";
+            this.TENLOAI.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.TENLOAI.Visible = true;
+            this.TENLOAI.VisibleIndex = 0;
+            this.TENLOAI.Width = 100;
             // 
             // TENHH
             // 
@@ -364,8 +565,9 @@
             this.TENHH.MaxWidth = 200;
             this.TENHH.MinWidth = 200;
             this.TENHH.Name = "TENHH";
+            this.TENHH.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.TENHH.Visible = true;
-            this.TENHH.VisibleIndex = 2;
+            this.TENHH.VisibleIndex = 1;
             this.TENHH.Width = 200;
             // 
             // SLBAN
@@ -381,37 +583,24 @@
             this.SLBAN.MaxWidth = 75;
             this.SLBAN.MinWidth = 75;
             this.SLBAN.Name = "SLBAN";
+            this.SLBAN.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.SLBAN.Visible = true;
-            this.SLBAN.VisibleIndex = 4;
+            this.SLBAN.VisibleIndex = 3;
             // 
-            // TENLOAI
+            // DONVITINH
             // 
-            this.TENLOAI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.TENLOAI.AppearanceCell.Options.UseFont = true;
-            this.TENLOAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.TENLOAI.AppearanceHeader.Options.UseFont = true;
-            this.TENLOAI.Caption = "Loại hàng hóa";
-            this.TENLOAI.FieldName = "TENLOAI";
-            this.TENLOAI.MaxWidth = 100;
-            this.TENLOAI.MinWidth = 100;
-            this.TENLOAI.Name = "TENLOAI";
-            this.TENLOAI.Visible = true;
-            this.TENLOAI.VisibleIndex = 1;
-            this.TENLOAI.Width = 100;
-            // 
-            // IDGIA
-            // 
-            this.IDGIA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.IDGIA.AppearanceCell.Options.UseFont = true;
-            this.IDGIA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.IDGIA.AppearanceHeader.Options.UseFont = true;
-            this.IDGIA.Caption = "Đơn vị tính";
-            this.IDGIA.FieldName = "IDGIA";
-            this.IDGIA.MaxWidth = 75;
-            this.IDGIA.MinWidth = 75;
-            this.IDGIA.Name = "IDGIA";
-            this.IDGIA.Visible = true;
-            this.IDGIA.VisibleIndex = 3;
+            this.DONVITINH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DONVITINH.AppearanceCell.Options.UseFont = true;
+            this.DONVITINH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.DONVITINH.AppearanceHeader.Options.UseFont = true;
+            this.DONVITINH.Caption = "Đơn vị tính";
+            this.DONVITINH.FieldName = "DONVITINH";
+            this.DONVITINH.MaxWidth = 75;
+            this.DONVITINH.MinWidth = 75;
+            this.DONVITINH.Name = "DONVITINH";
+            this.DONVITINH.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.DONVITINH.Visible = true;
+            this.DONVITINH.VisibleIndex = 2;
             // 
             // GIANHAP
             // 
@@ -428,56 +617,50 @@
             this.GIANHAP.MaxWidth = 100;
             this.GIANHAP.MinWidth = 100;
             this.GIANHAP.Name = "GIANHAP";
+            this.GIANHAP.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.GIANHAP.Visible = true;
-            this.GIANHAP.VisibleIndex = 5;
+            this.GIANHAP.VisibleIndex = 4;
             this.GIANHAP.Width = 100;
             // 
-            // GIAXUAT
+            // DONGIA
             // 
-            this.GIAXUAT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.GIAXUAT.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
-            this.GIAXUAT.AppearanceCell.Options.UseFont = true;
-            this.GIAXUAT.AppearanceCell.Options.UseForeColor = true;
-            this.GIAXUAT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.GIAXUAT.AppearanceHeader.Options.UseFont = true;
-            this.GIAXUAT.Caption = "Giá xuất";
-            this.GIAXUAT.DisplayFormat.FormatString = "n0";
-            this.GIAXUAT.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.GIAXUAT.FieldName = "GIAXUAT";
-            this.GIAXUAT.MaxWidth = 100;
-            this.GIAXUAT.MinWidth = 100;
-            this.GIAXUAT.Name = "GIAXUAT";
-            this.GIAXUAT.Visible = true;
-            this.GIAXUAT.VisibleIndex = 6;
-            this.GIAXUAT.Width = 100;
+            this.DONGIA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DONGIA.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.DONGIA.AppearanceCell.Options.UseFont = true;
+            this.DONGIA.AppearanceCell.Options.UseForeColor = true;
+            this.DONGIA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.DONGIA.AppearanceHeader.Options.UseFont = true;
+            this.DONGIA.Caption = "Giá xuất";
+            this.DONGIA.DisplayFormat.FormatString = "n0";
+            this.DONGIA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.DONGIA.FieldName = "DONGIA";
+            this.DONGIA.MaxWidth = 100;
+            this.DONGIA.MinWidth = 100;
+            this.DONGIA.Name = "DONGIA";
+            this.DONGIA.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.DONGIA.Visible = true;
+            this.DONGIA.VisibleIndex = 5;
+            this.DONGIA.Width = 100;
             // 
-            // TIENLOI
+            // LOINHUAN
             // 
-            this.TIENLOI.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.TIENLOI.AppearanceCell.ForeColor = System.Drawing.Color.Red;
-            this.TIENLOI.AppearanceCell.Options.UseFont = true;
-            this.TIENLOI.AppearanceCell.Options.UseForeColor = true;
-            this.TIENLOI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.TIENLOI.AppearanceHeader.Options.UseFont = true;
-            this.TIENLOI.Caption = "Tiền lời";
-            this.TIENLOI.DisplayFormat.FormatString = "n0";
-            this.TIENLOI.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.TIENLOI.FieldName = "TIENLOI";
-            this.TIENLOI.MaxWidth = 100;
-            this.TIENLOI.MinWidth = 100;
-            this.TIENLOI.Name = "TIENLOI";
-            this.TIENLOI.Visible = true;
-            this.TIENLOI.VisibleIndex = 7;
-            this.TIENLOI.Width = 100;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Caption = "Refresh";
-            this.btnRefresh.Id = 8;
-            this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
-            this.btnRefresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.LargeImage")));
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.LOINHUAN.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.LOINHUAN.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.LOINHUAN.AppearanceCell.Options.UseFont = true;
+            this.LOINHUAN.AppearanceCell.Options.UseForeColor = true;
+            this.LOINHUAN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.LOINHUAN.AppearanceHeader.Options.UseFont = true;
+            this.LOINHUAN.Caption = "Lợi nhuận";
+            this.LOINHUAN.DisplayFormat.FormatString = "n0";
+            this.LOINHUAN.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.LOINHUAN.FieldName = "LOINHUAN";
+            this.LOINHUAN.MaxWidth = 150;
+            this.LOINHUAN.MinWidth = 150;
+            this.LOINHUAN.Name = "LOINHUAN";
+            this.LOINHUAN.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.LOINHUAN.Visible = true;
+            this.LOINHUAN.VisibleIndex = 6;
+            this.LOINHUAN.Width = 100;
             // 
             // frmLoiNhuan
             // 
@@ -489,21 +672,24 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.KeyPreview = true;
             this.Name = "frmLoiNhuan";
             this.Text = "BÁO CÁO LỢI NHUẬN";
             this.Load += new System.EventHandler(this.frmLoiNhuan_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLoiNhuan_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDenNgay.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDenNgay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachKH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachSP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,23 +709,30 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.DateEdit dateEdit2;
+        private DevExpress.XtraEditors.DateEdit dtDenNgay;
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.DateEdit dtTuNgay;
         private DevExpress.XtraGrid.GridControl gcDanhSach;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
-        private DevExpress.XtraGrid.Columns.GridColumn IDHH;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSachSP;
         private DevExpress.XtraGrid.Columns.GridColumn TENHH;
         private DevExpress.XtraGrid.Columns.GridColumn SLBAN;
         private DevExpress.XtraGrid.Columns.GridColumn TENLOAI;
-        private DevExpress.XtraGrid.Columns.GridColumn IDGIA;
+        private DevExpress.XtraGrid.Columns.GridColumn DONVITINH;
         private DevExpress.XtraGrid.Columns.GridColumn GIANHAP;
-        private DevExpress.XtraGrid.Columns.GridColumn GIAXUAT;
-        private DevExpress.XtraGrid.Columns.GridColumn TIENLOI;
+        private DevExpress.XtraGrid.Columns.GridColumn DONGIA;
+        private DevExpress.XtraGrid.Columns.GridColumn LOINHUAN;
         private System.Windows.Forms.RadioButton radSP;
         private System.Windows.Forms.RadioButton radKH;
         private DevExpress.XtraBars.BarButtonItem btnRefresh;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSachKH;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn TIENLAI;
+        private DevExpress.XtraGrid.Columns.GridColumn HOTEN;
     }
 }
