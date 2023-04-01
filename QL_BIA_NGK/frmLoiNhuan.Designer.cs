@@ -36,7 +36,6 @@
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.btnDong = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
-            this.lblTong = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -68,6 +67,9 @@
             this.GIANHAP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LOINHUAN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtTongLoiNhuan = new DevExpress.XtraEditors.TextEdit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.virtualServerModeSource1 = new DevExpress.Data.VirtualServerModeSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -79,10 +81,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachKH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachSP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongLoiNhuan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -99,7 +104,6 @@
             this.barButtonItem1,
             this.btnIn,
             this.btnDong,
-            this.lblTong,
             this.btnRefresh});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 9;
@@ -156,18 +160,10 @@
             this.bar3.DockCol = 0;
             this.bar3.DockRow = 0;
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.lblTong)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
-            // 
-            // lblTong
-            // 
-            this.lblTong.Caption = "Tổng";
-            this.lblTong.Id = 7;
-            this.lblTong.Name = "lblTong";
             // 
             // barDockControlTop
             // 
@@ -181,9 +177,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 664);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 666);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1135, 22);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1135, 20);
             // 
             // barDockControlLeft
             // 
@@ -191,7 +187,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 640);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 642);
             // 
             // barDockControlRight
             // 
@@ -199,7 +195,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1135, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 640);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 642);
             // 
             // barButtonItem1
             // 
@@ -227,7 +223,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1135, 640);
+            this.splitContainer1.Size = new System.Drawing.Size(1135, 642);
             this.splitContainer1.SplitterDistance = 59;
             this.splitContainer1.TabIndex = 11;
             // 
@@ -323,7 +319,7 @@
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -331,8 +327,13 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.gcDanhSach);
-            this.splitContainer2.Size = new System.Drawing.Size(1135, 577);
-            this.splitContainer2.SplitterDistance = 516;
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.txtTongLoiNhuan);
+            this.splitContainer2.Panel2.Controls.Add(this.label3);
+            this.splitContainer2.Size = new System.Drawing.Size(1135, 579);
+            this.splitContainer2.SplitterDistance = 518;
             this.splitContainer2.TabIndex = 0;
             // 
             // gcDanhSach
@@ -342,11 +343,12 @@
             this.gcDanhSach.MainView = this.gvDanhSachKH;
             this.gcDanhSach.MenuManager = this.barManager1;
             this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(1135, 516);
+            this.gcDanhSach.Size = new System.Drawing.Size(1135, 518);
             this.gcDanhSach.TabIndex = 8;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSachKH,
             this.gvDanhSachSP});
+            this.gcDanhSach.DataSourceChanged += new System.EventHandler(this.gcDanhSach_DataSourceChanged);
             // 
             // gvDanhSachKH
             // 
@@ -402,7 +404,7 @@
             this.gridColumn2.MaxWidth = 200;
             this.gridColumn2.MinWidth = 200;
             this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 200;
@@ -551,11 +553,18 @@
             this.DONGIA,
             this.LOINHUAN});
             this.gvDanhSachSP.GridControl = this.gcDanhSach;
+            this.gvDanhSachSP.GroupCount = 1;
             this.gvDanhSachSP.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LOINHUAN", this.LOINHUAN, "Tổng: {0:n0} VNĐ")});
             this.gvDanhSachSP.Name = "gvDanhSachSP";
+            this.gvDanhSachSP.OptionsBehavior.AllowGroupExpandAnimation = DevExpress.Utils.DefaultBoolean.True;
+            this.gvDanhSachSP.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gvDanhSachSP.OptionsImageLoad.AnimationType = DevExpress.Utils.ImageContentAnimationType.SegmentedFade;
             this.gvDanhSachSP.OptionsView.AllowCellMerge = true;
             this.gvDanhSachSP.OptionsView.ShowAutoFilterRow = true;
+            this.gvDanhSachSP.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel;
+            this.gvDanhSachSP.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TENLOAI, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // TENLOAI
             // 
@@ -568,7 +577,7 @@
             this.TENLOAI.MaxWidth = 100;
             this.TENLOAI.MinWidth = 100;
             this.TENLOAI.Name = "TENLOAI";
-            this.TENLOAI.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.TENLOAI.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.TENLOAI.Visible = true;
             this.TENLOAI.VisibleIndex = 0;
             this.TENLOAI.Width = 100;
@@ -586,7 +595,7 @@
             this.TENHH.Name = "TENHH";
             this.TENHH.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.TENHH.Visible = true;
-            this.TENHH.VisibleIndex = 1;
+            this.TENHH.VisibleIndex = 0;
             this.TENHH.Width = 200;
             // 
             // SLBAN
@@ -604,7 +613,7 @@
             this.SLBAN.Name = "SLBAN";
             this.SLBAN.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.SLBAN.Visible = true;
-            this.SLBAN.VisibleIndex = 3;
+            this.SLBAN.VisibleIndex = 2;
             // 
             // DONVITINH
             // 
@@ -619,7 +628,7 @@
             this.DONVITINH.Name = "DONVITINH";
             this.DONVITINH.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.DONVITINH.Visible = true;
-            this.DONVITINH.VisibleIndex = 2;
+            this.DONVITINH.VisibleIndex = 1;
             // 
             // GIANHAP
             // 
@@ -638,7 +647,7 @@
             this.GIANHAP.Name = "GIANHAP";
             this.GIANHAP.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.GIANHAP.Visible = true;
-            this.GIANHAP.VisibleIndex = 4;
+            this.GIANHAP.VisibleIndex = 3;
             this.GIANHAP.Width = 100;
             // 
             // DONGIA
@@ -658,7 +667,7 @@
             this.DONGIA.Name = "DONGIA";
             this.DONGIA.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.DONGIA.Visible = true;
-            this.DONGIA.VisibleIndex = 5;
+            this.DONGIA.VisibleIndex = 4;
             this.DONGIA.Width = 100;
             // 
             // LOINHUAN
@@ -678,8 +687,35 @@
             this.LOINHUAN.Name = "LOINHUAN";
             this.LOINHUAN.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.LOINHUAN.Visible = true;
-            this.LOINHUAN.VisibleIndex = 6;
+            this.LOINHUAN.VisibleIndex = 5;
             this.LOINHUAN.Width = 100;
+            // 
+            // txtTongLoiNhuan
+            // 
+            this.txtTongLoiNhuan.EditValue = "0";
+            this.txtTongLoiNhuan.Location = new System.Drawing.Point(143, 17);
+            this.txtTongLoiNhuan.Name = "txtTongLoiNhuan";
+            this.txtTongLoiNhuan.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.txtTongLoiNhuan.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtTongLoiNhuan.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.txtTongLoiNhuan.Properties.Appearance.Options.UseFont = true;
+            this.txtTongLoiNhuan.Properties.Appearance.Options.UseForeColor = true;
+            this.txtTongLoiNhuan.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtTongLoiNhuan.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtTongLoiNhuan.Properties.NullText = "0";
+            this.txtTongLoiNhuan.Properties.ReadOnly = true;
+            this.txtTongLoiNhuan.Size = new System.Drawing.Size(257, 22);
+            this.txtTongLoiNhuan.TabIndex = 108;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label3.Location = new System.Drawing.Point(29, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Tổng doanh thu";
             // 
             // frmLoiNhuan
             // 
@@ -707,11 +743,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTuNgay.Properties)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachKH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachSP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongLoiNhuan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -724,7 +764,6 @@
         private DevExpress.XtraBars.BarButtonItem btnIn;
         private DevExpress.XtraBars.BarButtonItem btnDong;
         private DevExpress.XtraBars.Bar bar3;
-        private DevExpress.XtraBars.BarStaticItem lblTong;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -757,5 +796,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn GIANHAP;
         private DevExpress.XtraGrid.Columns.GridColumn DONGIA;
         private DevExpress.XtraGrid.Columns.GridColumn LOINHUAN;
+        private System.Windows.Forms.Label label3;
+        private DevExpress.Data.VirtualServerModeSource virtualServerModeSource1;
+        private DevExpress.XtraEditors.TextEdit txtTongLoiNhuan;
     }
 }
