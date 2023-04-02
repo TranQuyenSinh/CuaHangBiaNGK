@@ -51,6 +51,7 @@ namespace DataLayer
 
         public void SaveFile()
         {
+            // nếu có file rồi thì ghi đè
             if (File.Exists("connectDB.dba"))
                 File.Delete("connectDB.dba");
             FileStream fs = File.Open("connectDB.dba", FileMode.OpenOrCreate, FileAccess.Write);

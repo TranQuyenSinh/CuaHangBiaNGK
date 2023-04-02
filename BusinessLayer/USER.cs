@@ -23,7 +23,7 @@ namespace BusinessLayer
                 return user.IDUSER;
             return -1;
         }
-        public List<tb_USER> getListByIdNhom(int idnhom)
+        public List<tb_USER> getListUserByIdNhom(int idnhom)
         {
             db = Entities.CreateEntities();
             return db.tb_USER.Where(x => x.IDNHOM == idnhom).ToList();
@@ -35,7 +35,7 @@ namespace BusinessLayer
         // true if username not existed
         public bool CheckUsernameExisted(string username)
         {
-            var user = db.tb_USER.Where(x => x.USERNAME == username).FirstOrDefault();
+            var user = db.tb_USER.Where(x =>x.DELETED ==false && x.USERNAME == username).FirstOrDefault();
             return user == null;
         }
         public string getFullNameUser(int iduser)

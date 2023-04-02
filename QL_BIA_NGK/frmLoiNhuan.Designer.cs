@@ -69,7 +69,6 @@
             this.LOINHUAN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtTongLoiNhuan = new DevExpress.XtraEditors.TextEdit();
             this.label3 = new System.Windows.Forms.Label();
-            this.virtualServerModeSource1 = new DevExpress.Data.VirtualServerModeSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -87,7 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachKH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachSP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongLoiNhuan.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -751,7 +749,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachKH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSachSP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongLoiNhuan.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -797,7 +794,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn DONGIA;
         private DevExpress.XtraGrid.Columns.GridColumn LOINHUAN;
         private System.Windows.Forms.Label label3;
-        private DevExpress.Data.VirtualServerModeSource virtualServerModeSource1;
         private DevExpress.XtraEditors.TextEdit txtTongLoiNhuan;
     }
 }

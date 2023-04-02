@@ -7,16 +7,24 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace QL_BIA_NGK
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        System.Windows.Forms.Timer timer;
+        int h, m, s;
         public MainForm()
         {
             InitializeComponent();
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
+            h = m = s = 0;
         }
         public void OpenForm(Type formType)
         {
@@ -38,37 +46,28 @@ namespace QL_BIA_NGK
             btnDangNhap.Enabled = false;
             btnDangXuat.Enabled = true;
             btnDoiMatKhau.Enabled = true;
-            btnPhanQuyen.Enabled = Func.checkPermission("PHANQUYEN", "SHOW");
-            btnKhachHang.Enabled = Func.checkPermission("KHACHHANG", "SHOW");
-            btnNhatKy.Enabled = Func.checkPermission("NHATKY", "SHOW");
-            btnNhaCungCap.Enabled = Func.checkPermission("NHACUNGCAP", "SHOW");
-            btnNhanVien.Enabled = Func.checkPermission("NHANVIEN", "SHOW");
-            btnHangHoa.Enabled = Func.checkPermission("HANGHOA", "SHOW");
-            btnLoaiHangHoa.Enabled = Func.checkPermission("LOAIHANGHOA", "SHOW");
-            btnBanHang.Enabled = Func.checkPermission("BANHANG", "SHOW");
-            btnNhapHang.Enabled = Func.checkPermission("NHAPHANG", "SHOW");
-            btnKho.Enabled = Func.checkPermission("KHO", "SHOW");
-            btnBaoCaoLoiNhuan.Enabled = Func.checkPermission("BAOCAOLOINHUAN", "SHOW");
-            btnHangTon.Enabled = Func.checkPermission("BAOCAOHANGTON", "SHOW");
+            foreach (var item in ribbon.Items)
+            {
+                if (item.GetType() == typeof(BarButtonItem))
+                {
+                    BarButtonItem button = (BarButtonItem)item;
+                    if (button.Tag == null) continue;
+                    button.Enabled = Func.checkPermission(button.Tag.ToString(), "SHOW");
+                }
+            }
         }
 
         void HideAllButton() //  except btnDangNhap
         {
+            foreach (var item in ribbon.Items)
+            {
+                if (item.GetType() == typeof(BarButtonItem))
+                {
+                    BarButtonItem button = (BarButtonItem)item;
+                    button.Enabled = false;
+                }
+            }
             btnDangNhap.Enabled = true;
-            btnDoiMatKhau.Enabled = false;
-            btnDangXuat.Enabled = false;
-            btnPhanQuyen.Enabled = false;
-            btnKhachHang.Enabled = false;
-            btnNhatKy.Enabled = false;
-            btnNhaCungCap.Enabled = false;
-            btnNhanVien.Enabled = false;
-            btnHangHoa.Enabled = false;
-            btnLoaiHangHoa.Enabled = false;
-            btnBanHang.Enabled = false;
-            btnNhapHang.Enabled = false;
-            btnKho.Enabled = false;
-            btnBaoCaoLoiNhuan.Enabled = false;
-            btnHangTon.Enabled = false;
         }
         void Login()
         {
@@ -79,19 +78,39 @@ namespace QL_BIA_NGK
                 Func.Log("LOGIN");
                 ShowAllowAcceptButton();
                 txtCurrentUserInfo.Caption = "Xin chào " + Func.FULLNAMEUSER;
+                timer.Start();
             }
         }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            s++;
+            if (s == 60)
+            {
+                s = 0;
+                m++;
+            }
+            if (m == 60)
+            {
+                m = 0;
+                h++;
+            }
+            txtTimer.Caption = string.Format("Thời gian sử dụng: {0:00}:{1:00}:{2:00}", h, m, s);
+        }
+
         void Logout()
         {
             Func.Log("LOGOUT");
-            foreach (Form frm in MdiChildren)
-            {
-                frm.Close();
-            }
+            CloseAllForm();
+            // reset userinfo
             Func.LISTQUYENCUANHOM.Clear();
             Func.IDUSER = -1;
             Func.FULLNAMEUSER = "";
             txtCurrentUserInfo.Caption = "";
+            // reset timer
+            timer.Stop();
+            h = m = s = 0;
+            txtTimer.Caption = "";
             HideAllButton();
         }
         private void btnDangNhap_ItemClick(object sender, ItemClickEventArgs e)
@@ -186,6 +205,37 @@ namespace QL_BIA_NGK
         private void btnNhatKy_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(typeof(frmNhatKy));
+        }
+
+        private void btnSaoLuu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.FileName = "backup_database_" + DateTime.Now.ToShortDateString().Replace("/", "_");
+            dialog.Filter = "Back up file (*.bak)|*.bak";
+            dialog.OverwritePrompt = true;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                BACKUP_RESTORE.BackUpDB(dialog.FileName);
+                Func.ShowMessage("Sao lưu dữ liệu thành công");
+            }
+        }
+
+        private void btnPhucHoi_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Back up file (*.bak)|*.bak";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                BACKUP_RESTORE.RestoreDB(dialog.FileName);
+                Func.ShowMessage("Phục hồi dữ liệu thành công");
+            }
+        }
+        void CloseAllForm()
+        {
+            foreach (Form frm in MdiChildren)
+            {
+                frm.Close();
+            }
         }
     }
 }

@@ -23,10 +23,12 @@ namespace DataLayer
             : base() { }
         public static Entities CreateEntities(bool contextOwnsConnection = true)
         {
+            // thông tin connection
             string deCryptServer;
             string deCryptUsername;
             string deCryptPassword;
             string deCryptDatabase;
+            // nếu không có file connect thì lấy thông tin connection từ form
             if (!File.Exists("connectDB.dba"))
             {
                 deCryptServer = SERVER;
@@ -34,6 +36,7 @@ namespace DataLayer
                 deCryptPassword = PASSWORD;
                 deCryptDatabase = DATABASE;
             }
+            // ngược lại thì giải mã thông tin connection từ file ra
             else
             {
                 BinaryFormatter bf = new BinaryFormatter();
@@ -47,6 +50,8 @@ namespace DataLayer
                 fs.Close();
             }
 
+
+            // tạo connection string cho Entity
             SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
             SqlConnectionStringBuilder sqlConnectBuilder = new SqlConnectionStringBuilder();
             sqlConnectBuilder.DataSource = deCryptServer;

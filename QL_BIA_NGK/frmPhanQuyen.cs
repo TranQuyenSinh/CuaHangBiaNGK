@@ -65,7 +65,7 @@ namespace QL_BIA_NGK
                 node.Tag = nhom.IDNHOM;
 
                 // load user trong nhóm
-                var listUser = _user.getListByIdNhom(nhom.IDNHOM);
+                var listUser = _user.getListUserByIdNhom(nhom.IDNHOM);
                 foreach (var user in listUser)
                 {
                     TreeNode childNode = new TreeNode();
