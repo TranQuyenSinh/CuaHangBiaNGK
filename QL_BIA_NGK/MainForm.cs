@@ -25,6 +25,8 @@ namespace QL_BIA_NGK
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             h = m = s = 0;
+
+            OpenForm(typeof(frmIntroduction));
         }
         public void OpenForm(Type formType)
         {

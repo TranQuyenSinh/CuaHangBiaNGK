@@ -158,6 +158,12 @@
     <Compile Include="frmHangTonSapHet.Designer.cs">
       <DependentUpon>frmHangTonSapHet.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmIntroduction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIntroduction.Designer.cs">
+      <DependentUpon>frmIntroduction.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKetNoiDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,12 +232,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WaitForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WaitForm1.Designer.cs">
-      <DependentUpon>WaitForm1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frmBanHang.resx">
       <DependentUpon>frmBanHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +277,9 @@
     <EmbeddedResource Include="frmHangTonSapHet.resx">
       <DependentUpon>frmHangTonSapHet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmIntroduction.resx">
+      <DependentUpon>frmIntroduction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKetNoiDB.resx">
       <DependentUpon>frmKetNoiDB.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,9 +324,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="WaitForm1.resx">
-      <DependentUpon>WaitForm1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -395,6 +395,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\alarm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
