@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using DataLayer;
+using DevExpress.ClipboardSource.SpreadsheetML;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -66,6 +68,8 @@ namespace QL_BIA_NGK
                 txtMoTa.Text = _currentHangHoa.MOTA;
                 txtDinhMucTon.Text = _currentHangHoa.DINHMUCTON.ToString();
                 txtTonKho.Text = _currentHangHoa.TONKHO.ToString();
+                // qr code
+                picQR.Image = Func.GetQRCode(txtIDHH.Text);
                 // thông tin đơn vị tính
                 LoadDonViTinh();
             }

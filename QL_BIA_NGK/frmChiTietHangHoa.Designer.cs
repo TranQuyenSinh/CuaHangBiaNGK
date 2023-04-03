@@ -91,6 +91,7 @@
             this.txtDinhMucTon = new DevExpress.XtraEditors.TextEdit();
             this.txtTonKho = new DevExpress.XtraEditors.TextEdit();
             this.label27 = new System.Windows.Forms.Label();
+            this.picQR = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.slkLoaiHH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuyDoiGoc.Properties)).BeginInit();
@@ -111,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQuyDoi4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDinhMucTon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTonKho.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picQR)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -535,7 +537,7 @@
             this.btnDong.ForeColor = System.Drawing.Color.Red;
             this.btnDong.Image = global::QL_BIA_NGK.Properties.Resources.close;
             this.btnDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDong.Location = new System.Drawing.Point(595, 415);
+            this.btnDong.Location = new System.Drawing.Point(595, 534);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(85, 30);
             this.btnDong.TabIndex = 29;
@@ -550,7 +552,7 @@
             this.btnLuu.ForeColor = System.Drawing.Color.Blue;
             this.btnLuu.Image = global::QL_BIA_NGK.Properties.Resources.diskette__1_;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(504, 415);
+            this.btnLuu.Location = new System.Drawing.Point(504, 534);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(85, 30);
             this.btnLuu.TabIndex = 28;
@@ -563,7 +565,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label25.Location = new System.Drawing.Point(23, 422);
+            this.label25.Location = new System.Drawing.Point(17, 469);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(93, 17);
             this.label25.TabIndex = 87;
@@ -573,7 +575,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label26.Location = new System.Drawing.Point(28, 451);
+            this.label26.Location = new System.Drawing.Point(12, 501);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(253, 17);
             this.label26.TabIndex = 88;
@@ -914,7 +916,7 @@
             // txtDinhMucTon
             // 
             this.txtDinhMucTon.EditValue = "24";
-            this.txtDinhMucTon.Location = new System.Drawing.Point(124, 419);
+            this.txtDinhMucTon.Location = new System.Drawing.Point(124, 466);
             this.txtDinhMucTon.Name = "txtDinhMucTon";
             this.txtDinhMucTon.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.txtDinhMucTon.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -926,7 +928,7 @@
             // txtTonKho
             // 
             this.txtTonKho.EditValue = "24";
-            this.txtTonKho.Location = new System.Drawing.Point(347, 419);
+            this.txtTonKho.Location = new System.Drawing.Point(124, 436);
             this.txtTonKho.Name = "txtTonKho";
             this.txtTonKho.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.txtTonKho.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -939,18 +941,29 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label27.Location = new System.Drawing.Point(282, 422);
+            this.label27.Location = new System.Drawing.Point(51, 441);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(59, 17);
             this.label27.TabIndex = 90;
             this.label27.Text = "Tồn kho";
+            // 
+            // picQR
+            // 
+            this.picQR.Image = global::QL_BIA_NGK.Properties.Resources.NoQR;
+            this.picQR.Location = new System.Drawing.Point(289, 418);
+            this.picQR.Name = "picQR";
+            this.picQR.Size = new System.Drawing.Size(120, 120);
+            this.picQR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picQR.TabIndex = 92;
+            this.picQR.TabStop = false;
             // 
             // frmChiTietHangHoa
             // 
             this.AcceptButton = this.btnLuu;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 487);
+            this.ClientSize = new System.Drawing.Size(695, 576);
+            this.Controls.Add(this.picQR);
             this.Controls.Add(this.txtTonKho);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.txtDinhMucTon);
@@ -1039,6 +1052,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQuyDoi4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDinhMucTon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTonKho.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picQR)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1109,5 +1123,6 @@
         private DevExpress.XtraEditors.TextEdit txtDinhMucTon;
         private DevExpress.XtraEditors.TextEdit txtTonKho;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.PictureBox picQR;
     }
 }

@@ -13,3 +13,4 @@ D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.dll
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\BusinessLayer\bin\Debug\QRCoder.dll

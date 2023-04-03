@@ -37,6 +37,7 @@
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCamera = new DevExpress.XtraBars.BarButtonItem();
             this.btnDong = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -63,7 +64,7 @@
             this.DIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtNguoiLap = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.switchLoaiGia = new DevExpress.XtraEditors.ToggleSwitch();
+            this.switchGiaSi = new DevExpress.XtraEditors.ToggleSwitch();
             this.btnThemKH = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
@@ -122,7 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slkKH2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.switchLoaiGia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchGiaSi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -174,9 +175,10 @@
             this.btnRefresh,
             this.btnIn,
             this.btnDong,
-            this.btnLuu});
+            this.btnLuu,
+            this.btnCamera});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 9;
+            this.barManager1.MaxItemId = 10;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -190,6 +192,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLuu),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnIn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCamera),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDong)});
             this.bar1.OptionsBar.MultiLine = true;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -234,6 +237,15 @@
             this.btnIn.Name = "btnIn";
             this.btnIn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick);
+            // 
+            // btnCamera
+            // 
+            this.btnCamera.Caption = "Camera";
+            this.btnCamera.Id = 9;
+            this.btnCamera.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCamera.ImageOptions.SvgImage")));
+            this.btnCamera.Name = "btnCamera";
+            this.btnCamera.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnCamera.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCamera_ItemClick);
             // 
             // btnDong
             // 
@@ -434,7 +446,7 @@
             this.splitContainer2.Panel1.Controls.Add(this.slkKH2);
             this.splitContainer2.Panel1.Controls.Add(this.txtNguoiLap);
             this.splitContainer2.Panel1.Controls.Add(this.label7);
-            this.splitContainer2.Panel1.Controls.Add(this.switchLoaiGia);
+            this.splitContainer2.Panel1.Controls.Add(this.switchGiaSi);
             this.splitContainer2.Panel1.Controls.Add(this.btnThemKH);
             this.splitContainer2.Panel1.Controls.Add(this.label13);
             this.splitContainer2.Panel1.Controls.Add(this.txtGhiChu);
@@ -565,19 +577,19 @@
             this.label7.TabIndex = 88;
             this.label7.Text = "Người lập";
             // 
-            // switchLoaiGia
+            // switchGiaSi
             // 
-            this.switchLoaiGia.EditValue = true;
-            this.switchLoaiGia.Location = new System.Drawing.Point(408, 149);
-            this.switchLoaiGia.MenuManager = this.barManager1;
-            this.switchLoaiGia.Name = "switchLoaiGia";
-            this.switchLoaiGia.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.switchLoaiGia.Properties.Appearance.Options.UseFont = true;
-            this.switchLoaiGia.Properties.OffText = "Giá lẻ";
-            this.switchLoaiGia.Properties.OnText = "Giá sỉ";
-            this.switchLoaiGia.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.switchLoaiGia.Size = new System.Drawing.Size(110, 21);
-            this.switchLoaiGia.TabIndex = 2;
+            this.switchGiaSi.EditValue = true;
+            this.switchGiaSi.Location = new System.Drawing.Point(408, 149);
+            this.switchGiaSi.MenuManager = this.barManager1;
+            this.switchGiaSi.Name = "switchGiaSi";
+            this.switchGiaSi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.switchGiaSi.Properties.Appearance.Options.UseFont = true;
+            this.switchGiaSi.Properties.OffText = "Giá lẻ";
+            this.switchGiaSi.Properties.OnText = "Giá sỉ";
+            this.switchGiaSi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.switchGiaSi.Size = new System.Drawing.Size(110, 21);
+            this.switchGiaSi.TabIndex = 2;
             // 
             // btnThemKH
             // 
@@ -1262,7 +1274,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.slkKH2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.switchLoaiGia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.switchGiaSi.Properties)).EndInit();
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
@@ -1312,7 +1324,7 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TextBox txtNguoiLap;
         private System.Windows.Forms.Label label7;
-        private DevExpress.XtraEditors.ToggleSwitch switchLoaiGia;
+        private DevExpress.XtraEditors.ToggleSwitch switchGiaSi;
         private System.Windows.Forms.Button btnThemKH;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtGhiChu;
@@ -1373,5 +1385,6 @@
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.TextBox txtDienThoai;
+        private DevExpress.XtraBars.BarButtonItem btnCamera;
     }
 }

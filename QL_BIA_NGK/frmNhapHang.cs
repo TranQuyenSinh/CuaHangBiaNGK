@@ -87,6 +87,12 @@ namespace QL_BIA_NGK
         {
 
         }
+        private void btnCamera_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmCamera frm = new frmCamera();
+            frm.captureEvent += FrmCamera_captureEvent;
+            frm.Show();
+        }
         private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
@@ -205,6 +211,16 @@ namespace QL_BIA_NGK
             {
                 btnIn_ItemClick(null, null);
             }
+            else if (e.Control && e.KeyCode == Keys.M)
+            {
+                frmCamera frm = new frmCamera();
+                frm.captureEvent += FrmCamera_captureEvent;
+                frm.Show();
+            }
+        }
+        private void FrmCamera_captureEvent(string result)// result = idhh
+        {
+            AppendDataFromCamera(result);
         }
         private void gvDanhSach_KeyDown(object sender, KeyEventArgs e)
         {
@@ -300,7 +316,7 @@ namespace QL_BIA_NGK
                 ctpn.QUYDOI = double.Parse(gia.QUYDOI.ToString());
                 ctpn.DONGIA = double.Parse(gia.GIANHAP.ToString());
                 ctpn.SOLUONG = int.Parse(hanghoa_dto.DINHMUCTON.ToString());
-                ctpn.THANHTIEN = ctpn.DONGIA*ctpn.SOLUONG;
+                ctpn.THANHTIEN = ctpn.DONGIA * ctpn.SOLUONG;
 
                 // thêm vào list chi tiết
                 _listSP.Add(ctpn);
@@ -403,19 +419,9 @@ namespace QL_BIA_NGK
             // xử lý db
             if (_isAdd)
             {
-                try
-                {
-                    _pn.Add(pn_dto);
-                    Func.ShowMessage("Thêm phiếu nhập hàng thành công!");
-                    _isAdd = false;
-                }
-                catch (Exception)
-                {
-                    pn_dto.IDPN = _pn.GetMaxID();
-                    _pn.Add(pn_dto);
-                    Func.ShowMessage("Mã phiếu bị trùng do có người đã thêm, đã tự động tăng mã phiếu", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
+                _pn.Add(pn_dto);
+                Func.ShowMessage("Thêm phiếu nhập hàng thành công!");
+                _isAdd = false;
             }
             else
             {
@@ -472,7 +478,50 @@ namespace QL_BIA_NGK
             else
                 Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        void AppendDataFromCamera(string result)
+        {
+            if (!Func.checkPermission("NHAPHANG", "ADD") || !Func.checkPermission("NHAPHANG", "UPDATE"))
+            {
+                Func.ShowMessage("Bạn không có quyền thêm hoặc sửa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            CHITIETPHIEUNHAP_DTO ctpb = new CHITIETPHIEUNHAP_DTO();
+            ctpb.IDPN = txtMaPhieu.Text;
+            HANGHOAFULL_DTO hanghoa = _hh.GetItemHangHoaFullDTO(result);
+            // trường hợp quét sai mã QR
+            if (hanghoa == null) return;
+            System.Media.SystemSounds.Beep.Play();
+            // nếu đã có hàng hóa trong bảng rồi thì tăng số lượng lên 1
+            // và cập nhật lại thành tiền
+            var item = _listSP.Find(x => x.IDHH == result);
+            if (item != null)
+            {
+                item.SOLUONG += 1;
+                item.THANHTIEN = item.SOLUONG * item.DONGIA;
+                _isSaved = false;
+                LoadData();
+                return;
+            }
+
+            // thêm mới chi tiết bán vào gridview
+            tb_GIA gia;
+            gia = hanghoa.LISTGIA.Last();
+            ctpb.IDHH = result;
+            ctpb.TENHH = hanghoa.TENHH;
+            ctpb.GHICHU = "";
+            ctpb.DONVITINH = gia.DONVITINH;
+            ctpb.QUYDOI = double.Parse(gia.QUYDOI.ToString());
+            ctpb.DONGIA = double.Parse(gia.GIANHAP.ToString());
+
+            ctpb.SOLUONG = 1;
+            ctpb.THANHTIEN = ctpb.SOLUONG * ctpb.DONGIA;
+
+            _listSP.Add(ctpb);
+            _isSaved = false;
+            LoadData();
+        }
         #endregion
+
 
     }
 }

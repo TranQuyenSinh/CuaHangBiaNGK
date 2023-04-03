@@ -11,6 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils.Extensions;
+using System.Media;
+using DevExpress.XtraReports.Serialization;
 
 namespace QL_BIA_NGK
 {
@@ -28,6 +31,7 @@ namespace QL_BIA_NGK
         public static List<CHITIETPHIEUBAN_DTO> _listSP;
         public static bool _isSaved;
         bool _isAdd;
+
         #endregion
 
         #region Sự kiện click
@@ -71,6 +75,12 @@ namespace QL_BIA_NGK
         {
 
         }
+        private void btnCamera_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmCamera frm = new frmCamera();
+            frm.captureEvent += FrmCamera_captureEvent;
+            frm.Show();
+        }
         private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
@@ -91,7 +101,7 @@ namespace QL_BIA_NGK
         {
             if (Func.checkPermission("KHACHHANG", "ADD"))
             {
-                frmChiTietKhachHang frm = new frmChiTietKhachHang(); 
+                frmChiTietKhachHang frm = new frmChiTietKhachHang();
                 frm.ShowDialog();
                 LoadData();
             }
@@ -105,6 +115,10 @@ namespace QL_BIA_NGK
         private void btnLuuPN_Click(object sender, EventArgs e)
         {
             SaveData();
+        }
+        private void FrmCamera_captureEvent(string result)// result = idhh
+        {
+            AppendDataFromCamera(result);
         }
         // double click gridview
         private void gvDanhSach_DoubleClick(object sender, EventArgs e)
@@ -188,6 +202,12 @@ namespace QL_BIA_NGK
             else if (e.Control && e.KeyCode == Keys.P)
             {
                 btnIn_ItemClick(null, null);
+            }
+            else if (e.Control && e.KeyCode == Keys.M)
+            {
+                frmCamera frm = new frmCamera();
+                frm.captureEvent += FrmCamera_captureEvent;
+                frm.Show();
             }
         }
         private void gvDanhSach_KeyDown(object sender, KeyEventArgs e)
@@ -295,7 +315,7 @@ namespace QL_BIA_NGK
                 coppyList.AddRange(pb_selected.listCTPB_DTO);
                 _listSP = coppyList;
                 txtPhiVanChuyen.Text = pb_selected.PHIVANCHUYEN.ToString();
-                switchLoaiGia.IsOn = bool.Parse(pb_selected.GIASI.ToString());
+                switchGiaSi.IsOn = bool.Parse(pb_selected.GIASI.ToString());
 
                 LoadData();
             }
@@ -314,7 +334,7 @@ namespace QL_BIA_NGK
             txtMaPhieu.Text = _pb.GetMaxID();
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
-            switchLoaiGia.IsOn = true;
+            switchGiaSi.IsOn = true;
             txtDienThoai.Text = "";
             txtPhiVanChuyen.Text = "0";
             txtGhiChu.Text = "";
@@ -360,7 +380,7 @@ namespace QL_BIA_NGK
             pb_dto.NGAY = DateTime.Parse(dtNgayLap.EditValue.ToString());
             pb_dto.PHIVANCHUYEN = double.Parse(txtPhiVanChuyen.Text);
             pb_dto.GHICHU = txtGhiChu.Text;
-            pb_dto.GIASI = bool.Parse(switchLoaiGia.EditValue.ToString());
+            pb_dto.GIASI = bool.Parse(switchGiaSi.EditValue.ToString());
             pb_dto.TONGTIEN = double.Parse(txtTongTienSauPhi.Text);
             pb_dto.listCTPB_DTO = _listSP;
 
@@ -385,7 +405,7 @@ namespace QL_BIA_NGK
             {
                 CHITIETPHIEUBAN_DTO ctpb = new CHITIETPHIEUBAN_DTO();
                 ctpb.IDPB = txtMaPhieu.Text;
-                frmChiTietPhieuBan frm = new frmChiTietPhieuBan(ctpb, bool.Parse(switchLoaiGia.EditValue.ToString()));
+                frmChiTietPhieuBan frm = new frmChiTietPhieuBan(ctpb, bool.Parse(switchGiaSi.EditValue.ToString()));
                 frm.ShowDialog();
                 LoadData();
             }
@@ -399,7 +419,7 @@ namespace QL_BIA_NGK
                 var index = gvDanhSach.GetFocusedDataSourceRowIndex();
                 if (index >= 0)
                 {
-                    frmChiTietPhieuBan frm = new frmChiTietPhieuBan(_listSP[index], bool.Parse(switchLoaiGia.EditValue.ToString()));
+                    frmChiTietPhieuBan frm = new frmChiTietPhieuBan(_listSP[index], bool.Parse(switchGiaSi.EditValue.ToString()));
                     frm.ShowDialog();
                     LoadData();
                 }
@@ -426,6 +446,65 @@ namespace QL_BIA_NGK
             else
                 Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        void AppendDataFromCamera(string result)
+        {
+            if (!Func.checkPermission("BANHANG", "ADD") || !Func.checkPermission("BANHANG", "UPDATE"))
+            {
+                Func.ShowMessage("Bạn không có quyền thêm hoặc sửa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            CHITIETPHIEUBAN_DTO ctpb = new CHITIETPHIEUBAN_DTO();
+            ctpb.IDPB = txtMaPhieu.Text;
+            HANGHOAFULL_DTO hanghoa = _hh.GetItemHangHoaFullDTO(result);
+            // trường hợp quét sai mã QR
+            if (hanghoa == null) return;
+            System.Media.SystemSounds.Beep.Play();
+            // nếu đã có hàng hóa trong bảng rồi thì tăng số lượng lên 1
+            // và cập nhật lại thành tiền
+            var item = _listSP.Find(x => x.IDHH == result);
+            if (item != null)
+            {
+                item.SOLUONG += 1;
+                item.THANHTIEN = item.SOLUONG * item.DONGIA;
+                _isSaved = false;
+                LoadData();
+                return;
+            }
+
+            // thêm mới chi tiết bán vào gridview
+            tb_GIA gia;
+            if (switchGiaSi.IsOn)
+            {
+                gia = hanghoa.LISTGIA.Last();
+            }
+            else
+            {
+                gia = hanghoa.LISTGIA.First();
+            }
+            ctpb.IDHH = result;
+            ctpb.TENHH = hanghoa.TENHH;
+            ctpb.GHICHU = "";
+            ctpb.DONVITINH = gia.DONVITINH;
+            ctpb.QUYDOI = double.Parse(gia.QUYDOI.ToString());
+            if (switchGiaSi.IsOn)
+            {
+                ctpb.DONGIA = double.Parse(gia.GIABANSI.ToString());
+            }
+            else
+            {
+                ctpb.DONGIA = double.Parse(gia.GIABANLE.ToString());
+            }
+
+            ctpb.SOLUONG = 1;
+            ctpb.THANHTIEN = ctpb.SOLUONG * ctpb.DONGIA;
+
+            _listSP.Add(ctpb);
+            _isSaved = false;
+            LoadData();
+        }
         #endregion
+
+
+        
     }
 }

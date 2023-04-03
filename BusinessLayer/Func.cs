@@ -1,12 +1,15 @@
 ﻿using DataLayer;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 
 namespace BusinessLayer
 {
@@ -67,6 +70,7 @@ namespace BusinessLayer
                 .ToString()
                 .Normalize(NormalizationForm.FormC);
         }
+        // hàm dùng để ghi log
         public static void Log(string action, string tbName = null, string newValue = null, string oldValue = null)
         {
             Entities db = Entities.CreateEntities();
@@ -98,6 +102,17 @@ namespace BusinessLayer
             }
             db.tb_LOG.Add(log);
             db.SaveChanges();
+        }
+
+        // hàm tạo QRCode
+        public static Bitmap GetQRCode(string text)
+        {
+            QRCodeGenerator generator= new QRCodeGenerator();
+            QRCodeData data = generator.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
+
+            QRCode qrcode = new QRCode(data);
+            Bitmap bitmap = qrcode.GetGraphic(20);
+            return bitmap;
         }
     }
 }

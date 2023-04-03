@@ -37,6 +37,7 @@
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.btnDong = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCamera = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -108,6 +109,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -162,9 +165,10 @@
             this.btnRefresh,
             this.btnIn,
             this.btnDong,
-            this.btnLuu});
+            this.btnLuu,
+            this.btnCamera});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 9;
+            this.barManager1.MaxItemId = 10;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -178,6 +182,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnLuu),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnIn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCamera),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDong)});
             this.bar1.OptionsBar.MultiLine = true;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -232,6 +237,15 @@
             this.btnDong.Name = "btnDong";
             this.btnDong.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnDong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDong_ItemClick);
+            // 
+            // btnCamera
+            // 
+            this.btnCamera.Caption = "Camera";
+            this.btnCamera.Id = 9;
+            this.btnCamera.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
+            this.btnCamera.Name = "btnCamera";
+            this.btnCamera.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnCamera.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCamera_ItemClick);
             // 
             // bar3
             // 
@@ -1224,6 +1238,22 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Camera";
+            this.barButtonItem2.Id = 9;
+            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Camera";
+            this.barButtonItem3.Id = 9;
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // frmNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1364,5 +1394,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
         private System.Windows.Forms.Button btnLuuPN;
+        private DevExpress.XtraBars.BarButtonItem btnCamera;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

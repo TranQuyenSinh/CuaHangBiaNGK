@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.txtCurrentUserInfo = new DevExpress.XtraBars.BarStaticItem();
+            this.txtTimer = new DevExpress.XtraBars.BarStaticItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnKhachHang = new DevExpress.XtraBars.BarButtonItem();
             this.btnNhaCungCap = new DevExpress.XtraBars.BarButtonItem();
@@ -70,7 +71,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.txtTimer = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeSpanEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
@@ -90,6 +90,12 @@
             // 
             this.txtCurrentUserInfo.Id = 20;
             this.txtCurrentUserInfo.Name = "txtCurrentUserInfo";
+            // 
+            // txtTimer
+            // 
+            this.txtTimer.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.txtTimer.Id = 26;
+            this.txtTimer.Name = "txtTimer";
             // 
             // ribbon
             // 
@@ -117,7 +123,7 @@
             this.btnPhucHoi,
             this.txtTimer});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 27;
+            this.ribbon.MaxItemId = 28;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -446,12 +452,6 @@
             this.barButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
             this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
             this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // txtTimer
-            // 
-            this.txtTimer.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.txtTimer.Id = 26;
-            this.txtTimer.Name = "txtTimer";
             // 
             // MainForm
             // 
