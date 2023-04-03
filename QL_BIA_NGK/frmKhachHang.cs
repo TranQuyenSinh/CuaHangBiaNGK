@@ -3,6 +3,8 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
+using QL_BIA_NGK.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,7 +67,8 @@ namespace QL_BIA_NGK
         }
         private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            rptDanhSachKhachHang rpt = new rptDanhSachKhachHang(_kh.getDataReportList());
+            rpt.ShowPreview();
         }
 
         private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

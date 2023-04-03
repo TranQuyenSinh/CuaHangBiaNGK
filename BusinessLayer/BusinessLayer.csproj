@@ -82,6 +82,9 @@
     <Compile Include="PHIEUNHAP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QUYEN.cs" />
+    <Compile Include="REPORT\KHACHHANG_REPORT.cs" />
+    <Compile Include="REPORT\NHACUNGCAP_REPORT.cs" />
+    <Compile Include="REPORT\NHANVIEN_REPORT.cs" />
     <Compile Include="TONKHO.cs" />
     <Compile Include="USER.cs" />
   </ItemGroup>

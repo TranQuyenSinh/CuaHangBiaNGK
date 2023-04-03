@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.REPORT
 {
-    public class DS_NHANVIEN_REPORT
+    public class KHACHHANG_REPORT
     {
-        public string IDNV { get; set; }
+        public string IDKH { get; set; }
         public string HOTEN { get; set; }
-        public Nullable<System.DateTime> NGAYSINH { get; set; }
-        public Nullable<bool> GIOITINH { get; set; }
+        public DateTime NGAYSINH { get; set; }
+        public string GIOITINH { get; set; }
         public string DIACHI { get; set; }
         public string SODIENTHOAI { get; set; }
         public string EMAIL { get; set; }
-        public Nullable<bool> DELETED { get; set; }
+        public int SOLANGIAODICH { get; set; }
     }
 }
