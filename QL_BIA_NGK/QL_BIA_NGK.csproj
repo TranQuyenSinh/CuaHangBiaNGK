@@ -201,6 +201,18 @@
     <Compile Include="frmChiTietTonKho.Designer.cs">
       <DependentUpon>frmChiTietTonKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCongNoKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCongNoKhachHang.Designer.cs">
+      <DependentUpon>frmCongNoKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCongNoNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCongNoNhaCungCap.Designer.cs">
+      <DependentUpon>frmCongNoNhaCungCap.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +302,18 @@
     </Compile>
     <Compile Include="frmPhanQuyen.Designer.cs">
       <DependentUpon>frmPhanQuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuChi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuChi.Designer.cs">
+      <DependentUpon>frmPhieuChi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuThu.Designer.cs">
+      <DependentUpon>frmPhieuThu.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -397,6 +421,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhanQuyen.resx">
       <DependentUpon>frmPhanQuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuChi.resx">
+      <DependentUpon>frmPhieuChi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuThu.resx">
+      <DependentUpon>frmPhieuThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

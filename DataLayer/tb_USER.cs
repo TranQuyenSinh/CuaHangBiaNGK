@@ -17,7 +17,10 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tb_USER()
         {
+            this.tb_PHIEUBANHANG = new HashSet<tb_PHIEUBANHANG>();
+            this.tb_PHIEUCHI = new HashSet<tb_PHIEUCHI>();
             this.tb_PHIEUNHAPHANG = new HashSet<tb_PHIEUNHAPHANG>();
+            this.tb_PHIEUTHU = new HashSet<tb_PHIEUTHU>();
         }
     
         public int IDUSER { get; set; }
@@ -29,6 +32,12 @@ namespace DataLayer
     
         public virtual tb_NHOM tb_NHOM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_PHIEUBANHANG> tb_PHIEUBANHANG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_PHIEUCHI> tb_PHIEUCHI { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_PHIEUNHAPHANG> tb_PHIEUNHAPHANG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_PHIEUTHU> tb_PHIEUTHU { get; set; }
     }
 }

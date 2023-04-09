@@ -27,10 +27,12 @@ namespace DataLayer
         public string GHICHU { get; set; }
         public string IDKH { get; set; }
         public Nullable<double> TONGTIEN { get; set; }
+        public Nullable<double> DATRA { get; set; }
         public Nullable<bool> GIASI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_CHITIET_PHIEUBANHANG> tb_CHITIET_PHIEUBANHANG { get; set; }
         public virtual tb_KHACHHANG tb_KHACHHANG { get; set; }
+        public virtual tb_USER tb_USER { get; set; }
     }
 }

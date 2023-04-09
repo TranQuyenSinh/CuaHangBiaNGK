@@ -108,7 +108,13 @@
     <Compile Include="tb_PHIEUBANHANG.cs">
       <DependentUpon>QL_BIA_NGK.tt</DependentUpon>
     </Compile>
+    <Compile Include="tb_PHIEUCHI.cs">
+      <DependentUpon>QL_BIA_NGK.tt</DependentUpon>
+    </Compile>
     <Compile Include="tb_PHIEUNHAPHANG.cs">
+      <DependentUpon>QL_BIA_NGK.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_PHIEUTHU.cs">
       <DependentUpon>QL_BIA_NGK.tt</DependentUpon>
     </Compile>
     <Compile Include="tb_USER.cs">

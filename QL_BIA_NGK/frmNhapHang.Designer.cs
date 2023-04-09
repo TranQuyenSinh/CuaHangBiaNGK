@@ -36,8 +36,8 @@
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDong = new DevExpress.XtraBars.BarButtonItem();
             this.btnCamera = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDong = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -228,6 +228,15 @@
             this.btnIn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick);
             // 
+            // btnCamera
+            // 
+            this.btnCamera.Caption = "Camera";
+            this.btnCamera.Id = 9;
+            this.btnCamera.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCamera.ImageOptions.SvgImage")));
+            this.btnCamera.Name = "btnCamera";
+            this.btnCamera.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnCamera.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCamera_ItemClick);
+            // 
             // btnDong
             // 
             this.btnDong.Caption = "Đóng";
@@ -237,15 +246,6 @@
             this.btnDong.Name = "btnDong";
             this.btnDong.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnDong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDong_ItemClick);
-            // 
-            // btnCamera
-            // 
-            this.btnCamera.Caption = "Camera";
-            this.btnCamera.Id = 9;
-            this.btnCamera.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.btnCamera.Name = "btnCamera";
-            this.btnCamera.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btnCamera.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCamera_ItemClick);
             // 
             // bar3
             // 
@@ -265,7 +265,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1823, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1643, 24);
             // 
             // barDockControlBottom
             // 
@@ -273,7 +273,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 706);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1823, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1643, 20);
             // 
             // barDockControlLeft
             // 
@@ -287,7 +287,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1823, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1643, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 682);
             // 
@@ -322,7 +322,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1823, 682);
+            this.splitContainer1.Size = new System.Drawing.Size(1643, 682);
             this.splitContainer1.SplitterDistance = 482;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 5;
@@ -579,7 +579,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1339, 629);
+            this.splitContainer2.Size = new System.Drawing.Size(1159, 629);
             this.splitContainer2.SplitterDistance = 147;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -818,7 +818,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.gcDanhSach);
-            this.splitContainer3.Size = new System.Drawing.Size(1339, 478);
+            this.splitContainer3.Size = new System.Drawing.Size(1159, 478);
             this.splitContainer3.SplitterDistance = 65;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -894,7 +894,7 @@
             this.repositoryItemLookUpEdit1,
             this.repositoryItemComboBox1,
             this.repositoryItemLookUpEdit2});
-            this.gcDanhSach.Size = new System.Drawing.Size(1339, 409);
+            this.gcDanhSach.Size = new System.Drawing.Size(1159, 409);
             this.gcDanhSach.TabIndex = 0;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
@@ -1126,7 +1126,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 629);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1339, 53);
+            this.panel1.Size = new System.Drawing.Size(1159, 53);
             this.panel1.TabIndex = 0;
             // 
             // txtTongTienSauPhi
@@ -1258,7 +1258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1823, 726);
+            this.ClientSize = new System.Drawing.Size(1643, 726);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

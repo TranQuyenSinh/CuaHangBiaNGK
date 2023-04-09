@@ -38,7 +38,9 @@ namespace DataLayer
         public virtual DbSet<tb_NHOM> tb_NHOM { get; set; }
         public virtual DbSet<tb_PHANQUYEN> tb_PHANQUYEN { get; set; }
         public virtual DbSet<tb_PHIEUBANHANG> tb_PHIEUBANHANG { get; set; }
+        public virtual DbSet<tb_PHIEUCHI> tb_PHIEUCHI { get; set; }
         public virtual DbSet<tb_PHIEUNHAPHANG> tb_PHIEUNHAPHANG { get; set; }
+        public virtual DbSet<tb_PHIEUTHU> tb_PHIEUTHU { get; set; }
         public virtual DbSet<tb_USER> tb_USER { get; set; }
     }
 }

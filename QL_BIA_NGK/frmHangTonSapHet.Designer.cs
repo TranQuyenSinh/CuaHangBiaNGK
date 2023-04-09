@@ -202,15 +202,15 @@
             // 
             // labelCheck
             // 
-            this.labelCheck.AutoSize = true;
             this.labelCheck.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.labelCheck.ForeColor = System.Drawing.Color.ForestGreen;
+            this.labelCheck.Image = global::QL_BIA_NGK.Properties.Resources.check;
             this.labelCheck.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelCheck.Location = new System.Drawing.Point(660, 25);
             this.labelCheck.Name = "labelCheck";
-            this.labelCheck.Size = new System.Drawing.Size(261, 17);
+            this.labelCheck.Size = new System.Drawing.Size(293, 28);
             this.labelCheck.TabIndex = 2;
-            this.labelCheck.Text = "Hiện không có hàng hóa nào sắp hết";
+            this.labelCheck.Text = "Hiện không có hàng hóa nào sắp hết       ";
             this.labelCheck.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnTaoPNAll
@@ -480,7 +480,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmHangTonSapHet_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);

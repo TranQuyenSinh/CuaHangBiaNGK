@@ -12,26 +12,21 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_PHIEUNHAPHANG
+    public partial class tb_PHIEUCHI
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tb_PHIEUNHAPHANG()
-        {
-            this.tb_CHITIET_PHIEUNHAPHANG = new HashSet<tb_CHITIET_PHIEUNHAPHANG>();
-        }
-    
-        public string IDPN { get; set; }
+        public string IDPC { get; set; }
         public Nullable<System.DateTime> NGAY { get; set; }
         public Nullable<int> IDUSER { get; set; }
-        public Nullable<double> PHIVANCHUYEN { get; set; }
-        public string GHICHU { get; set; }
         public Nullable<int> IDNCC { get; set; }
-        public Nullable<double> DATRA { get; set; }
-        public Nullable<double> TONGTIEN { get; set; }
+        public string IDNV { get; set; }
+        public string NOIDUNG { get; set; }
+        public Nullable<double> SOTIEN { get; set; }
+        public string GHICHU { get; set; }
+        public Nullable<double> CONGNOCU { get; set; }
+        public Nullable<double> CONGNOMOI { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_CHITIET_PHIEUNHAPHANG> tb_CHITIET_PHIEUNHAPHANG { get; set; }
         public virtual tb_NHACUNGCAP tb_NHACUNGCAP { get; set; }
+        public virtual tb_NHANVIEN tb_NHANVIEN { get; set; }
         public virtual tb_USER tb_USER { get; set; }
     }
 }

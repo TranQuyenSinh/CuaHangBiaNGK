@@ -51,7 +51,6 @@
             this.Controls.Add(this.svgImageBox1);
             this.KeyPreview = true;
             this.Name = "frmIntroduction";
-            this.Text = "Xin chào";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmIntroduction_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).EndInit();
             this.ResumeLayout(false);

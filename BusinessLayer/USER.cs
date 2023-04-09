@@ -35,7 +35,7 @@ namespace BusinessLayer
         // true if username not existed
         public bool CheckUsernameExisted(string username)
         {
-            var user = db.tb_USER.Where(x =>x.DELETED ==false && x.USERNAME == username).FirstOrDefault();
+            var user = db.tb_USER.Where(x => x.DELETED == false && x.USERNAME == username).FirstOrDefault();
             return user == null;
         }
         public string getFullNameUser(int iduser)

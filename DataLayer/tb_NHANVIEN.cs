@@ -14,6 +14,13 @@ namespace DataLayer
     
     public partial class tb_NHANVIEN
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tb_NHANVIEN()
+        {
+            this.tb_PHIEUCHI = new HashSet<tb_PHIEUCHI>();
+            this.tb_PHIEUTHU = new HashSet<tb_PHIEUTHU>();
+        }
+    
         public string IDNV { get; set; }
         public string HOTEN { get; set; }
         public Nullable<System.DateTime> NGAYSINH { get; set; }
@@ -22,5 +29,10 @@ namespace DataLayer
         public string SODIENTHOAI { get; set; }
         public string EMAIL { get; set; }
         public Nullable<bool> DELETED { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_PHIEUCHI> tb_PHIEUCHI { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_PHIEUTHU> tb_PHIEUTHU { get; set; }
     }
 }

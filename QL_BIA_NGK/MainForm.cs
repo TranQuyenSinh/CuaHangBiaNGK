@@ -170,7 +170,25 @@ namespace QL_BIA_NGK
         {
             OpenForm(typeof(frmNhapHang));
         }
+        private void btnPhieuThu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(typeof(frmPhieuThu));
+        }
 
+        private void btnPhieuChi_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(typeof(frmPhieuChi));
+        }
+
+        private void btnCongNoKhachHang_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(typeof(frmCongNoKhachHang));
+        }
+
+        private void btnCongNoNhaCungCap_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(typeof(frmCongNoNhaCungCap));
+        }
         private void btnNhanVien_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(typeof(frmNhanVien));
