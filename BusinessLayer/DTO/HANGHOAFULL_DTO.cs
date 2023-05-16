@@ -16,6 +16,7 @@ namespace BusinessLayer.DTO
         public string TENLOAI { get; set; }
         public Nullable<double> DINHMUCTON { get; set; }
         public Nullable<double> TONKHO { get; set; }
+        public string MaVach { get; set; }
         public List<tb_GIA> LISTGIA { get; set; }
     }
 }

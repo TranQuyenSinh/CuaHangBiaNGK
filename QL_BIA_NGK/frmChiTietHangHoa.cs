@@ -68,8 +68,8 @@ namespace QL_BIA_NGK
                 txtMoTa.Text = _currentHangHoa.MOTA;
                 txtDinhMucTon.Text = _currentHangHoa.DINHMUCTON.ToString();
                 txtTonKho.Text = _currentHangHoa.TONKHO.ToString();
-                // qr code
-                picQR.Image = Func.GetQRCode(txtIDHH.Text);
+                // bar code
+                txtBarcode.Text = _currentHangHoa.MaVach;
                 // thông tin đơn vị tính
                 LoadDonViTinh();
             }
@@ -104,7 +104,7 @@ namespace QL_BIA_NGK
             hanghoa.MOTA = txtMoTa.Text;
             hanghoa.DINHMUCTON = double.Parse(txtDinhMucTon.Text);
             hanghoa.TONKHO = double.Parse(txtTonKho.Text);
-            
+            hanghoa.MaVach = txtBarcode.Text;
 
             if (_isAdd)
             {
@@ -301,6 +301,11 @@ namespace QL_BIA_NGK
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
+        }
+
+        private void txtBarcode_EditValueChanged(object sender, EventArgs e)
+        {
+            barCodeControl1.Text = txtBarcode.Text;
         }
     }
 }

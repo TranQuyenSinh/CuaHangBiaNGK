@@ -14,6 +14,9 @@ using System.Windows.Forms;
 using DevExpress.Utils.Extensions;
 using System.Media;
 using DevExpress.XtraReports.Serialization;
+using System.Data.SqlClient;
+using QL_BIA_NGK.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace QL_BIA_NGK
 {
@@ -28,6 +31,8 @@ namespace QL_BIA_NGK
         PHIEUBAN _pb;
         HANGHOA _hh;
         USER _user;
+        NHANVIEN _nv;
+
         public static List<CHITIETPHIEUBAN_DTO> _listSP;
         public static bool _isSaved;
         bool _isAdd;
@@ -42,6 +47,7 @@ namespace QL_BIA_NGK
             _pb = new PHIEUBAN();
             _hh = new HANGHOA();
             _user = new USER();
+            _nv = new NHANVIEN();
             _isAdd = true;
             _isSaved = true;
             _listSP = new List<CHITIETPHIEUBAN_DTO>();
@@ -54,6 +60,7 @@ namespace QL_BIA_NGK
             LoadCboNCC();
             LoadData();
             LoadListPB();
+            LoadCboNhanVien();
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -70,10 +77,19 @@ namespace QL_BIA_NGK
             LoadData();
             LoadCboNCC();
             LoadListPB();
+            LoadCboNhanVien();
         }
         private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            var focusValue = gvDanhSachPhieu.GetFocusedRowCellValue("IDPB");
+            if (focusValue != null)
+            {
+                string idpb = focusValue.ToString();
+                rptPhieuBanHang rpt = new rptPhieuBanHang(_pb.GetReport(idpb));
+                rpt.ShowPreview();
+            }
+            else
+                Func.ShowMessage("Bạn chưa chọn phiếu bán hàng nào để in", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void btnCamera_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -249,7 +265,6 @@ namespace QL_BIA_NGK
             bool addPer = Func.checkPermission("BANHANG", "ADD");
             bool updatePer = Func.checkPermission("BANHANG", "UPDATE");
             bool deletePer = Func.checkPermission("BANHANG", "DELETE");
-            bool printPer = Func.checkPermission("BANHANG", "PRINT");
 
             btnThem.Enabled = addPer;
             btnThemSP.Enabled = addPer;
@@ -257,7 +272,6 @@ namespace QL_BIA_NGK
             btnXoaSP.Enabled = deletePer;
             btnLuu.Enabled = addPer && updatePer;
             btnLuuPN.Enabled = addPer && updatePer;
-            btnIn.Enabled = printPer;
         }
         // load data
         void LoadData()
@@ -279,6 +293,13 @@ namespace QL_BIA_NGK
             slkKH2.Properties.DisplayMember = "HOTEN";
             slkKH1.Properties.ValueMember = "IDKH";
             slkKH2.Properties.ValueMember = "IDKH";
+        }
+
+        void LoadCboNhanVien()
+        {
+            slkNhanVien.Properties.DataSource = _nv.getList();
+            slkNhanVien.Properties.DisplayMember = "HOTEN";
+            slkNhanVien.Properties.ValueMember = "IDNV";
         }
         void LoadListPB()
         {
@@ -310,6 +331,7 @@ namespace QL_BIA_NGK
                 txtMaPhieu.Text = pb_selected.IDPB;
                 txtNguoiLap.Text = _user.getFullNameUser(pb_selected.IDUSER);
                 slkKH2.EditValue = pb_selected.IDKH;
+                slkNhanVien.EditValue = pb_selected.IDNV;
                 txtGhiChu.Text = pb_selected.GHICHU;
                 var coppyList = new List<CHITIETPHIEUBAN_DTO>();
                 coppyList.AddRange(pb_selected.listCTPB_DTO);
@@ -383,7 +405,14 @@ namespace QL_BIA_NGK
             pb_dto.GIASI = bool.Parse(switchGiaSi.EditValue.ToString());
             pb_dto.TONGTIEN = double.Parse(txtTongTienSauPhi.Text);
             pb_dto.listCTPB_DTO = _listSP;
-
+            if (slkNhanVien.EditValue == null)
+            {
+                pb_dto.IDNV = null;
+            }
+            else
+            {
+                pb_dto.IDNV = slkNhanVien.EditValue.ToString();
+            }
             // xử lý db
             if (_isAdd)
             {
@@ -446,7 +475,7 @@ namespace QL_BIA_NGK
             else
                 Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        void AppendDataFromCamera(string result)
+        void AppendDataFromCamera(string barcode)
         {
             if (!Func.checkPermission("BANHANG", "ADD") || !Func.checkPermission("BANHANG", "UPDATE"))
             {
@@ -455,13 +484,13 @@ namespace QL_BIA_NGK
             }
             CHITIETPHIEUBAN_DTO ctpb = new CHITIETPHIEUBAN_DTO();
             ctpb.IDPB = txtMaPhieu.Text;
-            HANGHOAFULL_DTO hanghoa = _hh.GetItemHangHoaFullDTO(result);
+            HANGHOAFULL_DTO hanghoa = _hh.GetItemHangHoaFullDTOByBarcode(barcode);
             // trường hợp quét sai mã QR
             if (hanghoa == null) return;
             System.Media.SystemSounds.Beep.Play();
             // nếu đã có hàng hóa trong bảng rồi thì tăng số lượng lên 1
             // và cập nhật lại thành tiền
-            var item = _listSP.Find(x => x.IDHH == result);
+            var item = _listSP.Find(x => x.IDHH == hanghoa.IDHH);
             if (item != null)
             {
                 item.SOLUONG += 1;
@@ -481,7 +510,7 @@ namespace QL_BIA_NGK
             {
                 gia = hanghoa.LISTGIA.First();
             }
-            ctpb.IDHH = result;
+            ctpb.IDHH = hanghoa.IDHH;
             ctpb.TENHH = hanghoa.TENHH;
             ctpb.GHICHU = "";
             ctpb.DONVITINH = gia.DONVITINH;
@@ -503,8 +532,5 @@ namespace QL_BIA_NGK
             LoadData();
         }
         #endregion
-
-
-        
     }
 }

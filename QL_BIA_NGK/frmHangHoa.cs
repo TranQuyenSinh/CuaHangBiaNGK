@@ -43,7 +43,6 @@ namespace QL_BIA_NGK
             btnThem.Enabled = Func.checkPermission("HANGHOA", "ADD");
             btnSua.Enabled = Func.checkPermission("HANGHOA", "UPDATE");
             btnXoa.Enabled = Func.checkPermission("HANGHOA", "DELETE");
-            btnIn.Enabled = Func.checkPermission("HANGHOA", "PRINT");
         }
         void LoadData()
         {

@@ -54,6 +54,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.btnLuuPN = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.slkNhanVien = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -119,6 +123,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.slkNhanVien.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slkKH2.Properties)).BeginInit();
@@ -230,7 +236,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Caption = "In";
+            this.btnIn.Caption = "In phiếu";
             this.btnIn.Id = 5;
             this.btnIn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIn.ImageOptions.Image")));
             this.btnIn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnIn.ImageOptions.LargeImage")));
@@ -439,6 +445,8 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.slkNhanVien);
+            this.splitContainer2.Panel1.Controls.Add(this.label12);
             this.splitContainer2.Panel1.Controls.Add(this.txtDienThoai);
             this.splitContainer2.Panel1.Controls.Add(this.txtDiaChi);
             this.splitContainer2.Panel1.Controls.Add(this.txtHoTen);
@@ -464,6 +472,49 @@
             this.splitContainer2.Size = new System.Drawing.Size(1162, 599);
             this.splitContainer2.SplitterDistance = 191;
             this.splitContainer2.TabIndex = 1;
+            // 
+            // slkNhanVien
+            // 
+            this.slkNhanVien.Location = new System.Drawing.Point(132, 114);
+            this.slkNhanVien.MenuManager = this.barManager1;
+            this.slkNhanVien.Name = "slkNhanVien";
+            this.slkNhanVien.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.slkNhanVien.Properties.Appearance.Options.UseFont = true;
+            this.slkNhanVien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.slkNhanVien.Properties.PopupView = this.gridView3;
+            this.slkNhanVien.Properties.SelectFirstRowOnEnterKey = DevExpress.Utils.DefaultBoolean.True;
+            this.slkNhanVien.Size = new System.Drawing.Size(196, 22);
+            this.slkNhanVien.TabIndex = 97;
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1});
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsEditForm.ShowOnEnterKey = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Họ tên";
+            this.gridColumn1.FieldName = "HOTEN";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 64;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label12.Location = new System.Drawing.Point(33, 117);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(98, 17);
+            this.label12.TabIndex = 98;
+            this.label12.Text = "Nhân viên giao";
             // 
             // txtDienThoai
             // 
@@ -1270,6 +1321,8 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.slkNhanVien.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayLap.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.slkKH2.Properties)).EndInit();
@@ -1386,5 +1439,9 @@
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.TextBox txtDienThoai;
         private DevExpress.XtraBars.BarButtonItem btnCamera;
+        private DevExpress.XtraEditors.SearchLookUpEdit slkNhanVien;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private System.Windows.Forms.Label label12;
     }
 }

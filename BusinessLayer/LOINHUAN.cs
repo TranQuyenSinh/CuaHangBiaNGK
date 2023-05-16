@@ -16,6 +16,7 @@ namespace BusinessLayer
         {
 			string query = @"select 
 								kh.HOTEN,
+								hh.IDHH,
 								hh.TENHH, 
 								gia.DONVITINH, 
 								SUM(ctpb.SOLUONG) as SLBAN,
@@ -31,7 +32,7 @@ namespace BusinessLayer
 								  pb.IDPB = ctpb.IDPB and
 								  ctpb.DONVITINH = gia.DONVITINH and 
 								  loai.IDLOAI = hh.IDLOAI
-							group by kh.HOTEN, hh.TENHH, gia.DONVITINH, gia.GIANHAP, ctpb.DONGIA
+							group by kh.HOTEN, hh.IDHH, hh.TENHH, gia.DONVITINH, gia.GIANHAP, ctpb.DONGIA
 							order by kh.HOTEN, hh.TENHH, SUM(ctpb.SOLUONG*(ctpb.DONGIA - gia.GIANHAP)) desc";
             return db.Database.SqlQuery<LOINHUAN_KH_DTO>(query, tuNgay, denNgay).ToList();
         }
@@ -54,7 +55,7 @@ namespace BusinessLayer
 								  pb.IDPB = ctpb.IDPB and
 								  ctpb.DONVITINH = gia.DONVITINH and 
 								  loai.IDLOAI = hh.IDLOAI
-							group by loai.TENLOAI,hh.IDHH,  hh.TENHH, gia.DONVITINH, gia.GIANHAP, ctpb.DONGIA
+							group by loai.TENLOAI, hh.IDHH, hh.TENHH, gia.DONVITINH, gia.GIANHAP, ctpb.DONGIA
 							order by hh.TENHH, SUM(ctpb.SOLUONG*(ctpb.DONGIA - gia.GIANHAP)) desc";
             return db.Database.SqlQuery<LOINHUAN_SP_DTO>(query, tuNgay, denNgay).ToList();
         }

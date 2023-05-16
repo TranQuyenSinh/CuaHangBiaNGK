@@ -193,7 +193,6 @@ namespace QL_BIA_NGK
             gvDanhSach.SetRowCellValue(rowIndex, "ADD", isFullControl);
             gvDanhSach.SetRowCellValue(rowIndex, "UPDATE", isFullControl);
             gvDanhSach.SetRowCellValue(rowIndex, "DELETE", isFullControl);
-            gvDanhSach.SetRowCellValue(rowIndex, "PRINT", isFullControl);
 
         }
 

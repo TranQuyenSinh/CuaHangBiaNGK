@@ -37,9 +37,6 @@ namespace BusinessLayer
                 case "DELETE":
                     allow = LISTQUYENCUANHOM.Where(x => x.FUNC_CODE == func_code).FirstOrDefault().DELETE == true;
                     break;
-                case "PRINT":
-                    allow = LISTQUYENCUANHOM.Where(x => x.FUNC_CODE == func_code).FirstOrDefault().PRINT == true;
-                    break;
             }
 
             return allow;

@@ -17,7 +17,6 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tb_NHACUNGCAP()
         {
-            this.tb_PHIEUCHI = new HashSet<tb_PHIEUCHI>();
             this.tb_PHIEUNHAPHANG = new HashSet<tb_PHIEUNHAPHANG>();
         }
     
@@ -26,11 +25,8 @@ namespace DataLayer
         public string DIACHI { get; set; }
         public string SODIENTHOAI { get; set; }
         public string EMAIL { get; set; }
-        public Nullable<double> CONGNO { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_PHIEUCHI> tb_PHIEUCHI { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_PHIEUNHAPHANG> tb_PHIEUNHAPHANG { get; set; }
     }

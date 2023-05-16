@@ -270,6 +270,7 @@ D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\bin\Debug\de\DevExpress.Dia
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\bin\Debug\es\DevExpress.Diagram.v21.2.Core.resources.dll
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\bin\Debug\ja\DevExpress.Diagram.v21.2.Core.resources.dll
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\bin\Debug\ru\DevExpress.Diagram.v21.2.Core.resources.dll
-D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptDanhSachNhanVien.resources
-D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptDanhSachNhaCungCap.resources
-D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptDanhSachKhachHang.resources
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptPhieuBanHang.resources
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptPhieuNhapHang.resources
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptLoiNhuanSP.resources
+D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptLoiNhuanKH.resources

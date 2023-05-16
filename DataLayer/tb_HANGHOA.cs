@@ -24,6 +24,7 @@ namespace DataLayer
     
         public string IDHH { get; set; }
         public string TENHH { get; set; }
+        public string MaVach { get; set; }
         public string MOTA { get; set; }
         public Nullable<int> IDLOAI { get; set; }
         public Nullable<double> DINHMUCTON { get; set; }

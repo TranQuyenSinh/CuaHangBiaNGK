@@ -170,25 +170,7 @@ namespace QL_BIA_NGK
         {
             OpenForm(typeof(frmNhapHang));
         }
-        private void btnPhieuThu_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OpenForm(typeof(frmPhieuThu));
-        }
-
-        private void btnPhieuChi_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OpenForm(typeof(frmPhieuChi));
-        }
-
-        private void btnCongNoKhachHang_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OpenForm(typeof(frmCongNoKhachHang));
-        }
-
-        private void btnCongNoNhaCungCap_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OpenForm(typeof(frmCongNoNhaCungCap));
-        }
+        
         private void btnNhanVien_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(typeof(frmNhanVien));
@@ -242,12 +224,16 @@ namespace QL_BIA_NGK
 
         private void btnPhucHoi_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Back up file (*.bak)|*.bak";
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (Func.ShowMessage("Chương trình sẽ đóng tất cả form trước khi phục hồi dữ liệu, đồng ý phục hồi?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                BACKUP_RESTORE.RestoreDB(dialog.FileName);
-                Func.ShowMessage("Phục hồi dữ liệu thành công");
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Back up file (*.bak)|*.bak";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    BACKUP_RESTORE.RestoreDB(dialog.FileName);
+                    CloseAllForm();
+                    Func.ShowMessage("Phục hồi dữ liệu thành công");
+                }
             }
         }
         void CloseAllForm()

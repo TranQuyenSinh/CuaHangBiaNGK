@@ -3,7 +3,6 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraReports.UI;
-using QL_BIA_NGK.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +37,6 @@ namespace QL_BIA_NGK
             btnThem.Enabled = Func.checkPermission("NHACUNGCAP", "ADD");
             btnSua.Enabled = Func.checkPermission("NHACUNGCAP", "UPDATE");
             btnXoa.Enabled = Func.checkPermission("NHACUNGCAP", "DELETE");
-            btnIn.Enabled = Func.checkPermission("NHACUNGCAP", "PRINT");
         }
         void LoadData()
         {
@@ -63,12 +61,6 @@ namespace QL_BIA_NGK
         {
             LoadData();
         }
-        private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            rptDanhSachNhaCungCap rpt = new rptDanhSachNhaCungCap(_ncc.getDataReportList());
-            rpt.ShowPreview();
-        }
-
         private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
@@ -145,10 +137,6 @@ namespace QL_BIA_NGK
             else if (e.Control && e.KeyCode == Keys.W)
             {
                 this.Close();
-            }
-            else if (e.Control && e.KeyCode == Keys.P)
-            {
-                btnIn_ItemClick(null, null);
             }
         }
         // double click row to update it

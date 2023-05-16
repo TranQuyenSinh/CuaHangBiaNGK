@@ -9,6 +9,7 @@ namespace BusinessLayer.DTO
     public class LOINHUAN_KH_DTO
     {
         public string HOTEN { get; set; }
+        public string IDHH { get; set; }
         public string TENHH { get; set; }
         public int SLBAN { get; set; }
         public string DONVITINH { get; set; }

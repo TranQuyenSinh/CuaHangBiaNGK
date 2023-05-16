@@ -201,18 +201,6 @@
     <Compile Include="frmChiTietTonKho.Designer.cs">
       <DependentUpon>frmChiTietTonKho.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCongNoKhachHang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCongNoKhachHang.Designer.cs">
-      <DependentUpon>frmCongNoKhachHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCongNoNhaCungCap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCongNoNhaCungCap.Designer.cs">
-      <DependentUpon>frmCongNoNhaCungCap.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,18 +291,6 @@
     <Compile Include="frmPhanQuyen.Designer.cs">
       <DependentUpon>frmPhanQuyen.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPhieuChi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPhieuChi.Designer.cs">
-      <DependentUpon>frmPhieuChi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmPhieuThu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPhieuThu.Designer.cs">
-      <DependentUpon>frmPhieuThu.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,23 +299,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\rptDanhSachKhachHang.cs">
+    <Compile Include="Reports\rptLoiNhuanKH.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptDanhSachKhachHang.Designer.cs">
-      <DependentUpon>rptDanhSachKhachHang.cs</DependentUpon>
+    <Compile Include="Reports\rptLoiNhuanKH.Designer.cs">
+      <DependentUpon>rptLoiNhuanKH.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptDanhSachNhaCungCap.cs">
+    <Compile Include="Reports\rptLoiNhuanSP.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptDanhSachNhaCungCap.Designer.cs">
-      <DependentUpon>rptDanhSachNhaCungCap.cs</DependentUpon>
+    <Compile Include="Reports\rptLoiNhuanSP.Designer.cs">
+      <DependentUpon>rptLoiNhuanSP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptDanhSachNhanVien.cs">
+    <Compile Include="Reports\rptPhieuBanHang.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptDanhSachNhanVien.Designer.cs">
-      <DependentUpon>rptDanhSachNhanVien.cs</DependentUpon>
+    <Compile Include="Reports\rptPhieuBanHang.Designer.cs">
+      <DependentUpon>rptPhieuBanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptPhieuNhapHang.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPhieuNhapHang.Designer.cs">
+      <DependentUpon>rptPhieuNhapHang.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmBanHang.resx">
       <DependentUpon>frmBanHang.cs</DependentUpon>
@@ -422,12 +404,6 @@
     <EmbeddedResource Include="frmPhanQuyen.resx">
       <DependentUpon>frmPhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPhieuChi.resx">
-      <DependentUpon>frmPhieuChi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPhieuThu.resx">
-      <DependentUpon>frmPhieuThu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -442,14 +418,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\rptDanhSachKhachHang.resx">
-      <DependentUpon>rptDanhSachKhachHang.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\rptLoiNhuanKH.resx">
+      <DependentUpon>rptLoiNhuanKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptDanhSachNhaCungCap.resx">
-      <DependentUpon>rptDanhSachNhaCungCap.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\rptLoiNhuanSP.resx">
+      <DependentUpon>rptLoiNhuanSP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptDanhSachNhanVien.resx">
-      <DependentUpon>rptDanhSachNhanVien.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\rptPhieuBanHang.resx">
+      <DependentUpon>rptPhieuBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPhieuNhapHang.resx">
+      <DependentUpon>rptPhieuNhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -532,6 +511,8 @@
   <ItemGroup>
     <None Include="Resources\NoQR.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\R.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

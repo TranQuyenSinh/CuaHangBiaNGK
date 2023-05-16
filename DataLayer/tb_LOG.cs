@@ -18,5 +18,7 @@ namespace DataLayer
         public Nullable<int> IDUSER { get; set; }
         public Nullable<System.DateTime> TIME { get; set; }
         public string MESSAGE { get; set; }
+    
+        public virtual tb_USER tb_USER { get; set; }
     }
 }

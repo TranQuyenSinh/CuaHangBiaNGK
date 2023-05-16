@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.DTO;
 using DataLayer;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,10 +51,35 @@ namespace BusinessLayer
                 dto.TENLOAI = loai.TENLOAI;
                 dto.DINHMUCTON = hanghoa.DINHMUCTON;
                 dto.TONKHO = hanghoa.TONKHO;
+                dto.MaVach = hanghoa.MaVach;
                 dto.LISTGIA = listGia;
             }
             return dto;
         }
+        public HANGHOAFULL_DTO GetItemHangHoaFullDTOByBarcode(string barcode)
+        {
+            HANGHOAFULL_DTO dto = null;
+            var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.MaVach == barcode);
+            if (hanghoa == null)
+                return null;
+            List<tb_GIA> listGia = db.tb_GIA.Where(x => x.IDHH == hanghoa.IDHH).OrderBy(x => x.QUYDOI).ToList();
+            var loai = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == hanghoa.IDLOAI);
+            if (listGia != null)
+            {
+                dto = new HANGHOAFULL_DTO();
+                dto.IDHH = hanghoa.IDHH;
+                dto.TENHH = hanghoa.TENHH;
+                dto.MOTA = hanghoa.MOTA;
+                dto.IDLOAI = hanghoa.IDLOAI;
+                dto.TENLOAI = loai.TENLOAI;
+                dto.DINHMUCTON = hanghoa.DINHMUCTON;
+                dto.TONKHO = hanghoa.TONKHO;
+                dto.MaVach = hanghoa.MaVach;
+                dto.LISTGIA = listGia;
+            }
+            return dto;
+        }
+
         public List<HANGHOA_DTO> getListHangHoaDTO(bool isMinQuyDoi)
         {
             List<tb_HANGHOA> list = this.getListHangHoa();
@@ -79,6 +105,7 @@ namespace BusinessLayer
                     dto.TENLOAI = loai.TENLOAI;
                     dto.DINHMUCTON = item.DINHMUCTON;
                     dto.TONKHO = item.TONKHO;
+                    dto.MaVach = item.MaVach;
                     dto.IDGIA = gia.IDGIA;
                     dto.DONVITINH = gia.DONVITINH;
                     dto.GIANHAP = gia.GIANHAP;
@@ -110,6 +137,7 @@ namespace BusinessLayer
                     dto.MOTA = item.MOTA;
                     dto.IDLOAI = item.IDLOAI;
                     dto.TENLOAI = loai.TENLOAI;
+                    dto.MaVach = item.MaVach;
                     dto.DINHMUCTON = item.DINHMUCTON;
                     dto.TONKHO = item.TONKHO;
                     dto.LISTGIA = listGia;
@@ -136,6 +164,7 @@ namespace BusinessLayer
                 dto.IDHH = hanghoa.IDHH;
                 dto.TENHH = hanghoa.TENHH;
                 dto.MOTA = hanghoa.MOTA;
+                dto.MaVach = hanghoa.MaVach;
                 dto.IDLOAI = hanghoa.IDLOAI;
                 dto.TENLOAI = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == hanghoa.IDLOAI).TENLOAI; ;
                 dto.DINHMUCTON = hanghoa.DINHMUCTON / gia.QUYDOI;
@@ -186,6 +215,7 @@ namespace BusinessLayer
                 string newValue = $"ID:{dt.IDHH}, Name:{dt.TENHH}";
                 hanghoa.TENHH = dt.TENHH;
                 hanghoa.MOTA = dt.MOTA;
+                hanghoa.MaVach = dt.MaVach;
                 hanghoa.IDLOAI = dt.IDLOAI;
                 hanghoa.DINHMUCTON = dt.DINHMUCTON;
                 hanghoa.TONKHO = dt.TONKHO;

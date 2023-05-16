@@ -3,7 +3,6 @@ using BusinessLayer.DTO;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraReports.UI;
-using QL_BIA_NGK.Reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +32,6 @@ namespace QL_BIA_NGK
             btnThem.Enabled = Func.checkPermission("NHANVIEN", "ADD");
             btnSua.Enabled = Func.checkPermission("NHANVIEN", "UPDATE");
             btnXoa.Enabled = Func.checkPermission("NHANVIEN", "DELETE");
-            btnIn.Enabled = Func.checkPermission("NHANVIEN", "PRINT");
         }
         void LoadData()
         {
@@ -57,11 +55,6 @@ namespace QL_BIA_NGK
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LoadData();
-        }
-        private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            rptDanhSachNhanVien rpt = new rptDanhSachNhanVien(_nv.getDataReportList());
-            rpt.ShowPreview();
         }
 
         private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -149,10 +142,6 @@ namespace QL_BIA_NGK
             {
                 this.Close();
             }
-            else if (e.Control && e.KeyCode == Keys.P)
-            {
-                btnIn_ItemClick(null, null);
-            }
         }
         // double click row to update it
         private void gvDanhSach_DoubleClick(object sender, EventArgs e)
@@ -168,6 +157,8 @@ namespace QL_BIA_NGK
             DeleteData();
         }
 
+
+        // xử lý sự kiện lọc row để tìm kiếm theo kí tự gần đúng
         private void gvDanhSach_CustomRowFilter(object sender, DevExpress.XtraGrid.Views.Base.RowFilterEventArgs e)
         {
             ColumnView view = sender as ColumnView;

@@ -29,7 +29,6 @@ namespace BusinessLayer
                 dto.ADD = item.ADD;
                 dto.UPDATE = item.UPDATE;
                 dto.DELETE = item.DELETE;
-                dto.PRINT = item.PRINT;
                 listDTO.Add(dto);
             }
             return listDTO;
@@ -45,7 +44,6 @@ namespace BusinessLayer
                 _dt.ADD = dt.ADD;
                 _dt.UPDATE = dt.UPDATE;
                 _dt.DELETE = dt.DELETE;
-                _dt.PRINT = dt.PRINT;
 
                 db.SaveChanges();
             }

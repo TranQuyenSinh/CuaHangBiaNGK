@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraPrinting.BarCode.EAN13Generator eaN13Generator1 = new DevExpress.XtraPrinting.BarCode.EAN13Generator();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtMoTa = new System.Windows.Forms.TextBox();
@@ -91,7 +92,9 @@
             this.txtDinhMucTon = new DevExpress.XtraEditors.TextEdit();
             this.txtTonKho = new DevExpress.XtraEditors.TextEdit();
             this.label27 = new System.Windows.Forms.Label();
-            this.picQR = new System.Windows.Forms.PictureBox();
+            this.barCodeControl1 = new DevExpress.XtraEditors.BarCodeControl();
+            this.txtBarcode = new DevExpress.XtraEditors.TextEdit();
+            this.label28 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.slkLoaiHH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuyDoiGoc.Properties)).BeginInit();
@@ -112,7 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQuyDoi4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDinhMucTon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTonKho.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picQR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBarcode.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -537,7 +540,7 @@
             this.btnDong.ForeColor = System.Drawing.Color.Red;
             this.btnDong.Image = global::QL_BIA_NGK.Properties.Resources.close;
             this.btnDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDong.Location = new System.Drawing.Point(595, 534);
+            this.btnDong.Location = new System.Drawing.Point(595, 608);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(85, 30);
             this.btnDong.TabIndex = 29;
@@ -552,7 +555,7 @@
             this.btnLuu.ForeColor = System.Drawing.Color.Blue;
             this.btnLuu.Image = global::QL_BIA_NGK.Properties.Resources.diskette__1_;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(504, 534);
+            this.btnLuu.Location = new System.Drawing.Point(504, 608);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(85, 30);
             this.btnLuu.TabIndex = 28;
@@ -928,7 +931,7 @@
             // txtTonKho
             // 
             this.txtTonKho.EditValue = "24";
-            this.txtTonKho.Location = new System.Drawing.Point(124, 436);
+            this.txtTonKho.Location = new System.Drawing.Point(124, 438);
             this.txtTonKho.Name = "txtTonKho";
             this.txtTonKho.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.txtTonKho.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -947,23 +950,51 @@
             this.label27.TabIndex = 90;
             this.label27.Text = "Tồn kho";
             // 
-            // picQR
+            // barCodeControl1
             // 
-            this.picQR.Image = global::QL_BIA_NGK.Properties.Resources.NoQR;
-            this.picQR.Location = new System.Drawing.Point(289, 418);
-            this.picQR.Name = "picQR";
-            this.picQR.Size = new System.Drawing.Size(120, 120);
-            this.picQR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picQR.TabIndex = 92;
-            this.picQR.TabStop = false;
+            this.barCodeControl1.Location = new System.Drawing.Point(288, 469);
+            this.barCodeControl1.Name = "barCodeControl1";
+            this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
+            this.barCodeControl1.Size = new System.Drawing.Size(287, 112);
+            this.barCodeControl1.Symbology = eaN13Generator1;
+            this.barCodeControl1.TabIndex = 93;
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.EditValue = "0";
+            this.txtBarcode.Location = new System.Drawing.Point(355, 438);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.txtBarcode.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtBarcode.Properties.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.txtBarcode.Properties.Appearance.Options.UseFont = true;
+            this.txtBarcode.Properties.Appearance.Options.UseForeColor = true;
+            this.txtBarcode.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtBarcode.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtBarcode.Properties.NullText = "0";
+            this.txtBarcode.Size = new System.Drawing.Size(162, 22);
+            this.txtBarcode.TabIndex = 94;
+            this.txtBarcode.EditValueChanged += new System.EventHandler(this.txtBarcode_EditValueChanged);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label28.Location = new System.Drawing.Point(284, 441);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(59, 17);
+            this.label28.TabIndex = 95;
+            this.label28.Text = "Mã vạch";
             // 
             // frmChiTietHangHoa
             // 
             this.AcceptButton = this.btnLuu;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 576);
-            this.Controls.Add(this.picQR);
+            this.ClientSize = new System.Drawing.Size(695, 650);
+            this.Controls.Add(this.txtBarcode);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.barCodeControl1);
             this.Controls.Add(this.txtTonKho);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.txtDinhMucTon);
@@ -1052,7 +1083,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQuyDoi4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDinhMucTon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTonKho.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picQR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBarcode.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1123,6 +1154,8 @@
         private DevExpress.XtraEditors.TextEdit txtDinhMucTon;
         private DevExpress.XtraEditors.TextEdit txtTonKho;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.PictureBox picQR;
+        private DevExpress.XtraEditors.BarCodeControl barCodeControl1;
+        private DevExpress.XtraEditors.TextEdit txtBarcode;
+        private System.Windows.Forms.Label label28;
     }
 }

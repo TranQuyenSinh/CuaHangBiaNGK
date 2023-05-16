@@ -59,7 +59,6 @@
             this.ADD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DELETE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UPDATE = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.PRINT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Full = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkFull = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -374,7 +373,6 @@
             this.ADD,
             this.DELETE,
             this.UPDATE,
-            this.PRINT,
             this.ID,
             this.Full});
             this.gvDanhSach.GridControl = this.gcDanhSach;
@@ -478,25 +476,6 @@
             this.UPDATE.VisibleIndex = 3;
             this.UPDATE.Width = 49;
             // 
-            // PRINT
-            // 
-            this.PRINT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.PRINT.AppearanceCell.Options.UseFont = true;
-            this.PRINT.AppearanceCell.Options.UseTextOptions = true;
-            this.PRINT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PRINT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.PRINT.AppearanceHeader.Options.UseFont = true;
-            this.PRINT.AppearanceHeader.Options.UseTextOptions = true;
-            this.PRINT.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PRINT.Caption = "In";
-            this.PRINT.FieldName = "PRINT";
-            this.PRINT.MaxWidth = 49;
-            this.PRINT.MinWidth = 49;
-            this.PRINT.Name = "PRINT";
-            this.PRINT.Visible = true;
-            this.PRINT.VisibleIndex = 5;
-            this.PRINT.Width = 49;
-            // 
             // ID
             // 
             this.ID.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -524,7 +503,7 @@
             this.Full.MinWidth = 49;
             this.Full.Name = "Full";
             this.Full.Visible = true;
-            this.Full.VisibleIndex = 6;
+            this.Full.VisibleIndex = 5;
             this.Full.Width = 49;
             // 
             // chkFull
@@ -592,7 +571,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn ADD;
         private DevExpress.XtraGrid.Columns.GridColumn DELETE;
         private DevExpress.XtraGrid.Columns.GridColumn UPDATE;
-        private DevExpress.XtraGrid.Columns.GridColumn PRINT;
         private DevExpress.XtraGrid.Columns.GridColumn ID;
         private DevExpress.XtraGrid.Columns.GridColumn Full;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkFull;

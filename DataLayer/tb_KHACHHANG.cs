@@ -18,7 +18,6 @@ namespace DataLayer
         public tb_KHACHHANG()
         {
             this.tb_PHIEUBANHANG = new HashSet<tb_PHIEUBANHANG>();
-            this.tb_PHIEUTHU = new HashSet<tb_PHIEUTHU>();
         }
     
         public string IDKH { get; set; }
@@ -28,12 +27,9 @@ namespace DataLayer
         public string DIACHI { get; set; }
         public string SODIENTHOAI { get; set; }
         public string EMAIL { get; set; }
-        public Nullable<double> CONGNO { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_PHIEUBANHANG> tb_PHIEUBANHANG { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_PHIEUTHU> tb_PHIEUTHU { get; set; }
     }
 }

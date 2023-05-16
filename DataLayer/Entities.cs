@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace DataLayer
 {
     [Serializable]
-    public partial class Entities
+    public partial class Entities : DbContext
     {
         public static string SERVER;
         public static string USERNAME;
@@ -67,7 +67,7 @@ namespace DataLayer
 
             entityBuilder.Metadata = @"res://*/QL_BIA_NGK.csdl|res://*/QL_BIA_NGK.ssdl|res://*/QL_BIA_NGK.msl";
 
-            EntityConnection connection = new EntityConnection(entityBuilder.ConnectionString);
+            EntityConnection connection = new EntityConnection(entityBuilder.ToString());
 
            
             return new Entities(connection);

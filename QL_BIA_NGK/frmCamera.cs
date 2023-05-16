@@ -24,7 +24,7 @@ namespace QL_BIA_NGK
         private int delayTime;
 
         // delegate truyền dữ liệu quét được về form camera
-        public delegate void CaptureDelegate(string result);
+        public delegate void CaptureDelegate(string barcode);
         public event CaptureDelegate captureEvent;
 
         public frmCamera()
@@ -59,7 +59,7 @@ namespace QL_BIA_NGK
             try
             {
                 if (delayTime == 0) return;
-                BarcodeReader reader = new BarcodeReader();
+                BarcodeReader reader = new BarcodeReader() { AutoRotate = true};
                 Result result = reader.Decode((Bitmap)picCamera.Image);
                 if (result == null) return;
                 string decode = result.ToString().Trim();
@@ -74,7 +74,6 @@ namespace QL_BIA_NGK
                         delayTime = 0;
                         timerDelay.Start();
                     }
-                    
                     timer1.Start();
                 }
             }

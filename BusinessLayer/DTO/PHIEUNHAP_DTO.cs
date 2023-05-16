@@ -16,6 +16,7 @@ namespace BusinessLayer.DTO
         public Nullable<System.DateTime> NGAY { get; set; }
         public Nullable<double> PHIVANCHUYEN { get; set; }
         public string GHICHU { get; set; }
+        public string IDNV { get; set; }
         public Nullable<double> TONGTIEN { get; set; }
         public List<CHITIETPHIEUNHAP_DTO> listCTPN_DTO { get; set; }
     }

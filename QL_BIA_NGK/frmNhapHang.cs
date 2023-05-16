@@ -8,6 +8,8 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
+using QL_BIA_NGK.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +38,7 @@ namespace QL_BIA_NGK
         PHIEUNHAP _pn;
         HANGHOA _hh;
         USER _user;
+        NHANVIEN _nv;
         List<string> _listIDHH;
         public static List<CHITIETPHIEUNHAP_DTO> _listSP;
         public static bool _isSaved;
@@ -50,6 +53,7 @@ namespace QL_BIA_NGK
             _pn = new PHIEUNHAP();
             _hh = new HANGHOA();
             _user = new USER();
+            _nv = new NHANVIEN();
             _isAdd = true;
             _isSaved = true;
             _listSP = new List<CHITIETPHIEUNHAP_DTO>();
@@ -62,6 +66,7 @@ namespace QL_BIA_NGK
             LoadCboNCC();
             LoadData();
             LoadListPN();
+            LoadCboNhanVien();
             if (_listIDHH != null)
             {
                 InitPNFromListIDHH();
@@ -82,10 +87,19 @@ namespace QL_BIA_NGK
             LoadData();
             LoadCboNCC();
             LoadListPN();
+            LoadCboNhanVien();
         }
         private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            var focusValue = gvDanhSachPhieu.GetFocusedRowCellValue("IDPN");
+            if (focusValue != null)
+            {
+                string id = focusValue.ToString();
+                rptPhieuNhapHang rpt = new rptPhieuNhapHang(_pn.GetReport(id));
+                rpt.ShowPreview();
+            }
+            else
+                Func.ShowMessage("Bạn chưa chọn phiếu bán hàng nào để in", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void btnCamera_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -261,7 +275,6 @@ namespace QL_BIA_NGK
             bool addPer = Func.checkPermission("NHAPHANG", "ADD");
             bool updatePer = Func.checkPermission("NHAPHANG", "UPDATE");
             bool deletePer = Func.checkPermission("NHAPHANG", "DELETE");
-            bool printPer = Func.checkPermission("NHAPHANG", "PRINT");
 
             btnThem.Enabled = addPer;
             btnThemSP.Enabled = addPer;
@@ -269,7 +282,6 @@ namespace QL_BIA_NGK
             btnXoaSP.Enabled = deletePer;
             btnLuu.Enabled = addPer && updatePer;
             btnLuuPN.Enabled = addPer && updatePer;
-            btnIn.Enabled = printPer;
         }
         // load data
         void LoadData()
@@ -292,6 +304,12 @@ namespace QL_BIA_NGK
             slkNCC1.Properties.ValueMember = "IDNCC";
             slkNCC2.Properties.ValueMember = "IDNCC";
         }
+        void LoadCboNhanVien()
+        {
+            slkNhanVien.Properties.DataSource = _nv.getList();
+            slkNhanVien.Properties.DisplayMember = "HOTEN";
+            slkNhanVien.Properties.ValueMember = "IDNV";
+        }
         void LoadListPN()
         {
             var tuNgay = DateTime.Parse(dtTuNgay.EditValue.ToString());
@@ -306,7 +324,7 @@ namespace QL_BIA_NGK
             foreach (string idhh in _listIDHH)
             {
                 HANGHOAFULL_DTO hanghoa_dto = _hh.GetItemHangHoaFullDTO(idhh);
-                var gia = hanghoa_dto.LISTGIA[0];
+                var gia = hanghoa_dto.LISTGIA[hanghoa_dto.LISTGIA.Count -1];
                 CHITIETPHIEUNHAP_DTO ctpn = new CHITIETPHIEUNHAP_DTO();
                 ctpn.IDPN = txtMaPhieu.Text;
                 ctpn.IDHH = idhh;
@@ -345,6 +363,7 @@ namespace QL_BIA_NGK
                 txtMaPhieu.Text = pn_selected.IDPN;
                 txtNguoiLap.Text = _user.getFullNameUser(pn_selected.IDUSER);
                 slkNCC2.EditValue = pn_selected.IDNCC;
+                slkNhanVien.EditValue = pn_selected.IDNV;
                 txtGhiChu.Text = pn_selected.GHICHU;
                 var coppyList = new List<CHITIETPHIEUNHAP_DTO>();
                 coppyList.AddRange(pn_selected.listCTPN_DTO);
@@ -415,6 +434,13 @@ namespace QL_BIA_NGK
             pn_dto.GHICHU = txtGhiChu.Text;
             pn_dto.TONGTIEN = double.Parse(txtTongTienSauPhi.Text);
             pn_dto.listCTPN_DTO = _listSP;
+            if (slkNhanVien.EditValue == null)
+            {
+                pn_dto.IDNV = null;
+            }else
+            {
+                pn_dto.IDNV = slkNhanVien.EditValue.ToString();
+            }
 
             // xử lý db
             if (_isAdd)
@@ -478,7 +504,7 @@ namespace QL_BIA_NGK
             else
                 Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        void AppendDataFromCamera(string result)
+        void AppendDataFromCamera(string barcode)
         {
             if (!Func.checkPermission("NHAPHANG", "ADD") || !Func.checkPermission("NHAPHANG", "UPDATE"))
             {
@@ -487,13 +513,13 @@ namespace QL_BIA_NGK
             }
             CHITIETPHIEUNHAP_DTO ctpb = new CHITIETPHIEUNHAP_DTO();
             ctpb.IDPN = txtMaPhieu.Text;
-            HANGHOAFULL_DTO hanghoa = _hh.GetItemHangHoaFullDTO(result);
+            HANGHOAFULL_DTO hanghoa = _hh.GetItemHangHoaFullDTOByBarcode(barcode);
             // trường hợp quét sai mã QR
             if (hanghoa == null) return;
             System.Media.SystemSounds.Beep.Play();
             // nếu đã có hàng hóa trong bảng rồi thì tăng số lượng lên 1
             // và cập nhật lại thành tiền
-            var item = _listSP.Find(x => x.IDHH == result);
+            var item = _listSP.Find(x => x.IDHH == hanghoa.IDHH);
             if (item != null)
             {
                 item.SOLUONG += 1;
@@ -506,7 +532,7 @@ namespace QL_BIA_NGK
             // thêm mới chi tiết bán vào gridview
             tb_GIA gia;
             gia = hanghoa.LISTGIA.Last();
-            ctpb.IDHH = result;
+            ctpb.IDHH = hanghoa.IDHH;
             ctpb.TENHH = hanghoa.TENHH;
             ctpb.GHICHU = "";
             ctpb.DONVITINH = gia.DONVITINH;
@@ -520,8 +546,8 @@ namespace QL_BIA_NGK
             _isSaved = false;
             LoadData();
         }
-        #endregion
 
+        #endregion
 
     }
 }

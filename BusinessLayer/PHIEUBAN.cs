@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.DTO;
+using BusinessLayer.REPORT;
 using DataLayer;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,40 @@ namespace BusinessLayer
     public class PHIEUBAN
     {
         Entities db = Entities.CreateEntities();
+        public List<PHIEUBAN_REPORT_DATA> GetReport(string idpb)
+        {
+            List<PHIEUBAN_REPORT_DATA> report_list = new List<PHIEUBAN_REPORT_DATA>();
+            PHIEUBAN_DTO pb_dto = GetItemPB_DTO(idpb);
+
+            foreach (var chitiet in pb_dto.listCTPB_DTO)
+            {
+                PHIEUBAN_REPORT_DATA r_item = new PHIEUBAN_REPORT_DATA();
+                r_item.IDPB = pb_dto.IDPB;
+                if (pb_dto.IDNV != null)
+                {
+                    r_item.HOTENNV = db.tb_NHANVIEN.FirstOrDefault(x => x.IDNV == pb_dto.IDNV).HOTEN;
+                }
+                r_item.HOTENKH = pb_dto.HOTEN;
+                var khachhang = db.tb_KHACHHANG.FirstOrDefault(x => x.IDKH == pb_dto.IDKH);
+                r_item.DIACHI = khachhang.DIACHI;
+                r_item.DIENTHOAI = khachhang.SODIENTHOAI;
+                r_item.NGAY = pb_dto.NGAY.ToString();
+                r_item.GHICHU = pb_dto.GHICHU;
+                r_item.LOAIGIA = pb_dto.GIASI == true ? "Giá sỉ" : "Giá lẻ";
+                r_item.TONGTIEN = double.Parse(pb_dto.TONGTIEN.ToString());
+                r_item.PHIVANCHUYEN = double.Parse(pb_dto.PHIVANCHUYEN.ToString());
+                // chi tiết
+                r_item.TENHH = chitiet.TENHH;
+                r_item.DONVITINH = chitiet.DONVITINH;
+                r_item.DONGIA = double.Parse(chitiet.DONGIA.ToString());
+                r_item.SOLUONG = int.Parse(chitiet.SOLUONG.ToString());
+                r_item.THANHTIEN = double.Parse(chitiet.THANHTIEN.ToString());
+                r_item.GHICHUSP = chitiet.GHICHU;
+
+                report_list.Add(r_item);
+            }
+            return report_list;
+        }
 
         public tb_PHIEUBANHANG GetItemPB(string id)
         {
@@ -28,6 +63,12 @@ namespace BusinessLayer
             pb_dto.HOTEN = db.tb_KHACHHANG.FirstOrDefault(x => x.IDKH == pb.IDKH).HOTEN;
             pb_dto.GHICHU = pb.GHICHU;
             pb_dto.NGAY = pb.NGAY;
+            pb_dto.IDNV = pb.IDNV;
+            if (pb.IDNV != null)
+            {
+                pb_dto.IDNV = pb.IDNV;
+                pb_dto.HOTENNV = db.tb_NHANVIEN.FirstOrDefault(x => x.IDNV == pb.IDNV).HOTEN;
+            }
             pb_dto.PHIVANCHUYEN = pb.PHIVANCHUYEN;
             pb_dto.TONGTIEN = pb.TONGTIEN;
             pb_dto.GIASI = pb.GIASI;
@@ -52,6 +93,11 @@ namespace BusinessLayer
                 pb_dto.HOTEN = db.tb_KHACHHANG.FirstOrDefault(x => x.IDKH == item.IDKH).HOTEN;
                 pb_dto.GHICHU = item.GHICHU;
                 pb_dto.NGAY = item.NGAY;
+                if (item.IDNV != null)
+                {
+                    pb_dto.IDNV = item.IDNV;
+                    pb_dto.HOTENNV = db.tb_NHANVIEN.FirstOrDefault(x => x.IDNV == item.IDNV).HOTEN;
+                }
                 pb_dto.PHIVANCHUYEN = item.PHIVANCHUYEN;
                 pb_dto.TONGTIEN = item.TONGTIEN;
                 pb_dto.GIASI = item.GIASI;
@@ -98,6 +144,7 @@ namespace BusinessLayer
                 pb.PHIVANCHUYEN = pb_dto.PHIVANCHUYEN;
                 pb.TONGTIEN = pb_dto.TONGTIEN;
                 pb.IDUSER = pb_dto.IDUSER;
+                pb.IDNV = pb_dto.IDNV;
                 pb.GIASI = pb_dto.GIASI;
                 db.tb_PHIEUBANHANG.Add(pb);
                 foreach (var item in pb_dto.listCTPB_DTO)
@@ -135,6 +182,7 @@ namespace BusinessLayer
                 pb.GHICHU = pb_dto.GHICHU;
                 pb.NGAY = pb_dto.NGAY;
                 pb.PHIVANCHUYEN = pb_dto.PHIVANCHUYEN;
+                pb.IDNV = pb_dto.IDNV;
                 pb.TONGTIEN = pb_dto.TONGTIEN;
                 pb.IDUSER = pb_dto.IDUSER;
                 pb.GIASI = pb_dto.GIASI;

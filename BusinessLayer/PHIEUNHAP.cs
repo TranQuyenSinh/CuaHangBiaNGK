@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.DTO;
+using BusinessLayer.REPORT;
 using DataLayer;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,39 @@ namespace BusinessLayer
     public class PHIEUNHAP
     {
         Entities db = Entities.CreateEntities();
+        public List<PHIEUNHAP_REPORT_DATA> GetReport(string idpn)
+        {
+            List<PHIEUNHAP_REPORT_DATA> report_list = new List<PHIEUNHAP_REPORT_DATA>();
+            PHIEUNHAP_DTO pn_dto = GetItemPN_DTO(idpn);
+
+            foreach (var chitiet in pn_dto.listCTPN_DTO)
+            {
+                PHIEUNHAP_REPORT_DATA r_item = new PHIEUNHAP_REPORT_DATA();
+                r_item.IDPN = pn_dto.IDPN;
+                if (pn_dto.IDNV != null)
+                {
+                    r_item.HOTENNV = db.tb_NHANVIEN.FirstOrDefault(x => x.IDNV == pn_dto.IDNV).HOTEN;
+                }
+                r_item.HOTENNCC = pn_dto.HOTEN;
+                var nhacungcap = db.tb_NHACUNGCAP.FirstOrDefault(x => x.IDNCC == pn_dto.IDNCC);
+                r_item.DIACHI = nhacungcap.DIACHI;
+                r_item.DIENTHOAI = nhacungcap.SODIENTHOAI;
+                r_item.NGAY = pn_dto.NGAY.ToString();
+                r_item.GHICHU = pn_dto.GHICHU;
+                r_item.TONGTIEN = double.Parse(pn_dto.TONGTIEN.ToString());
+                r_item.PHIVANCHUYEN = double.Parse(pn_dto.PHIVANCHUYEN.ToString());
+                // chi tiết
+                r_item.TENHH = chitiet.TENHH;
+                r_item.DONVITINH = chitiet.DONVITINH;
+                r_item.DONGIA = double.Parse(chitiet.DONGIA.ToString());
+                r_item.SOLUONG = int.Parse(chitiet.SOLUONG.ToString());
+                r_item.THANHTIEN = double.Parse(chitiet.THANHTIEN.ToString());
+                r_item.GHICHUSP = chitiet.GHICHU;
+
+                report_list.Add(r_item);
+            }
+            return report_list;
+        }
 
         public tb_PHIEUNHAPHANG GetItemPN(string id)
         {
@@ -30,6 +64,7 @@ namespace BusinessLayer
             pn_dto.HOTEN = db.tb_NHACUNGCAP.FirstOrDefault(x => x.IDNCC == pn.IDNCC).HOTEN;
             pn_dto.GHICHU = pn.GHICHU;
             pn_dto.NGAY = pn.NGAY;
+            pn_dto.IDNV = pn.IDNV;
             pn_dto.PHIVANCHUYEN = pn.PHIVANCHUYEN;
             pn_dto.TONGTIEN = pn.TONGTIEN;
             pn_dto.listCTPN_DTO = this.getListCTPN_DTO(pn.IDPN);
@@ -53,6 +88,7 @@ namespace BusinessLayer
                 dto.HOTEN = db.tb_NHACUNGCAP.FirstOrDefault(x => x.IDNCC == item.IDNCC).HOTEN;
                 dto.GHICHU = item.GHICHU;
                 dto.NGAY = item.NGAY;
+                dto.IDNV = item.IDNV;
                 dto.PHIVANCHUYEN = item.PHIVANCHUYEN;
                 dto.TONGTIEN = item.TONGTIEN;
                 dto.listCTPN_DTO = this.getListCTPN_DTO(item.IDPN);
@@ -98,6 +134,7 @@ namespace BusinessLayer
                 pn.PHIVANCHUYEN = pn_dto.PHIVANCHUYEN;
                 pn.TONGTIEN = pn_dto.TONGTIEN;
                 pn.IDUSER = pn_dto.IDUSER;
+                pn.IDNV = pn_dto.IDNV;
                 db.tb_PHIEUNHAPHANG.Add(pn);
                 foreach (var item in pn_dto.listCTPN_DTO)
                 {
@@ -134,6 +171,7 @@ namespace BusinessLayer
                 pn.GHICHU = pn_dto.GHICHU;
                 pn.NGAY = pn_dto.NGAY;
                 pn.PHIVANCHUYEN = pn_dto.PHIVANCHUYEN;
+                pn.IDNV = pn_dto.IDNV;
                 pn.TONGTIEN = pn_dto.TONGTIEN;
                 pn.IDUSER = pn_dto.IDUSER;
                 // list ctpn trong database trước khi update

@@ -5,23 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bb39f9d741274fc1a2c6075373e8a262" Name="Diagram1">
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_CHITIET_PHIEUBANHANG" Width="1.5" PointX="10.5" PointY="14.25" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_CHITIET_PHIEUNHAPHANG" Width="1.5" PointX="7.5" PointY="9.25" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_CHUCNANG" Width="1.5" PointX="0.75" PointY="8.25" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_GIA" Width="1.5" PointX="7.5" PointY="1.625" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_HANGHOA" Width="1.5" PointX="5.25" PointY="1.25" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_KHACHHANG" Width="1.5" PointX="3" PointY="19.25" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_LOAIHANGHOA" Width="1.5" PointX="3" PointY="2.125" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_LOG" Width="1.5" PointX="8.75" PointY="5.75" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHACUNGCAP" Width="1.5" PointX="3" PointY="5.5" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHANVIEN" Width="1.5" PointX="6" PointY="5.375" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHOM" Width="1.5" PointX="0.75" PointY="11.125" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHANQUYEN" Width="1.5" PointX="3" PointY="9.5" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHIEUBANHANG" Width="1.5" PointX="5.25" PointY="14.125" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHIEUCHI" Width="1.5" PointX="8.25" PointY="14.125" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHIEUNHAPHANG" Width="1.5" PointX="5.25" PointY="9.25" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHIEUTHU" Width="1.5" PointX="5.25" PointY="19.125" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_USER" Width="1.5" PointX="3" PointY="14.25" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_CHITIET_PHIEUBANHANG" Width="1.5" PointX="10.5" PointY="10.875" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_CHITIET_PHIEUNHAPHANG" Width="1.5" PointX="7.5" PointY="5.875" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_CHUCNANG" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_GIA" Width="1.5" PointX="10.5" PointY="25.125" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_HANGHOA" Width="1.5" PointX="8.25" PointY="24.75" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_KHACHHANG" Width="1.5" PointX="6" PointY="15.125" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_LOAIHANGHOA" Width="1.5" PointX="6" PointY="25.625" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_LOG" Width="1.5" PointX="5.25" PointY="20.25" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHACUNGCAP" Width="1.5" PointX="3" PointY="15.25" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHANVIEN" Width="1.5" PointX="6" PointY="1.75" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHOM" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHANQUYEN" Width="1.5" PointX="3" PointY="6.375" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHIEUBANHANG" Width="1.5" PointX="8.25" PointY="10.625" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHIEUNHAPHANG" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_USER" Width="1.5" PointX="3" PointY="10.875" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_PHIEUBANHANG" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_CHITIET_PHIEUNHAPHANG_tb_HANGHOA" />
@@ -30,17 +28,14 @@
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_GIA_tb_HANGHOA" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_HANGHOA_tb_LOAIHANGHOA" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_KHACHHANG" />
-        <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_KHACHHANG" />
-        <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_NHACUNGCAP" />
+        <AssociationConnector Association="QL_BIA_NGK.FK_tb_LOG_tb_USER" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP" />
-        <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_NHANVIEN" />
-        <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_NHANVIEN" />
+        <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_NHANVIEN" />
+        <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHANVIEN" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_NHOM_CHUCNANG_tb_NHOM" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_USER_tb_NHOM" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_USER" />
-        <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_USER" />
         <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_USER" />
-        <AssociationConnector Association="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_USER" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

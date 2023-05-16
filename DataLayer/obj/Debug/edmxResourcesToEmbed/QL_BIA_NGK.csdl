@@ -14,9 +14,7 @@
     <EntitySet Name="tb_NHOM" EntityType="QL_BIA_NGK.tb_NHOM" />
     <EntitySet Name="tb_PHANQUYEN" EntityType="QL_BIA_NGK.tb_PHANQUYEN" />
     <EntitySet Name="tb_PHIEUBANHANG" EntityType="QL_BIA_NGK.tb_PHIEUBANHANG" />
-    <EntitySet Name="tb_PHIEUCHI" EntityType="QL_BIA_NGK.tb_PHIEUCHI" />
     <EntitySet Name="tb_PHIEUNHAPHANG" EntityType="QL_BIA_NGK.tb_PHIEUNHAPHANG" />
-    <EntitySet Name="tb_PHIEUTHU" EntityType="QL_BIA_NGK.tb_PHIEUTHU" />
     <EntitySet Name="tb_USER" EntityType="QL_BIA_NGK.tb_USER" />
     <AssociationSet Name="FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA" Association="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA">
       <End Role="tb_HANGHOA" EntitySet="tb_HANGHOA" />
@@ -50,25 +48,21 @@
       <End Role="tb_KHACHHANG" EntitySet="tb_KHACHHANG" />
       <End Role="tb_PHIEUBANHANG" EntitySet="tb_PHIEUBANHANG" />
     </AssociationSet>
-    <AssociationSet Name="FK_tb_PHIEUTHU_tb_KHACHHANG" Association="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_KHACHHANG">
-      <End Role="tb_KHACHHANG" EntitySet="tb_KHACHHANG" />
-      <End Role="tb_PHIEUTHU" EntitySet="tb_PHIEUTHU" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tb_PHIEUCHI_tb_NHACUNGCAP" Association="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_NHACUNGCAP">
-      <End Role="tb_NHACUNGCAP" EntitySet="tb_NHACUNGCAP" />
-      <End Role="tb_PHIEUCHI" EntitySet="tb_PHIEUCHI" />
+    <AssociationSet Name="FK_tb_LOG_tb_USER" Association="QL_BIA_NGK.FK_tb_LOG_tb_USER">
+      <End Role="tb_USER" EntitySet="tb_USER" />
+      <End Role="tb_LOG" EntitySet="tb_LOG" />
     </AssociationSet>
     <AssociationSet Name="FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP" Association="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP">
       <End Role="tb_NHACUNGCAP" EntitySet="tb_NHACUNGCAP" />
       <End Role="tb_PHIEUNHAPHANG" EntitySet="tb_PHIEUNHAPHANG" />
     </AssociationSet>
-    <AssociationSet Name="FK_tb_PHIEUCHI_tb_NHANVIEN" Association="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_NHANVIEN">
+    <AssociationSet Name="FK_tb_PHIEUBANHANG_tb_NHANVIEN" Association="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_NHANVIEN">
       <End Role="tb_NHANVIEN" EntitySet="tb_NHANVIEN" />
-      <End Role="tb_PHIEUCHI" EntitySet="tb_PHIEUCHI" />
+      <End Role="tb_PHIEUBANHANG" EntitySet="tb_PHIEUBANHANG" />
     </AssociationSet>
-    <AssociationSet Name="FK_tb_PHIEUTHU_tb_NHANVIEN" Association="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_NHANVIEN">
+    <AssociationSet Name="FK_tb_PHIEUNHAPHANG_tb_NHANVIEN" Association="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHANVIEN">
       <End Role="tb_NHANVIEN" EntitySet="tb_NHANVIEN" />
-      <End Role="tb_PHIEUTHU" EntitySet="tb_PHIEUTHU" />
+      <End Role="tb_PHIEUNHAPHANG" EntitySet="tb_PHIEUNHAPHANG" />
     </AssociationSet>
     <AssociationSet Name="FK_tb_NHOM_CHUCNANG_tb_NHOM" Association="QL_BIA_NGK.FK_tb_NHOM_CHUCNANG_tb_NHOM">
       <End Role="tb_NHOM" EntitySet="tb_NHOM" />
@@ -82,17 +76,9 @@
       <End Role="tb_USER" EntitySet="tb_USER" />
       <End Role="tb_PHIEUBANHANG" EntitySet="tb_PHIEUBANHANG" />
     </AssociationSet>
-    <AssociationSet Name="FK_tb_PHIEUCHI_tb_USER" Association="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_USER">
-      <End Role="tb_USER" EntitySet="tb_USER" />
-      <End Role="tb_PHIEUCHI" EntitySet="tb_PHIEUCHI" />
-    </AssociationSet>
     <AssociationSet Name="FK_tb_PHIEUNHAPHANG_tb_USER" Association="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_USER">
       <End Role="tb_USER" EntitySet="tb_USER" />
       <End Role="tb_PHIEUNHAPHANG" EntitySet="tb_PHIEUNHAPHANG" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tb_PHIEUTHU_tb_USER" Association="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_USER">
-      <End Role="tb_USER" EntitySet="tb_USER" />
-      <End Role="tb_PHIEUTHU" EntitySet="tb_PHIEUTHU" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="tb_CHITIET_PHIEUBANHANG">
@@ -154,6 +140,7 @@
     </Key>
     <Property Name="IDHH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="TENHH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaVach" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="MOTA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IDLOAI" Type="Int32" />
     <Property Name="DINHMUCTON" Type="Double" />
@@ -175,10 +162,8 @@
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SODIENTHOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CONGNO" Type="Double" />
     <Property Name="DELETED" Type="Boolean" />
     <NavigationProperty Name="tb_PHIEUBANHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_KHACHHANG" FromRole="tb_KHACHHANG" ToRole="tb_PHIEUBANHANG" />
-    <NavigationProperty Name="tb_PHIEUTHU" Relationship="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_KHACHHANG" FromRole="tb_KHACHHANG" ToRole="tb_PHIEUTHU" />
   </EntityType>
   <EntityType Name="tb_LOAIHANGHOA">
     <Key>
@@ -196,6 +181,7 @@
     <Property Name="IDUSER" Type="Int32" />
     <Property Name="TIME" Type="DateTime" Precision="3" />
     <Property Name="MESSAGE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_USER" Relationship="QL_BIA_NGK.FK_tb_LOG_tb_USER" FromRole="tb_LOG" ToRole="tb_USER" />
   </EntityType>
   <EntityType Name="tb_NHACUNGCAP">
     <Key>
@@ -206,9 +192,7 @@
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SODIENTHOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CONGNO" Type="Double" />
     <Property Name="DELETED" Type="Boolean" />
-    <NavigationProperty Name="tb_PHIEUCHI" Relationship="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_NHACUNGCAP" FromRole="tb_NHACUNGCAP" ToRole="tb_PHIEUCHI" />
     <NavigationProperty Name="tb_PHIEUNHAPHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP" FromRole="tb_NHACUNGCAP" ToRole="tb_PHIEUNHAPHANG" />
   </EntityType>
   <EntityType Name="tb_NHANVIEN">
@@ -223,8 +207,8 @@
     <Property Name="SODIENTHOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="DELETED" Type="Boolean" />
-    <NavigationProperty Name="tb_PHIEUCHI" Relationship="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_NHANVIEN" FromRole="tb_NHANVIEN" ToRole="tb_PHIEUCHI" />
-    <NavigationProperty Name="tb_PHIEUTHU" Relationship="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_NHANVIEN" FromRole="tb_NHANVIEN" ToRole="tb_PHIEUTHU" />
+    <NavigationProperty Name="tb_PHIEUBANHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_NHANVIEN" FromRole="tb_NHANVIEN" ToRole="tb_PHIEUBANHANG" />
+    <NavigationProperty Name="tb_PHIEUNHAPHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHANVIEN" FromRole="tb_NHANVIEN" ToRole="tb_PHIEUNHAPHANG" />
   </EntityType>
   <EntityType Name="tb_NHOM">
     <Key>
@@ -246,7 +230,6 @@
     <Property Name="ADD" Type="Boolean" />
     <Property Name="UPDATE" Type="Boolean" />
     <Property Name="DELETE" Type="Boolean" />
-    <Property Name="PRINT" Type="Boolean" />
     <NavigationProperty Name="tb_CHUCNANG" Relationship="QL_BIA_NGK.FK_tb_NHOM_CHUCNANG_tb_CHUCNANG1" FromRole="tb_PHANQUYEN" ToRole="tb_CHUCNANG" />
     <NavigationProperty Name="tb_NHOM" Relationship="QL_BIA_NGK.FK_tb_NHOM_CHUCNANG_tb_NHOM" FromRole="tb_PHANQUYEN" ToRole="tb_NHOM" />
   </EntityType>
@@ -258,32 +241,15 @@
     <Property Name="NGAY" Type="DateTime" Precision="3" />
     <Property Name="IDUSER" Type="Int32" />
     <Property Name="PHIVANCHUYEN" Type="Double" />
-    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GHICHU" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IDNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="IDKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="TONGTIEN" Type="Double" />
-    <Property Name="DATRA" Type="Double" />
     <Property Name="GIASI" Type="Boolean" />
     <NavigationProperty Name="tb_CHITIET_PHIEUBANHANG" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUBANHANG_tb_PHIEUBANHANG" FromRole="tb_PHIEUBANHANG" ToRole="tb_CHITIET_PHIEUBANHANG" />
     <NavigationProperty Name="tb_KHACHHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_KHACHHANG" FromRole="tb_PHIEUBANHANG" ToRole="tb_KHACHHANG" />
+    <NavigationProperty Name="tb_NHANVIEN" Relationship="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_NHANVIEN" FromRole="tb_PHIEUBANHANG" ToRole="tb_NHANVIEN" />
     <NavigationProperty Name="tb_USER" Relationship="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_USER" FromRole="tb_PHIEUBANHANG" ToRole="tb_USER" />
-  </EntityType>
-  <EntityType Name="tb_PHIEUCHI">
-    <Key>
-      <PropertyRef Name="IDPC" />
-    </Key>
-    <Property Name="IDPC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NGAY" Type="DateTime" Precision="3" />
-    <Property Name="IDUSER" Type="Int32" />
-    <Property Name="IDNCC" Type="Int32" />
-    <Property Name="IDNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="NOIDUNG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SOTIEN" Type="Double" />
-    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="CONGNOCU" Type="Double" />
-    <Property Name="CONGNOMOI" Type="Double" />
-    <NavigationProperty Name="tb_NHACUNGCAP" Relationship="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_NHACUNGCAP" FromRole="tb_PHIEUCHI" ToRole="tb_NHACUNGCAP" />
-    <NavigationProperty Name="tb_NHANVIEN" Relationship="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_NHANVIEN" FromRole="tb_PHIEUCHI" ToRole="tb_NHANVIEN" />
-    <NavigationProperty Name="tb_USER" Relationship="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_USER" FromRole="tb_PHIEUCHI" ToRole="tb_USER" />
   </EntityType>
   <EntityType Name="tb_PHIEUNHAPHANG">
     <Key>
@@ -291,33 +257,16 @@
     </Key>
     <Property Name="IDPN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="NGAY" Type="DateTime" Precision="3" />
-    <Property Name="IDUSER" Type="Int32" />
+    <Property Name="IDUSER" Type="Int32" Nullable="false" />
     <Property Name="PHIVANCHUYEN" Type="Double" />
-    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GHICHU" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IDNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="IDNCC" Type="Int32" />
-    <Property Name="DATRA" Type="Double" />
     <Property Name="TONGTIEN" Type="Double" />
     <NavigationProperty Name="tb_CHITIET_PHIEUNHAPHANG" Relationship="QL_BIA_NGK.FK_tb_CHITIET_PHIEUNHAPHANG_tb_PHIEUNHAPHANG" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_CHITIET_PHIEUNHAPHANG" />
     <NavigationProperty Name="tb_NHACUNGCAP" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHACUNGCAP" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_NHACUNGCAP" />
+    <NavigationProperty Name="tb_NHANVIEN" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_NHANVIEN" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_NHANVIEN" />
     <NavigationProperty Name="tb_USER" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_USER" FromRole="tb_PHIEUNHAPHANG" ToRole="tb_USER" />
-  </EntityType>
-  <EntityType Name="tb_PHIEUTHU">
-    <Key>
-      <PropertyRef Name="IDPT" />
-    </Key>
-    <Property Name="IDPT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NGAY" Type="DateTime" Precision="3" />
-    <Property Name="IDUSER" Type="Int32" />
-    <Property Name="IDKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="IDNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="NOIDUNG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SOTIEN" Type="Double" />
-    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="CONGNOCU" Type="Double" />
-    <Property Name="CONGNOMOI" Type="Double" />
-    <NavigationProperty Name="tb_KHACHHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_KHACHHANG" FromRole="tb_PHIEUTHU" ToRole="tb_KHACHHANG" />
-    <NavigationProperty Name="tb_NHANVIEN" Relationship="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_NHANVIEN" FromRole="tb_PHIEUTHU" ToRole="tb_NHANVIEN" />
-    <NavigationProperty Name="tb_USER" Relationship="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_USER" FromRole="tb_PHIEUTHU" ToRole="tb_USER" />
   </EntityType>
   <EntityType Name="tb_USER">
     <Key>
@@ -329,11 +278,10 @@
     <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="IDNHOM" Type="Int32" />
     <Property Name="DELETED" Type="Boolean" />
+    <NavigationProperty Name="tb_LOG" Relationship="QL_BIA_NGK.FK_tb_LOG_tb_USER" FromRole="tb_USER" ToRole="tb_LOG" />
     <NavigationProperty Name="tb_NHOM" Relationship="QL_BIA_NGK.FK_tb_USER_tb_NHOM" FromRole="tb_USER" ToRole="tb_NHOM" />
     <NavigationProperty Name="tb_PHIEUBANHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUBANHANG_tb_USER" FromRole="tb_USER" ToRole="tb_PHIEUBANHANG" />
-    <NavigationProperty Name="tb_PHIEUCHI" Relationship="QL_BIA_NGK.FK_tb_PHIEUCHI_tb_USER" FromRole="tb_USER" ToRole="tb_PHIEUCHI" />
     <NavigationProperty Name="tb_PHIEUNHAPHANG" Relationship="QL_BIA_NGK.FK_tb_PHIEUNHAPHANG_tb_USER" FromRole="tb_USER" ToRole="tb_PHIEUNHAPHANG" />
-    <NavigationProperty Name="tb_PHIEUTHU" Relationship="QL_BIA_NGK.FK_tb_PHIEUTHU_tb_USER" FromRole="tb_USER" ToRole="tb_PHIEUTHU" />
   </EntityType>
   <Association Name="FK_tb_CHITIET_PHIEUBANHANG_tb_HANGHOA">
     <End Type="QL_BIA_NGK.tb_HANGHOA" Role="tb_HANGHOA" Multiplicity="0..1" />
@@ -431,27 +379,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tb_PHIEUTHU_tb_KHACHHANG">
-    <End Type="QL_BIA_NGK.tb_KHACHHANG" Role="tb_KHACHHANG" Multiplicity="0..1" />
-    <End Type="QL_BIA_NGK.tb_PHIEUTHU" Role="tb_PHIEUTHU" Multiplicity="*" />
+  <Association Name="FK_tb_LOG_tb_USER">
+    <End Type="QL_BIA_NGK.tb_USER" Role="tb_USER" Multiplicity="0..1" />
+    <End Type="QL_BIA_NGK.tb_LOG" Role="tb_LOG" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tb_KHACHHANG">
-        <PropertyRef Name="IDKH" />
+      <Principal Role="tb_USER">
+        <PropertyRef Name="IDUSER" />
       </Principal>
-      <Dependent Role="tb_PHIEUTHU">
-        <PropertyRef Name="IDKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tb_PHIEUCHI_tb_NHACUNGCAP">
-    <End Type="QL_BIA_NGK.tb_NHACUNGCAP" Role="tb_NHACUNGCAP" Multiplicity="0..1" />
-    <End Type="QL_BIA_NGK.tb_PHIEUCHI" Role="tb_PHIEUCHI" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tb_NHACUNGCAP">
-        <PropertyRef Name="IDNCC" />
-      </Principal>
-      <Dependent Role="tb_PHIEUCHI">
-        <PropertyRef Name="IDNCC" />
+      <Dependent Role="tb_LOG">
+        <PropertyRef Name="IDUSER" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -467,26 +403,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tb_PHIEUCHI_tb_NHANVIEN">
+  <Association Name="FK_tb_PHIEUBANHANG_tb_NHANVIEN">
     <End Type="QL_BIA_NGK.tb_NHANVIEN" Role="tb_NHANVIEN" Multiplicity="0..1" />
-    <End Type="QL_BIA_NGK.tb_PHIEUCHI" Role="tb_PHIEUCHI" Multiplicity="*" />
+    <End Type="QL_BIA_NGK.tb_PHIEUBANHANG" Role="tb_PHIEUBANHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tb_NHANVIEN">
         <PropertyRef Name="IDNV" />
       </Principal>
-      <Dependent Role="tb_PHIEUCHI">
+      <Dependent Role="tb_PHIEUBANHANG">
         <PropertyRef Name="IDNV" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tb_PHIEUTHU_tb_NHANVIEN">
+  <Association Name="FK_tb_PHIEUNHAPHANG_tb_NHANVIEN">
     <End Type="QL_BIA_NGK.tb_NHANVIEN" Role="tb_NHANVIEN" Multiplicity="0..1" />
-    <End Type="QL_BIA_NGK.tb_PHIEUTHU" Role="tb_PHIEUTHU" Multiplicity="*" />
+    <End Type="QL_BIA_NGK.tb_PHIEUNHAPHANG" Role="tb_PHIEUNHAPHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tb_NHANVIEN">
         <PropertyRef Name="IDNV" />
       </Principal>
-      <Dependent Role="tb_PHIEUTHU">
+      <Dependent Role="tb_PHIEUNHAPHANG">
         <PropertyRef Name="IDNV" />
       </Dependent>
     </ReferentialConstraint>
@@ -527,38 +463,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tb_PHIEUCHI_tb_USER">
-    <End Type="QL_BIA_NGK.tb_USER" Role="tb_USER" Multiplicity="0..1" />
-    <End Type="QL_BIA_NGK.tb_PHIEUCHI" Role="tb_PHIEUCHI" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tb_USER">
-        <PropertyRef Name="IDUSER" />
-      </Principal>
-      <Dependent Role="tb_PHIEUCHI">
-        <PropertyRef Name="IDUSER" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tb_PHIEUNHAPHANG_tb_USER">
-    <End Type="QL_BIA_NGK.tb_USER" Role="tb_USER" Multiplicity="0..1" />
+    <End Type="QL_BIA_NGK.tb_USER" Role="tb_USER" Multiplicity="1" />
     <End Type="QL_BIA_NGK.tb_PHIEUNHAPHANG" Role="tb_PHIEUNHAPHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tb_USER">
         <PropertyRef Name="IDUSER" />
       </Principal>
       <Dependent Role="tb_PHIEUNHAPHANG">
-        <PropertyRef Name="IDUSER" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tb_PHIEUTHU_tb_USER">
-    <End Type="QL_BIA_NGK.tb_USER" Role="tb_USER" Multiplicity="0..1" />
-    <End Type="QL_BIA_NGK.tb_PHIEUTHU" Role="tb_PHIEUTHU" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tb_USER">
-        <PropertyRef Name="IDUSER" />
-      </Principal>
-      <Dependent Role="tb_PHIEUTHU">
         <PropertyRef Name="IDUSER" />
       </Dependent>
     </ReferentialConstraint>

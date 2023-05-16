@@ -21,7 +21,6 @@ namespace DataLayer
         public Nullable<bool> ADD { get; set; }
         public Nullable<bool> UPDATE { get; set; }
         public Nullable<bool> DELETE { get; set; }
-        public Nullable<bool> PRINT { get; set; }
     
         public virtual tb_CHUCNANG tb_CHUCNANG { get; set; }
         public virtual tb_NHOM tb_NHOM { get; set; }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QL_BIA_NGKStoreContainer" CdmEntityContainer="Entities">
+  <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="tb_CHITIET_PHIEUBANHANG">
       <EntityTypeMapping TypeName="QL_BIA_NGK.tb_CHITIET_PHIEUBANHANG">
         <MappingFragment StoreEntitySet="tb_CHITIET_PHIEUBANHANG">
@@ -60,6 +60,7 @@
           <ScalarProperty Name="DINHMUCTON" ColumnName="DINHMUCTON" />
           <ScalarProperty Name="IDLOAI" ColumnName="IDLOAI" />
           <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="MaVach" ColumnName="MaVach" />
           <ScalarProperty Name="TENHH" ColumnName="TENHH" />
           <ScalarProperty Name="IDHH" ColumnName="IDHH" />
         </MappingFragment>
@@ -69,7 +70,6 @@
       <EntityTypeMapping TypeName="QL_BIA_NGK.tb_KHACHHANG">
         <MappingFragment StoreEntitySet="tb_KHACHHANG">
           <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-          <ScalarProperty Name="CONGNO" ColumnName="CONGNO" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="SODIENTHOAI" ColumnName="SODIENTHOAI" />
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
@@ -102,7 +102,6 @@
       <EntityTypeMapping TypeName="QL_BIA_NGK.tb_NHACUNGCAP">
         <MappingFragment StoreEntitySet="tb_NHACUNGCAP">
           <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-          <ScalarProperty Name="CONGNO" ColumnName="CONGNO" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="SODIENTHOAI" ColumnName="SODIENTHOAI" />
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
@@ -136,7 +135,6 @@
     <EntitySetMapping Name="tb_PHANQUYEN">
       <EntityTypeMapping TypeName="QL_BIA_NGK.tb_PHANQUYEN">
         <MappingFragment StoreEntitySet="tb_PHANQUYEN">
-          <ScalarProperty Name="PRINT" ColumnName="PRINT" />
           <ScalarProperty Name="DELETE" ColumnName="DELETE" />
           <ScalarProperty Name="UPDATE" ColumnName="UPDATE" />
           <ScalarProperty Name="ADD" ColumnName="ADD" />
@@ -151,9 +149,9 @@
       <EntityTypeMapping TypeName="QL_BIA_NGK.tb_PHIEUBANHANG">
         <MappingFragment StoreEntitySet="tb_PHIEUBANHANG">
           <ScalarProperty Name="GIASI" ColumnName="GIASI" />
-          <ScalarProperty Name="DATRA" ColumnName="DATRA" />
           <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
           <ScalarProperty Name="IDKH" ColumnName="IDKH" />
+          <ScalarProperty Name="IDNV" ColumnName="IDNV" />
           <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
           <ScalarProperty Name="PHIVANCHUYEN" ColumnName="PHIVANCHUYEN" />
           <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
@@ -162,49 +160,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tb_PHIEUCHI">
-      <EntityTypeMapping TypeName="QL_BIA_NGK.tb_PHIEUCHI">
-        <MappingFragment StoreEntitySet="tb_PHIEUCHI">
-          <ScalarProperty Name="CONGNOMOI" ColumnName="CONGNOMOI" />
-          <ScalarProperty Name="CONGNOCU" ColumnName="CONGNOCU" />
-          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
-          <ScalarProperty Name="SOTIEN" ColumnName="SOTIEN" />
-          <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
-          <ScalarProperty Name="IDNV" ColumnName="IDNV" />
-          <ScalarProperty Name="IDNCC" ColumnName="IDNCC" />
-          <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
-          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
-          <ScalarProperty Name="IDPC" ColumnName="IDPC" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tb_PHIEUNHAPHANG">
       <EntityTypeMapping TypeName="QL_BIA_NGK.tb_PHIEUNHAPHANG">
         <MappingFragment StoreEntitySet="tb_PHIEUNHAPHANG">
           <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
-          <ScalarProperty Name="DATRA" ColumnName="DATRA" />
           <ScalarProperty Name="IDNCC" ColumnName="IDNCC" />
+          <ScalarProperty Name="IDNV" ColumnName="IDNV" />
           <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
           <ScalarProperty Name="PHIVANCHUYEN" ColumnName="PHIVANCHUYEN" />
           <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
           <ScalarProperty Name="NGAY" ColumnName="NGAY" />
           <ScalarProperty Name="IDPN" ColumnName="IDPN" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tb_PHIEUTHU">
-      <EntityTypeMapping TypeName="QL_BIA_NGK.tb_PHIEUTHU">
-        <MappingFragment StoreEntitySet="tb_PHIEUTHU">
-          <ScalarProperty Name="CONGNOMOI" ColumnName="CONGNOMOI" />
-          <ScalarProperty Name="CONGNOCU" ColumnName="CONGNOCU" />
-          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
-          <ScalarProperty Name="SOTIEN" ColumnName="SOTIEN" />
-          <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
-          <ScalarProperty Name="IDNV" ColumnName="IDNV" />
-          <ScalarProperty Name="IDKH" ColumnName="IDKH" />
-          <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
-          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
-          <ScalarProperty Name="IDPT" ColumnName="IDPT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

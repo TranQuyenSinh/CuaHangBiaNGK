@@ -2,6 +2,8 @@
 using BusinessLayer.DTO;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
+using QL_BIA_NGK.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,13 +57,6 @@ namespace QL_BIA_NGK
                 gcDanhSach.DataSource = _ln.getListLoiNhuanKH(tuNgay, denNgay);
             }
         }
-        // làm tiếp: kéo cột loinhuan ra dài xíu để groupsumary dễ thấy
-        // tìm cách hiển thị groupsumary theo dạng ###,###,##0.##
-        // lên màu đỏ, bold cho groupsumary
-        // tạo group theo idhh trong gvdanhsachsp và hoten trong gvdanhsachkh, nhớ expand
-        // fix dtTuNgay, dtDenNgay như mấy form trước(copy zo)
-        // thêm 1 số textbox hiển thị thông tin thống kê tổng bên dưới gridview, vd: tổng lợi nhuận
-        // to be continued =))))
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LoadData();
@@ -69,7 +64,18 @@ namespace QL_BIA_NGK
 
         private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            DateTime tuNgay = DateTime.Parse(dtTuNgay.EditValue.ToString());
+            DateTime denNgay = DateTime.Parse(dtDenNgay.EditValue.ToString());
+            if (radSP.Checked == true)
+            {
+                rptLoiNhuanSP rpt = new rptLoiNhuanSP(tuNgay, denNgay);
+                rpt.ShowPreview();
+            }
+            else
+            {
+                rptLoiNhuanKH rpt = new rptLoiNhuanKH(tuNgay, denNgay);
+                rpt.ShowPreview();
+            }
         }
 
         private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
