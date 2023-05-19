@@ -131,12 +131,14 @@
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần mềm quản lý bán hàng";
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDangNhap_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

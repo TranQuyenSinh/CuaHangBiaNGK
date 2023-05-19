@@ -222,6 +222,14 @@ namespace QL_BIA_NGK
             }
         }
 
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Func.IDUSER == -1)
+            {
+                Login();
+            }
+        }
+
         private void btnPhucHoi_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (Func.ShowMessage("Chương trình sẽ đóng tất cả form trước khi phục hồi dữ liệu, đồng ý phục hồi?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)

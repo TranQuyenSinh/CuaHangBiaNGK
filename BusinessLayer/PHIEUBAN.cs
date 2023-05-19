@@ -243,7 +243,7 @@ namespace BusinessLayer
                 foreach (var item in pb_dto.listCTPB_DTO)
                 {
                     bool isNew = false;
-                    double tonkho_cu = 0;
+                    double soluongban_cu = 0;
                     tb_CHITIET_PHIEUBANHANG ctpb = db.tb_CHITIET_PHIEUBANHANG.FirstOrDefault(x => x.IDCTPB == item.IDCTPB);
                     // trường hợp thêm mới ctpb
                     // chi tiết pb này sẽ ko tồn tại sẵn trong db nên sẽ ra null
@@ -255,7 +255,7 @@ namespace BusinessLayer
                     }
                     else
                     {
-                        tonkho_cu = double.Parse((ctpb.SOLUONG * ctpb.QUYDOI).ToString());
+                        soluongban_cu = double.Parse((ctpb.SOLUONG * ctpb.QUYDOI).ToString());
                     }
                     ctpb.IDHH = item.IDHH;
                     ctpb.IDPB = item.IDPB;
@@ -268,7 +268,7 @@ namespace BusinessLayer
                     // cập nhật số lượng hàng hóa trong kho
                     // sửa số lượng hàng hóa thì phải tính lại tồn kho
                     tb_HANGHOA hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == item.IDHH);
-                    hanghoa.TONKHO = hanghoa.TONKHO + tonkho_cu - (item.SOLUONG * item.QUYDOI);
+                    hanghoa.TONKHO = hanghoa.TONKHO + soluongban_cu - (item.SOLUONG * item.QUYDOI);
 
                     if (isNew)
                         db.tb_CHITIET_PHIEUBANHANG.Add(ctpb);

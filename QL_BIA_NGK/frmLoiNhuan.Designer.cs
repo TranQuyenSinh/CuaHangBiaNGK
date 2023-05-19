@@ -383,13 +383,17 @@
             this.TIENLAI,
             this.HOTEN});
             this.gvDanhSachKH.GridControl = this.gcDanhSach;
+            this.gvDanhSachKH.GroupCount = 1;
             this.gvDanhSachKH.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LOINHUAN", this.TIENLAI, "Tổng: {0:n0} VNĐ")});
             this.gvDanhSachKH.Name = "gvDanhSachKH";
+            this.gvDanhSachKH.OptionsBehavior.AutoExpandAllGroups = true;
             this.gvDanhSachKH.OptionsView.AllowCellMerge = true;
             this.gvDanhSachKH.OptionsView.EnableAppearanceEvenRow = true;
             this.gvDanhSachKH.OptionsView.EnableAppearanceOddRow = true;
             this.gvDanhSachKH.OptionsView.ShowAutoFilterRow = true;
+            this.gvDanhSachKH.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.HOTEN, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // gridColumn2
             // 
@@ -402,9 +406,9 @@
             this.gridColumn2.MaxWidth = 200;
             this.gridColumn2.MinWidth = 200;
             this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn2.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 200;
             // 
             // gridColumn3
@@ -422,7 +426,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.VisibleIndex = 2;
             // 
             // gridColumn5
             // 
@@ -437,7 +441,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 2;
+            this.gridColumn5.VisibleIndex = 1;
             this.gridColumn5.Width = 100;
             // 
             // gridColumn6
@@ -457,7 +461,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 3;
             this.gridColumn6.Width = 100;
             // 
             // gridColumn7
@@ -477,7 +481,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.VisibleIndex = 4;
             this.gridColumn7.Width = 100;
             // 
             // TIENLAI
@@ -497,7 +501,7 @@
             this.TIENLAI.Name = "TIENLAI";
             this.TIENLAI.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.TIENLAI.Visible = true;
-            this.TIENLAI.VisibleIndex = 6;
+            this.TIENLAI.VisibleIndex = 5;
             this.TIENLAI.Width = 150;
             // 
             // HOTEN
@@ -717,6 +721,7 @@
             // 
             // frmLoiNhuan
             // 
+            this.AcceptButton = this.btnXem;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1135, 686);

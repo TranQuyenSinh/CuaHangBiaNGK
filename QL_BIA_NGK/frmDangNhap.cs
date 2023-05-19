@@ -50,5 +50,13 @@ namespace QL_BIA_NGK
             frmKetNoiDB frm = new frmKetNoiDB();
             frm.ShowDialog();
         }
+
+        private void frmDangNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }
