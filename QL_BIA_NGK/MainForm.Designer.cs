@@ -84,20 +84,28 @@
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.txtCurrentUserInfo);
             this.ribbonStatusBar.ItemLinks.Add(this.txtTimer);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 706);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 720);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1190, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1114, 24);
             // 
             // txtCurrentUserInfo
             // 
             this.txtCurrentUserInfo.Id = 20;
+            this.txtCurrentUserInfo.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtCurrentUserInfo.ItemAppearance.Normal.Options.UseFont = true;
+            this.txtCurrentUserInfo.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtCurrentUserInfo.ItemInMenuAppearance.Normal.Options.UseFont = true;
             this.txtCurrentUserInfo.Name = "txtCurrentUserInfo";
             // 
             // txtTimer
             // 
             this.txtTimer.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.txtTimer.Id = 26;
+            this.txtTimer.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtTimer.ItemAppearance.Normal.Options.UseFont = true;
+            this.txtTimer.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtTimer.ItemInMenuAppearance.Normal.Options.UseFont = true;
             this.txtTimer.Name = "txtTimer";
             // 
             // ribbon
@@ -135,7 +143,7 @@
             this.ribbonPage6});
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeSpanEdit1});
-            this.ribbon.Size = new System.Drawing.Size(1190, 158);
+            this.ribbon.Size = new System.Drawing.Size(1114, 158);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // btnKhachHang
@@ -339,23 +347,24 @@
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroup5});
+            this.ribbonPage1.KeyTip = "1";
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Quản trị";
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnDangNhap);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnDangXuat);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnDoiMatKhau);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnPhanQuyen);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnNhatKy);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnDangNhap, "DN");
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnDangXuat, "DX");
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnDoiMatKhau, "DMK");
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnPhanQuyen, "PQ");
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnNhatKy, "NK");
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Hệ thống";
             // 
             // ribbonPageGroup5
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.btnSaoLuu);
-            this.ribbonPageGroup5.ItemLinks.Add(this.btnPhucHoi);
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnSaoLuu, "SL");
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnPhucHoi, "PH");
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Cơ sở dữ liệu";
             // 
@@ -365,29 +374,30 @@
             this.ribbonPageGroup2,
             this.ribbonPageGroup7,
             this.ribbonPageGroup8});
+            this.ribbonPage2.KeyTip = "2";
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "Nghiệp vụ";
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnKhachHang);
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnNhaCungCap);
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnNhanVien);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnKhachHang, "KH");
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnNhaCungCap, "NCC");
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnNhanVien, "NV");
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Đối tượng";
             // 
             // ribbonPageGroup7
             // 
-            this.ribbonPageGroup7.ItemLinks.Add(this.btnHangHoa);
-            this.ribbonPageGroup7.ItemLinks.Add(this.btnLoaiHangHoa);
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnHangHoa, "HH");
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnLoaiHangHoa, "LHH");
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             this.ribbonPageGroup7.Text = "Hàng hóa";
             // 
             // ribbonPageGroup8
             // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnBanHang);
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnNhapHang);
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnKho);
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnBanHang, "BH");
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnNhapHang, "NH");
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnKho, "KH");
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             this.ribbonPageGroup8.Text = "Nghiệp vụ";
             // 
@@ -395,13 +405,14 @@
             // 
             this.ribbonPage6.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup6});
+            this.ribbonPage6.KeyTip = "3";
             this.ribbonPage6.Name = "ribbonPage6";
             this.ribbonPage6.Text = "Báo cáo thống kê";
             // 
             // ribbonPageGroup6
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnBaoCaoLoiNhuan);
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnHangTon);
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnBaoCaoLoiNhuan, "LN");
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnHangTon, "HT");
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "Thống kê";
             // 
@@ -476,7 +487,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 730);
+            this.ClientSize = new System.Drawing.Size(1114, 744);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.IsMdiContainer = true;

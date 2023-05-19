@@ -77,7 +77,7 @@ namespace QL_BIA_NGK
             frm.ShowDialog();
             if (Func.IDUSER != -1) // login success
             {
-                Func.Log("LOGIN");
+                Func.WriteLog("[LOGIN]");
                 ShowAllowAcceptButton();
                 txtCurrentUserInfo.Caption = "Xin chào " + Func.FULLNAMEUSER;
                 timer.Start();
@@ -102,7 +102,7 @@ namespace QL_BIA_NGK
 
         void Logout()
         {
-            Func.Log("LOGOUT");
+            Func.WriteLog("[LOGOUT]");
             CloseAllForm();
             // reset userinfo
             Func.LISTQUYENCUANHOM.Clear();
@@ -194,7 +194,7 @@ namespace QL_BIA_NGK
         {
             if (Func.IDUSER != -1)
             {
-                Func.Log("LOGOUT");
+                Func.WriteLog("[LOGOUT]");
             }
             Application.Exit();
         }

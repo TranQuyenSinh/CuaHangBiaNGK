@@ -82,6 +82,8 @@
     <Compile Include="PHIEUNHAP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QUYEN.cs" />
+    <Compile Include="REPORT\HANGHOA_REPORT_DATA.cs" />
+    <Compile Include="REPORT\HANGTON_REPORT_DATA.cs" />
     <Compile Include="REPORT\PHIEUBAN_REPORT_DATA.cs" />
     <Compile Include="REPORT\PHIEUNHAP_REPORT_DATA.cs" />
     <Compile Include="TONKHO.cs" />

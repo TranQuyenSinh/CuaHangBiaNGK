@@ -26,8 +26,11 @@ namespace BusinessLayer
             try
             {
                 db.tb_LOAIHANGHOA.Add(dt);
-                db.SaveChanges();
-                Func.Log("ADD", "Loại hàng hóa",$"ID:{dt.IDLOAI}, Name:{dt.TENLOAI}");
+
+                string changedLog = Func.FindChanged(db, "Loại hàng hóa");
+                if (changedLog != "") Func.WriteLog(changedLog);
+
+                db.SaveChanges(); 
             }
             catch (Exception ex)
             {
@@ -39,12 +42,12 @@ namespace BusinessLayer
             try
             {
                 var _dt = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == dt.IDLOAI);
-                string oldValue = $"ID:{_dt.IDLOAI}, Name:{_dt.TENLOAI}";
-                string newValue =  $"ID:{dt.IDLOAI}, Name:{dt.TENLOAI}";
                 _dt.TENLOAI = dt.TENLOAI;
-                
+
+                string changedLog = Func.FindChanged(db, "Loại hàng hóa");
+                if (changedLog != "") Func.WriteLog($"[ID={dt.IDLOAI}]" + changedLog);
+
                 db.SaveChanges();
-                Func.Log("UPDATE", "Loại hàng hóa", newValue, oldValue);
             }
             catch (Exception ex)
             {
@@ -59,7 +62,7 @@ namespace BusinessLayer
                 var dt = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == id);
                 db.tb_LOAIHANGHOA.Remove(dt);
                 db.SaveChanges();
-                Func.Log("DELETE", "Loại hàng hóa", $"ID:{dt.IDLOAI}, Name:{dt.TENLOAI}");
+                Func.WriteLog($"[Loại hàng hóa][DELETE][ID={id}]");
             }
             catch (Exception ex)
             {

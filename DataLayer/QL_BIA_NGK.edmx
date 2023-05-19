@@ -92,7 +92,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDUSER" Type="int" />
           <Property Name="TIME" Type="datetime" />
-          <Property Name="MESSAGE" Type="nvarchar" MaxLength="200" />
+          <Property Name="MESSAGE" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tb_NHACUNGCAP">
           <Key>
@@ -632,7 +632,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDUSER" Type="Int32" />
           <Property Name="TIME" Type="DateTime" Precision="3" />
-          <Property Name="MESSAGE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MESSAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tb_USER" Relationship="QL_BIA_NGK.FK_tb_LOG_tb_USER" FromRole="tb_LOG" ToRole="tb_USER" />
         </EntityType>
         <EntityType Name="tb_NHACUNGCAP">

@@ -58,6 +58,7 @@
             this.GIABANSI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TONKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.QUYDOI = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -81,9 +82,10 @@
             this.btnXoa,
             this.btnRefresh,
             this.btnDong,
-            this.lblTong});
+            this.lblTong,
+            this.btnIn});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -97,6 +99,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSua),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnXoa),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnIn),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDong)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -456,6 +459,16 @@
             this.QUYDOI.Visible = true;
             this.QUYDOI.VisibleIndex = 4;
             // 
+            // btnIn
+            // 
+            this.btnIn.Caption = "In";
+            this.btnIn.Id = 8;
+            this.btnIn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnIn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnIn.Name = "btnIn";
+            this.btnIn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick_1);
+            // 
             // frmHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,5 +523,6 @@
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn TONKHO;
         private DevExpress.XtraGrid.Columns.GridColumn QUYDOI;
+        private DevExpress.XtraBars.BarButtonItem btnIn;
     }
 }

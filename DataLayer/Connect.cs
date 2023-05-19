@@ -5,59 +5,54 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace DataLayer
 {
-    [Serializable]
     public class Connect
     {
-        public Connect(string server, string user, string pass, string database)
+        public static string servername;
+        public static string username;
+        public static string passwd;
+        public static string dbname;
+
+        public static void ReadFile()
         {
-            this.servername = server;
-            this.username = user;
-            this.passwd = pass;
-            this.database = database;
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("ConnectConfig.xml");
+
+            var connectInfo = doc.SelectSingleNode("/root/connectConfig");
+            servername = Encryptor.GiaiMa(connectInfo.Attributes["servername"].Value, "hoiAdminde", true);
+            username = Encryptor.GiaiMa(connectInfo.Attributes["username"].Value, "hoiAdminde", true);
+            passwd = Encryptor.GiaiMa(connectInfo.Attributes["password"].Value, "hoiAdminde", true);
+            dbname = Encryptor.GiaiMa(connectInfo.Attributes["dbname"].Value, "hoiAdminde", true);
         }
-        public string servername;
-
-        public string Servername
+        public static void SaveFile()
         {
-            get { return servername; }
-            set { servername = value; }
-        }
+            string enCryptServer = Encryptor.MaHoa(servername, "hoiAdminde", true);
+            string enCryptUsername = Encryptor.MaHoa(username, "hoiAdminde", true);
+            string enCryptPassword = Encryptor.MaHoa(passwd, "hoiAdminde", true);
+            string enCryptDatabase = Encryptor.MaHoa(dbname, "hoiAdminde", true);
 
-        public string username;
+            // nếu có file rồi thì sửa
+            if (File.Exists("ConnectConfig.xml"))
+            {
+                File.Delete("ConnectConfig.xml");
+            }
+            XmlDocument doc = new XmlDocument();
+            XmlElement root = doc.CreateElement("root");
+            doc.AppendChild(root);
 
-        public string Username
-        {
-            get { return username; }
-            set { username = value; }
-        }
-        public string passwd;
+            XmlElement connectConfig = doc.CreateElement("connectConfig");
+            connectConfig.SetAttribute("servername", enCryptServer);
+            connectConfig.SetAttribute("username", enCryptUsername);
+            connectConfig.SetAttribute("password", enCryptPassword);
+            connectConfig.SetAttribute("dbname", enCryptDatabase);
+            root.AppendChild(connectConfig);
 
-        public string Passwd
-        {
-            get { return passwd; }
-            set { passwd = value; }
-        }
-
-        public string database;
-
-        public string Database
-        {
-            get { return database; }
-            set { database = value; }
-        }
-
-        public void SaveFile()
-        {
-            // nếu có file rồi thì ghi đè
-            if (File.Exists("connectDB.dba"))
-                File.Delete("connectDB.dba");
-            FileStream fs = File.Open("connectDB.dba", FileMode.OpenOrCreate, FileAccess.Write);
-            BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(fs, this);
-            fs.Close();
+            doc.Save("ConnectConfig.xml");
         }
     }
 }

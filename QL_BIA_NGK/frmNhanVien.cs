@@ -19,6 +19,7 @@ namespace QL_BIA_NGK
         NHANVIEN _nv;
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Nhân viên][XEM]");
             // inititials
             _nv = new NHANVIEN();
 

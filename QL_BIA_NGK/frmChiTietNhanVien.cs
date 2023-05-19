@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using BusinessLayer;
 using DevExpress.Internal.WinApi.Windows.UI.Notifications;
 using DataLayer;
+using DevExpress.Pdf.Native;
 
 namespace QL_BIA_NGK
 {
@@ -57,6 +58,7 @@ namespace QL_BIA_NGK
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (!CheckForm()) return;
             var dtDTO = new tb_NHANVIEN();
             dtDTO.IDNV = txtIDNV.Text;
             dtDTO.HOTEN = txtHoTen.Text;
@@ -84,6 +86,26 @@ namespace QL_BIA_NGK
             {
                 this.Close();
             }
+        }
+
+        private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // nếu nhập chữ thì bỏ qua
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        bool CheckForm()
+        {
+            // kiểm tra quyền, rỗng
+            if (txtHoTen.Text == "")
+            {
+                Func.ShowMessage("Tên không được bỏ trống!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
     }
 }

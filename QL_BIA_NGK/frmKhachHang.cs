@@ -26,6 +26,7 @@ namespace QL_BIA_NGK
         KHACHHANG _kh;
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Khách hàng][XEM]");
             // inititials
             _kh = new KHACHHANG();
 
@@ -73,7 +74,7 @@ namespace QL_BIA_NGK
         {
             if (Func.checkPermission("KHACHHANG", "ADD"))
             {
-                frmChiTietKhachHang frm = new frmChiTietKhachHang(_kh.GetMaxID());
+                frmChiTietKhachHang frm = new frmChiTietKhachHang();
                 frm.ShowDialog();
                 LoadData();
             }

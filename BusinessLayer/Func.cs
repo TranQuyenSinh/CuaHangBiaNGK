@@ -3,9 +3,11 @@ using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -67,44 +69,55 @@ namespace BusinessLayer
                 .ToString()
                 .Normalize(NormalizationForm.FormC);
         }
-        // hàm dùng để ghi log
-        public static void Log(string action, string tbName = null, string newValue = null, string oldValue = null)
+       // hàm tìm những thay đổi trong db
+        public static string FindChanged(Entities db, string tbName)
+        {
+            // Lấy danh sách các thay đổi
+            var addedEntries = db.ChangeTracker.Entries().Where(e => e.State == EntityState.Added);
+            var changedEntries = db.ChangeTracker.Entries().Where(e => e.State == EntityState.Modified);
+            var logMessage = "";
+            // Ghi log các thay đổi
+            foreach (var entry in changedEntries)
+            {
+                logMessage = $"[{tbName}][UPDATE]: ";
+                foreach (var propertyName in entry.CurrentValues.PropertyNames)
+                {
+                    if (!object.Equals(entry.CurrentValues[propertyName], entry.OriginalValues[propertyName]))
+                    {
+                        logMessage += $"[{propertyName}:({entry.OriginalValues[propertyName]})=>({entry.CurrentValues[propertyName]})]; ";
+                    }
+                }
+                return logMessage;
+            }
+           
+            foreach (var entry in addedEntries)
+            {
+                logMessage = $"[{tbName}][INSERT]: ";
+                foreach (var propertyName in entry.CurrentValues.PropertyNames)
+                {
+                    logMessage += $"[{propertyName}={entry.CurrentValues[propertyName]}]";
+                }
+                return logMessage;
+            }
+            return "";
+        }
+
+        public static void WriteLog(string message)
         {
             Entities db = Entities.CreateEntities();
             tb_LOG log = new tb_LOG();
             log.IDUSER = IDUSER;
             log.TIME = DateTime.Now;
-            switch (action)
-            {
-                case "LOGIN":
-                    log.MESSAGE = "Login vào hệ thống";
-                    db.tb_LOG.Add(log);
-                    break;
-                case "LOGOUT":
-                    log.MESSAGE = "Logout hệ thống";
-                    db.tb_LOG.Add(log);
-                    break;
-                case "ADD":
-                    log.MESSAGE = $"Thêm: ({newValue}) vào \"{tbName}\"";
-                    break;
-                case "UPDATE":
-                    log.MESSAGE = $"Chỉnh sửa: ({oldValue}) => ({newValue}) trong \"{tbName}\"";
-                    break;
-                case "DELETE":
-                    log.MESSAGE = $"Xóa: ({newValue}) trong \"{tbName}\"";
-                    break;
-                case "PRINT":
-                    log.MESSAGE = $"In trong \"{tbName}\"";
-                    break;
-            }
+            log.MESSAGE = message;
             db.tb_LOG.Add(log);
             db.SaveChanges();
         }
 
+
         // hàm tạo QRCode
         public static Bitmap GetQRCode(string text)
         {
-            QRCodeGenerator generator= new QRCodeGenerator();
+            QRCodeGenerator generator = new QRCodeGenerator();
             QRCodeData data = generator.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
 
             QRCode qrcode = new QRCode(data);

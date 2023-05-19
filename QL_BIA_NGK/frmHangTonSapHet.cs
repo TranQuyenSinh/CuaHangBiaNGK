@@ -7,6 +7,8 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
+using QL_BIA_NGK.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +31,7 @@ namespace QL_BIA_NGK
         List<string> list_idhh_selected;
         private void frmHangTonSapHet_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Hàng tồn][XEM]");
             _hh = new HANGHOA();
             list_idhh_selected = new List<string>();
 
@@ -38,7 +41,7 @@ namespace QL_BIA_NGK
         void ShowHideButton()
         {
             // permission
-            btnTaoPN.Enabled = btnTaoPNAll.Enabled = Func.checkPermission("NHAPHANG", "ADD");
+            btnTaoPN.Enabled = btnTaoPNAll.Enabled = Func.checkPermission("NHAPHANG", "ADD") && Func.checkPermission("NHAPHANG", "UPDATE");
         }
         void LoadData()
         {
@@ -46,14 +49,14 @@ namespace QL_BIA_NGK
             list_idhh_selected.Clear();
 
             List<HANGHOA_DTO> list = _hh.GetListHangHoaDTOSapHet(true);
-            // hiển thị label thông báo ko có hàng hóa nào cần thêm nếu list rỗng
-            int hangHoaSapHetCount = list.Count;
-            if (hangHoaSapHetCount == 0)
-                ChangeStateLabel(false);
-            else
-                ChangeStateLabel(true, hangHoaSapHetCount);
             gcDanhSach.DataSource = list;
             gvDanhSach.ExpandAllGroups();
+
+            // hiển thị label thông báo ko có hàng hóa nào cần thêm nếu list rỗng
+            if (list.Count == 0)
+                ChangeStateLabel(false);
+            else
+                ChangeStateLabel(true, list.Count);
         }
 
         private void gvDanhSach_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
@@ -186,7 +189,14 @@ namespace QL_BIA_NGK
 
         private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            if (gvDanhSach.DataRowCount !=0)
+            {
+                rptHangTonSapHet rpt = new rptHangTonSapHet(_hh.GetReportData_HangTonSapHet());
+                rpt.ShowPreview();
+            }else
+            {
+                Func.ShowMessage("Hiện chưa có hàng hóa nào sắp hết!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

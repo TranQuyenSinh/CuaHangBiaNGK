@@ -1,7 +1,9 @@
 ﻿using BusinessLayer;
 using DataLayer;
+using DevExpress.Charts.Native;
 using DevExpress.ClipboardSource.SpreadsheetML;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.DXErrorProvider;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +32,8 @@ namespace QL_BIA_NGK
 
         string _id;
         bool _isAdd;
+        // dùng set error cho các input
+        DXErrorProvider dXErrorProvider = new DXErrorProvider();
         public frmChiTietHangHoa() // add
         {
             InitializeComponent();
@@ -160,7 +164,7 @@ namespace QL_BIA_NGK
                     for (int i = _listDVT.Count; i < dem; i++)
                     {
                         _hh.AddGia(listdvt[i]);
-                    }                                          
+                    }
                 }
             }
             Func.ShowMessage("Lưu thành công");
@@ -168,20 +172,25 @@ namespace QL_BIA_NGK
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (checkForm() == true)
+            if (!checkForm()) return;
+
+            if (_isAdd && _hh.isExistsIDHH(txtIDHH.Text.Trim()))
             {
-                try
-                {
-                    SaveHangHoa();
-                    this.Close();
-                }
-                catch (Exception)
-                {
-                    Func.ShowMessage("Thêm thất bại, trùng khóa chính");
-                }
+                Func.ShowMessage("Mã hàng hóa đã tồn tại, vui lòng nhập mã hàng hóa khác", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtIDHH.Focus();
+                return;
             }
-            else
-                Func.ShowMessage("Thiếu dữ liệu");
+
+
+            try
+            {
+                SaveHangHoa();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                Func.ShowMessage("Error: " + ex);
+            }
         }
         private void btnThemLoaiHH_Click(object sender, EventArgs e)
         {
@@ -201,22 +210,21 @@ namespace QL_BIA_NGK
 
         bool checkForm()
         {
-            bool isChecked = true;
-
             // check thông tin hàng hóa
             if (slkLoaiHH.Text == "" || txtIDHH.Text == "" || txtTenHH.Text == "")
-                isChecked = false;
+            {
+                Func.ShowMessage("Vui lòng nhập đầy đủ thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             // check đơn vị tính
-            if (cboDVTGoc.Text == "")
-                isChecked = false;
-            if (chk2.Checked && cboDVT2.Text == "")
-                isChecked = false;
-            if (chk3.Checked && cboDVT3.Text == "")
-                isChecked = false;
-            if (chk4.Checked && cboDVT4.Text == "")
-                isChecked = false;
-            return isChecked;
+            if ((cboDVTGoc.Text == "") || (chk2.Checked && cboDVT2.Text == "") || (chk3.Checked && cboDVT3.Text == "") || (chk4.Checked && cboDVT4.Text == ""))
+            {
+                Func.ShowMessage("Đơn vị tính không được bỏ trống!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
         private void chk2_CheckedChanged(object sender, EventArgs e)
         {
@@ -306,6 +314,18 @@ namespace QL_BIA_NGK
         private void txtBarcode_EditValueChanged(object sender, EventArgs e)
         {
             barCodeControl1.Text = txtBarcode.Text;
+        }
+
+        private void txtGiaNhapGoc_Validating(object sender, CancelEventArgs e)
+        {
+            TextEdit txt = sender as TextEdit;
+            if (Convert.ToInt32(txt.Text.Replace(".", "")) < 0)
+            {
+                e.Cancel = true;
+                dXErrorProvider.SetError(txt, "Không được nhập số âm!");
+            }
+            else
+                dXErrorProvider.ClearErrors();
         }
     }
 }

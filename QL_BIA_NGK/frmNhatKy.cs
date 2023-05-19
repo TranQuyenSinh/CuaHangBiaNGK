@@ -73,6 +73,15 @@ namespace QL_BIA_NGK
             lblTong.Caption = $"Có {gvDanhSach.RowCount} dòng";
         }
 
+        private void gvDanhSach_DoubleClick(object sender, EventArgs e)
+        {
+            var text = gvDanhSach.GetFocusedRowCellValue("MESSAGE");
+            if (text!=null)
+            {
+                new frmChiTietNhatKy(text.ToString()).ShowDialog();
+            }
+        }
+
         private void gvDanhSach_CustomRowFilter(object sender, DevExpress.XtraGrid.Views.Base.RowFilterEventArgs e)
         {
             ColumnView view = sender as ColumnView;

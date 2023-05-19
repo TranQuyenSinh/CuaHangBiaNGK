@@ -57,12 +57,11 @@ namespace QL_BIA_NGK
         }
         void LuuFileCauHinh()
         {
-            string enCryptServer = Encryptor.MaHoa(txtServerName.Text, "hoiAdminde", true);
-            string enCryptUsername = Encryptor.MaHoa(txtUsername.Text, "hoiAdminde", true);
-            string enCryptPassword = Encryptor.MaHoa(txtPassword.Text, "hoiAdminde", true);
-            string enCryptDatabase = Encryptor.MaHoa(txtDBName.Text, "hoiAdminde", true);
-            Connect cn = new Connect(enCryptServer, enCryptUsername, enCryptPassword, enCryptDatabase);
-            cn.SaveFile();
+            Connect.servername = txtServerName.Text;
+            Connect.username = txtUsername.Text;
+            Connect.passwd = txtPassword.Text;
+            Connect.dbname = txtDBName.Text;
+            Connect.SaveFile();
         }
         private void btnThoat_Click(object sender, EventArgs e)
         {

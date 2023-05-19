@@ -49,6 +49,8 @@ namespace QL_BIA_NGK
         // click button
         private void frmNhapHang_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Nhập hàng][XEM]");
+
             _ncc = new NHACUNGCAP();
             _pn = new PHIEUNHAP();
             _hh = new HANGHOA();
@@ -129,7 +131,7 @@ namespace QL_BIA_NGK
             {
                 frmChiTietNhaCungCap frm = new frmChiTietNhaCungCap();
                 frm.ShowDialog();
-                LoadData();
+                LoadCboNCC();
             }
             else
                 Func.ShowMessage("Bạn không có quyền thêm", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -143,7 +145,7 @@ namespace QL_BIA_NGK
             SaveData();
         }
         // double click gridview
-        private void gvDanhSach_DoubleClick_1(object sender, EventArgs e)
+        private void gvDanhSach_DoubleClick(object sender, EventArgs e)
         {
             UpdateData();
         }
@@ -185,11 +187,17 @@ namespace QL_BIA_NGK
             }
             txtTongCong.Text = tongTien.ToString();
         }
-        private void searchLookUpEdit2_EditValueChanged(object sender, EventArgs e)
+        private void slkNCC2_EditValueChanged(object sender, EventArgs e)
         {
             if (slkNCC2.EditValue.ToString() == "") return;
             int id = int.Parse(slkNCC2.EditValue.ToString());
             tb_NHACUNGCAP ncc = _ncc.GetItem(id);
+            if (ncc == null)
+            {
+                Func.ShowMessage("Nhà cung cấp có thể đã bị xóa, vui lòng chọn lại!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoadCboNCC();
+                return;
+            }
             txtHoTen.Text = ncc.HOTEN;
             txtDiaChi.Text = ncc.DIACHI;
             txtDienThoai.Text = ncc.SODIENTHOAI;
@@ -393,7 +401,7 @@ namespace QL_BIA_NGK
             _listSP.Clear();
         }
         // xử lý data
-        bool ValidateForm()
+        bool CheckForm()
         {
             // kiểm tra quyền, rỗng
             if (!Func.checkPermission("NHAPHANG", "ADD") || !Func.checkPermission("NHAPHANG", "UPDATE"))
@@ -421,14 +429,13 @@ namespace QL_BIA_NGK
         void SaveData()
         {
             // kiểm tra thông tin trước khi lưu
-            if (ValidateForm() == false) return;
+            if (CheckForm() == false) return;
 
             // bắt đầu xử lý thêm hoặc sửa
             // lấy thông tin trên form
             PHIEUNHAP_DTO pn_dto = new PHIEUNHAP_DTO();
             pn_dto.IDPN = txtMaPhieu.Text;
             pn_dto.IDNCC = int.Parse(slkNCC2.EditValue.ToString());
-            pn_dto.IDUSER = Func.IDUSER;
             pn_dto.NGAY = DateTime.Parse(dtNgayLap.EditValue.ToString());
             pn_dto.PHIVANCHUYEN = double.Parse(txtPhiVanChuyen.Text);
             pn_dto.GHICHU = txtGhiChu.Text;
@@ -445,12 +452,14 @@ namespace QL_BIA_NGK
             // xử lý db
             if (_isAdd)
             {
+                pn_dto.IDUSER = Func.IDUSER;
                 _pn.Add(pn_dto);
                 Func.ShowMessage("Thêm phiếu nhập hàng thành công!");
                 _isAdd = false;
             }
             else
             {
+                pn_dto.IDUSER = int.Parse(_pn.GetItemPN(txtMaPhieu.Text).IDUSER.ToString());
                 _pn.Update(pn_dto);
                 Func.ShowMessage("Chỉnh sửa phiếu nhập hàng thành công!");
             }
@@ -548,6 +557,5 @@ namespace QL_BIA_NGK
         }
 
         #endregion
-
     }
 }

@@ -10,11 +10,11 @@
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_CHUCNANG" Width="1.5" PointX="0.75" PointY="5" />
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_GIA" Width="1.5" PointX="10.5" PointY="25.125" />
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_HANGHOA" Width="1.5" PointX="8.25" PointY="24.75" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_KHACHHANG" Width="1.5" PointX="6" PointY="15.125" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_KHACHHANG" Width="1.5" PointX="6" PointY="2" />
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_LOAIHANGHOA" Width="1.5" PointX="6" PointY="25.625" />
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_LOG" Width="1.5" PointX="5.25" PointY="20.25" />
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHACUNGCAP" Width="1.5" PointX="3" PointY="15.25" />
-        <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHANVIEN" Width="1.5" PointX="6" PointY="1.75" />
+        <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHANVIEN" Width="1.5" PointX="6" PointY="15.125" />
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_NHOM" Width="1.5" PointX="0.75" PointY="7.875" />
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHANQUYEN" Width="1.5" PointX="3" PointY="6.375" />
         <EntityTypeShape EntityType="QL_BIA_NGK.tb_PHIEUBANHANG" Width="1.5" PointX="8.25" PointY="10.625" />

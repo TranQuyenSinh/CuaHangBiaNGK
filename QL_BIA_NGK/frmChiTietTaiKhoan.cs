@@ -63,48 +63,56 @@ namespace QL_BIA_NGK
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string ten = txtTen.Text;
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-
-            if (!string.IsNullOrEmpty(ten) && !string.IsNullOrEmpty(username) &&
-                !string.IsNullOrEmpty(password) && cboNhom.SelectedValue != null)
+            if (!CheckForm()) return;
+            tb_USER cpyRecord = new tb_USER();
+            cpyRecord.IDNHOM = int.Parse(cboNhom.SelectedValue.ToString());
+            cpyRecord.TENDAYDU = txtTen.Text;
+            cpyRecord.USERNAME = txtUsername.Text;
+            cpyRecord.PASSWORD = txtPassword.Text;
+            if (_isUpdate)
             {
-
-                tb_USER cpyRecord = new tb_USER();
-                cpyRecord.IDNHOM = int.Parse(cboNhom.SelectedValue.ToString());
-                cpyRecord.TENDAYDU = ten;
-                cpyRecord.USERNAME = username;
-                cpyRecord.PASSWORD = password;
-                if (_isUpdate)
-                {
-                    cpyRecord.IDUSER = _id;
-                    _user.Update(cpyRecord);
-                }
-                else // add
-                {
-                    if (_user.CheckUsernameExisted(username))
-                    {
-                        _user.Add(cpyRecord);
-                    }
-                    else
-                    {
-                        Func.ShowMessage("Thao tác thất bại, trùng username", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                Func.ShowMessage("Thành công");
-                this.Close();
+                cpyRecord.IDUSER = _id;
+                _user.Update(cpyRecord);
             }
-
-            else
+            else // add
             {
-                Func.ShowMessage("Thao tác thất bại, thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (_user.CheckUsernameExisted(txtUsername.Text))
+                {
+                    _user.Add(cpyRecord);
+                }
+                else
+                {
+                    Func.ShowMessage("Thao tác thất bại, trùng username", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
+            Func.ShowMessage("Thành công");
+            this.Close();
         }
+
+
         private void btnDong_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        bool CheckForm()
+        {
+            if (string.IsNullOrEmpty(txtTen.Text) || string.IsNullOrEmpty(txtUsername.Text) ||
+               string.IsNullOrEmpty(txtPassword.Text) || cboNhom.SelectedValue == null)
+            {
+                Func.ShowMessage("Không được bỏ trống các trường!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private void frmChiTietTaiKhoan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

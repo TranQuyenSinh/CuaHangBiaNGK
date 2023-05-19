@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.DTO;
+using BusinessLayer.REPORT;
 using DataLayer;
 using System;
 using System.CodeDom.Compiler;
@@ -28,9 +29,25 @@ namespace BusinessLayer
         {
             return db.tb_GIA.FirstOrDefault(x => x.IDGIA == IDGIA);
         }
-        public List<tb_GIA> getListGia()
+        public List<HANGHOA_REPORT_DATA> GetReport()
         {
-            return db.tb_GIA.OrderBy(x => x.QUYDOI).ToList();
+            List<HANGHOA_REPORT_DATA> list = new List<HANGHOA_REPORT_DATA>();
+            var list_hh = from hh in db.tb_HANGHOA 
+                          where hh.DELETED == false 
+                          select hh;
+
+            foreach (var hh in list_hh)
+            {
+                HANGHOA_REPORT_DATA r_item = new HANGHOA_REPORT_DATA();
+                r_item.IDHH = hh.IDHH;
+                r_item.TENHH = hh.TENHH;
+                r_item.MOTA = hh.MOTA;
+                r_item.MAVACH = hh.MaVach;
+
+                list.Add(r_item);
+            }
+            Func.WriteLog("[Hàng hóa][PRINT]");
+            return list;
         }
         // lưu ý: hàm này lấy luôn những hàng hóa đã bị xóa (DELETED = true)
         public HANGHOAFULL_DTO GetItemHangHoaFullDTO(string idhh)
@@ -56,6 +73,7 @@ namespace BusinessLayer
             }
             return dto;
         }
+        // hàm dùng để tìm hàng hóa khi nhập vào phiếu nhập, bán bằng barcode
         public HANGHOAFULL_DTO GetItemHangHoaFullDTOByBarcode(string barcode)
         {
             HANGHOAFULL_DTO dto = null;
@@ -119,33 +137,26 @@ namespace BusinessLayer
             return listDTO;
 
         }
-        public List<HANGHOAFULL_DTO> getListHangHoaFullDTO()
+       
+        public List<HANGTON_REPORT_DATA> GetReportData_HangTonSapHet()
         {
-            List<tb_HANGHOA> list = this.getListHangHoa();
-            List<HANGHOAFULL_DTO> listDTO = new List<HANGHOAFULL_DTO>();
-
-            foreach (var item in list)
+            var hanghoas = db.tb_HANGHOA.Where(x => x.TONKHO <= x.DINHMUCTON && x.DELETED == false).ToList();
+            List<HANGTON_REPORT_DATA> list = new List<HANGTON_REPORT_DATA>();
+            foreach (tb_HANGHOA hanghoa in hanghoas)
             {
-                HANGHOAFULL_DTO dto;
-                List<tb_GIA> listGia = db.tb_GIA.Where(x => x.IDHH == item.IDHH).OrderBy(x => x.QUYDOI).ToList();
-                var loai = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == item.IDLOAI);
-                if (listGia != null)
-                {
-                    dto = new HANGHOAFULL_DTO();
-                    dto.IDHH = item.IDHH;
-                    dto.TENHH = item.TENHH;
-                    dto.MOTA = item.MOTA;
-                    dto.IDLOAI = item.IDLOAI;
-                    dto.TENLOAI = loai.TENLOAI;
-                    dto.MaVach = item.MaVach;
-                    dto.DINHMUCTON = item.DINHMUCTON;
-                    dto.TONKHO = item.TONKHO;
-                    dto.LISTGIA = listGia;
-
-                    listDTO.Add(dto);
-                }
+                // lấy đơn vị nhỏ nhất (chai, lon)
+                tb_GIA gia = db.tb_GIA.Where(x => x.IDHH == hanghoa.IDHH).OrderBy(x => x.QUYDOI).FirstOrDefault();
+                HANGTON_REPORT_DATA rpt_item = new HANGTON_REPORT_DATA();
+                rpt_item.IDHH = hanghoa.IDHH;
+                rpt_item.TENHH = hanghoa.TENHH;
+                rpt_item.TENLOAI = db.tb_LOAIHANGHOA.FirstOrDefault(x => x.IDLOAI == hanghoa.IDLOAI).TENLOAI; 
+                rpt_item.TONKHO = double.Parse(hanghoa.TONKHO.ToString());
+                rpt_item.DONVITINH = gia.DONVITINH;
+                rpt_item.DINHMUCTON = double.Parse(hanghoa.DINHMUCTON.ToString());
+                rpt_item.GIANHAP = double.Parse(gia.GIANHAP.ToString());
+                list.Add(rpt_item);
             }
-            return listDTO;
+            return list;
         }
         public List<HANGHOA_DTO> GetListHangHoaDTOSapHet(bool isReverseQuyDoi)
         {
@@ -179,6 +190,10 @@ namespace BusinessLayer
             }
             return list_dto;
         }   
+        public bool isExistsIDHH(string idhh)
+        {
+            return db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == idhh) != null;
+        }
         public void AddHangHoa(tb_HANGHOA hanghoa)
         {
             try
@@ -186,8 +201,11 @@ namespace BusinessLayer
                 db = Entities.CreateEntities();
                 hanghoa.DELETED = false;
                 db.tb_HANGHOA.Add(hanghoa);
+
+                string changedLog = Func.FindChanged(db, "Hàng hóa");
+                if (changedLog != "") Func.WriteLog(changedLog);
+
                 db.SaveChanges();
-                Func.Log("ADD", "Hàng hóa", $"ID:{hanghoa.IDHH}, Name:{hanghoa.TENHH}");
             }
             catch (Exception ex)
             {
@@ -211,8 +229,6 @@ namespace BusinessLayer
             try
             {
                 var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == dt.IDHH);
-                string oldValue = "";
-                string newValue = $"ID:{dt.IDHH}, Name:{dt.TENHH}";
                 hanghoa.TENHH = dt.TENHH;
                 hanghoa.MOTA = dt.MOTA;
                 hanghoa.MaVach = dt.MaVach;
@@ -220,8 +236,9 @@ namespace BusinessLayer
                 hanghoa.DINHMUCTON = dt.DINHMUCTON;
                 hanghoa.TONKHO = dt.TONKHO;
 
+                string changedLog = Func.FindChanged(db, "Hàng hóa");
+                if (changedLog != "") Func.WriteLog($"[ID={dt.IDHH}]" + changedLog);
                 db.SaveChanges();
-                Func.Log("UPDATE", "Hàng hóa", newValue, oldValue);
             }
             catch (Exception ex)
             {
@@ -233,10 +250,11 @@ namespace BusinessLayer
             try
             {
                 var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == idHH);
-                string oldValue = $"ID:{hanghoa.IDHH}, Name:{hanghoa.TENHH}, Tồn kho: {hanghoa.TONKHO}";
                 hanghoa.TONKHO = tonkhoMoi;
+
+                string changedLog = Func.FindChanged(db, "Tồn kho");
+                if (changedLog != "") Func.WriteLog($"[ID={idHH}]"+changedLog);
                 db.SaveChanges();
-                Func.Log("UPDATE", "Tồn kho", $"Tồn kho mới: {tonkhoMoi.ToString("###,###,##0.##")}", oldValue);
             }
             catch (Exception ex)
             {
@@ -256,6 +274,8 @@ namespace BusinessLayer
                 dvt.GIABANLE = dt.GIABANLE;
                 dvt.GIABANSI = dt.GIABANSI;
 
+                string changedLog = Func.FindChanged(db, "Hàng hóa");
+                if (changedLog != "") Func.WriteLog($"[ID={dt.IDHH}]" + changedLog);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -264,14 +284,15 @@ namespace BusinessLayer
             }
         }
 
-        public void Delete(string id)
+        public void DeleteHangHoa(string id)
         {
             try
             {
                 var dt = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == id);
                 dt.DELETED = true;
+                
+                Func.WriteLog($"[Hàng hóa][DELETE][ID={id}]");
                 db.SaveChanges();
-                Func.Log("DELETE", "Hàng hóa", $"ID:{dt.IDHH}, Name:{dt.TENHH}");
             }
             catch (Exception ex)
             {

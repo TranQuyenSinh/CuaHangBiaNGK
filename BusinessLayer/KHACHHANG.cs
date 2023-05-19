@@ -30,8 +30,11 @@ namespace BusinessLayer
             {
                 dt.DELETED = false;
                 db.tb_KHACHHANG.Add(dt);
+
+                string changedLog = Func.FindChanged(db, "Khách hàng");
+                if (changedLog != "") Func.WriteLog(changedLog);
                 db.SaveChanges();
-                Func.Log("ADD", "Khách hàng", $"ID:{dt.IDKH}, Name:{dt.HOTEN}");
+                
             }
             catch (Exception ex)
             {
@@ -52,8 +55,10 @@ namespace BusinessLayer
                 _dt.SODIENTHOAI = dt.SODIENTHOAI;
                 _dt.EMAIL = dt.EMAIL;
 
+                string changedLog = Func.FindChanged(db, "Khách hàng");
+                if (changedLog != "") Func.WriteLog($"[ID={dt.IDKH}]"+changedLog);
+
                 db.SaveChanges();
-                Func.Log("UPDATE", "Khách hàng", newValue, oldValue);
             }
             catch (Exception ex)
             {
@@ -67,7 +72,8 @@ namespace BusinessLayer
                 var dt = db.tb_KHACHHANG.FirstOrDefault(x => x.IDKH == id);
                 dt.DELETED = true;
                 db.SaveChanges();
-                Func.Log("DELETE", "Khách hàng", $"ID:{dt.IDKH}, Name:{dt.HOTEN}");
+                
+                Func.WriteLog($"[Khách hàng][DELETE][ID={id}]");
             }
             catch (Exception ex)
             {

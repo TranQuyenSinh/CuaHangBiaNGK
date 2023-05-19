@@ -5,6 +5,7 @@ using DevExpress.DirectX.Common.DirectWrite;
 using DevExpress.ExpressApp;
 using DevExpress.Utils.DirectXPaint;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.DXErrorProvider;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace QL_BIA_NGK
 {
     public partial class frmChiTietPhieuNhap : DevExpress.XtraEditors.XtraForm
     {
+        DXErrorProvider dXErrorProvider = new DXErrorProvider();
         CHITIETPHIEUNHAP_DTO _ctpn;
         HANGHOA _hh;
         List<CHITIETPHIEUNHAP_DTO> listChiTietPN;
@@ -44,6 +46,8 @@ namespace QL_BIA_NGK
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (!CheckForm()) return;
+
             _ctpn.IDHH = slkLoaiHH.EditValue.ToString();
             _ctpn.TENHH = txtTenHH.Text;
             _ctpn.GHICHU = txtGhiChu.Text;
@@ -130,6 +134,32 @@ namespace QL_BIA_NGK
             slkLoaiHH.Properties.DataSource = listHangHoa;
             slkLoaiHH.Properties.DisplayMember = "IDHH";
             slkLoaiHH.Properties.ValueMember = "IDHH";
+        }
+        bool CheckForm()
+        {
+            if (txtTenHH.Text == "")
+            {
+                Func.ShowMessage("Chưa chọn hàng hóa nào!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (cboDVT.SelectedValue == null)
+            {
+                Func.ShowMessage("Đơn vị tính không được bỏ trống!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private void txtSoLuong_Validating(object sender, CancelEventArgs e)
+        {
+            TextEdit txt = sender as TextEdit;
+            if (Convert.ToInt32(txt.Text.Replace(".", "")) < 0)
+            {
+                e.Cancel = true;
+                dXErrorProvider.SetError(txt, "Không được nhập số âm!");
+            }
+            else
+                dXErrorProvider.ClearErrors();
         }
     }
 }

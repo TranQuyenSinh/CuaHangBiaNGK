@@ -159,12 +159,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTen);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmChiTietTaiKhoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CHI TIẾT TÀI KHOẢN";
             this.Load += new System.EventHandler(this.frmChiTietTaiKhoan_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmChiTietTaiKhoan_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

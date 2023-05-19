@@ -38,6 +38,7 @@ namespace QL_BIA_NGK
 
         private void frmKhoHang_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Kho hàng][XEM]");
             _hh = new HANGHOA();
             LoadData();
         }

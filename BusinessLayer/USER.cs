@@ -74,7 +74,7 @@ namespace BusinessLayer
                 dt.DELETED = false;
                 db.tb_USER.Add(dt);
                 db.SaveChanges();
-                Func.Log("ADD", "User", $"ID:{dt.IDUSER}, UserName:{dt.USERNAME}");
+                //Func.Log("ADD", "User", $"ID:{dt.IDUSER}, UserName:{dt.USERNAME}");
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace BusinessLayer
                 _dt.IDNHOM = dt.IDNHOM;
 
                 db.SaveChanges();
-                Func.Log("UPDATE", "User", newValue, oldValue);
+                //Func.Log("UPDATE", "User", newValue, oldValue);
             }
             catch (Exception ex)
             {
@@ -110,7 +110,7 @@ namespace BusinessLayer
                 dt.IDNHOM = null;
                 dt.DELETED = true;
                 db.SaveChanges();
-                Func.Log("DELETE", "User", $"ID:{dt.IDUSER}, UserName:{dt.USERNAME}");
+                //Func.Log("DELETE", "User", $"ID:{dt.IDUSER}, UserName:{dt.USERNAME}");
             }
             catch (Exception ex)
             {

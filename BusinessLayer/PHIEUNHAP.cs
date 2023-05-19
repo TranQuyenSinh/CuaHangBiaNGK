@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 
 namespace BusinessLayer
 {
@@ -16,7 +17,37 @@ namespace BusinessLayer
         Entities db = Entities.CreateEntities();
         public List<PHIEUNHAP_REPORT_DATA> GetReport(string idpn)
         {
-            List<PHIEUNHAP_REPORT_DATA> report_list = new List<PHIEUNHAP_REPORT_DATA>();
+            List<PHIEUNHAP_REPORT_DATA> list = (
+                from pn in db.tb_PHIEUNHAPHANG
+                join ct in db.tb_CHITIET_PHIEUNHAPHANG on pn.IDPN equals ct.IDPN
+                join hh in db.tb_HANGHOA on ct.IDHH equals hh.IDHH
+                join ncc in db.tb_NHACUNGCAP on pn.IDNCC equals ncc.IDNCC
+                join user in db.tb_USER on pn.IDUSER equals user.IDUSER
+                join nv in db.tb_NHANVIEN on pn.IDNV equals nv.IDNV into groupNV_PN
+                from table in groupNV_PN.DefaultIfEmpty()
+                where pn.IDPN == idpn
+                select new PHIEUNHAP_REPORT_DATA
+                {
+                    IDPN = pn.IDPN,
+                    HOTENNV = table.HOTEN == null ? "":table.HOTEN,
+                    HOTENNCC = ncc.HOTEN,
+                    DIACHI = ncc.DIACHI,
+                    DIENTHOAI = ncc.SODIENTHOAI,
+                    NGAY = pn.NGAY.Value,
+                    GHICHU = pn.GHICHU,
+                    NGUOILAP = user.TENDAYDU,
+                    TONGTIEN = (double)pn.TONGTIEN,
+                    PHIVANCHUYEN = (double)pn.PHIVANCHUYEN,
+                    // chi tiết
+                    TENHH = hh.TENHH,
+                    DONVITINH = ct.DONVITINH,
+                    DONGIA = (double)ct.DONGIA,
+                    SOLUONG = (int)ct.SOLUONG,
+                    THANHTIEN = (double)ct.THANHTIEN,
+                    GHICHUSP = ct.GHICHU
+
+                }).ToList();
+            /*List<PHIEUNHAP_REPORT_DATA> report_list = new List<PHIEUNHAP_REPORT_DATA>();
             PHIEUNHAP_DTO pn_dto = GetItemPN_DTO(idpn);
 
             foreach (var chitiet in pn_dto.listCTPN_DTO)
@@ -33,6 +64,7 @@ namespace BusinessLayer
                 r_item.DIENTHOAI = nhacungcap.SODIENTHOAI;
                 r_item.NGAY = pn_dto.NGAY.ToString();
                 r_item.GHICHU = pn_dto.GHICHU;
+                r_item.NGUOILAP = db.tb_USER.FirstOrDefault(x => x.IDUSER == pn_dto.IDUSER).TENDAYDU;
                 r_item.TONGTIEN = double.Parse(pn_dto.TONGTIEN.ToString());
                 r_item.PHIVANCHUYEN = double.Parse(pn_dto.PHIVANCHUYEN.ToString());
                 // chi tiết
@@ -44,32 +76,14 @@ namespace BusinessLayer
                 r_item.GHICHUSP = chitiet.GHICHU;
 
                 report_list.Add(r_item);
-            }
-            return report_list;
+            }*/
+            Func.WriteLog($"[Phiếu nhập][PRINT]: [MaPN={idpn}]");
+            return list;
         }
 
         public tb_PHIEUNHAPHANG GetItemPN(string id)
         {
             return db.tb_PHIEUNHAPHANG.FirstOrDefault(x => x.IDPN == id);
-        }
-        public PHIEUNHAP_DTO GetItemPN_DTO(string id)
-        {
-
-            var pn = db.tb_PHIEUNHAPHANG.FirstOrDefault(x => x.IDPN == id);
-            PHIEUNHAP_DTO pn_dto = new PHIEUNHAP_DTO();
-
-            pn_dto.IDPN = pn.IDPN;
-            pn_dto.IDUSER = int.Parse(pn.IDUSER.ToString());
-            pn_dto.IDNCC = pn.IDNCC;
-            pn_dto.HOTEN = db.tb_NHACUNGCAP.FirstOrDefault(x => x.IDNCC == pn.IDNCC).HOTEN;
-            pn_dto.GHICHU = pn.GHICHU;
-            pn_dto.NGAY = pn.NGAY;
-            pn_dto.IDNV = pn.IDNV;
-            pn_dto.PHIVANCHUYEN = pn.PHIVANCHUYEN;
-            pn_dto.TONGTIEN = pn.TONGTIEN;
-            pn_dto.listCTPN_DTO = this.getListCTPN_DTO(pn.IDPN);
-
-            return pn_dto;
         }
         public List<PHIEUNHAP_DTO> GetListPN_DTO(DateTime tuNgay, DateTime denNgay, int idncc = -1)
         {
@@ -121,7 +135,7 @@ namespace BusinessLayer
             }
             return list_dto;
         }
-        
+
         public void Add(PHIEUNHAP_DTO pn_dto)
         {
             try
@@ -154,7 +168,7 @@ namespace BusinessLayer
                     hanghoa.TONKHO += item.SOLUONG * item.QUYDOI;
                 }
                 db.SaveChanges();
-                Func.Log("ADD", "Nhập hàng", $"ID:{pn_dto.IDPN}");
+                Func.WriteLog($"[Phiếu nhập][INSERT]: [MaPN={pn_dto.IDPN}]");
             }
             catch (Exception ex)
             {
@@ -230,7 +244,7 @@ namespace BusinessLayer
                 }
 
                 db.SaveChanges();
-                Func.Log("UPDATE", "Nhập hàng", $"ID:{pn_dto.IDPN}");
+                Func.WriteLog($"[Phiếu nhập][UPDATE]: [MaPN={pn_dto.IDPN}]");
             }
             catch (Exception ex)
             {

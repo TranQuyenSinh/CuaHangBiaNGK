@@ -26,6 +26,7 @@ namespace QL_BIA_NGK
 
         private void frmLoiNhuan_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Lợi nhuận][XEM]");
             _ln = new LOINHUAN();
 
             // init date

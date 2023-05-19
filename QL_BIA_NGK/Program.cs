@@ -24,17 +24,14 @@ namespace QL_BIA_NGK
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (File.Exists("connectDB.dba"))
+            if (File.Exists("ConnectConfig.xml"))
             {
                 string conStr = "";
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream fs = File.Open("connectDB.dba", FileMode.Open, FileAccess.Read);
-                Connect cp = (Connect)bf.Deserialize(fs);
-
-                string deCryptServer = Encryptor.GiaiMa(cp.servername, "hoiAdminde", true);
-                string deCryptUsername = Encryptor.GiaiMa(cp.username, "hoiAdminde", true);
-                string deCryptPassword = Encryptor.GiaiMa(cp.passwd, "hoiAdminde", true);
-                string deCryptDatabase = Encryptor.GiaiMa(cp.database, "hoiAdminde", true);
+                Connect.ReadFile();
+                string deCryptServer = Connect.servername;
+                string deCryptUsername = Connect.username;
+                string deCryptPassword = Connect.passwd;
+                string deCryptDatabase = Connect.dbname;
 
                 Entities.SERVER = deCryptServer;
                 Entities.USERNAME = deCryptUsername;
@@ -48,13 +45,11 @@ namespace QL_BIA_NGK
                 try
                 {
                     con.Open();
-                    fs.Close();
                     Application.Run(new MainForm());
                 }
                 catch (Exception)
                 {
                     Func.ShowMessage("Không thể kết nối cơ sở dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    fs.Close();
                     Application.Run(new frmKetNoiDB());
                     if (!string.IsNullOrEmpty(Entities.SERVER))
                     {
@@ -62,8 +57,10 @@ namespace QL_BIA_NGK
                         frm.ShowDialog();
                     }
                 }
-                con.Close();
-                fs.Close();
+                finally
+                {
+                    con.Close();
+                }
             }
             else
             {

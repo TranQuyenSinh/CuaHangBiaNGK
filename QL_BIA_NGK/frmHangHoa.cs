@@ -9,6 +9,8 @@ using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
+using QL_BIA_NGK.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +32,7 @@ namespace QL_BIA_NGK
         HANGHOA _hh;
         private void frmHangHoa_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Hàng hóa][XEM]");
             // inititials
             _hh = new HANGHOA();
 
@@ -105,7 +108,7 @@ namespace QL_BIA_NGK
                 {
                     if (Func.ShowMessage("Bạn chắc chắn muốn xóa '" + ten + "' không?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        _hh.Delete(id.ToString());
+                        _hh.DeleteHangHoa(id.ToString());
                         LoadData();
                     }
                 }
@@ -257,6 +260,12 @@ namespace QL_BIA_NGK
                 view.SetRowCellValue(e.RowHandle, "GIABANLE", giabanle);
                 view.SetRowCellValue(e.RowHandle, "GIABANSI", giabansi);
             }
+        }
+
+        private void btnIn_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rptHangHoa rpt = new rptHangHoa(_hh.GetReport());
+            rpt.ShowPreview();
         }
     }
 }

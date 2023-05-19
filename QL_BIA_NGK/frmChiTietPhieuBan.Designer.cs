@@ -43,6 +43,9 @@
             this.cboDVT = new System.Windows.Forms.ComboBox();
             this.slkLoaiHH = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.IDHH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TENHH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TONKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,9 +54,6 @@
             this.txtTenHH = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.IDHH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TENHH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TONKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtHienTon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThanhTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).BeginInit();
@@ -174,6 +174,7 @@
             this.txtSoLuong.Size = new System.Drawing.Size(101, 22);
             this.txtSoLuong.TabIndex = 82;
             this.txtSoLuong.EditValueChanged += new System.EventHandler(this.txtSoLuong_EditValueChanged);
+            this.txtSoLuong.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaBan_Validating);
             // 
             // label7
             // 
@@ -212,6 +213,7 @@
             this.txtGiaBan.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBan.TabIndex = 81;
             this.txtGiaBan.EditValueChanged += new System.EventHandler(this.txtGiaNhap_EditValueChanged);
+            this.txtGiaBan.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaBan_Validating);
             // 
             // txtQuyDoi
             // 
@@ -284,6 +286,45 @@
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // IDHH
+            // 
+            this.IDHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.IDHH.AppearanceHeader.Options.UseFont = true;
+            this.IDHH.Caption = "Mã hàng hóa";
+            this.IDHH.FieldName = "IDHH";
+            this.IDHH.MaxWidth = 100;
+            this.IDHH.MinWidth = 100;
+            this.IDHH.Name = "IDHH";
+            this.IDHH.Visible = true;
+            this.IDHH.VisibleIndex = 0;
+            this.IDHH.Width = 100;
+            // 
+            // TENHH
+            // 
+            this.TENHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.TENHH.AppearanceHeader.Options.UseFont = true;
+            this.TENHH.Caption = "Tên hàng hóa";
+            this.TENHH.FieldName = "TENHH";
+            this.TENHH.MaxWidth = 200;
+            this.TENHH.MinWidth = 200;
+            this.TENHH.Name = "TENHH";
+            this.TENHH.Visible = true;
+            this.TENHH.VisibleIndex = 1;
+            this.TENHH.Width = 200;
+            // 
+            // TONKHO
+            // 
+            this.TONKHO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.TONKHO.AppearanceHeader.Options.UseFont = true;
+            this.TONKHO.Caption = "Tồn kho";
+            this.TONKHO.FieldName = "TONKHO";
+            this.TONKHO.MaxWidth = 100;
+            this.TONKHO.MinWidth = 100;
+            this.TONKHO.Name = "TONKHO";
+            this.TONKHO.Visible = true;
+            this.TONKHO.VisibleIndex = 2;
+            this.TONKHO.Width = 100;
             // 
             // label5
             // 
@@ -362,45 +403,6 @@
             this.label1.Size = new System.Drawing.Size(54, 17);
             this.label1.TabIndex = 88;
             this.label1.Text = "Ghi chú";
-            // 
-            // IDHH
-            // 
-            this.IDHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.IDHH.AppearanceHeader.Options.UseFont = true;
-            this.IDHH.Caption = "Mã hàng hóa";
-            this.IDHH.FieldName = "IDHH";
-            this.IDHH.MaxWidth = 100;
-            this.IDHH.MinWidth = 100;
-            this.IDHH.Name = "IDHH";
-            this.IDHH.Visible = true;
-            this.IDHH.VisibleIndex = 0;
-            this.IDHH.Width = 100;
-            // 
-            // TENHH
-            // 
-            this.TENHH.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.TENHH.AppearanceHeader.Options.UseFont = true;
-            this.TENHH.Caption = "Tên hàng hóa";
-            this.TENHH.FieldName = "TENHH";
-            this.TENHH.MaxWidth = 200;
-            this.TENHH.MinWidth = 200;
-            this.TENHH.Name = "TENHH";
-            this.TENHH.Visible = true;
-            this.TENHH.VisibleIndex = 1;
-            this.TENHH.Width = 200;
-            // 
-            // TONKHO
-            // 
-            this.TONKHO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.TONKHO.AppearanceHeader.Options.UseFont = true;
-            this.TONKHO.Caption = "Tồn kho";
-            this.TONKHO.FieldName = "TONKHO";
-            this.TONKHO.MaxWidth = 100;
-            this.TONKHO.MinWidth = 100;
-            this.TONKHO.Name = "TONKHO";
-            this.TONKHO.Visible = true;
-            this.TONKHO.VisibleIndex = 2;
-            this.TONKHO.Width = 100;
             // 
             // frmChiTietPhieuBan
             // 

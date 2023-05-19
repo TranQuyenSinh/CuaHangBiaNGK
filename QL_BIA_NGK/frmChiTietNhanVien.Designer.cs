@@ -36,7 +36,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtIDNV = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtDienThoai = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgaySinh.Properties)).BeginInit();
             this.SuspendLayout();
@@ -119,6 +119,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txtEmail.Location = new System.Drawing.Point(128, 231);
+            this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(376, 24);
             this.txtEmail.TabIndex = 5;
@@ -143,14 +144,6 @@
             this.label5.TabIndex = 27;
             this.label5.Text = "Ngày sinh";
             // 
-            // txtDienThoai
-            // 
-            this.txtDienThoai.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtDienThoai.Location = new System.Drawing.Point(128, 195);
-            this.txtDienThoai.Name = "txtDienThoai";
-            this.txtDienThoai.Size = new System.Drawing.Size(376, 24);
-            this.txtDienThoai.TabIndex = 4;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -165,6 +158,7 @@
             // 
             this.txtDiaChi.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txtDiaChi.Location = new System.Drawing.Point(128, 159);
+            this.txtDiaChi.MaxLength = 100;
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(376, 24);
             this.txtDiaChi.TabIndex = 3;
@@ -183,6 +177,7 @@
             // 
             this.txtHoTen.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txtHoTen.Location = new System.Drawing.Point(128, 54);
+            this.txtHoTen.MaxLength = 100;
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(376, 24);
             this.txtHoTen.TabIndex = 0;
@@ -217,12 +212,23 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Mã nhân viên";
             // 
+            // txtDienThoai
+            // 
+            this.txtDienThoai.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtDienThoai.Location = new System.Drawing.Point(129, 193);
+            this.txtDienThoai.MaxLength = 20;
+            this.txtDienThoai.Name = "txtDienThoai";
+            this.txtDienThoai.Size = new System.Drawing.Size(376, 24);
+            this.txtDienThoai.TabIndex = 4;
+            this.txtDienThoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDienThoai_KeyPress);
+            // 
             // frmChiTietNhanVien
             // 
             this.AcceptButton = this.btnLuu;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 320);
+            this.Controls.Add(this.txtDienThoai);
             this.Controls.Add(this.dtNgaySinh);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.chkNam);
@@ -231,7 +237,6 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtDienThoai);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtDiaChi);
             this.Controls.Add(this.label3);
@@ -264,7 +269,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtDienThoai;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label label3;
@@ -272,5 +276,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtIDNV;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtDienThoai;
     }
 }

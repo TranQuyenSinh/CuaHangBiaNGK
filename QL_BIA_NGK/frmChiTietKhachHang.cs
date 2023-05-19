@@ -16,27 +16,24 @@ namespace QL_BIA_NGK
 {
     public partial class frmChiTietKhachHang : DevExpress.XtraEditors.XtraForm
     {
-        public frmChiTietKhachHang()
-        {
-            InitializeComponent();
-        }
-        KHACHHANG _nv;
+        KHACHHANG _kh = new KHACHHANG();
         tb_KHACHHANG _currentRecord;
         string _id;
         bool _isAdd;
+        public frmChiTietKhachHang()
+        {
+            InitializeComponent();
+            _currentRecord = new tb_KHACHHANG();
+            _id = _kh.GetMaxID();
+            _isAdd = true;
+        }
+
         public frmChiTietKhachHang(string id)
         {
             InitializeComponent();
-            _nv = new KHACHHANG();
+            _currentRecord = _kh.GetItem(id);
             _id = id;
-            _currentRecord = _nv.GetItem(id);
-            if (_currentRecord != null)
-                _isAdd = false;
-            else
-            {
-                _currentRecord = new tb_KHACHHANG();
-                _isAdd = true;
-            }
+            _isAdd = false;
         }
 
         private void frmChiTietKhachHang_Load(object sender, EventArgs e)
@@ -55,6 +52,7 @@ namespace QL_BIA_NGK
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (!CheckForm()) return;
             tb_KHACHHANG kh = new tb_KHACHHANG();
 
             kh.IDKH = _id;
@@ -65,9 +63,9 @@ namespace QL_BIA_NGK
             kh.EMAIL = txtEmail.Text;
             kh.SODIENTHOAI = txtDienThoai.Text;
             if (_isAdd)
-                _nv.Add(kh);
+                _kh.Add(kh);
             else
-                _nv.Update(kh);
+                _kh.Update(kh);
 
             this.Close();
         }
@@ -83,6 +81,25 @@ namespace QL_BIA_NGK
             {
                 this.Close();
             }
+        }
+
+        private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // nếu nhập chữ thì bỏ qua
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        bool CheckForm()
+        {
+            // kiểm tra quyền, rỗng
+            if (txtHoTen.Text == "")
+            {
+                Func.ShowMessage("Tên không được bỏ trống!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace DataLayer
             string deCryptPassword;
             string deCryptDatabase;
             // nếu không có file connect thì lấy thông tin connection từ form
-            if (!File.Exists("connectDB.dba"))
+            if (!File.Exists("ConnectConfig.xml"))
             {
                 deCryptServer = SERVER;
                 deCryptUsername = USERNAME;
@@ -39,15 +39,10 @@ namespace DataLayer
             // ngược lại thì giải mã thông tin connection từ file ra
             else
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream fs = File.Open("connectDB.dba", FileMode.Open, FileAccess.Read);
-                Connect cp = (Connect)bf.Deserialize(fs);
-
-                deCryptServer = Encryptor.GiaiMa(cp.servername, "hoiAdminde", true);
-                deCryptUsername = Encryptor.GiaiMa(cp.username, "hoiAdminde", true);
-                deCryptPassword = Encryptor.GiaiMa(cp.passwd, "hoiAdminde", true);
-                deCryptDatabase = Encryptor.GiaiMa(cp.database, "hoiAdminde", true);
-                fs.Close();
+                deCryptServer = Connect.servername;
+                deCryptUsername = Connect.username;
+                deCryptPassword = Connect.passwd;
+                deCryptDatabase = Connect.dbname;
             }
 
 
@@ -65,7 +60,7 @@ namespace DataLayer
             entityBuilder.Provider = "System.Data.SqlClient";
             entityBuilder.ProviderConnectionString = sqlConnectString;
 
-            entityBuilder.Metadata = @"res://*/QL_BIA_NGK.csdl|res://*/QL_BIA_NGK.ssdl|res://*/QL_BIA_NGK.msl";
+            entityBuilder.Metadata = @"res://*/"+ deCryptDatabase + ".csdl|res://*/"+ deCryptDatabase + ".ssdl|res://*/"+ deCryptDatabase + ".msl";
 
             EntityConnection connection = new EntityConnection(entityBuilder.ToString());
 

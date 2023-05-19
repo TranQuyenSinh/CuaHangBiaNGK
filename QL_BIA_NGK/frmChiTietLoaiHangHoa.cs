@@ -65,7 +65,7 @@ namespace QL_BIA_NGK
             }
             else
             {
-                Func.ShowMessage("Thất bại, thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Func.ShowMessage("Tên không được bỏ trống!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

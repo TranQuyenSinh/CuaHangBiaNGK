@@ -36,6 +36,7 @@
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDHH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TENHH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TONKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.btnLuu = new System.Windows.Forms.Button();
             this.txtHienTon = new DevExpress.XtraEditors.TextEdit();
             this.label10 = new System.Windows.Forms.Label();
-            this.TONKHO = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiaNhap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuyDoi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slkLoaiHH.Properties)).BeginInit();
@@ -82,6 +82,7 @@
             this.txtGiaNhap.Size = new System.Drawing.Size(101, 22);
             this.txtGiaNhap.TabIndex = 3;
             this.txtGiaNhap.EditValueChanged += new System.EventHandler(this.txtGiaNhap_EditValueChanged);
+            this.txtGiaNhap.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoLuong_Validating);
             // 
             // txtQuyDoi
             // 
@@ -180,6 +181,19 @@
             this.TENHH.Visible = true;
             this.TENHH.VisibleIndex = 1;
             this.TENHH.Width = 200;
+            // 
+            // TONKHO
+            // 
+            this.TONKHO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.TONKHO.AppearanceHeader.Options.UseFont = true;
+            this.TONKHO.Caption = "Tồn kho";
+            this.TONKHO.FieldName = "TONKHO";
+            this.TONKHO.MaxWidth = 100;
+            this.TONKHO.MinWidth = 100;
+            this.TONKHO.Name = "TONKHO";
+            this.TONKHO.Visible = true;
+            this.TONKHO.VisibleIndex = 2;
+            this.TONKHO.Width = 100;
             // 
             // label5
             // 
@@ -286,6 +300,7 @@
             this.txtSoLuong.Size = new System.Drawing.Size(101, 22);
             this.txtSoLuong.TabIndex = 4;
             this.txtSoLuong.EditValueChanged += new System.EventHandler(this.txtSoLuong_EditValueChanged);
+            this.txtSoLuong.Validating += new System.ComponentModel.CancelEventHandler(this.txtSoLuong_Validating);
             // 
             // label7
             // 
@@ -388,19 +403,6 @@
             this.label10.Size = new System.Drawing.Size(59, 17);
             this.label10.TabIndex = 77;
             this.label10.Text = "Hiện tồn";
-            // 
-            // TONKHO
-            // 
-            this.TONKHO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.TONKHO.AppearanceHeader.Options.UseFont = true;
-            this.TONKHO.Caption = "Tồn kho";
-            this.TONKHO.FieldName = "TONKHO";
-            this.TONKHO.MaxWidth = 100;
-            this.TONKHO.MinWidth = 100;
-            this.TONKHO.Name = "TONKHO";
-            this.TONKHO.Visible = true;
-            this.TONKHO.VisibleIndex = 2;
-            this.TONKHO.Width = 100;
             // 
             // frmChiTietPhieuNhap
             // 

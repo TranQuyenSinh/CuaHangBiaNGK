@@ -27,7 +27,6 @@ namespace BusinessLayer
             {
                 db.tb_NHOM.Add(dt);
                 db.SaveChanges();
-                Func.Log("ADD", "Nhóm", $"ID:{dt.IDNHOM}, Name:{dt.TENNHOM}");
             }
             catch (Exception ex)
             {
@@ -44,7 +43,7 @@ namespace BusinessLayer
                 _dt.TENNHOM = dt.TENNHOM;
 
                 db.SaveChanges(); 
-                Func.Log("UPDATE", "Nhóm", newValue, oldValue);
+                //Func.Log("UPDATE", "Nhóm", newValue, oldValue);
             }
             catch (Exception ex)
             {
@@ -60,7 +59,7 @@ namespace BusinessLayer
                 var dt = db.tb_NHOM.FirstOrDefault(x => x.IDNHOM == idnhom);
                 db.tb_NHOM.Remove(dt);
                 db.SaveChanges();
-                Func.Log("DELETE", "Nhóm", $"ID:{dt.IDNHOM}, Name:{dt.TENNHOM}");
+                //Func.Log("DELETE", "Nhóm", $"ID:{dt.IDNHOM}, Name:{dt.TENNHOM}");
             }
             catch (Exception ex)
             {

@@ -11,11 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.DXErrorProvider;
 
 namespace QL_BIA_NGK
 {
     public partial class frmChiTietPhieuBan : DevExpress.XtraEditors.XtraForm
     {
+        DXErrorProvider dXErrorProvider = new DXErrorProvider();
         CHITIETPHIEUBAN_DTO _ctpb;
         HANGHOA _hh;
         List<CHITIETPHIEUBAN_DTO> listChiTietPB;
@@ -43,6 +45,7 @@ namespace QL_BIA_NGK
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (!CheckForm()) return;
             _ctpb.IDHH = slkLoaiHH.EditValue.ToString();
             _ctpb.TENHH = txtTenHH.Text;
             _ctpb.GHICHU = txtGhiChu.Text;
@@ -129,6 +132,32 @@ namespace QL_BIA_NGK
             slkLoaiHH.Properties.DataSource = listHangHoa;
             slkLoaiHH.Properties.DisplayMember = "IDHH";
             slkLoaiHH.Properties.ValueMember = "IDHH";
+        }
+        bool CheckForm()
+        {
+            if (txtTenHH.Text == "")
+            {
+                Func.ShowMessage("Chưa chọn hàng hóa nào!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (cboDVT.SelectedValue == null)
+            {
+                Func.ShowMessage("Đơn vị tính không được bỏ trống!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private void txtGiaBan_Validating(object sender, CancelEventArgs e)
+        {
+            TextEdit txt = sender as TextEdit;
+            if (Convert.ToInt32(txt.Text.Replace(".", "")) < 0)
+            {
+                e.Cancel = true;
+                dXErrorProvider.SetError(txt, "Không được nhập số âm!");
+            }
+            else
+                dXErrorProvider.ClearErrors();
         }
     }
 }

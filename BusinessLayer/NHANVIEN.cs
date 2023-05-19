@@ -35,8 +35,11 @@ namespace BusinessLayer
             {
                 dt.DELETED = false;
                 db.tb_NHANVIEN.Add(dt);
+
+                string changedLog = Func.FindChanged(db, "Nhân viên");
+                if (changedLog != "") Func.WriteLog(changedLog);
+
                 db.SaveChanges();
-                Func.Log("ADD", "Nhân viên", $"ID:{dt.IDNV}, Name:{dt.HOTEN}");
             }
             catch (Exception ex)
             {
@@ -57,8 +60,11 @@ namespace BusinessLayer
                 _dt.DIACHI = dt.DIACHI;
                 _dt.EMAIL = dt.EMAIL;
 
+                string changedLog = Func.FindChanged(db, "Nhân viên");
+                if (changedLog != "") Func.WriteLog($"[ID={dt.IDNV}]" + changedLog);
+
                 db.SaveChanges();
-                Func.Log("UPDATE", "Nhân viên", newValue, oldValue);
+               
             }
             catch (Exception ex)
             {
@@ -71,8 +77,10 @@ namespace BusinessLayer
             {
                 var dt = db.tb_NHANVIEN.FirstOrDefault(x => x.IDNV == idnv);
                 dt.DELETED = true;
+
+                Func.WriteLog($"[Nhân viên][DELETE][ID={idnv}]");
+
                 db.SaveChanges();
-                Func.Log("DELETE", "Nhân viên", $"ID:{dt.IDNV}, Name:{dt.HOTEN}");
             }
             catch (Exception ex)
             {

@@ -50,6 +50,7 @@ namespace QL_BIA_NGK
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (!CheckForm()) return;
             tb_NHACUNGCAP cpyRecord = new tb_NHACUNGCAP();
             cpyRecord.HOTEN = txtHoTen.Text;
             cpyRecord.DIACHI = txtDiaChi.Text;
@@ -78,6 +79,25 @@ namespace QL_BIA_NGK
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
+        }
+
+        private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // nếu nhập chữ thì bỏ qua
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        bool CheckForm()
+        {
+            // kiểm tra quyền, rỗng
+            if (txtHoTen.Text == "")
+            {
+                Func.ShowMessage("Tên không được bỏ trống!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
     }
 }

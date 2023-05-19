@@ -24,6 +24,7 @@ namespace QL_BIA_NGK
         NHACUNGCAP _ncc;
         private void frmNhaCungCap_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Nhà cung cấp][XEM]");
             // inititials
             _ncc = new NHACUNGCAP();
 

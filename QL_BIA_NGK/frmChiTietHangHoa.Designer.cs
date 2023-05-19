@@ -634,6 +634,7 @@
             this.txtGiaNhapGoc.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaNhapGoc.Size = new System.Drawing.Size(101, 22);
             this.txtGiaNhapGoc.TabIndex = 6;
+            this.txtGiaNhapGoc.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaBanLeGoc
             // 
@@ -653,6 +654,7 @@
             this.txtGiaBanLeGoc.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaBanLeGoc.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBanLeGoc.TabIndex = 7;
+            this.txtGiaBanLeGoc.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaBanSiGoc
             // 
@@ -672,6 +674,7 @@
             this.txtGiaBanSiGoc.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaBanSiGoc.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBanSiGoc.TabIndex = 8;
+            this.txtGiaBanSiGoc.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaBanSi2
             // 
@@ -692,6 +695,7 @@
             this.txtGiaBanSi2.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaBanSi2.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBanSi2.TabIndex = 14;
+            this.txtGiaBanSi2.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaBanLe2
             // 
@@ -712,6 +716,7 @@
             this.txtGiaBanLe2.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaBanLe2.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBanLe2.TabIndex = 13;
+            this.txtGiaBanLe2.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaNhap2
             // 
@@ -732,6 +737,7 @@
             this.txtGiaNhap2.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaNhap2.Size = new System.Drawing.Size(101, 22);
             this.txtGiaNhap2.TabIndex = 12;
+            this.txtGiaNhap2.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtQuyDoi2
             // 
@@ -753,6 +759,7 @@
             this.txtQuyDoi2.Size = new System.Drawing.Size(101, 22);
             this.txtQuyDoi2.TabIndex = 11;
             this.txtQuyDoi2.TextChanged += new System.EventHandler(this.txtQuyDoi2_TextChanged);
+            this.txtQuyDoi2.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaBanSi3
             // 
@@ -773,6 +780,7 @@
             this.txtGiaBanSi3.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaBanSi3.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBanSi3.TabIndex = 20;
+            this.txtGiaBanSi3.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaBanLe3
             // 
@@ -793,6 +801,7 @@
             this.txtGiaBanLe3.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaBanLe3.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBanLe3.TabIndex = 19;
+            this.txtGiaBanLe3.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaNhap3
             // 
@@ -813,6 +822,7 @@
             this.txtGiaNhap3.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaNhap3.Size = new System.Drawing.Size(101, 22);
             this.txtGiaNhap3.TabIndex = 18;
+            this.txtGiaNhap3.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtQuyDoi3
             // 
@@ -834,6 +844,7 @@
             this.txtQuyDoi3.Size = new System.Drawing.Size(101, 22);
             this.txtQuyDoi3.TabIndex = 17;
             this.txtQuyDoi3.TextChanged += new System.EventHandler(this.txtQuyDoi3_TextChanged);
+            this.txtQuyDoi3.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaBanSi4
             // 
@@ -854,6 +865,7 @@
             this.txtGiaBanSi4.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaBanSi4.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBanSi4.TabIndex = 26;
+            this.txtGiaBanSi4.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaBanLe4
             // 
@@ -874,6 +886,7 @@
             this.txtGiaBanLe4.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaBanLe4.Size = new System.Drawing.Size(101, 22);
             this.txtGiaBanLe4.TabIndex = 25;
+            this.txtGiaBanLe4.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtGiaNhap4
             // 
@@ -894,6 +907,7 @@
             this.txtGiaNhap4.Properties.UseMaskAsDisplayFormat = true;
             this.txtGiaNhap4.Size = new System.Drawing.Size(101, 22);
             this.txtGiaNhap4.TabIndex = 24;
+            this.txtGiaNhap4.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtQuyDoi4
             // 
@@ -915,6 +929,7 @@
             this.txtQuyDoi4.Size = new System.Drawing.Size(101, 22);
             this.txtQuyDoi4.TabIndex = 23;
             this.txtQuyDoi4.TextChanged += new System.EventHandler(this.txtQuyDoi4_TextChanged);
+            this.txtQuyDoi4.Validating += new System.ComponentModel.CancelEventHandler(this.txtGiaNhapGoc_Validating);
             // 
             // txtDinhMucTon
             // 

@@ -23,6 +23,7 @@ namespace QL_BIA_NGK
         LOAIHANGHOA _loai;
         private void frmLoaiHangHoa_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Loại hàng][XEM]");
             // inititials
             _loai = new LOAIHANGHOA();
 

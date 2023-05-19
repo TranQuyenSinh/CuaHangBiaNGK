@@ -43,6 +43,8 @@ namespace QL_BIA_NGK
         // click button
         private void frmBanHang_Load(object sender, EventArgs e)
         {
+            Func.WriteLog("[Bán hàng][XEM]");
+
             _kh = new KHACHHANG();
             _pb = new PHIEUBAN();
             _hh = new HANGHOA();
@@ -57,7 +59,7 @@ namespace QL_BIA_NGK
 
             ShowHideButton();
             ResetForm();
-            LoadCboNCC();
+            LoadCboKH();
             LoadData();
             LoadListPB();
             LoadCboNhanVien();
@@ -75,7 +77,7 @@ namespace QL_BIA_NGK
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LoadData();
-            LoadCboNCC();
+            LoadCboKH();
             LoadListPB();
             LoadCboNhanVien();
         }
@@ -84,8 +86,7 @@ namespace QL_BIA_NGK
             var focusValue = gvDanhSachPhieu.GetFocusedRowCellValue("IDPB");
             if (focusValue != null)
             {
-                string idpb = focusValue.ToString();
-                rptPhieuBanHang rpt = new rptPhieuBanHang(_pb.GetReport(idpb));
+                rptPhieuBanHang rpt = new rptPhieuBanHang(_pb.GetReport(focusValue.ToString()));
                 rpt.ShowPreview();
             }
             else
@@ -119,7 +120,7 @@ namespace QL_BIA_NGK
             {
                 frmChiTietKhachHang frm = new frmChiTietKhachHang();
                 frm.ShowDialog();
-                LoadData();
+                LoadCboKH();
             }
             else
                 Func.ShowMessage("Bạn không có quyền thêm", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -184,6 +185,12 @@ namespace QL_BIA_NGK
             if (slkKH2.EditValue.ToString() == "") return;
             string id = slkKH2.EditValue.ToString();
             tb_KHACHHANG kh = _kh.GetItem(id);
+            if (kh == null)
+            {
+                Func.ShowMessage("Khách hàng có thể đã bị xóa, hãy chọn khách hàng khác", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoadCboKH();
+                return;
+            }
             txtHoTen.Text = kh.HOTEN;
             txtDiaChi.Text = kh.DIACHI;
             txtDienThoai.Text = kh.SODIENTHOAI;
@@ -283,7 +290,7 @@ namespace QL_BIA_NGK
             newList.AddRange(_listSP);
             gcDanhSach.DataSource = newList;
         }
-        void LoadCboNCC()
+        void LoadCboKH()
         {
             // cbo khách hàng
             var listKH = _kh.getList();
@@ -363,7 +370,7 @@ namespace QL_BIA_NGK
             _listSP.Clear();
         }
         // xử lý data
-        bool ValidateForm()
+        bool CheckForm()
         {
             // kiểm tra quyền, rỗng
             if (!Func.checkPermission("BANHANG", "ADD") || !Func.checkPermission("BANHANG", "UPDATE"))
@@ -391,14 +398,13 @@ namespace QL_BIA_NGK
         void SaveData()
         {
             // kiểm tra thông tin trước khi lưu
-            if (ValidateForm() == false) return;
+            if (CheckForm() == false) return;
 
             // bắt đầu xử lý thêm hoặc sửa
             // lấy thông tin trên form
             PHIEUBAN_DTO pb_dto = new PHIEUBAN_DTO();
             pb_dto.IDPB = txtMaPhieu.Text;
             pb_dto.IDKH = slkKH2.EditValue.ToString();
-            pb_dto.IDUSER = Func.IDUSER;
             pb_dto.NGAY = DateTime.Parse(dtNgayLap.EditValue.ToString());
             pb_dto.PHIVANCHUYEN = double.Parse(txtPhiVanChuyen.Text);
             pb_dto.GHICHU = txtGhiChu.Text;
@@ -416,12 +422,14 @@ namespace QL_BIA_NGK
             // xử lý db
             if (_isAdd)
             {
+                pb_dto.IDUSER = Func.IDUSER;
                 _pb.Add(pb_dto);
                 Func.ShowMessage("Thêm phiếu bán hàng thành công!");
                 _isAdd = false;
             }
             else
             {
+                pb_dto.IDUSER = int.Parse(_pb.GetItemPB(txtMaPhieu.Text).IDUSER.ToString());
                 _pb.Update(pb_dto);
                 Func.ShowMessage("Chỉnh sửa phiếu bán hàng thành công!");
             }
@@ -531,6 +539,7 @@ namespace QL_BIA_NGK
             _isSaved = false;
             LoadData();
         }
+
         #endregion
     }
 }
