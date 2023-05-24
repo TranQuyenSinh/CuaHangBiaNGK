@@ -341,12 +341,6 @@
     <Compile Include="Reports\rptPhieuNhapHang.Designer.cs">
       <DependentUpon>rptPhieuNhapHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="XtraForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="XtraForm1.Designer.cs">
-      <DependentUpon>XtraForm1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frmBanHang.resx">
       <DependentUpon>frmBanHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -462,9 +456,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPhieuNhapHang.resx">
       <DependentUpon>rptPhieuNhapHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraForm1.resx">
-      <DependentUpon>XtraForm1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

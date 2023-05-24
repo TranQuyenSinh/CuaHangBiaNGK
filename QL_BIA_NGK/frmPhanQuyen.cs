@@ -154,7 +154,7 @@ namespace QL_BIA_NGK
         {
             if (Func.checkPermission("PHANQUYEN", "UPDATE"))
             {
-                gvDanhSach.PostEditor();
+                gvDanhSach.PostEditor(); // đưa những change của user vào datasource
                 List<QUYEN_DTO> list = gcDanhSach.DataSource as List<QUYEN_DTO>;
                 foreach (var dto in list)
                 {

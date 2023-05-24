@@ -4,9 +4,11 @@ using DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
+using System.Windows.Forms;
 
 namespace BusinessLayer
 {
@@ -276,6 +278,34 @@ namespace BusinessLayer
 
                 db.SaveChanges();
                 Func.WriteLog($"[Bán hàng][UPDATE][IDPB={pb_dto.IDPB}]");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Delete(string idpb)
+        {
+            try
+            {   
+                // phục hồi lại tồn kho
+                var list_chitiet = db.tb_CHITIET_PHIEUBANHANG.Where(x => x.IDPB == idpb);
+                foreach (var chitiet in list_chitiet)
+                {
+                    var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == chitiet.IDHH);
+                    hanghoa.TONKHO += chitiet.SOLUONG * chitiet.QUYDOI;
+                }
+
+                // Xóa chi tiết phiếu bán
+                db.tb_CHITIET_PHIEUBANHANG.RemoveRange(list_chitiet);
+
+                // xóa pb
+                var phieuban = db.tb_PHIEUBANHANG.FirstOrDefault(x => x.IDPB == idpb);
+                db.tb_PHIEUBANHANG.Remove(phieuban);
+
+                db.SaveChanges();
+                Func.WriteLog($"[Bán hàng][DELETE][IDPB={idpb}]");
             }
             catch (Exception ex)
             {

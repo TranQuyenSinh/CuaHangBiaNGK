@@ -36,6 +36,7 @@ namespace QL_BIA_NGK
         public static List<CHITIETPHIEUBAN_DTO> _listSP;
         public static bool _isSaved;
         bool _isAdd;
+        string _id_currentPB;
 
         #endregion
 
@@ -80,6 +81,7 @@ namespace QL_BIA_NGK
             LoadCboKH();
             LoadListPB();
             LoadCboNhanVien();
+            _id_currentPB = null;
         }
         private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -104,15 +106,15 @@ namespace QL_BIA_NGK
         }
         private void btnThemSP_Click(object sender, EventArgs e)
         {
-            AddData();
+            AddSP();
         }
         private void btnSuaSP_Click(object sender, EventArgs e)
         {
-            UpdateData();
+            UpdateSP();
         }
         private void btnXoaSP_Click(object sender, EventArgs e)
         {
-            DeleteData();
+            DeleteSP();
         }
         private void btnThemKH_Click(object sender, EventArgs e)
         {
@@ -133,14 +135,44 @@ namespace QL_BIA_NGK
         {
             SaveData();
         }
+        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!Func.checkPermission("BANHANG", "DELETE"))
+            {
+                Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (_id_currentPB == null)
+            {
+                Func.ShowMessage("Bạn chưa chọn phiếu bán nào để xóa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Func.ShowMessage("Bạn có chắc muốn xóa phiếu bán hàng " + _id_currentPB + " ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                == DialogResult.No)
+                return;
+
+            try
+            {
+                _pb.Delete(_id_currentPB);
+                Func.ShowMessage("Xóa thành công!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetForm();
+                btnRefresh_ItemClick(sender, e);
+            }
+            catch (Exception ex)
+            {
+                Func.ShowMessage("Xóa thất bại. Lỗi: " + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void FrmCamera_captureEvent(string result)// result = idhh
         {
-            AppendDataFromCamera(result);
+            AppendSPFromCamera(result);
         }
         // double click gridview
         private void gvDanhSach_DoubleClick(object sender, EventArgs e)
         {
-            UpdateData();
+            UpdateSP();
         }
         private void gvDanhSachPhieu_DoubleClick(object sender, EventArgs e)
         {
@@ -273,12 +305,14 @@ namespace QL_BIA_NGK
             bool updatePer = Func.checkPermission("BANHANG", "UPDATE");
             bool deletePer = Func.checkPermission("BANHANG", "DELETE");
 
-            btnThem.Enabled = addPer;
-            btnThemSP.Enabled = addPer;
-            btnSuaSP.Enabled = updatePer;
-            btnXoaSP.Enabled = deletePer;
+            btnThem.Enabled = addPer && updatePer;
+            btnXoa.Enabled = deletePer;
             btnLuu.Enabled = addPer && updatePer;
             btnLuuPN.Enabled = addPer && updatePer;
+
+            btnThemSP.Enabled = addPer && updatePer;
+            btnSuaSP.Enabled = addPer && updatePer;
+            btnXoaSP.Enabled = addPer && updatePer;
         }
         // load data
         void LoadData()
@@ -347,6 +381,7 @@ namespace QL_BIA_NGK
                 switchGiaSi.IsOn = bool.Parse(pb_selected.GIASI.ToString());
 
                 LoadData();
+                _id_currentPB = pb_selected.IDPB;
             }
             else
             {
@@ -364,6 +399,7 @@ namespace QL_BIA_NGK
             txtHoTen.Text = "";
             txtDiaChi.Text = "";
             switchGiaSi.IsOn = true;
+            _id_currentPB = null;
             txtDienThoai.Text = "";
             txtPhiVanChuyen.Text = "0";
             txtGhiChu.Text = "";
@@ -434,9 +470,10 @@ namespace QL_BIA_NGK
                 Func.ShowMessage("Chỉnh sửa phiếu bán hàng thành công!");
             }
             _isSaved = true;
+            _id_currentPB = pb_dto.IDPB;
             LoadListPB();
         }
-        void AddData()
+        void AddSP()
         {
             if (Func.checkPermission("BANHANG", "ADD"))
             {
@@ -449,7 +486,7 @@ namespace QL_BIA_NGK
             else
                 Func.ShowMessage("Bạn không có quyền thêm", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        void UpdateData()
+        void UpdateSP()
         {
             if (Func.checkPermission("BANHANG", "UPDATE"))
             {
@@ -468,7 +505,7 @@ namespace QL_BIA_NGK
             else
                 Func.ShowMessage("Bạn không có quyền sửa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        void DeleteData()
+        void DeleteSP()
         {
             if (Func.checkPermission("BANHANG", "DELETE"))
             {
@@ -483,7 +520,7 @@ namespace QL_BIA_NGK
             else
                 Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        void AppendDataFromCamera(string barcode)
+        void AppendSPFromCamera(string barcode)
         {
             if (!Func.checkPermission("BANHANG", "ADD") || !Func.checkPermission("BANHANG", "UPDATE"))
             {
@@ -541,5 +578,7 @@ namespace QL_BIA_NGK
         }
 
         #endregion
+
+
     }
 }

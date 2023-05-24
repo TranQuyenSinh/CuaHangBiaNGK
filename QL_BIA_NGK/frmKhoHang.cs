@@ -1,30 +1,15 @@
 ﻿using BusinessLayer;
 using DataLayer;
-using DevExpress.Data.Svg;
-using DevExpress.Persistent.Base;
 using DevExpress.Utils;
-using DevExpress.Utils.DirectXPaint;
-using DevExpress.Utils.Filtering.Internal;
-using DevExpress.Utils.MVVM;
-using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static DevExpress.Utils.Drawing.Helpers.NativeMethods;
 
 namespace QL_BIA_NGK
 {
@@ -49,6 +34,7 @@ namespace QL_BIA_NGK
             foreach (var item in listHangHoa)
             {
                 item.TONKHO = item.TONKHO / item.QUYDOI;
+                item.DINHMUCTON = item.DINHMUCTON / item.QUYDOI;
             }
             gcDanhSach.DataSource = listHangHoa;
             // ngăn việc bôi đen content trong cell, không thể kích hoạt event double click
@@ -153,8 +139,10 @@ namespace QL_BIA_NGK
                 double tonkho = double.Parse(hh.TONKHO.ToString());
                 double quydoi = double.Parse(dvt.QUYDOI.ToString());
                 double tonkhoNew = tonkho / quydoi;
+                double dinhmuctonNew = double.Parse((hh.DINHMUCTON / dvt.QUYDOI).ToString());
                 view.SetRowCellValue(e.RowHandle, "QUYDOI", dvt.QUYDOI);
                 view.SetRowCellValue(e.RowHandle, "TONKHO", tonkhoNew.ToString("###,###,##0.##"));
+                view.SetRowCellValue(e.RowHandle, "DINHMUCTON", dinhmuctonNew.ToString("###,###,##0.##"));
             }
         }
 

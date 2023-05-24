@@ -322,6 +322,8 @@
             this.DINHMUCTON.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.DINHMUCTON.AppearanceHeader.Options.UseFont = true;
             this.DINHMUCTON.Caption = "Định mức tồn";
+            this.DINHMUCTON.DisplayFormat.FormatString = "###,###,##0.##";
+            this.DINHMUCTON.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.DINHMUCTON.FieldName = "DINHMUCTON";
             this.DINHMUCTON.MaxWidth = 100;
             this.DINHMUCTON.MinWidth = 100;

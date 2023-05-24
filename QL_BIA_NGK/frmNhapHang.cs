@@ -43,6 +43,7 @@ namespace QL_BIA_NGK
         public static List<CHITIETPHIEUNHAP_DTO> _listSP;
         public static bool _isSaved;
         bool _isAdd;
+        string _id_currentPN;
         #endregion
 
         #region Sự kiện click
@@ -84,12 +85,43 @@ namespace QL_BIA_NGK
         {
             SaveData();
         }
+         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!Func.checkPermission("NHAPHANG", "DELETE"))
+            {
+                Func.ShowMessage("Bạn không có quyền xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (_id_currentPN == null)
+            {
+                Func.ShowMessage("Bạn chưa chọn phiếu nhập nào để xóa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Func.ShowMessage("Bạn có chắc muốn xóa phiếu nhập hàng " + _id_currentPN + " ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                == DialogResult.No)
+                return;
+
+            try
+            {
+                _pn.Delete(_id_currentPN);
+                Func.ShowMessage("Xóa thành công!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetForm();
+                btnRefresh_ItemClick(sender, e);
+            }
+            catch (Exception ex)
+            {
+                Func.ShowMessage("Xóa thất bại. Lỗi: " + ex, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LoadData();
             LoadCboNCC();
             LoadListPN();
             LoadCboNhanVien();
+            _id_currentPN = null;
         }
         private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -284,12 +316,14 @@ namespace QL_BIA_NGK
             bool updatePer = Func.checkPermission("NHAPHANG", "UPDATE");
             bool deletePer = Func.checkPermission("NHAPHANG", "DELETE");
 
-            btnThem.Enabled = addPer;
-            btnThemSP.Enabled = addPer;
-            btnSuaSP.Enabled = updatePer;
-            btnXoaSP.Enabled = deletePer;
+            btnThem.Enabled = addPer && updatePer;
+            btnXoa.Enabled = deletePer;
             btnLuu.Enabled = addPer && updatePer;
             btnLuuPN.Enabled = addPer && updatePer;
+
+            btnThemSP.Enabled = addPer && updatePer;
+            btnSuaSP.Enabled = addPer && updatePer;
+            btnXoaSP.Enabled = addPer && updatePer;
         }
         // load data
         void LoadData()
@@ -379,6 +413,7 @@ namespace QL_BIA_NGK
                 txtPhiVanChuyen.Text = pn_selected.PHIVANCHUYEN.ToString();
 
                 LoadData();
+                _id_currentPN = pn_selected.IDPN;
             }
             else
             {
@@ -398,6 +433,7 @@ namespace QL_BIA_NGK
             txtDienThoai.Text = "";
             txtPhiVanChuyen.Text = "0";
             txtGhiChu.Text = "";
+            _id_currentPN = null;
             _listSP.Clear();
         }
         // xử lý data
@@ -464,6 +500,7 @@ namespace QL_BIA_NGK
                 Func.ShowMessage("Chỉnh sửa phiếu nhập hàng thành công!");
             }
             _isSaved = true;
+            _id_currentPN = pn_dto.IDPN;
             LoadListPN();
         }
         void AddData()

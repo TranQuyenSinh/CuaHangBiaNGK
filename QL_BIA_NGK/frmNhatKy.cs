@@ -88,11 +88,14 @@ namespace QL_BIA_NGK
 
             foreach (GridColumn column in view.Columns)
             {
+                // text trong grid cần check
                 string value = Func.RemoveDiacritics(view.GetListSourceRowCellValue(e.ListSourceRow, column).ToString()).ToLower();
+                // text filter do user nhập
                 string filterStr = Func.RemoveDiacritics(view.EditingValue == null ? "" : view.EditingValue.ToString()).ToLower();
 
                 if (column == gvDanhSach.FocusedColumn)
                 {
+                    
                     List<char> valueChars = value.ToList();
                     List<char> filterTextChars = filterStr.ToList();
 
@@ -100,7 +103,6 @@ namespace QL_BIA_NGK
                         if (filterTextChars.Count != 0 && c == filterTextChars.First())
                         {
                             filterTextChars.RemoveAt(0);
-
                         }
                     if (filterTextChars.Count == 0)
                     {

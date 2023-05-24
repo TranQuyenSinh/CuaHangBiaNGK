@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+
 namespace BusinessLayer
 {
     public class HANGHOA
@@ -31,27 +33,23 @@ namespace BusinessLayer
         }
         public List<HANGHOA_REPORT_DATA> GetReport()
         {
-            List<HANGHOA_REPORT_DATA> list = new List<HANGHOA_REPORT_DATA>();
-            var list_hh = from hh in db.tb_HANGHOA 
-                          where hh.DELETED == false 
-                          select hh;
-
-            foreach (var hh in list_hh)
-            {
-                HANGHOA_REPORT_DATA r_item = new HANGHOA_REPORT_DATA();
-                r_item.IDHH = hh.IDHH;
-                r_item.TENHH = hh.TENHH;
-                r_item.MOTA = hh.MOTA;
-                r_item.MAVACH = hh.MaVach;
-
-                list.Add(r_item);
-            }
+            List<HANGHOA_REPORT_DATA> list = (
+                from hh in db.tb_HANGHOA
+                where hh.DELETED == false
+                select new HANGHOA_REPORT_DATA
+                {
+                    IDHH = hh.IDHH,
+                    TENHH = hh.TENHH,
+                    MOTA = hh.MOTA,
+                    MAVACH = hh.MaVach
+                }).ToList();
             Func.WriteLog("[Hàng hóa][PRINT]");
             return list;
         }
         // lưu ý: hàm này lấy luôn những hàng hóa đã bị xóa (DELETED = true)
         public HANGHOAFULL_DTO GetItemHangHoaFullDTO(string idhh)
         {
+
             HANGHOAFULL_DTO dto = null;
             List<tb_GIA> listGia = db.tb_GIA.Where(x => x.IDHH == idhh).OrderBy(x => x.QUYDOI).ToList();
             var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == idhh);
@@ -76,7 +74,27 @@ namespace BusinessLayer
         // hàm dùng để tìm hàng hóa khi nhập vào phiếu nhập, bán bằng barcode
         public HANGHOAFULL_DTO GetItemHangHoaFullDTOByBarcode(string barcode)
         {
-            HANGHOAFULL_DTO dto = null;
+            HANGHOAFULL_DTO returnitem =
+                (from hh in db.tb_HANGHOA
+                 where hh.MaVach == barcode
+                 select new HANGHOAFULL_DTO
+                 {
+                     IDHH = hh.IDHH,
+                     TENHH = hh.TENHH,
+                     MOTA = hh.MOTA,
+                     IDLOAI = hh.IDLOAI,
+                     TENLOAI = hh.tb_LOAIHANGHOA.TENLOAI,
+                     DINHMUCTON = hh.DINHMUCTON,
+                     TONKHO = hh.TONKHO,
+                     MaVach = hh.MaVach,
+                     LISTGIA = (
+                        from gia in hh.tb_GIA
+                        orderby gia.QUYDOI
+                        select gia
+                     ).ToList()
+                 }).FirstOrDefault();
+
+           /* HANGHOAFULL_DTO dto = null;
             var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.MaVach == barcode);
             if (hanghoa == null)
                 return null;
@@ -94,8 +112,8 @@ namespace BusinessLayer
                 dto.TONKHO = hanghoa.TONKHO;
                 dto.MaVach = hanghoa.MaVach;
                 dto.LISTGIA = listGia;
-            }
-            return dto;
+            }*/
+            return returnitem;
         }
 
         public List<HANGHOA_DTO> getListHangHoaDTO(bool isMinQuyDoi)

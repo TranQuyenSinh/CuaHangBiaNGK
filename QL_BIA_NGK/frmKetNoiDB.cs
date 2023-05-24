@@ -38,6 +38,7 @@ namespace QL_BIA_NGK
             {
                 conn.Open();
                 Func.ShowMessage("Kết nối thành công");
+                // lưu cấu hình vào lớp Entities để kết nối
                 Entities.SERVER = txtServerName.Text;
                 Entities.USERNAME = txtUsername.Text;
                 Entities.PASSWORD = txtPassword.Text;

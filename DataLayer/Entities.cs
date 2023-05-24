@@ -19,9 +19,9 @@ namespace DataLayer
         public static string USERNAME;
         public static string PASSWORD;
         public static string DATABASE;
-        private Entities(DbConnection connectionString, bool contextOwnsConnection = true)
-            : base() { }
-        public static Entities CreateEntities(bool contextOwnsConnection = true)
+        private Entities(string connectionString)
+            : base(connectionString) { }
+        public static Entities CreateEntities()
         {
             // thông tin connection
             string deCryptServer;
@@ -45,27 +45,15 @@ namespace DataLayer
                 deCryptDatabase = Connect.dbname;
             }
 
+            string connectStr = string.Format(@"metadata=res://*/QL_BIA_NGK.csdl|res://*/QL_BIA_NGK.ssdl|res://*/QL_BIA_NGK.msl;
+                                                provider=System.Data.SqlClient;provider connection string='
+                                                data source={0};
+                                                initial catalog={1};
+                                                user id={2};
+                                                password={3};
+                                                MultipleActiveResultSets=True;App=EntityFramework'",deCryptServer, deCryptDatabase, deCryptUsername, deCryptPassword);
 
-            // tạo connection string cho Entity
-            SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-            SqlConnectionStringBuilder sqlConnectBuilder = new SqlConnectionStringBuilder();
-            sqlConnectBuilder.DataSource = deCryptServer;
-            sqlConnectBuilder.InitialCatalog = deCryptDatabase;
-            sqlConnectBuilder.UserID = deCryptUsername;
-            sqlConnectBuilder.Password = deCryptPassword;
-
-            string sqlConnectString = sqlConnectBuilder.ConnectionString;
-
-            EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
-            entityBuilder.Provider = "System.Data.SqlClient";
-            entityBuilder.ProviderConnectionString = sqlConnectString;
-
-            entityBuilder.Metadata = @"res://*/"+ deCryptDatabase + ".csdl|res://*/"+ deCryptDatabase + ".ssdl|res://*/"+ deCryptDatabase + ".msl";
-
-            EntityConnection connection = new EntityConnection(entityBuilder.ToString());
-
-           
-            return new Entities(connection);
+            return new Entities(connectStr);
         }
     }
 }

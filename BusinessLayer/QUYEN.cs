@@ -14,24 +14,21 @@ namespace BusinessLayer
 
         public List<QUYEN_DTO> getList(int idnhom)
         {
-            List<tb_PHANQUYEN> list = db.tb_PHANQUYEN.Where(x=>x.IDNHOM == idnhom).ToList();
-            List<QUYEN_DTO> listDTO = new List<QUYEN_DTO>();
-            QUYEN_DTO dto;
-
-            foreach (var item in list)
-            {
-                dto = new QUYEN_DTO();
-                dto.ID = item.ID;
-                dto.IDNHOM = item.IDNHOM;
-                dto.FUNC_CODE = item.FUNC_CODE;
-                dto.TENCHUCNANG = db.tb_CHUCNANG.FirstOrDefault(x => x.FUNC_CODE == item.FUNC_CODE).TENCHUCNANG;
-                dto.SHOW = item.SHOW;
-                dto.ADD = item.ADD;
-                dto.UPDATE = item.UPDATE;
-                dto.DELETE = item.DELETE;
-                listDTO.Add(dto);
-            }
-            return listDTO;
+            List<QUYEN_DTO> list = (
+                from q in db.tb_PHANQUYEN
+                where q.IDNHOM == idnhom
+                select new QUYEN_DTO
+                {
+                    ID = q.ID,
+                    IDNHOM = q.IDNHOM,
+                    FUNC_CODE = q.FUNC_CODE,
+                    TENCHUCNANG = q.tb_CHUCNANG.TENCHUCNANG,
+                    SHOW = q.SHOW,
+                    ADD = q.ADD,
+                    UPDATE = q.UPDATE,
+                    DELETE = q.DELETE
+                }).ToList();
+            return list;
         }
 
         public void Update(QUYEN_DTO dt)

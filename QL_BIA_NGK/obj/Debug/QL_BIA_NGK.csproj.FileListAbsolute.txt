@@ -275,6 +275,5 @@ D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Report
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptLoiNhuanSP.resources
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptLoiNhuanKH.resources
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptHangTonSapHet.resources
-D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.XtraForm1.resources
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.Reports.rptHangHoa.resources
 D:\TaiLieu\LapTrinhQuanLy\DoAn\QL_BIA_NGK\QL_BIA_NGK\obj\Debug\QL_BIA_NGK.frmChiTietNhatKy.resources

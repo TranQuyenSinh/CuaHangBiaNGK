@@ -135,7 +135,6 @@
       <DependentUpon>QL_BIA_NGK.edmx</DependentUpon>
       <LastGenOutput>QL_BIA_NGK.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="QL_BIA_NGK.edmx.sql" />
     <Content Include="QL_BIA_NGK.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QL_BIA_NGK.edmx</DependentUpon>

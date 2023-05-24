@@ -251,7 +251,33 @@ namespace BusinessLayer
                 throw ex;
             }
         }
+        public void Delete(string idpn)
+        {
+            try
+            {
+                // phục hồi lại tồn kho
+                var list_chitiet = db.tb_CHITIET_PHIEUNHAPHANG.Where(x => x.IDPN == idpn);
+                foreach (var chitiet in list_chitiet)
+                {
+                    var hanghoa = db.tb_HANGHOA.FirstOrDefault(x => x.IDHH == chitiet.IDHH);
+                    hanghoa.TONKHO -= chitiet.SOLUONG * chitiet.QUYDOI;
+                }
 
+                // Xóa chi tiết phiếu bán
+                db.tb_CHITIET_PHIEUNHAPHANG.RemoveRange(list_chitiet);
+
+                // xóa pb
+                var phieu = db.tb_PHIEUNHAPHANG.FirstOrDefault(x => x.IDPN == idpn);
+                db.tb_PHIEUNHAPHANG.Remove(phieu);
+
+                db.SaveChanges();
+                Func.WriteLog($"[Nhập hàng][DELETE][IDPB={idpn}]");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public string GetMaxID()
         {
             var dt = db.tb_PHIEUNHAPHANG.OrderByDescending(x => x.IDPN).FirstOrDefault();
